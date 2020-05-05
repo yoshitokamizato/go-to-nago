@@ -4,72 +4,61 @@
 * mysql version
 
 ## facilitiesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|admin_id|integer|null: false,unique: true|
-<!-- 店舗情報 -->
-|name|string|null: false,unique: true|
-|address|string|null: false|
-|tel|string|null: false|
-|email|string|
-<!-- 予算 -->
-|price|integer|
-<!-- 紹介文 -->
-|facility_info|text|null: false|
-<!-- 強み・楽しむためのワンポイント -->
-|comment|text|
-|one_point|text|
-<!-- 営業時間・定休日・駐車場・経度 -->
-|business_hours|string|
-|holiday|string|
-|parking|string|null: false|
-|area|string|
+|Column|Type|Options|memo|
+|------|----|-------|----|
+|admin_id|integer|null: false,unique: true|管理者_id|
+|name|string|null: false,unique: true|施設の名前|
+|address|string|null: false|住所|
+|tel|string|null: false|電話番号|
+|email|string|null: false|メールアドレス|
+|price|integer|-------|予算|
+|facility_info|text|null: false|紹介文|
+|comment|text|-------|強み|
+|one_point|text|-------|楽しむためのワンポイント|
+|business_hours|string|-------|営業時間|
+|holiday|string|-------|定休日|
+|parking|string|null: false|駐車場|
+|area|string|-------|経度|
 <!-- お店の写真 -->
-|image_url|text|null: false|
-<!-- HP・SNS情報 -->
-|home_page|string|
-|instagram|string|
-|twitter|string|
-|youtube|string|
-<!-- クーポン -->
-|coupon|string|
+|image_url|text|null: false|お店の写真|
+|home_page|string|-------|HP情報|
+|instagram|string|-------|instagram|
+|twitter|string|-------|twitter|
+|youtube|string|-------|YouTube|
+|coupon|string|-------|クーポン情報|
 ### Association
 -belongs_to :admin_id
 -has_many :reviews
 -has_many :menu
 -has_many :bookmarks
 
-
-
-<!-- お気に入り -->
 ## bookmarks
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|
-|facility_id|integer|
+|Column|Type|Options|memo|
+|------|----|-------|----|
+|user_id|integer|null: false|登録ユーザー_id|
+|facility_id|integer|null: false|施設_id|
 ### Association
 -has_many :user
 -has_many :facility
 
-<!-- 口コミ -->
 ## reviews
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|
-|facility_id|integer|
-|text|text|
+|Column|Type|Options|memo|
+|------|----|-------|----|
+|user_id|integer|null: false|登録ユーザー_id|
+|facility_id|integer|null: false|施設_id|
+|text|text|null: false|口コミ|
 ### Association
 -belongs_to :user
 -belongs_to :facility
 
-<!-- メニュ(種類・ジャンル)ー -->
 ## menus
-|Column|Type|Options|
-|------|----|-------|
-|facility_id|integer|
-|menu_price|integer|
-|image|string|
-|text|text|
+|Column|Type|Options|memo|
+|------|----|-------|----|
+|facility_id|integer|null: false|施設_id|
+|menu|string|null: false|メニュー|
+|menu_price|integer|null: false|料金|
+|image|string|-------|メニューの写真|
+|text|text|null: false|メニューの紹介|
 ### Association
 -belongs_to :facility
 
