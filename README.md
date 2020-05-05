@@ -1,57 +1,48 @@
-
-
-
 # README
 * Ruby version
   ruby '2.6.4'
 * mysql version
 
-## facilitysテーブル
+## facilitiesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|facility_name|string|null: false,unique: true|
+|admin_id|integer|null: false,unique: true|
+<!-- 店舗情報 -->
+|name|string|null: false,unique: true|
 |address|string|null: false|
 |tel|string|null: false|
 |email|string|
+<!-- 予算 -->
 |price|integer|
+<!-- 紹介文 -->
 |facility_info|text|null: false|
+<!-- 強み・楽しむためのワンポイント -->
+|comment|text|
 |one_point|text|
+<!-- 営業時間・定休日・駐車場・経度 -->
 |business_hours|string|
 |holiday|string|
 |parking|string|null: false|
-|image_url|text|null: false|
-|home_page|string|
 |area|string|
+<!-- お店の写真 -->
+|image_url|text|null: false|
+<!-- HP・SNS情報 -->
+|home_page|string|
+|instagram|string|
+|twitter|string|
+|youtube|string|
+<!-- クーポン -->
 |coupon|string|
 ### Association
 -belongs_to :bookmark
--belongs_to :admin_user
--has_many :sns
--has_many :comments
+-belongs_to :admin_id
 -has_many :reviews
-
-
 -has_many :menu
 
 
-## snsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|facility_id|integer|
-|instagram|string|
-|twitter|string|
-### Association
--belongs_to :facility
 
-## comments
-|Column|Type|Options|
-|------|----|-------|
-|facility_id|integer|null: false |
-|text|text|null: false |
-### Association
--belongs_to :facility
-
-## bookmark
+<!-- お気に入り -->
+## bookmarks
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|
@@ -60,6 +51,7 @@
 -has_many :user
 -has_many :facility
 
+<!-- 口コミ -->
 ## reviews
 |Column|Type|Options|
 |------|----|-------|
@@ -70,6 +62,7 @@
 -belongs_to :user
 -belongs_to :facility
 
+<!-- メニュ(種類・ジャンル)ー -->
 ## menu
 |Column|Type|Options|
 |------|----|-------|
