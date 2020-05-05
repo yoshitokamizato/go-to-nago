@@ -19,7 +19,6 @@
 |holiday|string|-------|定休日|
 |parking|string|null: false|駐車場|
 |area|string|-------|経度|
-<!-- お店の写真 -->
 |image_url|text|null: false|お店の写真|
 |home_page|string|-------|HP情報|
 |instagram|string|-------|instagram|
