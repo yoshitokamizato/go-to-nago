@@ -6,6 +6,7 @@
 ## facilitiesテーブル
 |Column|Type|Options|memo|
 |------|----|-------|----|
+|id|integer|null: false,unique: true|施設|_id
 |admin_id|integer|null: false,unique: true|管理者_id|
 |name|string|null: false,unique: true|施設の名前|
 |address|string|null: false|住所|
