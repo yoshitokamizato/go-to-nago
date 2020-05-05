@@ -34,10 +34,10 @@
 <!-- クーポン -->
 |coupon|string|
 ### Association
--belongs_to :bookmark
 -belongs_to :admin_id
 -has_many :reviews
 -has_many :menu
+-has_many :bookmarks
 
 
 
@@ -63,7 +63,7 @@
 -belongs_to :facility
 
 <!-- メニュ(種類・ジャンル)ー -->
-## menu
+## menus
 |Column|Type|Options|
 |------|----|-------|
 |facility_id|integer|
