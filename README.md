@@ -6,21 +6,23 @@
 ## facilitiesテーブル
 |Column|Type|Options|memo|
 |------|----|-------|----|
-|facilities_id|integer|-----|店舗・施設_id｜
+|id|integer|-----|店舗・施設_id｜
 |owner_id|integer|null: false,unique: true|管理者_id|
 |name|string|null: false|名前|
 |postal_code|integer|null: false|郵便番号|
 |address|string|null: false|住所|
 |latitude|float|null: false|緯度|
 |longitude|float|null: false|経度|
-|running_time|string|-------|走行距離（車で○分）|
+|running_time|string|-------|那覇空港からの所要時間（車）|
 |tel|string|------|電話番号|
 |email|string|------|メールアドレス|
 |budget|integer|-------|予算|
 |description|text|null: false|紹介文|
-|comment|text|-------|強み|
 |advice|text|-------|楽しむためのワンポイント・アドバイス|
-|business_hours|integer|-------|営業時間|
+|first_open|integer|-------|後半の開始時間|
+|first_close|integer|-------|前半の終了時間|
+|last_open|integer|-------|後半の時間|
+|last_close|integer|-------|後半の終了時間|
 |holiday|string|-------|定休日|
 |parking|string|null: false|駐車場|
 |home_page|string|-------|HP情報|
@@ -28,15 +30,17 @@
 |twitter|string|-------|twitter|
 |youtube|string|-------|YouTube|
 |created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
-|status|string|-------|状態|
+|updated_at|datetime|null: false|編集日時|
+|edit_id|string|null: false|編集者名|
+|author|string|null: false|作成者名|
+|status|enum|-------|状態|
 ### Association
 -belongs_to :facility_genre
 -belongs_to :owner_id
--belongs_to :genres
+-has_many :genres
+-has_many :facility_genre
 -has_many :reviews
--has_many :menu
+-has_many :menus
 -has_many :bookmarks
 -has_many :facility_images
 
@@ -45,48 +49,41 @@
 |------|----|-------|----|
 |user_id|integer|null: false|登録ユーザー_id|
 |facilities_id|integer|------|店舗・施設_id｜
-|created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
 ### Association
--has_many :user
--has_many :facilities
+-belongs_to :user
+-belongs_to :facility
 
 ## menus
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
-|menu|string|null: false|メニュー|
-|menu_price|integer|null: false|料金|
+|name|string|null: false|メニュー|
+|price|integer|null: false|料金|
 |image|string|-------|メニューの写真|
 |content|text|null: false|メニューの紹介|
 |created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
+|updated_user|datetime|null: false|更新日時|
+|edit_id|string|null: false|編集者名|
 ### Association
--belongs_to :facilities
+-belongs_to :facility
 
 ## genres
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
 |genre_name|string|null: false|種類(どのような施設か)|
-|created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
 ### Association
--has_many :facilities
+-belongs_to :facility
+-belongs_to :facility_genre
 
 ## facility_genre
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
 |facility_genre|string|null: false|店・施設の種類|
-|created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
 ### Association
--has_many :facilities
+-belongs_to :facility
+-belongs_to :genre
 
 
 
@@ -97,11 +94,11 @@
 |facilities_id|integer|------|店舗・施設_id｜
 |owner_id|integer|------|管理者_id|
 |created_at|datetime|null: false|作成日時|
-|edit_at|datetime|null: false|編集日時|
+|updated_at|datetime|null: false|編集日時|
 |edit_name|string|null: false|編集者名|
-|images|text|null: false|お店・施設の写真|
+|images|string|null: false|お店・施設の写真|
 ### Association
--belongs_to :facilities, optional: true
+-belongs_to :facility, optional: true
 
 ## strength
 |Column|Type|Options|memo|
@@ -110,7 +107,7 @@
 |owner_id|integer|------|管理者_id|
 |strength|text|null: false|強み|
 ### Association
--belongs_to :facilities
+-belongs_to :facility
   
 <!-- 後回しにする機能 -->
 <!-- ## reviews
