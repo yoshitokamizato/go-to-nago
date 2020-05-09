@@ -1,8 +1,3 @@
-# README
-* Ruby version
-  ruby '2.6.4'
-* mysql version
-
 ## facilitiesテーブル
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -34,16 +29,16 @@
 |updated_user|string|null: false|編集者名|
 |author|string|null: false|作成者名|
 |status|integer|-------|状態（営業中・閉店・休業中）|
+|facility_genre|int|enum {お店: 0, 施設: 1}, defaults: 0 ,null: false|店・施設の種類|
 ### Association
 -belongs_to :facility_genre
 -belongs_to :owner_id
--has_many :genres
+-belongs_to :genre
 -has_many :facility_genre
 -has_many :reviews
 -has_many :menus
 -has_many :bookmarks
 -has_many :facility_images
-
 ## bookmarks
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -52,7 +47,6 @@
 ### Association
 -belongs_to :user
 -belongs_to :facility
-
 ## menus
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -66,36 +60,22 @@
 |updated_user|string|null: false|編集者名|
 ### Association
 -belongs_to :facility, optional: true
-
 ## genres
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
-|name|string|null: false|種類(どのような施設か)|
+|name|string|null: false|種類(どんなジャンルのお店・施設か）|
 ### Association
--belongs_to :facility
--belongs_to :facility_genre
--has_one :between
-
-## facility_genre
+-has_many :facility_list
+## facility_list
 |Column|Type|Options|memo|
 |------|----|-------|----|
-|facilities_id|integer|------|店舗・施設_id｜
-|facility_genre|string|null: false|店・施設の種類|
-### Association
--belongs_to :facility
--has_one :genre
--has_one :between
-
-## between
-|Column|Type|Options|memo|
-|------|----|-------|----|
-|facility_genre_id|string|null: false|店・施設の種類|
+|facilities_id|integer|-----|店舗・施設_id｜
 |genre_id|string|null: false|種類(どのような施設か)|
 ### Association
--belongs_to :facility_genre
+-belongs_to :facility
 -belongs_to :genre
-
+facilityのジャンルを複数持たせるためのテーブル
 ## facility_images
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -106,7 +86,6 @@
 |updated_user|string|null: false|編集者名|
 ### Association
 -belongs_to :facility, optional: true
-
 ## strength
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -115,7 +94,6 @@
 |strength|text|null: false|強み|
 ### Association
 -belongs_to :facility
-  
 <!-- 後回しにする機能 -->
 <!-- ## reviews
 |Column|Type|Options|memo|
@@ -127,7 +105,6 @@
 ### Association
 -belongs_to :user
 -belongs_to :facilities
-
 ## coupons
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -135,5 +112,3 @@
 |store_id|integer|null: false|店舗_id|
 |content|text|-------|クーポン詳細|
 |image_url|string|-------|クーポン画像|
-
- -->
