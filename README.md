@@ -6,7 +6,7 @@
 ## facilitiesテーブル
 |Column|Type|Options|memo|
 |------|----|-------|----|
-|id|integer|-----|店舗・施設_id｜
+|facilities_id|integer|-----|店舗・施設_id｜
 |owner_id|integer|null: false,unique: true|管理者_id|
 |name|string|null: false|名前|
 |postal_code|integer|null: false|郵便番号|
@@ -30,10 +30,10 @@
 |twitter|string|-------|twitter|
 |youtube|string|-------|YouTube|
 |created_at|datetime|null: false|作成日時|
-|updated_at|datetime|null: false|編集日時|
-|edit_id|string|null: false|編集者名|
+|updated_at|datetime|null: false|更新日時|
+|updated_user|string|null: false|編集者名|
 |author|string|null: false|作成者名|
-|status|enum|-------|状態|
+|status|integer|-------|状態（営業中・閉店・休業中）|
 ### Association
 -belongs_to :facility_genre
 -belongs_to :owner_id
@@ -59,22 +59,23 @@
 |facilities_id|integer|------|店舗・施設_id｜
 |name|string|null: false|メニュー|
 |price|integer|null: false|料金|
-|image|string|-------|メニューの写真|
+|images|string|-------|メニューの写真|
 |content|text|null: false|メニューの紹介|
 |created_at|datetime|null: false|作成日時|
-|updated_user|datetime|null: false|更新日時|
-|edit_id|string|null: false|編集者名|
+|updated_at|datetime|null: false|更新日時|
+|updated_user|string|null: false|編集者名|
 ### Association
--belongs_to :facility
+-belongs_to :facility, optional: true
 
 ## genres
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
-|genre_name|string|null: false|種類(どのような施設か)|
+|name|string|null: false|種類(どのような施設か)|
 ### Association
 -belongs_to :facility
 -belongs_to :facility_genre
+-has_one :between
 
 ## facility_genre
 |Column|Type|Options|memo|
@@ -83,20 +84,26 @@
 |facility_genre|string|null: false|店・施設の種類|
 ### Association
 -belongs_to :facility
+-has_one :genre
+-has_one :between
+
+## between
+|Column|Type|Options|memo|
+|------|----|-------|----|
+|facility_genre_id|string|null: false|店・施設の種類|
+|genre_id|string|null: false|種類(どのような施設か)|
+### Association
+-belongs_to :facility_genre
 -belongs_to :genre
-
-
-
 
 ## facility_images
 |Column|Type|Options|memo|
 |------|----|-------|----|
 |facilities_id|integer|------|店舗・施設_id｜
-|owner_id|integer|------|管理者_id|
-|created_at|datetime|null: false|作成日時|
-|updated_at|datetime|null: false|編集日時|
-|edit_name|string|null: false|編集者名|
 |images|string|null: false|お店・施設の写真|
+|created_at|datetime|null: false|作成日時|
+|updated_at|datetime|null: false|更新日時|
+|updated_user|string|null: false|編集者名|
 ### Association
 -belongs_to :facility, optional: true
 
