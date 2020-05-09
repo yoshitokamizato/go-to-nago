@@ -19,10 +19,10 @@
 |budget|integer|-------|予算|
 |description|text|null: false|紹介文|
 |advice|text|-------|楽しむためのワンポイント・アドバイス|
-|first_open|integer|-------|後半の開始時間|
-|first_close|integer|-------|前半の終了時間|
-|last_open|integer|-------|後半の時間|
-|last_close|integer|-------|後半の終了時間|
+|first_open|datetime|-------|後半の開始時間|
+|first_close|datetime|-------|前半の終了時間|
+|last_open|datetime|-------|後半の時間|
+|last_close|datetime|-------|後半の終了時間|
 |holiday|string|-------|定休日|
 |parking|string|null: false|駐車場|
 |home_page|string|-------|HP情報|
