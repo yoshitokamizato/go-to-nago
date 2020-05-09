@@ -31,14 +31,14 @@
 |status|integer|-------|状態（営業中・閉店・休業中）|
 |facility_genre|int|enum {お店: 0, 施設: 1}, defaults: 0 ,null: false|店・施設の種類|
 ### Association
--belongs_to :facility_genre
 -belongs_to :owner_id
 -belongs_to :genre
--has_many :facility_genre
+-belongs_to :facility_list
 -has_many :reviews
 -has_many :menus
 -has_many :bookmarks
 -has_many :facility_images
+
 ## bookmarks
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -47,6 +47,7 @@
 ### Association
 -belongs_to :user
 -belongs_to :facility
+
 ## menus
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -60,6 +61,7 @@
 |updated_user|string|null: false|編集者名|
 ### Association
 -belongs_to :facility, optional: true
+
 ## genres
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -67,6 +69,7 @@
 |name|string|null: false|種類(どんなジャンルのお店・施設か）|
 ### Association
 -has_many :facility_list
+
 ## facility_list
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -76,6 +79,7 @@
 -belongs_to :facility
 -belongs_to :genre
 facilityのジャンルを複数持たせるためのテーブル
+
 ## facility_images
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -86,6 +90,7 @@ facilityのジャンルを複数持たせるためのテーブル
 |updated_user|string|null: false|編集者名|
 ### Association
 -belongs_to :facility, optional: true
+
 ## strength
 |Column|Type|Options|memo|
 |------|----|-------|----|
@@ -94,6 +99,8 @@ facilityのジャンルを複数持たせるためのテーブル
 |strength|text|null: false|強み|
 ### Association
 -belongs_to :facility
+
+
 <!-- 後回しにする機能 -->
 <!-- ## reviews
 |Column|Type|Options|memo|
