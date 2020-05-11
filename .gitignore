@@ -36,4 +36,4 @@ yarn-debug.log*
 .yarn-integrity
 
 # to ignore ruby mine
-.item
+.idea
