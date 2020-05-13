@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+// _header fontawesome
+.fa-sign-in-alt {
+  font-size: 25px;
+  color: #888888;
+}
