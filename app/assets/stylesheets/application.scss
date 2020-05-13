@@ -17,9 +17,79 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+// body (フッターを下に固定するため)
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
 
 // _header fontawesome
 .fa-sign-in-alt {
   font-size: 25px;
   color: #888888;
+}
+
+
+
+
+
+
+
+// --------------footer---------------------
+.footer {
+  margin-top: auto;
+}
+
+.row {
+  margin: 0 -15px;
+}
+
+// footerのaタグ
+.footer a {
+  font-size: 20px;
+  color: #898888;
+  padding: 0;
+}
+
+.footer a:hover {
+  text-decoration: none;
+  color: white
+}
+
+// foot上部のpタグ
+.footer_link p {
+  text-align: center;
+  margin: 0;
+  line-height: 55px;
+
+}
+
+// footer 一つ一つのlist
+.row-li {
+  padding: 0;
+  border: 1px solid #ffffffff;
+  background-color: #8888;
+}
+
+
+// footerのコピーライト部分
+.footer_bottom {
+  background-color: #222222;
+  text-align: center;
+}
+
+.footer_bottom p {
+
+  color: white;
+  margin: 0;
+  line-height: 55px;
 }

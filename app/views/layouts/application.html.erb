@@ -11,8 +11,12 @@
   </head>
 
   <body>
-  <%= render 'publics/header'%>
-    <%= yield %>
-  <%= render 'publics/footer'%>
+  <div class="container-fluid">
+    <div class="" id="wrapper">
+      <%= render 'publics/header'%>
+        <%= yield %>
+    </div>
+    <%= render 'publics/footer'%>
+  </div>
   </body>
 </html>
