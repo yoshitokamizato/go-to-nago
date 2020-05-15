@@ -13,9 +13,9 @@ development:
 test:
   <<: *default
   database: go-to-nago_test
+
 production:
   <<: *default
-  
   database: go-to-nago_production
   username: go-to-nago
   password: <%= ENV['GO-TO-NAGO_DATABASE_PASSWORD'] %>
