@@ -10,6 +10,7 @@ services:
       - mysql-datavolume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-volumes:
+
+  volumes:
   mysql-datavolume:
     driver: local

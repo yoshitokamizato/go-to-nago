@@ -5,14 +5,17 @@ default: &default
   host: 127.0.0.1
   username: root
   password: root
+
 development:
   <<: *default
   database: go-to-nago_development
+
 test:
   <<: *default
   database: go-to-nago_test
 production:
   <<: *default
+  
   database: go-to-nago_production
   username: go-to-nago
   password: <%= ENV['GO-TO-NAGO_DATABASE_PASSWORD'] %>
