@@ -16,6 +16,7 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap/scss/bootstrap";
 
 * {
   padding: 0;
@@ -30,7 +31,10 @@ body,
   min-height: 100vh;
 }
 
-
+// ヘッダーが被らないように調整
+.container-fluid {
+  padding-top: 72px;
+}
 
 // _header fontawesome
 .fa-sign-in-alt {
@@ -39,8 +43,23 @@ body,
 }
 
 
+// ログイン画面
 
+.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}
 
+// 「ログインしました」などのフラッシュ用スタイル
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
 
 
 
