@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   database:
     restart: always
@@ -9,7 +8,8 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-datavolume:/var/lib/mysql
-  
+    environment:
+      MYSQL_ROOT_PASSWORD: root
 volumes:
   mysql-datavolume:
     driver: local
