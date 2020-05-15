@@ -37,3 +37,4 @@ yarn-debug.log*
 
 # to ignore ruby mine
 .idea
+/vendor/*

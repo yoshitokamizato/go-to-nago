@@ -1,0 +1,2 @@
+class FacilityImage < ApplicationRecord
+end
