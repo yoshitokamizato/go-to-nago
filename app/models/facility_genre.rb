@@ -1,0 +1,2 @@
+class FacilityGenre < ApplicationRecord
+end
