@@ -14,13 +14,13 @@
         <a class="nav-link" href="#"> マイページ </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> ログイン </a>
+        <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"> 問合せ </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> ログアウト </a>
+        <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link", method: :delete %>
       </li>
     </ul>
   </div>
