@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_05_15_140154) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -86,10 +85,9 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.string "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
 
-ActiveRecord::Schema.define(version: 2020_05_14_134129) do
-
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -97,17 +95,16 @@ ActiveRecord::Schema.define(version: 2020_05_14_134129) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname"
-    t.integer "birth_year"
+    t.string "nickname", null: false
+    t.integer "birth_year", null: false
     t.integer "sex"
-    t.integer "prefecture"
+    t.integer "prefecture", null: false
     t.string "image"
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.text "profile"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
   end
 
 end
