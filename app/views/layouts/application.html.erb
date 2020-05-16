@@ -12,7 +12,11 @@
 
   <body>
     <div class="container-fluid">
-      <%= render 'publics/header'%>
+      <% if user_signed_in? %>
+        <%= render 'publics/header'%>
+      <% else %>
+        <%= render 'publics/before_login_header' %>
+      <% end %>
       <%= render 'shared/flash_messages' %>
       <div class="" id="wrapper">
           <%= yield %>
