@@ -49,7 +49,7 @@ ja:
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
       new:
-        sign_up: "アカウント登録"
+        sign_up: "新規登録"
     sessions:
       new:
         sign_in: "ログイン"
