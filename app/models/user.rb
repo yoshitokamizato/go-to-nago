@@ -9,6 +9,7 @@ class User < ApplicationRecord
   enum sex: {male: 0, female: 1, other: 2}
   enum role: {general: 0, owner: 1, admin: 2}
   enum status: {temporary: 0, active: 1, resign: 2}
+  has_many :facilities
 
   #bookmarks関連のアソシエーション
   has_many :bookmarks, dependent: :destroy

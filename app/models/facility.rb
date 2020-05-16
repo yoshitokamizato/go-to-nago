@@ -1,6 +1,6 @@
 class Facility < ApplicationRecord
 belongs_to :user
-has_many :menus
+has_one :menu
 has_many :facility_images
 
 
@@ -13,7 +13,6 @@ has_many :facility_genres, dependent: :destroy
 has_many :genres, through: :facility_genres
 # 以下のコマンドでfacilitiesとgenresのどちらかを編集したときにもう片方も反映させる
 accepts_nested_attributes_for :facility_genres, allow_destroy: true
-
 
 
 
