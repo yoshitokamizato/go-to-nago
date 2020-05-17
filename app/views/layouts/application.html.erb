@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+
       <% if user_signed_in? %>
         <%= render 'publics/header'%>
       <% else %>
@@ -23,6 +23,6 @@
           <%= yield %>
       </div>
       <%= render 'publics/footer'%>
-    </div>
+
   </body>
 </html>
