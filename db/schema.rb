@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nickname", null: false
-    t.integer "birth_year", null: false
+    t.datetime "birth_year", null: false
     t.integer "sex"
     t.integer "prefecture", null: false
     t.string "image"
