@@ -98,11 +98,11 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.string "nickname", null: false
     t.datetime "birth_year", null: false
     t.integer "sex"
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "image"
-    t.integer "role", default: 0, null: false
+    t.integer "role"
     t.text "profile"
-    t.integer "status", default: 0, null: false
+    t.integer "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
