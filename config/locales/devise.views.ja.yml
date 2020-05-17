@@ -8,6 +8,11 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         nickname: "ニックネーム"
+        sex: "性別"
+        birth_year: "生まれた年"
+        prefecture: "お住まい"
+        image: "プロフィール画像"
+        profile: "自己紹介"
     models:
       user: "ユーザ"
   devise:
