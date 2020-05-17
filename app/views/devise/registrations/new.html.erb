@@ -7,21 +7,25 @@
   <p class="text-center">または</p>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= bootstrap_devise_error_messages!%>
       <div class="form-group">
+        <%= f.label :nickname %>
         <%= f.text_field :nickname, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "ニックネームを入力してください" %>
       </div>
 
       <div class="form-group">
-        <%= f.text_field :birth_year, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "誕生年を入力してください" %>
+        <%= f.label :birth_year %>
+        <%= f.date_select :birth_year, {discard_day: true, discard_month: true, start_year: Date.today.year, end_year: 1950, prompt: "生まれた年を選択してください"}, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.text_field :sex, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "性別を入力してください" %>
+        <%= f.label :sex %>
+        <%= f.select :sex, [["男性", 0], ["女性", 1], ["その他", 3]], {include_blank: "性別を選択して下さい"}, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.text_field :prefecture, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "都道府県を入力してください" %>
+        <%= f.label :prefecture %>
+        <%= f.select :prefecture, User.prefectures.keys, {prompt: "お住まいの都道府県を選択して下さい"}, class: "form-control" %>
       </div>
 
       <div class="form-group">
