@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_163753) do
+ActiveRecord::Schema.define(version: 2020_05_18_050812) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -41,15 +41,16 @@ ActiveRecord::Schema.define(version: 2020_05_16_163753) do
     t.string "holiday"
     t.string "parking", null: false
     t.string "home_page"
-    t.integer "owner_id", null: false
+    t.integer "owner_id"
     t.string "instagram"
     t.string "twitter"
     t.string "youtube"
     t.integer "status"
-    t.string "created_user", null: false
-    t.string "updated_user", null: false
+    t.integer "created_user", null: false
+    t.integer "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "facility_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_05_16_163753) do
     t.integer "facility_id"
     t.string "image", null: false
     t.integer "order", null: false
-    t.string "created_user", null: false
+    t.integer "created_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -82,10 +83,8 @@ ActiveRecord::Schema.define(version: 2020_05_16_163753) do
     t.integer "price", null: false
     t.string "image", null: false
     t.text "content", null: false
-    t.datetime "create_at", null: false
-    t.datetime "update_at", null: false
-    t.string "created_user", null: false
-    t.string "updated_user", null: false
+    t.integer "created_user", null: false
+    t.integer "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

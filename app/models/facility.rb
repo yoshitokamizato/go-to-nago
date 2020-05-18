@@ -1,6 +1,6 @@
 class Facility < ApplicationRecord
 belongs_to :user
-has_one :menu
+has_many :menus
 has_many :facility_images
 
 
