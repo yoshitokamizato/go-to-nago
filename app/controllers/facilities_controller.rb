@@ -7,9 +7,6 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all
     @facility_images = FacilityImage.all
     @menu = Menu.all
-
-    puts"ここ："
-    p @facility_images
   end
 
 end

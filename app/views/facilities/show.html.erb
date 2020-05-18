@@ -7,15 +7,15 @@
   </div>
 
 
-
-
   <div class="list-wrapper">
     <div class="row">
       <% @facilities.each do |facility| %>
         <div class="col-6 col-lg-3">
           <div class="card show-row-list">
             <a href="/"></a>
-            <%= image_tag(facility.facility_images.image ,class:"card-img-top" ,alt:"...") %>
+            <%facility.facility_images.each do |images|%>
+              <%= image_tag(images.image ,class:"card-img-top" ,alt:"...") %>
+            <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= facility.name %></h4>
               <p class="card-text"><%= facility.description %></p>
