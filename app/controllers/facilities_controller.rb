@@ -4,8 +4,7 @@ class FacilitiesController < ApplicationController
   end
 
   def show
-    @facilities = Facility.all
-    @facility_images = FacilityImage.all
+    @facilities = Facility.includes(:facility_images)
     @menu = Menu.all
   end
 
