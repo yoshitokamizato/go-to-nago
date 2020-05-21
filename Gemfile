@@ -3,11 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+gem 'carrierwave'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails-i18n'
+gem 'rmagick'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -18,10 +21,16 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass'
+
+
 # hirb: 出力結果を表形式で出力する
 # hirb-unicode: マルチバイト文字の表示を補正する
 gem 'hirb'
 gem 'hirb-unicode'
+
+# デバッグ用
+gem 'pry-rails'
+gem 'pry-byebug'
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -51,3 +60,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+1

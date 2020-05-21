@@ -8,10 +8,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-    <div class="container-fluid">
+
       <% if user_signed_in? %>
         <%= render 'publics/header'%>
       <% else %>
@@ -22,6 +23,6 @@
           <%= yield %>
       </div>
       <%= render 'publics/footer'%>
-    </div>
+
   </body>
 </html>
