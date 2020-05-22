@@ -10,8 +10,8 @@
   <div class="list-wrapper">
     <div class="row">
       <% @facilities.each do |facility| %>
-        <div class="col-6 col-lg-3">
-          <div class="card show-row-list">
+        <div class="col-6 col-lg-3 show-row-list">
+          <div class="card ">
             <a href="/"></a>
             <%facility.facility_images.each do |images|%>
               <%= image_tag(images.image ,class:"card-img-top" ,alt:"...") %>
@@ -24,7 +24,9 @@
         </div>
       <% end %>
     </div>
-    <button type="button" class="btn btn-secondary btn-lg btn-block list-button">もっと見る</button>
+    <div class="list-button">
+      <button type="button" class="btn btn-secondary btn-lg">もっと見る</button>
+    </div>
   </div>
 
   <div class="bottom">
@@ -37,7 +39,7 @@
       </ul>
     </div>
     <div class="bottom-text">
-      <button type="button" class="btn btn-secondary btn-lg btn-block">情報修正依頼はこちら</button>
+      <button type="button" class="btn btn-secondary btn-lg">情報修正依頼はこちら</button>
     </div>
   </div>
 
