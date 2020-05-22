@@ -68,8 +68,6 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%= link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger btn-block" %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= link_to "マイページヘ戻る", users_mypage_path %>
