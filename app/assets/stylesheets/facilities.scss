@@ -12,11 +12,12 @@
   color: #888888;
 }
 
+// ブロックにリンクを与えるcss
 .show-row-list {
-  margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 35px;
 }
 
-// ブロックにリンクを与えるcss
 .show-row-list a {
   display: block;
   position: absolute;
@@ -24,13 +25,10 @@
   height: 100%;
 }
 
-
 .list-button {
   text-align: center;
   margin-top: 50px;
 }
-
-
 
 // ---------------最下部のsnsアイコンリスト---------------
 .bottom-sns {
