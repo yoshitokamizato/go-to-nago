@@ -1,4 +1,4 @@
-// show
+// ---------------show---------------
 .list-title {
   text-align: center;
   padding: 30px 0;
@@ -6,6 +6,16 @@
 
 .list-cd {
   text-align: left;
+}
+
+.list-cd p {
+  color: #888888;
+}
+
+// ブロックにリンクを与えるcss
+.show-row-list {
+  position: relative;
+  margin-bottom: 35px;
 }
 
 .show-row-list a {
@@ -17,9 +27,10 @@
 
 .list-button {
   text-align: center;
+  margin-top: 50px;
 }
 
-// 最下部のsnsアイコンリスト
+// ---------------最下部のsnsアイコンリスト---------------
 .bottom-sns {
   text-align: center;
   margin: 40px auto;

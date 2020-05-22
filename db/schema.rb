@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_140154) do
+ActiveRecord::Schema.define(version: 2020_05_18_050812) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "facility_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "facility_id"
+    t.index ["facility_id"], name: "index_bookmarks_on_facility_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -39,30 +41,32 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.string "holiday"
     t.string "parking", null: false
     t.string "home_page"
-    t.integer "owner_id", null: false
+    t.integer "owner_id"
     t.string "instagram"
     t.string "twitter"
     t.string "youtube"
     t.integer "status"
-    t.datetime "update_at", null: false
-    t.string "created_user", null: false
-    t.string "updated_user", null: false
+    t.integer "created_user", null: false
+    t.integer "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "facility_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "facility_id"
-    t.string "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "facility_id"
+    t.bigint "genre_id"
+    t.index ["facility_id"], name: "index_facility_genres_on_facility_id"
+    t.index ["genre_id"], name: "index_facility_genres_on_genre_id"
   end
 
   create_table "facility_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "facility_id"
     t.string "image", null: false
     t.integer "order", null: false
-    t.string "created_user", null: false
+    t.integer "created_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -79,10 +83,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.integer "price", null: false
     t.string "image", null: false
     t.text "content", null: false
-    t.datetime "create_at", null: false
-    t.datetime "update_at", null: false
-    t.string "created_user", null: false
-    t.string "updated_user", null: false
+    t.integer "created_user", null: false
+    t.integer "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -98,13 +100,15 @@ ActiveRecord::Schema.define(version: 2020_05_15_140154) do
     t.string "nickname", null: false
     t.datetime "birth_year", null: false
     t.integer "sex"
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "image"
-    t.integer "role", default: 0, null: false
+    t.integer "role"
     t.text "profile"
-    t.integer "status", default: 0, null: false
+    t.integer "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "facilities"
+  add_foreign_key "facility_genres", "genres"
 end
