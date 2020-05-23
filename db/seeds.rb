@@ -1,7 +1,7 @@
 a=0
 flag=true
 while flag do
-  Facility.find_or_create_by(user_id: 2) do |f|
+  Facility.find_or_create_by(user_id: 1) do |f|
     f.type=0
     f.name="居酒屋"
     f.postal_code=8880000
@@ -45,6 +45,7 @@ while flag do
   end
 end
 
+
 Menu.find_or_create_by(facility_id: 0) do |f|
       f.name = "test"
       f.price = 100
@@ -52,7 +53,7 @@ Menu.find_or_create_by(facility_id: 0) do |f|
       f.content = "test2 hogehogeghoeghoge"
       f.created_user = 1
       f.updated_user = 1
-    end
+end
 puts "menus成功"
 Menu.find_or_create_by(facility_id: 1) do |f|
       f.name = "test2"
@@ -63,8 +64,6 @@ Menu.find_or_create_by(facility_id: 1) do |f|
       f.updated_user = 2
 end
 puts "menus2成功"
-
-
 
 
 User.find_or_create_by!(email: "test@example.com") do |user|
