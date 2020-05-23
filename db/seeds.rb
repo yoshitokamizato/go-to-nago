@@ -1,8 +1,8 @@
-User.find_or_create_by(email: "test@example.com") do |user|
+User.find_or_create_by!(email: "test@example.com") do |user|
   user.password = "password"
   user.nickname = "test_user"
-  user.birth_year = 2000
-  user.prefecture = 0
+  user.birth_year = DateTime.now
+  user.prefecture = 1
   user.sex = 0
   user.status = 1
 end
