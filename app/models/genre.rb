@@ -1,3 +1,4 @@
 class Genre < ApplicationRecord
-  has_and_belongs_to_many :facilities
+  has_many :facility_genres
+  has_many :facilities, through: :facility_genres
 end
