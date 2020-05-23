@@ -1,8 +1,7 @@
-<<<<<<< Updated upstream
 a=0
 flag=true
 while flag do
-  Facility.find_or_create_by(user_id: 2) do |f|
+  Facility.find_or_create_by(user_id: 1) do |f|
     f.type=0
     f.name="居酒屋"
     f.postal_code=8880000
@@ -45,33 +44,16 @@ while flag do
     flag = false
   end
 end
-=======
-Facility.find_or_create_by(user_id: 1) do |f|
-  f.type=0
-  f.name="test"
-  f.postal_code=8880000
-  f.address="東京都杉並区荻窪4丁目30番16号"
-  f.latitude=35.703759710876
-  f.longitude=139.62397978301
-  f.description="アメリカン・エキスプレス・インターナショナル，Ｉｎｃ．"
-  f.parking="有（６台）"
-  f.user_id=1
-  f.created_user= 1
-  f.updated_user= 1
-end
-puts "facilities成功"
 
->>>>>>> Stashed changes
 
 Menu.find_or_create_by(facility_id: 0) do |f|
       f.name = "test"
       f.price = 100
       f.image = "hogwort.jpg"
-<<<<<<< Updated upstream
       f.content = "test2 hogehogeghoeghoge"
       f.created_user = 1
       f.updated_user = 1
-    end
+end
 puts "menus成功"
 Menu.find_or_create_by(facility_id: 1) do |f|
       f.name = "test2"
@@ -82,23 +64,6 @@ Menu.find_or_create_by(facility_id: 1) do |f|
       f.updated_user = 2
 end
 puts "menus2成功"
-
-
-=======
-      f.content = "test hogehogeghoeghoge"
-      f.created_user = 1
-      f.updated_user = 1
-end
-puts "menus成功"
-
-
-FacilityImage.find_or_create_by(facility_id: 0) do |f|
-      f.image = "hogwort.jpg"
-      f.order = 0
-      f.created_user = 1
-end
-puts "facility_images成功"
->>>>>>> Stashed changes
 
 
 User.find_or_create_by!(email: "test@example.com") do |user|
@@ -119,8 +84,4 @@ User.find_or_create_by!(email: "test2@example.com") do |user|
   user.status = 1
 end
 
-<<<<<<< Updated upstream
 puts "ユーザー2投入成功"
-=======
-puts "ユーザー投入成功"
->>>>>>> Stashed changes

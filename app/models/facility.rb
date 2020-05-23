@@ -1,10 +1,6 @@
 class Facility < ApplicationRecord
 belongs_to :user
-<<<<<<< Updated upstream
 has_many :menus
-=======
-has_many :menu
->>>>>>> Stashed changes
 has_many :facility_images
 
 
