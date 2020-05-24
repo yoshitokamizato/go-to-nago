@@ -3,4 +3,6 @@ class FacilitiesController < ApplicationController
   end
   def show
   end
+  def details
+  end
 end
