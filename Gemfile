@@ -21,9 +21,17 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass'
+
+
+# hirb: 出力結果を表形式で出力する
+# hirb-unicode: マルチバイト文字の表示を補正する
+gem 'hirb'
+gem 'hirb-unicode'
+
 # デバッグ用
 gem 'pry-rails'
 gem 'pry-byebug'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

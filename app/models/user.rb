@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :image, UserImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :nickname, presence: true
+  validates :nickname, presence:  true
   validates :birth_year, presence: true
   validates :prefecture, presence: true
   enum sex: {"男性": 0, "女性": 1, "その他": 2}
@@ -20,4 +20,12 @@ class User < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+
+  has_many :facilities
+
+  #bookmarks関連のアソシエーション
+  has_many :bookmarks, dependent: :destroy
+  has_many :facilities, through:  :bookmarks
+  # 以下のコマンドでfacilitiesとusersのどちらかを編集したときにもう片方も反映させる
+  accepts_nested_attributes_for :bookmarks, allow_destroy: true
 end

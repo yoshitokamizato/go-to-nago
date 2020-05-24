@@ -1,7 +1,7 @@
 class CreateFacilities < ActiveRecord::Migration[6.0]
   def change
     create_table :facilities do |t|
-      t.integer :type , null: false ,defaults: 0 
+      t.integer :type , null: false ,defaults: 0
       t.string :name, null: false
       t.integer :postal_code, null: false
       t.string :address, null: false
