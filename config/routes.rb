@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to:'facilities#index'
   get '/facilities/details',to:'facilities#details'
   get '/facility/list',to:'facilities#show_facility'
+  get '/bookmarks',to:"facilities#bookmark"
   get '/gourmet/list',to:'facilities#show_gourmet'
 
   #bookmarkのルーティング facilities/bookmarksにルーティング

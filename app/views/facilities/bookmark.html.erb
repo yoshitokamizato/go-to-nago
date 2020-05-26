@@ -1,0 +1,90 @@
+<div class="list-body">
+  <div class="list-title">
+    <h3>お気に入り一覧</h3>
+  </div>
+  <div class="list-wrapper">
+    <div class="row">
+      <% @gourmets.first(4).each do |gourmet| %>
+        <div class="col-6 col-lg-3 show-row-list">
+          <div class="card">
+            <a href="/"></a>
+            <%gourmet.facility_images.each do |images|%>
+              <%= image_tag(images.image ,class:"card-img-top" ,alt:"...") %>
+            <%end%>
+            <div class="card-body">
+              <h4 class="card-title"><%= gourmet.name %></h4>
+              <% if user_signed_in? %>
+                <div class="">
+                  <% if gourmet.bookmark_by?(current_user) %>
+                    <%= render 'facilities/bookmark', facility: gourmet %>
+                  <% else %>
+                    <%= render 'facilities/unbookmark', facility: gourmet %>
+                  <% end %>
+                </div>
+              <% else%>
+                <%= link_to icon('far', 'star'), new_user_session_path %>
+              <% end %>
+              <br>
+              <p class="card-text"><%= gourmet.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="list-button">
+      <a href ="/gourmet/list" type="button" class="btn btn-primary btn-lg btn-block" >もっと見る</a>
+    </div>
+  </div>
+</div>
+<div class="list-body">
+  <div class="list-title">
+    <h3>施設一覧</h3>
+  </div>
+
+  <div class="list-wrapper">
+    <div class="row">
+      <% @facilities.first(4).each do |facility| %>
+        <div class="col-6 col-lg-3 show-row-list">
+          <div class="card ">
+            <a href="/"></a>
+            <%facility.facility_images.each do |images|%>
+              <%= image_tag(images.image ,class:"card-img-top" ,alt:"...") %>
+            <%end%>
+            <div class="card-body">
+              <h4 class="card-title"><%= facility.name %></h4>
+              <% if user_signed_in? %>
+                <div class="">
+                  <% if facility.bookmark_by?(current_user) %>
+                    <%= render 'facilities/bookmark', facility: facility %>
+                  <% else %>
+                    <%= render 'facilities/unbookmark', facility: facility %>
+                  <% end %>
+                </div>
+              <% else%>
+                <%= link_to icon('far', 'star'), new_user_session_path %>
+              <% end %>
+              <br>
+              <p class="card-text"><%= facility.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="list-button">
+      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-sns">
+      <ul>
+        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+    <div class="bottom-text">
+      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
+    </div>
+  </div>
+</div>
