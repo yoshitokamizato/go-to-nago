@@ -16,13 +16,17 @@
             <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
-              <div class="">
-                <% if gourmet.bookmark_by?(current_user) %>
-                  <%= render 'facilities/bookmark', facility: gourmet %>
-                <% else %>
-                  <%= render 'facilities/unbookmark', facility: gourmet %>
-                <% end %>
-              </div>
+              <% if user_signed_in? %>
+                <div class="">
+                  <% if gourmet.bookmark_by?(current_user) %>
+                    <%= render 'facilities/bookmark', facility: gourmet %>
+                  <% else %>
+                    <%= render 'facilities/unbookmark', facility: gourmet %>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= link_to icon('far', 'star'), new_user_session_path %>
+              <% end %>
               <br>
               <p class="card-text"><%= gourmet.description %></p>
             </div>
