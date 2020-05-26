@@ -16,6 +16,14 @@
             <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
+              <div class="">
+                <% if gourmet.bookmark_by?(current_user) %>
+                  <%= render 'facilities/bookmark', facility: gourmet %>
+                <% else %>
+                  <%= render 'facilities/unbookmark', facility: gourmet %>
+                <% end %>
+              </div>
+              <br>
               <p class="card-text"><%= gourmet.description %></p>
             </div>
           </div>
@@ -23,13 +31,13 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href ="/facility/list" type="button" class="btn btn-primary btn-lg btn-block" >もっと見る</a>
+      <a href ="/gourmet/list" type="button" class="btn btn-primary btn-lg btn-block" >もっと見る</a>
     </div>
   </div>
 </div>
 <div class="list-body">
   <div class="list-title">
-    <h3>おすすめグルメ</h3>
+    <h3>施設一覧</h3>
   </div>
 
   <div class="list-wrapper">
@@ -43,6 +51,14 @@
             <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= facility.name %></h4>
+              <div class="">
+                <% if facility.bookmark_by?(current_user) %>
+                  <%= render 'facilities/bookmark', facility: facility %>
+                <% else %>
+                  <%= render 'facilities/unbookmark', facility: facility %>
+                <% end %>
+              </div>
+              <br>
               <p class="card-text"><%= facility.description %></p>
             </div>
           </div>
@@ -50,7 +66,7 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href="/gourmet/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
     </div>
   </div>
   <div class="bottom">

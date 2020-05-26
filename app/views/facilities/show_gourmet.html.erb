@@ -16,6 +16,14 @@
             <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
+              <div class="">
+                <% if gourmet.bookmark_by?(current_user) %>
+                  <%= render 'facilities/bookmark', facility: gourmet %>
+                <% else %>
+                  <%= render 'facilities/unbookmark', facility: gourmet %>
+                <% end %>
+              </div>
+              <br>
               <p class="card-text"><%= gourmet.description %></p>
             </div>
           </div>

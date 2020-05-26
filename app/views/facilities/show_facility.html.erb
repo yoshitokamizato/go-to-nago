@@ -18,6 +18,14 @@
             <%end%>
             <div class="card-body">
               <h4 class="card-title"><%= facility.name %></h4>
+              <div class="">
+                <% if facility.bookmark_by?(current_user) %>
+                  <%= render 'facilities/bookmark', facility: facility %>
+                <% else %>
+                  <%= render 'facilities/unbookmark', facility: facility %>
+                <% end %>
+              </div>
+              <br>
               <p class="card-text"><%= facility.description %></p>
             </div>
           </div>
