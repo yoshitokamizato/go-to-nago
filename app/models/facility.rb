@@ -5,8 +5,11 @@ has_many :facility_images
 
 
 #bookmarks 中間テーブルの設定
-has_many :bookmarks
-has_many :users, through: :bookmarks
+has_many :bookmarks,dependent: :destroy
+# facilityのお気に入り判定 → views側で呼び出し
+def bookmark_by?(user)
+  bookmarks.where(user_id: user.id).exists?
+end
 
 # genres 中間テーブルの設定
 has_many :facility_genres, dependent: :destroy

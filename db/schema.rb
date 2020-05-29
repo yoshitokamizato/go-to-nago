@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_050812) do
+ActiveRecord::Schema.define(version: 2020_05_23_134648) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -105,6 +105,10 @@ ActiveRecord::Schema.define(version: 2020_05_18_050812) do
     t.integer "role", default: 0, null: false
     t.text "profile"
     t.integer "status", default: 0, null: false
+
+    t.integer "status"
+    t.string "password"
+
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

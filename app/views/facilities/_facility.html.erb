@@ -1,0 +1,14 @@
+<%- 各facilityを編集するときに使用 -%>
+
+<% if current_user %>
+  <% if current_user.own_facility?(facility) %>
+    <div style='display: inline; float: right;'>
+      <%= link_to icon('fas', 'pen'), edit_facility_path(facility), id: :"button-edit-#{facility.id}" %>
+      <%= link_to icon('fas', 'trash-alt'), facility_path(facility), id: :"button-delete-#{facility.id}",method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+    </div>
+  <% else %>
+    <div style='display: inline; float: right;'>
+      <%= render 'facilities/bookmark_area', facility: facility %>
+    </div>
+  <% end %>
+<% end %>

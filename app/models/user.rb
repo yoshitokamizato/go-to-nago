@@ -21,11 +21,14 @@ class User < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
 
-  has_many :facilities
-
   #bookmarks関連のアソシエーション
   has_many :bookmarks, dependent: :destroy
-  has_many :facilities, through:  :bookmarks
+  has_many :facilities, dependent: :destroy
+  has_many :bookmark_facilities, through: :bookmarks,source: :facility
+
+  def own_facility?(facility)
+    self.id == facility.user_id
+  end
   # 以下のコマンドでfacilitiesとusersのどちらかを編集したときにもう片方も反映させる
   accepts_nested_attributes_for :bookmarks, allow_destroy: true
 end
