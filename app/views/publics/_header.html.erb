@@ -5,10 +5,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item ">
-        <a class="nav-link" href="/facility/list"> 施設 </a>
+        <%= link_to '施設', facility_list_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/gourmet/list"> グルメ </a>
+        <%= link_to 'グルメ', gourmet_list_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to 'マイページ', users_mypage_path, class: "nav-link" %>
@@ -26,6 +26,6 @@
   </div>
   <h1 col-8><%= link_to '名護へGO', root_path %></h1>
   <div class="form-inline mx-4 col-2s">
-    <a href = "#"><i class="fas fa-sign-in-alt"></i></a>
+    <a href="#"><i class="fas fa-sign-in-alt"></i></a>
   </div>
 </nav>

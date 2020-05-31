@@ -12,11 +12,17 @@ class FacilitiesController < ApplicationController
 
   def details
     # @facilities = Facility.find(params[:id])
-  
+
   end
 
   def show_gourmet
     @gourmets = Facility.includes(:facility_images).where(type:"gourmet")
+  end
+
+  def bookmark
+    # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
+    @facilities = current_user.bookmark_facilities.includes(:user).where(type:"facilities")
+    @gourmets = current_user.bookmark_facilities.includes(:user).where(type:"gourmet")
   end
   private
   # def details_params
@@ -44,11 +50,6 @@ class FacilitiesController < ApplicationController
   #                                     :status).merge(user_id: current_user.id)
   # end
 
-  def bookmark
-    # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
-    @facilities = current_user.bookmark_facilities.includes(:user).where(type:"facilities")
-    @gourmets = current_user.bookmark_facilities.includes(:user).where(type:"gourmet")
-  end
 
 
 end
