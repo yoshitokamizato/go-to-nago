@@ -1,1 +1,1 @@
-<%= link_to icon('far', 'star'), facility_bookmarks_path(facility.id), method: :post, id: :"js-bookmark-button-for-facility-#{facility.id}" %>
+<%= link_to icon('far', 'star'), facility_bookmarks_path(facility.id), method: :post , remote: true ,  id: :"js-bookmark-button-for-facility-#{facility.id}" %>
