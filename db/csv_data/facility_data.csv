@@ -1,0 +1,2 @@
+type,name,postal_code,address,latitude,longitude,running_time,tel,email,budget,description,advice,first_open,first_close,last_open,last_close,holiday,parking,home_page,owner_id,instagram,twitter,youtube,status,created_user,updated_user,user_id
+0,居酒屋,8880000,東京都杉並区荻窪4丁目30番16号,35.703759710876,139.62397978301,10分,09012345678,test@example.com,3000,アメリカン・エキスプレス・インターナショナルＩｎｃ,肉が美味しい,12:00,15:00,18:00,23:00,金曜日,有（６台）,https:twitter.com,1,@tanaka,@tanaka,https:youtube.com,1,1,1,1
