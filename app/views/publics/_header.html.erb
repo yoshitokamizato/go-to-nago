@@ -13,6 +13,11 @@
       <li class="nav-item">
         <%= link_to 'マイページ', users_mypage_path, class: "nav-link" %>
       </li>
+      <%if user_signed_in?	%>
+      <li class="nav-item">
+        <%= link_to 'お気に入り', gourmet_list_path, class: "nav-link" %>
+      </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
       </li>
