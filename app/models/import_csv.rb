@@ -1,7 +1,9 @@
 class ImportCsv < ApplicationRecord
   # CSVデータのパスを引数として受け取り、インポート処理を実行
+
   def self.import(path)
     list = []
+    list_image=[]
     CSV.foreach(path, headers: true) do |row|
       list << {
         type: row["type"].to_i,
@@ -33,12 +35,24 @@ class ImportCsv < ApplicationRecord
         updated_user: row["updated_user"].to_i,
         user_id: row["user_id"].to_i
       }
+      list_image << {
+        facility_id: row["facility_id"].to_i,
+        image: row["image"],
+        order: row["order"].to_i,
+        created_user: row["created_user"].to_i
+      }
     end
+
+    puts "----------------------------"
+    puts list
+    puts "----------------------------"
+    puts list_image
+    puts "----------------------------"
     puts "インポート処理を開始"
     # インポートができなかった場合の例外処理
-    p list
     begin
     Facility.create!(list)
+    FacilityImage.create!(list_image)
     puts "インポート完了!!"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "インポートに失敗：UnknownAttributeError"
