@@ -7,13 +7,12 @@
   </div>
   <div class="list-wrapper">
     <div class="row">
-      <% @gourmets.first(4).each do |gourmet| %>
+      <% @gourmets.each do |gourmet| %>
       <div class="col-6 col-lg-3 show-row-list">
         <a href="/" class="a-card">
           <div class="card">
-            <%gourmet.facility_images.each do |images|%>
-            <%= image_tag(images.image ,class:"card-img-top" ,alt:"...") %>
-            <%end%>
+            <%images = gourmet.facility_images.first%>
+            <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
             <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
               <% if user_signed_in? %>
@@ -21,7 +20,9 @@
                 <object><%= render 'bookmark_area', facility: gourmet %></object>
               </div>
               <% else%>
-              <%= link_to icon('far', 'star'), new_user_session_path %>
+              <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
+                <object ect><%= link_to icon('far', 'star'), new_user_session_path %></object>
+              </div>
               <% end %>
               <br>
               <p class="card-text"><%= gourmet.description %></p>

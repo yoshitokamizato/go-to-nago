@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :facilities, dependent: :destroy
   has_many :bookmark_facilities, through: :bookmarks,source: :facility
 
+  # （お気に入り機能）
   def own_facility?(facility)
     self.id == facility.user_id
   end
