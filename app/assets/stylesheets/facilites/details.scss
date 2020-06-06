@@ -272,14 +272,42 @@ table td {
 }
 
 // googlemap
-div.map {
-  width: 70%;
-  height: 400px;
-  margin: 5px;
-  padding: 10px;
-
-  border: 1px solid black;
-  text-align: center;
-
+#map {
+  height: 600px;
+  width: 600px;
   margin: 0 auto;
+}
+
+// アイコンのいろ
+.youtube-red{color: #Ff0000}
+.insta {/*アイコンの背景*/
+  position: relative;/*相対配置*/
+  display: inline-block;
+  width: 55px;/*幅*/
+  height: 55px;/*高さ*/
+  vertical-align: middle;/*垂直中央に*/
+  background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
+  overflow: hidden;/*はみ出た部分を隠す*/
+  border-radius: 8px;/*角丸に*/
+}
+
+.insta:before {/*グラデーションを重ねるため*/
+  content: '';
+  position: absolute;/*絶対配置*/
+  top: 24px;/*ずらす*/
+  left: -18px;/*ずらす*/
+  width: 70px;/*グラデーションカバーの幅*/
+  height: 70px;/*グラデーションカバーの高さ*/
+  background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  background: radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);/*グラデーション②*/
+}
+
+.fa-instagram {/*アイコン*/
+  color: #FFF;/*白に*/
+  position: relative;/*z-indexを使うため*/
+  z-index: 2;/*グラデーションより前に*/
+  font-size: 45px;/*アイコンサイズ*/
+  top: 6px;/*上下にずらす*/
+  left: 0.5px;/*左右にずらす*/
 }

@@ -3,7 +3,7 @@
     <p>home > グルメ(スポット）</p>
   </div>
     <div class="alert alert-dark" role="alert"><i class="fas fa-heart"></i>
-  さっちゃん焼きそば
+    <%= @facilities.name %>
 </div>
 
 
@@ -70,6 +70,7 @@
       <p>記事タイトル6</p>
     </a>
   </div>
+  
 </div>
     
 
@@ -77,37 +78,40 @@
 
     <table>
   <tr>
-    <th>住所</th>
-    <td>東京都北区田端1-10-3</td>
+    <th><%= @facilities.postal_code %></th>
+    <td><%= @facilities.address %></td>
   </tr>
   <tr>
     <th>アクセス</th>
-    <td>車で５分</td>
+    <td><%= @facilities.running_time %></td>
   </tr>
   <tr>
     <th>TEL</th>
-    <td>090-0000-0000</td>
+    <td><%= @facilities.tel %></td>
   </tr>
   <tr>
     <th>営業時間</th>
-    <td>1940年</td>
+    <td> <%= @facilities.first_open %>
+          <%= @facilities.last_open %>
+          <%= @facilities.first_close %>
+          <%= @facilities.last_close %></td>
   </tr>
   <tr>
     <th>定休日</th>
-    <td>年中夢休</td>
+    <td><%= @facilities.holiday %></td>
   </tr>
   <tr>
     <th>駐車場</th>
-    <td>なし</td>
+    <td><%= @facilities.parking %></td>
   </tr>
   <tr>
     <th>URL</th>
-    <td>なし</td>
+    <td><%= @facilities.home_page %></td>
   </tr>
 </table>
 
 
-<div class="map" >google map</div>
+<div id="map" >google map</div>
     
     
     
@@ -116,10 +120,10 @@
 
     <div class="bottom-sns">
       <ul>
-        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+        <li><a href = "<%= @facilities.twitter %>" class="circle"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="<%= @facilities.youtube %>" class="circle"><i class="fab fa-youtube fa-3x youtube-red"></i></a></li>
+        <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-instagram"></i></a></li>
       </ul>
     </div>
     <div class="bottom-text">
@@ -127,3 +131,24 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 40.7828, lng:-73.9653},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDWh0IQXOK7XmXrogmszMGQbagbQbvzU&callback=initMap" async defer></script>
