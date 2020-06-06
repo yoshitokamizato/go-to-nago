@@ -1,6 +1,6 @@
 // ---------------show---------------
 .top-image {
-  width: 100%;
+  width: 380px;
 }
 
 .top {
@@ -20,17 +20,22 @@
   color: #888888;
 }
 
-// ブロックにリンクを与えるcss
 .show-row-list {
-  position: relative;
   margin-bottom: 35px;
 }
 
-.show-row-list a {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+// ブロックにリンクを与えるcss
+.a-card {
+  color: black;
+}
+
+// 各ブロックのaタグによる下線をリセット
+.show-row-list a:hover {
+  text-decoration: none;
+}
+
+.a-card:hover {
+  color: black;
 }
 
 .list-button {
