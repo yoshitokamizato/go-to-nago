@@ -23,4 +23,8 @@ accepts_nested_attributes_for :facility_genres, allow_destroy: true
 self.inheritance_column = :_type_disabled
 # typeをenumで定義
 enum type:{facility: 0,gourmet:1}
+
+# page nation
+paginates_per 4
+
 end

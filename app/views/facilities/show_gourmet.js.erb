@@ -1,0 +1,2 @@
+$('#gourmet_lists').append("<%= escape_javascript(render 'gourmet_list', object: @gourmets) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@gourmets, 'もっと見る', remote: true, id: 'view_more')) %>");

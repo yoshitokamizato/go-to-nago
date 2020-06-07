@@ -43,6 +43,16 @@
   margin-top: 50px;
 }
 
+// page-nation のもっと見るボタン
+.more a {
+  color: white
+}
+
+.more a:hover {
+  text-decoration: none;
+}
+
+
 // ---------------最下部のsnsアイコンリスト---------------
 .bottom-sns {
   text-align: center;
@@ -70,6 +80,8 @@
   text-decoration: none;
   color: #888888;
 }
+
+
 
 // 最下部の情報修正依頼へのリンク
 .bottom-text {
