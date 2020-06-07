@@ -1,0 +1,24 @@
+      <% @facilities.each do |facility| %>
+      <div class="col-6 col-lg-3 show-row-list">
+        <a href="/" class="a-card">
+          <div class="card ">
+            <%images = facility.facility_images.first%>
+            <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
+            <div class="card-body">
+              <h4 class="card-title"><%= facility.name %></h4>
+              <% if user_signed_in? %>
+              <div id="bookmark_btn_<%= facility.id %>" style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
+                <object><%= render 'bookmark_area', facility: facility %></object>
+              </div>
+              <% else%>
+              <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
+                <object><%= link_to icon('far', 'star'), new_user_session_path %></object>
+              </div>
+              <% end %>
+              <br>
+              <p class="card-text"><%= facility.description %></p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% end %>

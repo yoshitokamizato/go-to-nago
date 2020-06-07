@@ -7,7 +7,7 @@ class FacilitiesController < ApplicationController
   end
 
   def show_facility
-    @facilities = Facility.includes(:facility_images).where(type:"facilities")
+    @facilities = Facility.includes(:facility_images).where(type:"facilities").page(params[:page])
   end
 
   def details
@@ -16,7 +16,7 @@ class FacilitiesController < ApplicationController
   end
 
   def show_gourmet
-    @gourmets = Facility.includes(:facility_images).where(type:"gourmet")
+    @gourmets = Facility.includes(:facility_images).where(type:"gourmet").page(params[:page])
   end
 
   def bookmark
