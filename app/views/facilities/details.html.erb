@@ -1,9 +1,10 @@
 <div class="list-body">
-  </div> <div class="list-cd">
-    <p>home > グルメ(スポット）</p>
-  </div>
-    <div class="alert alert-dark" role="alert"><i class="fas fa-heart"></i>
-    <%= @facilities.name %>
+</div>
+<div class="list-cd">
+  <p>home > グルメ(スポット）</p>
+</div>
+<div class="alert alert-dark" role="alert"><i class="fas fa-heart"></i>
+  <%= @facilities.name %>
 </div>
 
 
@@ -14,29 +15,29 @@
       <p>記事タイトル2</p>
     </a>
   </div>
-  </div>
+</div>
 
-  <div class="point">
-<p>おすすめポイント</p>
+<div class="point">
+  <p>おすすめポイント</p>
 
 </div>
 <div class="box11">
-    <p>ここに文章</p>
+  <p>ここに文章</p>
 </div>
 
 <div class="profile-card">
   <div class="profile-card__inner">
-  <div class="profile-thumb">
-    <img src="/inu.jpg" alt="アイコン">
-  </div>
-  <div class="profile-content">
-        <span class="profile-name">okinawaそば</span>
-          <i class="fas fa-heart"></i>
-    <div class="bubble02" >
-    <span class="profile-intro">オーナーより</span>
-  </div>
+    <div class="profile-thumb">
+      <img src="/inu.jpg" alt="アイコン">
     </div>
+    <div class="profile-content">
+      <span class="profile-name">okinawaそば</span>
+      <i class="fas fa-heart"></i>
+      <div class="bubble02">
+        <span class="profile-intro">オーナーより</span>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="slide-wrap">
@@ -70,13 +71,13 @@
       <p>記事タイトル6</p>
     </a>
   </div>
-  
+
 </div>
-    
 
-  <button type="button" class="btn btn-secondary btn-lg btn-block list-button">もっと見る</button>
 
-    <table>
+<button type="button" class="btn btn-secondary btn-lg btn-block list-button">もっと見る</button>
+
+<table>
   <tr>
     <th><%= @facilities.postal_code %></th>
     <td><%= @facilities.address %></td>
@@ -92,9 +93,9 @@
   <tr>
     <th>営業時間</th>
     <td> <%= @facilities.first_open %>
-          <%= @facilities.last_open %>
-          <%= @facilities.first_close %>
-          <%= @facilities.last_close %></td>
+      <%= @facilities.last_open %>
+      <%= @facilities.first_close %>
+      <%= @facilities.last_close %></td>
   </tr>
   <tr>
     <th>定休日</th>
@@ -111,44 +112,50 @@
 </table>
 
 
-<div id="map" >google map</div>
-    
-    
-    
-    </div>
-  <div class="bottom">
+<div id="map">google map</div>
 
-    <div class="bottom-sns">
-      <ul>
-        <li><a href = "<%= @facilities.twitter %>" class="circle"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="<%= @facilities.youtube %>" class="circle"><i class="fab fa-youtube fa-3x youtube-red"></i></a></li>
-        <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
-    <div class="bottom-text">
-      <button type="button" class="btn btn-secondary btn-lg btn-block">情報修正依頼はこちら</button>
-    </div>
+
+
+</div>
+<div class="bottom">
+
+  <div class="bottom-sns">
+    <ul>
+      <li><a href="<%= @facilities.twitter %>" class="circle"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="<%= @facilities.youtube %>" class="circle"><i class="fab fa-youtube fa-3x youtube-red"></i></a></li>
+      <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="<%= @facilities.instagram %>" class="circle"><i class="fab fa-instagram"></i></a></li>
+    </ul>
   </div>
+  <div class="bottom-text">
+    <button type="button" class="btn btn-secondary btn-lg btn-block">情報修正依頼はこちら</button>
+  </div>
+</div>
 </div>
 
 
 
 <script>
-let map
+  let map
 
-function initMap(){
-  geocoder = new google.maps.Geocoder()
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
 
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.7828, lng:-73.9653},
-    zoom: 12,
-  });
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: 40.7828,
+        lng: -73.9653
+      },
+      zoom: 12,
+    });
 
-  marker = new google.maps.Marker({
-    position:  {lat: 40.7828, lng:-73.9653},
-    map: map
-  });
-}
+    marker = new google.maps.Marker({
+      position: {
+        lat: 40.7828,
+        lng: -73.9653
+      },
+      map: map
+    });
+  }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDWh0IQXOK7XmXrogmszMGQbagbQbvzU&callback=initMap" async defer></script>

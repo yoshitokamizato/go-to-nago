@@ -1,3 +1,47 @@
+<%
+=begin%>
+詳細画面のコードです
+<%
+=end%>
+
 <%= @facility.id%>
 <%images = @facility.facility_images.first%>
 <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...",style:"width:500px;")  %>
+<div id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
+
+
+
+<%
+=begin%>
+google mapを呼び出すjavascript
+<%
+=end%>
+<script>
+  let map;
+  var e = document.getElementById('map');
+  var latitude = Number(e.getAttribute('data-facility-latitude'));
+  var longitude = Number(e.getAttribute('data-facility-longitude'));
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+    console.log(latitude)
+    console.log(longitude)
+    console.log(e)
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: latitude,
+        lng: longitude
+      },
+      zoom: 16,
+    });
+
+    marker = new google.maps.Marker({
+      position: {
+        lat: latitude,
+        lng: longitude
+      },
+      map: map
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDWh0IQXOK7XmXrogmszMGQbagbQbvzU&callback=initMap" async defer></script>
