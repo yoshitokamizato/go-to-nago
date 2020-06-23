@@ -9,7 +9,7 @@
     <div class="row">
       <% @gourmets.first(4).each do |gourmet| %>
       <div class="col-6 col-lg-3 show-row-list">
-        <a href="/" class="a-card">
+        <a href="facilities/<%=gourmet.id%>" class="a-card">
           <div class="card">
             <%images = gourmet.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>

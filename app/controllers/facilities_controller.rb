@@ -5,7 +5,10 @@ class FacilitiesController < ApplicationController
     @gourmets = Facility.includes(:facility_images).where(type:"gourmet")
     # @facilities = Facility.all.includes(:user)
   end
-
+  # 詳細表示
+  def show
+    @facility = Facility.includes(:facility_images).find(params[:id])
+  end
   def show_facility
     @facilities = Facility.includes(:facility_images).where(type:"facilities").page(params[:page])
   end

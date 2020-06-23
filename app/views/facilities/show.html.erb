@@ -1,0 +1,3 @@
+<%= @facility.id%>
+<%images = @facility.facility_images.first%>
+<%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...",style:"width:500px;")  %>
