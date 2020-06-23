@@ -3,12 +3,22 @@
 詳細画面のコードです
 <%
 =end%>
+<div class="wrapper">
+  <div class="top">
+    <h3><%= @facility.name%></h3>
+  </div>
+  <div class="list-cd">
+    <% if @facility.type == "gourmet" %>
+    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,gourmet_list_path %> > <%= @facility.name %></p>
+    <% else %>
+    <p><a href="/" class="">home</a> > <%= link_to "施設",facility_list_path %> > <%= @facility.name %></p>
+    <% end %>
+  </div>
 
-<%= @facility.id%>
-<%images = @facility.facility_images.first%>
-<%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...",style:"width:500px;")  %>
-<div id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
-
+  <%images = @facility.facility_images.first%>
+  <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...",style:"width:500px;")  %>
+  <div id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
+</div>
 
 
 <%
