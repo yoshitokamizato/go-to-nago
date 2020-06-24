@@ -8,6 +8,7 @@ class FacilitiesController < ApplicationController
   # 詳細表示
   def show
     @facility = Facility.includes(:facility_images).find(params[:id])
+
   end
   def show_facility
     @facilities = Facility.includes(:facility_images).where(type:"facilities").page(params[:page])

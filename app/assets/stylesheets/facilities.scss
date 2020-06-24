@@ -1,4 +1,8 @@
-// ---------------show---------------
+// *
+hr {
+  padding-bottom: 35px;
+}
+// ---------------それぞれのshow---------------
 .top-image {
   width: 380px;
 }
@@ -45,13 +49,12 @@
 
 // page-nation のもっと見るボタン
 .more a {
-  color: white
+  color: white;
 }
 
 .more a:hover {
   text-decoration: none;
 }
-
 
 // ---------------最下部のsnsアイコンリスト---------------
 .bottom-sns {
@@ -81,10 +84,43 @@
   color: #888888;
 }
 
-
-
 // 最下部の情報修正依頼へのリンク
 .bottom-text {
   text-align: center;
   margin: 0 30px 40px 30px;
+}
+
+// ---------------詳細画面CSS---------------
+// 吹き出し　ここから
+.balloon1-top {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+
+.balloon1-top:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #e0edff;
+}
+
+.balloon1-top p {
+  margin: 0;
+  padding: 0;
+}
+//  ここまで
+
+.detail-wrapper h3 {
+  text-align: center;
+  padding-top: 50px;
 }
