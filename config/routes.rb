@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     # ネスト(入れ子)すると外部キーのboard_idを取得するのが容易
     resource :bookmarks, only: %i[create destroy]
     resources :menus
+
     get :bookmarks, on: :collection
   end
 

@@ -32,6 +32,9 @@
   <div class="recommend text-center">
     <h3>おすすめポイント</h3>
     <hr>
+    <div class="owner">
+      <p><%= @facility.user.nickname%></p>
+    </div>
     <div class="balloon1-top">
       <p><%= @facility.advice %>
         <% if user_signed_in? %>
@@ -64,6 +67,7 @@
             <p><%= @facility.menus[0].content %></p>
           </div>
         </div>
+        <%if @facility.menus[1] %>
         <div class="carousel-item">
           <%= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
@@ -71,6 +75,8 @@
             <p><%= @facility.menus[1].content %></p>
           </div>
         </div>
+        <%end%>
+        <% if @facility.menus[2] %>
         <div class="carousel-item">
           <%= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
@@ -78,6 +84,7 @@
             <p><%= @facility.menus[2].content %></p>
           </div>
         </div>
+        <% end %>
       </div>
       <!-- スライドコントロールの設定 -->
       <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
@@ -88,6 +95,9 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">次へ</span>
       </a>
+    </div>
+    <div class="list-button">
+      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
     </div>
   </div>
 
@@ -100,7 +110,7 @@
         </tr>
         <tr>
           <th scope="row">アクセス</th>
-          <td><%= @facility.address %></td>
+          <td><%= @facility.running_time %></td>
         </tr>
         <tr>
           <th scope="row">TEL</th>
@@ -132,6 +142,19 @@
     <h3 class="text-center">地図</h3>
     <hr>
     <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-sns">
+      <ul>
+        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+    <div class="bottom-text">
+      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
+    </div>
   </div>
 </div>
 
