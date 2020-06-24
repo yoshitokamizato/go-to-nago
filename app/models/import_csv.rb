@@ -58,4 +58,37 @@ class ImportCsv < ApplicationRecord
       puts "インポートに失敗：UnknownAttributeError"
     end
   end
+
+
+
+
+  def self.import_two(path)
+    list = []
+    list_image=[]
+    CSV.foreach(path, headers: true) do |row|
+      list << {
+        facility_id: row["facility_id"].to_i,
+        name:  row["name"],
+        price: row["price"].to_i,
+        image: row["image"],
+        content: row["content"],
+        created_user: row["created_user"].to_i,
+        updated_user: row["updated_user"].to_i
+      }
+
+    end
+
+    puts "----------------------------"
+    puts list
+    puts "----------------------------"
+    puts "MENUのインポート処理を開始"
+    # インポートができなかった場合の例外処理
+    begin
+    Menu.create!(list)
+    puts "MENUインポート完了!!"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "インポートに失敗：UnknownAttributeError"
+    end
+  end
+
 end

@@ -58,24 +58,24 @@
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= image_tag("/facility_image/entro.png" ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag("/menu_image/"+@facility.menus[0].image ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
-            <h5>第1スライド見出し</h5>
-            <p>スライドイメージの紹介</p>
+            <h5><%= @facility.menus[0].name %></h5>
+            <p><%= @facility.menus[0].content %></p>
           </div>
         </div>
         <div class="carousel-item">
-          <%= image_tag("/facility_image/entro.png" ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
-            <h5>第2スライド見出し</h5>
-            <p>スライドイメージの紹介</p>
+            <h5><%= @facility.menus[1].name %></h5>
+            <p><%= @facility.menus[1].content %></p>
           </div>
         </div>
         <div class="carousel-item">
-          <%= image_tag("/facility_image/entro.png" ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
-            <h5>第3スライド見出し</h5>
-            <p>スライドイメージの紹介</p>
+            <h5><%= @facility.menus[2].name %></h5>
+            <p><%= @facility.menus[2].content %></p>
           </div>
         </div>
       </div>
@@ -89,6 +89,44 @@
         <span class="sr-only">次へ</span>
       </a>
     </div>
+  </div>
+
+  <div class="text-center">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">住所</th>
+          <td><%= @facility.address %></td>
+        </tr>
+        <tr>
+          <th scope="row">アクセス</th>
+          <td><%= @facility.address %></td>
+        </tr>
+        <tr>
+          <th scope="row">TEL</th>
+          <td><%= @facility.tel %></td>
+        </tr>
+        <tr>
+          <th scope="row">営業時間</th>
+          <td><%= @facility.first_open %> 〜 <%= @facility.first_close %>
+            <%if @facility.last_open || @facility.last_close %>
+            <%= @facility.last_open %> 〜 <%= @facility.last_close %>
+            <%end%></td>
+        </tr>
+        <tr>
+          <th scope="row">定休日</th>
+          <td><%= @facility.holiday %></td>
+        </tr>
+        <tr>
+          <th scope="row">駐車場</th>
+          <td><%= @facility.parking %></td>
+        </tr>
+        <tr>
+          <th scope="row">URL</th>
+          <td><%= @facility.home_page %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="google-map text-center">
     <h3 class="text-center">地図</h3>
