@@ -25,8 +25,8 @@ class FacilitiesController < ApplicationController
 
   def bookmark
     # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
-    @facilities = current_user.bookmark_facilities.includes(:user).where(type:"facilities")
-    @gourmets = current_user.bookmark_facilities.includes(:user).where(type:"gourmet")
+    @facilities = current_user.bookmark_facilities.includes(:user).where(type:"facilities").page(params[:page])
+    @gourmets = current_user.bookmark_facilities.includes(:user).where(type:"gourmet").page(params[:page])
   end
   private
   def details_params
