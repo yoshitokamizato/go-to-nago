@@ -1,13 +1,13 @@
       <% @gourmets.each do |gourmet| %>
       <div class="col-6 col-lg-3 show-row-list">
-        <a href="/" class="a-card">
+        <a href="/facilities/<%=gourmet.id%>" class="a-card">
           <div class="card">
             <%images = gourmet.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
             <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
               <% if user_signed_in? %>
-              <div id="bookmark_btn_<%= gourmet.id %>" style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
+              <div class="bookmark_btn_<%= gourmet.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
                 <object><%= render 'bookmark_area', facility: gourmet %></object>
               </div>
               <% else%>
