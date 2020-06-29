@@ -13,7 +13,7 @@
           <div class="card">
             <%images = gourmet.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
-            <div class="card-body">
+            <div class="card-body text-center">
               <h4 class="card-title"><%= gourmet.name %></h4>
               <% if user_signed_in? %>
               <div class="bookmark_btn_<%= gourmet.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
@@ -47,7 +47,7 @@
       <% @facilities.first(4).each do |facility| %>
       <div class="col-6 col-lg-3 show-row-list">
         <a href="facilities/<%=facility.id%>" class="a-card">
-          <div class="card ">
+          <div class="card text-center">
             <%images = facility.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
             <div class="card-body">
