@@ -1,18 +1,43 @@
+.list-content {
+  float: left;
+}
 
+.user-lists {
+  margin: 10px auto;
+  padding: 0 auto;
+}
+
+.user-icon {
+
+  position: relative;
+  height: 200px;
+}
+
+.fa-user-edit {
+  font-size: 30px;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// --------以下不要--------------
 .mypage_wrapper {
   width: 100%;
   height: 500px;
   background-color: #ccc;
-  
+
 }
+
 .mypage_box {
   width: 100%;
   height: 300px;
   display: flex;
-  
+
 }
+
 // プロフィール写真
-.image{
+.image {
   width: 25vw;
   height: 35vh;
   border-radius: 50%;
@@ -20,27 +45,31 @@
   margin-left: 100px;
   background-image: url("../inu.jpg");
   text-align: center;
-  
+
 }
+
 // プロフィール
 .mypage_text {
   width: 80%;
   height: 30%;
   font-size: 30px;
   margin-top: 30px;
+
   &_name {
     width: 100%;
     font-weight: bold;
     margin-left: 40px;
     margin-bottom: 30px;
   }
+
   &_list {
     margin-left: 40px;
   }
-  
+
 }
+
 // プロフィール編集
-.fa-user-tag{
+.fa-user-tag {
   font-size: 30px;
   padding-right: 30px;
   margin-top: 230px;
@@ -48,32 +77,34 @@
 }
 
 //自己紹介
-.mypage_introduction{
+.mypage_introduction {
   width: 100%;
   height: 500px;
   font-size: 20px;
   margin-top: 20px;
- 
+
 }
 
 // お気に入りの文字
-.like{
+.like {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
-  
+
 }
 
 // 選択ボタン
-.spotto{
+.spotto {
   display: flex;
 }
-.btn.btn-primary.btn-lg{
+
+.btn.btn-primary.btn-lg {
   width: 35.25em;
 }
-.btn.btn-secondary.btn-lg{
+
+.btn.btn-secondary.btn-lg {
   width: 35.25em;
-  
+
 }
 
 // 画像一覧
@@ -81,19 +112,20 @@
   width: 40%;
   margin: 4%;
 }
-.fas.fa-heart{
+
+.fas.fa-heart {
   float: right;
   font-size: 30px;
 }
+
 // もっと見るボタン
-.more_button{
+.more_button {
   text-align: center;
   margin: 0 30px 40px 30px;
 }
 
-.btn.btn-primary.btn-lg.btn-block{
+.btn.btn-primary.btn-lg.btn-block {
   width: 100%;
   background-color: gray;
   border-color: gray;
 }
-

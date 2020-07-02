@@ -8,7 +8,7 @@
               <h4 class="card-title"><%= gourmet.name %></h4>
               <% if user_signed_in? %>
               <div class="bookmark_btn_<%= gourmet.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
-                <object><%= render 'bookmark_area', facility: gourmet %></object>
+                <object><%= render 'facilities/bookmark_area', facility: gourmet %></object>
               </div>
               <% else%>
               <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>

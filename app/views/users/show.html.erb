@@ -1,9 +1,23 @@
 <div class="list-body">
-  <div class="list-title">
-    <h3>お気に入り一覧</h3>
-  </div>
   <div class="list-cd">
-    <p><a href="/" class="">home</a> > お気に入り（施設・グルメ）</p>
+    <p><a href="/" class="">home</a> > マイページ</p>
+  </div>
+  <div class="user-top container">
+    <div class="row">
+      <div class="user-lists">
+        <div class="list-content">
+          <%= image_tag @user.image.url ,style:"width:250px;"%>
+        </div>
+        <div class="list-content">
+          <h3><%=@user.nickname%></h3>
+          <p><%= (Date.today.strftime('%Y%m%d').to_i - @user.birth_year.strftime('%Y%m%d').to_i) / 10000%></p>
+          <p><%=@user.sex%></p>
+          <p><%=@user.prefecture%></p>
+        </div>
+        <div class="user-icon list-content"><i class="fas fa-user-edit"></i></div>
+      </div>
+    </div>
+    <div class="profile text-center"><%= @user.profile %></div>
   </div>
   <div class="list-title">
     <h3>施設</h3>
