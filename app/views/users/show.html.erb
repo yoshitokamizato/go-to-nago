@@ -17,7 +17,36 @@
           <p><%=@user.sex%></p>
           <p><%=@user.prefecture%></p>
         </div>
-        <div class="user-icon list-content"><i class="fas fa-user-edit"></i></div>
+
+        <!-- 切り替えボタンの設定 -->
+        <div class="user-icon list-content " data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-edit "></i></div>
+
+        <!-- モーダルの設定 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- ここからリンクを編集 -->
+              <div class="modal-body">
+                <%= link_to  "プロフィールを編集", root_path %>
+              </div>
+              <div class="modal-body">
+                <%= link_to  "メールアドレス変更", root_path %>
+              </div>
+              <div class="modal-body">
+                <%= link_to  "パスワード変更", root_path %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <!-- ここまで -->
+              </div><!-- /.modal-footer -->
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
       </div>
     </div>
     <div class="profile text-center"><%= @user.profile %></div>
