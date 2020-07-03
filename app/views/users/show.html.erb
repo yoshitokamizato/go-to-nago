@@ -1,0 +1,107 @@
+<div class="list-body">
+  <div class="list-cd">
+    <p><a href="/" class="">home</a> > マイページ</p>
+  </div>
+
+  <!-- プロフィール -->
+  <div class="user-top container">
+    <div class="row">
+      <div class="user-lists">
+        <div class="list-content">
+          <%= image_tag @user.image.url ,style:"width:250px;"%>
+        </div>
+        <div class="list-content">
+          <h3><%=@user.nickname%></h3>
+          <!-- 誕生日から年齢を計算 -->
+          <p><%= (Date.today.strftime('%Y%m%d').to_i - @user.birth_year.strftime('%Y%m%d').to_i) / 10000%></p>
+          <p><%=@user.sex%></p>
+          <p><%=@user.prefecture%></p>
+        </div>
+
+        <!-- 切り替えボタンの設定 -->
+        <div class="user-icon list-content " data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-edit "></i></div>
+
+        <!-- モーダルの設定 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- ここからリンクを編集 -->
+              <div class="modal-body">
+                <%= link_to  "プロフィールを編集", root_path %>
+              </div>
+              <div class="modal-body">
+                <%= link_to  "メールアドレス変更", root_path %>
+              </div>
+              <div class="modal-body">
+                <%= link_to  "パスワード変更", root_path %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <!-- ここまで -->
+              </div><!-- /.modal-footer -->
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+      </div>
+    </div>
+    <div class="profile text-center"><%= @user.profile %></div>
+  </div>
+
+  <h3 class="text-center pt-5">お気に入り一覧</h3>
+  <!-- タブ -->
+  <div class="container">
+    <!-- タブの表示設定 -->
+    <ul id="myTabs" class="nav nav-tabs justify-content-center">
+      <li role="presentation" class="active"><button href="#home" aria-controls="home" role="tab" data-toggle="tab" class="nav-link active">施設</button>
+      </li>
+      <li role="presentation"><button href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link p-9">グルメ</button></li>
+    </ul>
+    <!-- Tab panes(タブを押したときに表示する中身) -->
+    <div class="tab-content pt-3">
+      <div role="tabpanel" class="tab-pane active fade show" id="home">
+        <div class="row " id="facility_lists">
+          <%=render 'facilities/facility_list' %>
+          <div class="list-button col-12">
+            <%= link_to_next_page @facilities, 'もっと見る', remote: true , params: { type: :facility },
+        class:"more btn btn-primary btn-lg btn-block btn-round" ,type:"button" ,id:'view_more'%>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="profile">
+        <div class="list-wrapper">
+          <div class="row " id="gourmet_lists">
+            <%=render 'facilities/gourmet_list' %>
+            <div class="list-button col-12">
+              <%= link_to_next_page @gourmets, 'もっと見る', remote: true , params: { type: :gourmet },
+        class:"more btn btn-primary btn-lg btn-block btn-round" ,type:"button" ,id:'view_more'%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="bottom">
+    <!-- sns -->
+    <div class="bottom-sns">
+      <ul>
+        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+    <!-- 修正依頼 -->
+    <div class="bottom-text">
+      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
+    </div>
+  </div>
+</div>

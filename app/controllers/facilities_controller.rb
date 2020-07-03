@@ -21,5 +21,13 @@ class FacilitiesController < ApplicationController
     # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
     @facilities = current_user.bookmark_facilities.includes(:user).where(type:"facilities").page(params[:page])
     @gourmets = current_user.bookmark_facilities.includes(:user).where(type:"gourmet").page(params[:page])
+
+    # もっとみるボタンの非同期処理　場合わけ（施設とグルメ）
+    # 同じページに二つの「もっとみるボタン」があるため、場合わけが必要
+      return unless request.xhr?
+      case params[:type]
+      when 'bookmark_facility', 'bookmark_gourmet'
+        render "#{params[:type]}"
+      end
   end
 end
