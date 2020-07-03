@@ -1,0 +1,3 @@
+//もっとみるボタン（施設）の非同期処理
+  $('#facility_lists').append("<%= escape_javascript(render 'facilities/facility_list', object: @facilities) %>");
+  $("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@facilities, 'もっと見る', remote: true, id: 'view_more')) %>");
