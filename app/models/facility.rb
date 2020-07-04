@@ -25,5 +25,5 @@ self.inheritance_column = :_type_disabled
 enum type:{facility: 0,gourmet:1}
 
 # page nationの表示数を設定（もっと見るボタンを押す前）
-paginates_per 4
+paginates_per 10
 end

@@ -1,8 +1,4 @@
-<%
-=begin%>
-詳細画面のコードです
-<%
-=end%>
+<!-- 詳細画面 -->
 <div class="detail-wrapper container">
   <div class="title text-center">
     <h2><%= @facility.name%>
@@ -102,7 +98,7 @@
       </a>
     </div>
     <div class="list-button">
-      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
     </div>
   </div>
 
