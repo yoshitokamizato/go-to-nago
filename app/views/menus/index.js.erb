@@ -1,0 +1,2 @@
+$('#menu_lists').append("<%= escape_javascript(render 'menus/menu_list', object: @menus) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@menus, 'もっと見る', remote: true, id: 'view_more')) %>");

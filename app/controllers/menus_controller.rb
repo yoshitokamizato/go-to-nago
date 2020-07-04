@@ -1,5 +1,7 @@
 class MenusController < ApplicationController
   def index
-    @menus = Facility.find(params["facility_id"]).menus
+    @facility = Facility.find(params["facility_id"])
+    @menus = @facility.menus.page(params[:page])
+    @facility_type = @facility.type
   end
 end
