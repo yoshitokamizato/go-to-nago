@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GoToNago</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+<head>
+  <title>GoToNago</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= stylesheet_link_tag "reset", :media => "all" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-      <% if user_signed_in? %>
-        <%= render 'publics/header'%>
-      <% else %>
-        <%= render 'publics/before_login_header' %>
-      <% end %>
-      <%= render 'shared/flash_messages' %>
-      <div class="container-fluid" id="wrapper">
-          <%= yield %>
-      </div>
-      <%= render 'publics/footer'%>
+<body>
 
-  </body>
+  <% if user_signed_in? %>
+  <%= render 'publics/header'%>
+  <% else %>
+  <%= render 'publics/before_login_header' %>
+  <% end %>
+  <%= render 'shared/flash_messages' %>
+  <div class="container-fluid" id="wrapper">
+    <%= yield %>
+  </div>
+  <%= render 'publics/footer'%>
+
+</body>
+
 </html>
