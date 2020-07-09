@@ -61,12 +61,12 @@
   <div class="container">
     <!-- タブの表示設定 -->
     <ul id="myTabs" class="nav nav-tabs justify-content-center">
-      <li role="presentation"><button href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link p-9">グルメ</button></li>
-      <li role="presentation" class="active"><button href="#home" aria-controls="home" role="tab" data-toggle="tab" class="nav-link active">施設</button></li>
+      <li role="presentation" class="active"><button href="#gourmet-tab" aria-controls="gourmet-tab" role="tab" data-toggle="tab" class="nav-link  active">グルメ</button></li>
+      <li role="presentation"><button href="#facility-tab" aria-controls="facility-tab" role="tab" data-toggle="tab" class="nav-link ">施設</button></li>
     </ul>
     <!-- Tab panes(タブを押したときに表示する中身) -->
     <div class="tab-content pt-3">
-      <div role="tabpanel" class="tab-pane fade" id="profile">
+      <div role="tabpanel" class="tab-pane fade" id="gourmet-tab">
         <div class="list-wrapper">
           <div class="row " id="gourmet_lists">
             <%=render 'facilities/gourmet_list' %>
@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane active fade show" id="home">
+      <div role="tabpanel" class="tab-pane active fade show" id="facility-tab">
         <div class="row " id="facility_lists">
           <%=render 'facilities/facility_list' %>
           <div class="list-button col-12">
