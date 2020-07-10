@@ -38,3 +38,10 @@ yarn-debug.log*
 # to ignore ruby mine
 .idea
 /vendor/*
+
+# to ignore .env file
+/.env
+/.env.development
+/.env.test
+/.env.production
+!/.env.sample
