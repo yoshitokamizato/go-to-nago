@@ -22,6 +22,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass'
 gem 'kaminari'
+gem 'dotenv-rails'
 
 # hirb: 出力結果を表形式で出力する
 # hirb-unicode: マルチバイト文字の表示を補正する
