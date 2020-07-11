@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   get 'bookmarks/create'
   get 'bookmarks/destroy'
-  devise_for :users
   root to:'facilities#index'
   get '/facility/list',to:'facilities#show_facility'
   get '/bookmarks',to:"facilities#bookmark"
@@ -17,7 +16,16 @@ Rails.application.routes.draw do
     get :bookmarks, on: :collection
   end
 
-  get 'users/show',to: 'users#show'
-  get 'users/confirm', to: 'users#confirm'
+  Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+  }
+  end
+  resource :user ,only: [:show] do
+    collection do
+    # get 'new'
+    end
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
