@@ -8,9 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def confirm
     @user = current_user
     @user.attributes = account_update_params
-    if !@user.image.present?
-      @user.image.retrieve_from_cache! @user.image_cache
-    end
 
     if @user.valid?
       render action: :confirm
