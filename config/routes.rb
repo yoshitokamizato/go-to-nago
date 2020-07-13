@@ -16,14 +16,23 @@ Rails.application.routes.draw do
     get :bookmarks, on: :collection
   end
 
+  # registrationsコントローラーを変更できるようにする（カスタマイズに必要）
   Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations",
   }
   end
+
+  # メソッドを追加するためにscopeを設定
+  devise_scope :user do
+    patch 'users/edit/confirm', to:'users/registrations#confirm'
+    patch 'users/edit/complete', to:'users/registrations#complete'
+  end
+
+  # userのルートを指定（resourceの不要なアクションを使わないようにする）
   resource :user ,only: [:show] do
     collection do
-    # get 'new'
+    # get 'conform'
     end
   end
 
