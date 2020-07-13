@@ -47,3 +47,4 @@ yarn-debug.log*
 !/.env.sample
 
 /config/credentials/production.key
+/public/uploads
