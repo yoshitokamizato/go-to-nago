@@ -66,7 +66,7 @@
     </ul>
     <!-- Tab panes(タブを押したときに表示する中身) -->
     <div class="tab-content pt-3">
-      <div role="tabpanel" class="tab-pane fade" id="gourmet-tab">
+      <div role="tabpanel" class="tab-pane fade active show" id="gourmet-tab">
         <div class="list-wrapper">
           <div class="row " id="gourmet_lists">
             <%=render 'facilities/gourmet_list' %>
@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane active fade show" id="facility-tab">
+      <div role="tabpanel" class="tab-pane fade" id="facility-tab">
         <div class="row " id="facility_lists">
           <%=render 'facilities/facility_list' %>
           <div class="list-button col-12">
