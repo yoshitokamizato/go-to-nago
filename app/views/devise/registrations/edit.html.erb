@@ -45,30 +45,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
-    <% if @minimum_password_length %>
-    <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control' %>
-  </div>
-
-  <div class="form-group">
     <%= f.submit "プロフィールを変更する", class:'btn btn-success btn-block' %>
   </div>
   <% end %>
 
-  <%= link_to "確認画面へ", users_confirm_path, class: "btn btn-danger btn-block" %>
 
   <%= link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger btn-block" %>
 

@@ -17,6 +17,14 @@ Rails.application.routes.draw do
     get :bookmarks, on: :collection
   end
 
+  # コントローラーを変更するためのコマンド
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+      registrations: "users/registrations"
+    }
+  end
+
+
   get 'users/show',to: 'users#show'
   get 'users/confirm', to: 'users#confirm'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
