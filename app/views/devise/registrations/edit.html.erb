@@ -35,41 +35,16 @@
     <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "プロフィール分を入力してください", rows: 10 %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
-    <% if @minimum_password_length %>
-    <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control' %>
-  </div>
 
   <div class="form-group">
     <%= f.submit "プロフィールを変更する", class:'btn btn-success btn-block' %>
   </div>
   <% end %>
 
-  <%= link_to "確認画面へ", users_confirm_path, class: "btn btn-danger btn-block" %>
 
   <%= link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger btn-block" %>
 
-  <%= link_to "マイページヘ戻る", users_show_path %>
+  <%= link_to "マイページヘ戻る", user_path %>
