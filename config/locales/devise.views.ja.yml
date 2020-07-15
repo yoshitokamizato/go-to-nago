@@ -14,7 +14,7 @@ ja:
         image: "プロフィール画像"
         profile: "自己紹介"
     models:
-      user: "ユーザ"
+      user: "ユーザー"
   devise:
     confirmations:
       new:
