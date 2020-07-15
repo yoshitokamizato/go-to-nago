@@ -9,6 +9,7 @@ default: &default
 development:
   <<: *default
   database: <%= ENV['DB_NAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 test:
   <<: *default
