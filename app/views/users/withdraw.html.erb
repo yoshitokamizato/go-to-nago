@@ -1,0 +1,25 @@
+<div class="container text-center mt-5">
+  <p>退会されますと、これまでのお客様のデータは削除され復元できなくなる可能性があります</p>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">退会する</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">退会処理</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          退会処理を行います。よろしいですか？
+        </div>
+        <div class="modal-footer">
+          <%= link_to  "はい", user_registration_path, method: :delete ,type:"button" ,class:"btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
