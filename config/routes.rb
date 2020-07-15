@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     collection do
     #ここに resourceにない、追加したいメソッドを記入
     # get 'new'
+    get "withdraw"
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
