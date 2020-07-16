@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #get 'inquiries/new'
+  #get 'inquiries/create'
+  #post 'inquiries', to:"inquiries#create"
+  resources :inquiries, only: [:new, :create]
   get 'bookmarks/create'
   get 'bookmarks/destroy'
   root to:'facilities#index'
