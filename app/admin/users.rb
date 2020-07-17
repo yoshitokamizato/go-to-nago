@@ -14,7 +14,6 @@ ActiveAdmin.register User do
       f.input :image
       f.input :role
       f.input :profile
-      f.input :status
     end
     f.actions
   end
@@ -32,9 +31,28 @@ ActiveAdmin.register User do
     column :image
     column :role
     column :profile
-    column :status
-    actions
+    actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
+  end
+
+  # ユーザー詳細画面の表示する項目を指定
+
+
+  
+  show do
+    attributes_table do
+      row :id
+      row :email
+      row :password
+      row :nickname
+      row :birth_year
+      row :sex
+      row :prefecture
+      row :image
+      row :role
+      row :profile
+    end
   end
   
-end
+  
+end 
 
