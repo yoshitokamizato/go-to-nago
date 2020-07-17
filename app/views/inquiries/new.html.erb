@@ -1,6 +1,6 @@
 
 <h1>お問い合わせ(入力画面)</h1>
-<p>店舗・施設情報の登録・修正依頼および問い合わせはこちらからお願いします。</p>
+<p>問い合わせはこちらからお願いします。</p>
 
 <% if @inquiry.errors.any? %>
   <div>
@@ -18,34 +18,34 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
   
     <div class="form-group">
-      <%= f.label :name, 'お名前' %>
+      <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control', value: current_user.nickname %>
     </div>
 
     <div class="form-group">
-      <%= f.label :email, 'メールアドレス' %>
+      <%= f.label :email %>
       <%= f.text_field :email, class: 'form-control', value: current_user.email %>
     </div>
 
   <% else %>
     <div class="form-group">
-      <%= f.label :name, 'お名前' %>
+      <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control', value: @inquiry.name %>
     </div>
     <div class="form-group">
-      <%= f.label :email, 'メールアドレス' %>
+      <%= f.label :email %>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   <% end %>
 
 
   <div class="form-group">
-    <%= f.label :subject, '題名' %>
+    <%= f.label :subject %>
     <%= f.text_field :subject, class: 'form-control', value: @inquiry.subject %>
   </div>
 
  <div class="form-group">
-   <%= f.label :message, 'お問い合わせ内容' %>
+   <%= f.label :message %>
    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
  </div>
 

@@ -4,14 +4,6 @@ class Inquiry < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
-  # validates :subject, presence: true
   validates :message, presence: true
 
-  # validates_acceptance_of :confirming
-  # after_validation :check_confirming
-
-  # def check_confirming
-  #   errors.delete(:confirming)
-  #   self.confirming = errors.empty? ? '1' : ''
-  # end
 end

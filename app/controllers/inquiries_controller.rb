@@ -19,7 +19,7 @@ class InquiriesController < ApplicationController
       # メール送信
       # InquiryMailer.send_mail(@inquiry).deliver
     else
-      flash[:danger].now = "送信できませんでしました。もう一度入力をお願いします"
+      flash.now[:danger].now = "お問い合わせ送信に失敗しました"
       render :new
     end
   end
