@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'bookmarks/create'
   get 'bookmarks/destroy'
   root to:'facilities#index'
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     collection do
     #ここに resourceにない、追加したいメソッドを記入
     # get 'new'
+    get "withdraw"
     end
   end
   resources :inquiries, only: [:new, :create] do

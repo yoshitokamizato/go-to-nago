@@ -47,3 +47,5 @@ yarn-debug.log*
 !/.env.sample
 
 /config/credentials/production.key
+# アップロードした画像をgitの管理下から削除
+/public/uploads/

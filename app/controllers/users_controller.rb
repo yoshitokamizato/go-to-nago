@@ -12,4 +12,7 @@ class UsersController < ApplicationController
       render "#{params[:type]}"
     end
   end
+  def withdraw
+
+  end
 end
