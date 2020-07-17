@@ -12,9 +12,14 @@ ja:
         birth_year: "生まれた年"
         prefecture: "お住まい"
         image: "プロフィール画像"
+        role: "立場"
         profile: "自己紹介"
+        status: "ステータス"
+
     models:
-      user: "ユーザ"
+      user: "ユーザー"
+      admin_user: "管理者"
+      comment: "コメント"
   devise:
     confirmations:
       new:
