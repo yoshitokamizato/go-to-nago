@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_124207) do
+ActiveRecord::Schema.define(version: 2020_07_15_014251) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -103,6 +103,18 @@ ActiveRecord::Schema.define(version: 2020_07_11_124207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "name"
+    t.string "email"
+    t.string "subject"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_inquiries_on_user_id"
+  end
+
   create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "facility_id"
     t.string "name", null: false
@@ -139,4 +151,5 @@ ActiveRecord::Schema.define(version: 2020_07_11_124207) do
   add_foreign_key "bookmarks", "facilities"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "facility_genres", "genres"
+  add_foreign_key "inquiries", "users"
 end
