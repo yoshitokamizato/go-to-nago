@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  #get 'inquiries/new'
-  #get 'inquiries/create'
-  #post 'inquiries', to:"inquiries#create"
-  resources :inquiries, only: [:new, :create]
   get 'bookmarks/create'
   get 'bookmarks/destroy'
   root to:'facilities#index'
@@ -31,6 +27,11 @@ Rails.application.routes.draw do
     collection do
     #ここに resourceにない、追加したいメソッドを記入
     # get 'new'
+    end
+  end
+  resources :inquiries, only: [:new, :create] do
+    collection do
+      post 'confirm'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

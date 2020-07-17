@@ -1,5 +1,5 @@
 
-<h1>お問い合わせ</h1>
+<h1>お問い合わせ(入力画面)</h1>
 <p>店舗・施設情報の登録・修正依頼および問い合わせはこちらからお願いします。</p>
 
 <% if @inquiry.errors.any? %>
@@ -12,8 +12,7 @@
   </div>
 <% end %>
 
-<%= form_for @inquiry do |f| %>
-<% if @inquiry.confirming.blank? %>
+<%= form_for @inquiry, url: {action: "confirm"} do |f| %>
 
   <% if user_signed_in? %>
       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -51,22 +50,5 @@
  </div>
 
   <%= f.submit '内容を確認する', class: 'btn btn-lg btn-primary btn-block' %>
-
-<% else %>
-  <table class="table table-bordered">
-    <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
-    <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
-    <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
-    <tr><th>お問い合わせ内容</th><td><%= @inquiry.message%></td></tr>
-  </table>
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :email %>
-      <%= f.hidden_field :subject %>
-      <%= f.hidden_field :message %>
-      <%= f.hidden_field :confirming %>
-  <%= f.submit '入力画面に戻る', class: 'btn btn-lg btn-secondary', name: 'back' %>
-  <%= f.submit '送信する', class: 'btn btn-lg btn-primary' %>
-<% end %>
 
 <% end %>
