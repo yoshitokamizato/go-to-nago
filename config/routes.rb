@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/facility/list',to:'facilities#show_facility'
   get '/bookmarks',to:"facilities#bookmark"
   get '/gourmet/list',to:'facilities#show_gourmet'
+  get '/about', to: 'abouts#show'
 
   #bookmarkのルーティング facilities/bookmarksにルーティング
   resources :facilities, shallow: true do
