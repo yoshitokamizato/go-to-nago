@@ -52,7 +52,6 @@ ActiveAdmin.register User do
       row :profile
     end
   end
-  
-  
-end 
 
+
+end
