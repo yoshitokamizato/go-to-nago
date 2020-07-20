@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
   def new
-    @inquiry = Inquiry.new  unless @inquiry
+    @inquiry = Inquiry.new  #unless @inquiry
   end
 
   def confirm
