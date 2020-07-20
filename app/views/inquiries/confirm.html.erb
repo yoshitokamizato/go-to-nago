@@ -1,16 +1,6 @@
 
-<h1>お問い合わせ(確認画面)</h1>
-<p>問い合わせ内容をご確認いただき、送信してください。</p>
-
-<% if @inquiry.errors.any? %>
-  <div>
-    <ul>
-      <% @inquiry.errors.full_messages.each do |msg| %>
-        <li><span style="color: red;"><%= msg %></span></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<h1>お問い合わせ(確認)</h1>
+<p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
 
 <%= form_for @inquiry ,action: '/create' do |f| %>
   <table class="table table-bordered">
@@ -24,6 +14,6 @@
       <%= f.hidden_field :email %>
       <%= f.hidden_field :subject %>
       <%= f.hidden_field :message %>
-  <%= f.submit '入力画面に戻る', class: 'btn btn-lg btn-secondary', name: 'back' %>
+  <%= f.submit '入力画面へ戻る', class: 'btn btn-lg btn-secondary', name: 'back' %>
   <%= f.submit '送信する', class: 'btn btn-lg btn-primary' %>
 <% end %>
