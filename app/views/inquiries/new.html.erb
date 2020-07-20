@@ -1,18 +1,11 @@
 
-<h1>お問い合わせ(入力画面)</h1>
-<p>問い合わせはこちらからお願いします。</p>
+<h1>お問い合わせ(入力)</h1>
+<p>ご意見・ご要望等、各種お問い合わせは、以下のフォームよりご連絡ください。</p>
 
-<% if @inquiry.errors.any? %>
-  <div>
-    <ul>
-      <% @inquiry.errors.full_messages.each do |msg| %>
-        <li><span style="color: red;"><%= msg %></span></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
 
 <%= form_for @inquiry, url: {action: "confirm"} do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <% if user_signed_in? %>
       <%= f.hidden_field :user_id, value: current_user.id %>

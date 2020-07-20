@@ -89,7 +89,20 @@ body,
   @extend .alert-danger;
 }
 
+// エラーメッセージ
+#error_explanation {
+  ul {
+    margin: 0 0 30px 0;
+    span{
+      color: red;
+      font-weight: bold;
+    }
+  }
+}
 
+.field_with_errors .form-control {
+    border: solid 2px #a94442;
+}
 
 // --------------footer---------------------
 .footer {
