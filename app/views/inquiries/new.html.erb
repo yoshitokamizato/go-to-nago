@@ -11,34 +11,34 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
   
     <div class="form-group">
-      <%= f.label :name %>
+      <%= f.label :name, "お名前（必須）" %>
       <%= f.text_field :name, class: 'form-control', value: current_user.nickname , readonly: true %>
     </div>
 
     <div class="form-group">
-      <%= f.label :email %>
+      <%= f.label :email, "メールアドレス（必須）"  %>
       <%= f.text_field :email, class: 'form-control', value: current_user.email, readonly: true %>
     </div>
 
   <% else %>
     <div class="form-group">
-      <%= f.label :name %>
+      <%= f.label :name, "お名前（必須）" %>
       <%= f.text_field :name, class: 'form-control', value: @inquiry.name %>
     </div>
     <div class="form-group">
-      <%= f.label :email %>
+      <%= f.label :email, "メールアドレス（必須）"  %>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   <% end %>
 
 
   <div class="form-group">
-    <%= f.label :subject %>
+    <%= f.label :subject, "題名"  %>
     <%= f.text_field :subject, class: 'form-control', value: @inquiry.subject %>
   </div>
 
  <div class="form-group">
-   <%= f.label :message %>
+   <%= f.label :message, "お問い合わせ内容（必須）" %>
    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
  </div>
 
