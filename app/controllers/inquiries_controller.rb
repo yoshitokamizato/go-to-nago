@@ -17,7 +17,7 @@ class InquiriesController < ApplicationController
       flash.now[:success] = "お問い合わせを受け付けました"
       # redirect_to root_url
       # メール送信
-      # InquiryMailer.send_mail(@inquiry).deliver
+      InquiryMailer.send_mail(@inquiry).deliver_later
     else
       flash.now[:danger].now = "お問い合わせ送信に失敗しました"
       render :new

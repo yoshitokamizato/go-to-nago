@@ -1,19 +1,23 @@
-
-<h1>お問い合わせ(確認)</h1>
-<p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
-
-<%= form_for @inquiry ,action: '/create' do |f| %>
-  <table class="table table-bordered">
-    <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
-    <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
-    <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
-    <tr><th>お問い合わせ内容</th><td><%= @inquiry.message%></td></tr>
-  </table>
+<div class="inquiry-area">
+  <div class="inquiry-title-area">
+    <h1>お問い合わせ(確認)</h1>
+    <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
+  </div>
+  <%= form_for @inquiry ,action: '/create', html: {class: 'inquiry-form'} do |f| %>
+    <table class="table table-bordered">
+      <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
+      <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
+      <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
+      <tr><th>お問い合わせ内容</th><td><%= @inquiry.message%></td></tr>
+    </table>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
       <%= f.hidden_field :subject %>
       <%= f.hidden_field :message %>
-  <%= f.submit '入力画面へ戻る', class: 'btn btn-lg btn-secondary', name: 'back' %>
-  <%= f.submit '送信する', class: 'btn btn-lg btn-primary' %>
+    <div class="btn-area">
+      <%= f.submit '入力画面へ戻る', class: 'btn btn-lg btn-secondary btn-block', name: 'back' %>
+      <%= f.submit '送信する', class: 'btn btn-lg btn-primary btn-block' %>
+    </div>
 <% end %>
+</div>

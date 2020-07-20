@@ -1,10 +1,11 @@
 
-<h1>お問い合わせ(入力)</h1>
-<p>ご意見・ご要望等、各種お問い合わせは、以下のフォームよりご連絡ください。</p>
+<div class="inquiry-area">
+<div class="inquiry-title-area">
+  <h1>お問い合わせ(入力)</h1>
+  <p>ご意見・ご要望等、各種お問い合わせは、以下のフォームよりご連絡ください。</p>
+</div>
 
-
-
-<%= form_for @inquiry, url: {action: "confirm"} do |f| %>
+<%= form_for @inquiry, url: {action: "confirm"}, html: {class: 'inquiry-form'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <% if user_signed_in? %>
@@ -37,11 +38,14 @@
     <%= f.text_field :subject, class: 'form-control', value: @inquiry.subject %>
   </div>
 
- <div class="form-group">
-   <%= f.label :message, "お問い合わせ内容（必須）" %>
-   <%= f.text_area :message, size: '10x10', class: 'form-control' %>
- </div>
+  <div class="form-group">
+    <%= f.label :message, "お問い合わせ内容（必須）" %>
+    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+  </div>
 
-  <%= f.submit '内容を確認する', class: 'btn btn-lg btn-primary btn-block' %>
+  <div class="btn-area">
+    <%= f.submit '内容を確認する', class: 'btn btn-lg btn-primary btn-block' %>
+  </div>
 
 <% end %>
+</div>
