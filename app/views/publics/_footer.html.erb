@@ -14,7 +14,9 @@
         <a href ="#" ><p>運営会社</p></a>
       </div>
       <div class="col-6 row-li">
-        <%= link_to '問合せ', new_inquiry_path, class: "nav-link text-center" %>
+        <%= link_to new_inquiry_path do %>
+          <p>問合せ</p>
+        <% end %>
       </div>
     </div>
   </div>
