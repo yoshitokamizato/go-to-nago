@@ -14,8 +14,8 @@ class InquiriesController < ApplicationController
     if params['back']
       render :new
     elsif @inquiry.save
-      flash[:success] = "お問い合わせを受け付けました"
-      redirect_to root_url
+      flash.now[:success] = "お問い合わせを受け付けました"
+      # redirect_to root_url
       # メール送信
       # InquiryMailer.send_mail(@inquiry).deliver
     else
