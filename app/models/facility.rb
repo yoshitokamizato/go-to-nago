@@ -34,8 +34,8 @@ validates :description, presence: true
 validates :parking, presence: true
 validates :owner_id, presence: true
 enum status: {"営業中": 0, "閉店": 1, "休業中": 2, "オープン予定": 3}
-validates :created_id, presence: true
-validates :updated_id, presence: true
+validates :created_user, presence: true
+validates :updated_user, presence: true
 
 # page nationの表示数を設定（もっと見るボタンを押す前）
 paginates_per 10
