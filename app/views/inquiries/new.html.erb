@@ -12,23 +12,24 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
   
     <div class="form-group">
-      <%= f.label :name, "お名前（必須）" %>
+      <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
       <%= f.text_field :name, class: 'form-control', value: current_user.nickname , readonly: true %>
     </div>
 
     <div class="form-group">
-      <%= f.label :email, "メールアドレス（必須）"  %>
+      <%#= f.label :email, html: {メールアドレス<span class="badge badge-danger">必須</span>}"  %>
+      <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
       <%= f.text_field :email, class: 'form-control', value: current_user.email, readonly: true %>
     </div>
 
   <% else %>
     <div class="form-group">
-      <%= f.label :name, "お名前（必須）" %>
-      <%= f.text_field :name, class: 'form-control', value: @inquiry.name %>
+      <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
+      <%= f.text_field :name, class: 'form-control', value: @inquiry.name, required: true  %>
     </div>
     <div class="form-group">
-      <%= f.label :email, "メールアドレス（必須）"  %>
-      <%= f.text_field :email, class: 'form-control' %>
+      <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
+      <%= f.text_field :email, class: 'form-control', value: @inquiry.email, type: "email" , required: true %>
     </div>
   <% end %>
 
@@ -39,8 +40,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :message, "お問い合わせ内容（必須）" %>
-    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+    <label for="inquiry_message">"お問い合わせ内容<span class="badge badge-danger">必須</span></label>
+    <%= f.text_area :message, size: '10x10', class: 'form-control', value: @inquiry.message, required: true %>
   </div>
 
   <div class="btn-area">
