@@ -13,7 +13,7 @@ ja:
         message: お問い合わせ内容
         created_at: 問い合わせ受付日時
         updated_at: 問い合わせ更新日時
-        user_id: ユーザID
+        user_id: ユーザーID
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

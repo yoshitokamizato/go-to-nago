@@ -9,6 +9,7 @@ ActiveAdmin.register Inquiry do
   index do
     id_column
     column :status
+    column :user_id
     column :name
     column :subject
     column :created_at
