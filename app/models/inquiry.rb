@@ -1,6 +1,6 @@
 class Inquiry < ApplicationRecord
   # belongs_to :user, optional: true, counter_cache: true
-  enum status:{ not_started: 0, working: 1, done: 9}
+  enum status:{ 未着手: 0, 対応中: 1, 完了: 9}, _prefix: true
 
   validates :name, presence: true, length: {maximum: 50}
   validates :subject, length: {maximum: 100}
