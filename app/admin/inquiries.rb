@@ -28,14 +28,6 @@ ActiveAdmin.register Inquiry do
       input :created_at, :as => :string, :input_html => { :disabled => true }
       input :updated_at, :as => :string, :input_html => { :disabled => true }
     end
-    # active_admin_comments
-    # f.inputs do
-    #   f.has_many :comment,
-    #              new_record: 'Leave Comment',
-    #              allow_destroy: -> (c) { c.author?(current_admin_user) } do |b|
-    #     b.input :body
-    #   end
-    # end
     f.actions
   end
 end
