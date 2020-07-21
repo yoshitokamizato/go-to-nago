@@ -1,5 +1,4 @@
 class FixedpagesController < ApplicationController
-  before_action :authenticate_user!
 
   def about
   end
@@ -7,5 +6,7 @@ class FixedpagesController < ApplicationController
   def company
   end
 
+  def privacy
+  end
 
 end

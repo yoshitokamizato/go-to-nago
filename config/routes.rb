@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/gourmet/list',to:'facilities#show_gourmet'
   get '/about', to: 'fixedpages#about'
   get '/company', to: 'fixedpages#company'
+  get '/privacy', to: 'fixedpages#privacy'
 
   #bookmarkのルーティング facilities/bookmarksにルーティング
   resources :facilities, shallow: true do
