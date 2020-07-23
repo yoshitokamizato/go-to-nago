@@ -7,14 +7,14 @@
 ## Rails version
 
   Rails 6.0.3.1
-  
+
 ## DB
 
-mysql  Ver 8.0.19 
+mysql  Ver 8.0.19
 
 ## 初期データ投入方法
 現時点のデータの読み込みは以下でお願いします（統一できておらずすみません）
- 
+
 <概要>
 
 1. ユーザー情報等　→　seedファイルから読み込み
@@ -25,7 +25,7 @@ mysql  Ver 8.0.19
 1. ` rails db:seed `
 
 2-1. 施設・グルメ情報を読み込み
- 
+
 ` ImportCsv.import('db/csv_data/facility_data.csv')  `
 
 2.2 メニューデータの読み込み
@@ -52,3 +52,9 @@ databaseの情報（db名、アカウント、パスワード）などの環境�
 本番環境へのデプロイを行う場合は、`develop`ブランチの内容を`master`ブランチにマージしたうえで、
 本番環境側で`master`ブランチよりpullをおこなってください。
 
+### rubocop (静的解析ツール)
+コードの質の向上のため、rubocopの運用をお願い致します。
+
+使用するコマンドは以下の通り。
+rubocop -a:コードチェック & 自動修正
+git config pre-commit.checks rubocop：commit前にrubocopコマンドを行う設定
