@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/about', to: 'fixedpages#about'
   get '/company', to: 'fixedpages#company'
   get '/privacy', to: 'fixedpages#privacy'
-  get '/tos', to: 'fixedpages#tos'
 
   #bookmarkのルーティング facilities/bookmarksにルーティング
   resources :facilities, shallow: true do
