@@ -3,27 +3,48 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  
   # GET /resource/sign_up
   # def new
   #   super
   # end
-
+  
   # POST /resource
   # def create
   #   super
   # end
-
+  
   # GET /resource/edit
   # def edit
   #   super
   # end
-
+  # passwordを編集
+  def edit_password
+    @user = current_user
+  end
+  
+  # updateアクションのデフォルトから引用し変更
+  def update_password
+    user = current_user
+    if user.valid_password?(update_password_params[:current_password])
+      user.password = update_password_params[:password]
+      user.password_confirmation = update_password_params[:password_confirmation]
+      if user.save
+        bypass_sign_in(current_user)
+        redirect_to user_path
+        flash[:success] = "パスワードを更新しました"
+      end
+    else
+      clean_up_passwords resource
+      redirect_to users_edit_password_path
+      flash[:danger] = "パスワードの更新に失敗しました"
+    end
+  end
   # PUT /resource
   # def update
   #   super
   # end
-
+  
   # DELETE /resource
   # def destroy
   #   super
@@ -48,6 +69,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 更新後のパスを指定
   def after_update_path_for(resource)
     user_path
+  end
+  # password変更時のparamsを読み込む
+  def update_password_params
+    params.require(:user).permit(:attribute,:password,:password_confirmation ,:current_password)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
