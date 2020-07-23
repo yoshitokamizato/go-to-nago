@@ -22,11 +22,16 @@ Rails.application.routes.draw do
   end
 
   # コントローラーを変更するためのコマンド
-  Rails.application.routes.draw do
-    devise_for :users, controllers: {
-      registrations: "users/registrations"
-    }
-  end
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+  }
+
+
+    # 追加したアクションのルートを定義
+    devise_scope :user do
+      get 'users/edit/password' => 'users/registrations#edit_password'
+      put 'users/update/password' => 'users/registrations#update_password'
+    end
   # resource
   resource :user, only: [:show] do
     collection do
