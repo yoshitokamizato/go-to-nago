@@ -1,5 +1,4 @@
 class FixedpagesController < ApplicationController
-
   def about
   end
 
@@ -11,5 +10,4 @@ class FixedpagesController < ApplicationController
 
   def tos
   end
-
 end

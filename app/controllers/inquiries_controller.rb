@@ -1,17 +1,17 @@
 class InquiriesController < ApplicationController
   def new
-    @inquiry = Inquiry.new  #unless @inquiry
+    @inquiry = Inquiry.new # unless @inquiry
   end
 
   def confirm
     @inquiry = Inquiry.new(inquiry_params)
     render :new if @inquiry.invalid?
   end
-  
+
   def create
     @inquiry = Inquiry.new(inquiry_params)
     # 戻るボタンが押された場合
-    if params['back']
+    if params["back"]
       render :new
     elsif @inquiry.save
       flash.now[:success] = "お問い合わせを受け付けました"

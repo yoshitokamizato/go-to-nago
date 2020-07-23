@@ -3,7 +3,7 @@ class ImportCsv < ApplicationRecord
 
   def self.import(path)
     list = []
-    list_image=[]
+    list_image = []
     CSV.foreach(path, headers: true) do |row|
       list << {
         type: row["type"].to_i,
@@ -51,20 +51,17 @@ class ImportCsv < ApplicationRecord
     puts "インポート処理を開始"
     # インポートができなかった場合の例外処理
     begin
-    Facility.create!(list)
-    FacilityImage.create!(list_image)
-    puts "インポート完了!!"
+      Facility.create!(list)
+      FacilityImage.create!(list_image)
+      puts "インポート完了!!"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "インポートに失敗：UnknownAttributeError"
     end
   end
 
-
-
-
   def self.import_two(path)
     list = []
-    list_image=[]
+    list_image = []
     CSV.foreach(path, headers: true) do |row|
       list << {
         facility_id: row["facility_id"].to_i,
@@ -75,7 +72,6 @@ class ImportCsv < ApplicationRecord
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i
       }
-
     end
 
     puts "----------------------------"
@@ -84,11 +80,10 @@ class ImportCsv < ApplicationRecord
     puts "MENUのインポート処理を開始"
     # インポートができなかった場合の例外処理
     begin
-    Menu.create!(list)
-    puts "MENUインポート完了!!"
+      Menu.create!(list)
+      puts "MENUインポート完了!!"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "インポートに失敗：UnknownAttributeError"
     end
   end
-
 end
