@@ -6,7 +6,7 @@
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * compiled file the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
@@ -50,7 +50,11 @@ a:hover {
   clear: both;
   display: block;
 }
-
+.a-right{
+  display:flex;
+  justify-content: flex-end;
+  margin: 20px auto;
+}
 // ========ここまで（共通の初期設定）=========
 // body (フッターを下に固定するため)
 body,
@@ -82,7 +86,7 @@ body,
 // 「ログインしました」などのフラッシュ用スタイル
 
 .alert-notice {
-  @extend .alert-info;
+  @extend .alert-success;
 }
 
 .alert-alert {
