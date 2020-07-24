@@ -10,9 +10,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do                                             # 他はdeviseの機能をそのまま流用する
+      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      #↓と同じ意味(登録時にメール認証を行わない設定)
+      # resource.skip_confirmation!
+      # resource.save
+      
+      # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
+      # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
+    end
+  end
   
   # GET /resource/edit
   # def edit

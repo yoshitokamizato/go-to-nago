@@ -1,5 +1,35 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= @resource.name %>さん  
+  <br>
+  名護へGOをご利用いただきありがとうございます。
+  <br>
+  <br>
+</p>
+<% if @resource.try(:unconfirmed_email?) %> 
+    <p>
+        以下のURLをクリックして、メールアドレス変更手続きを完了してください。
+        <br>
+        <%= link_to @resource.unconfirmed_email, confirmation_url(@resource, confirmation_token: @token) %>
+        <br>
+        <br>
+        このURLの有効期限は24時間です。
+    </p>
+<% else %>
+  <br>
+  会員登録が完了しました。
+<% end %>
+<br>
+<br>
+<p>
+  Webページを開く
+  <br>
+    http://localhost:3000 
+  <br>
+  ※このメールは返信しても届きません。お問い合わせはサイトの「お問い合わせ」からお願いいたします。
+  <br>
+  <br>
+  ■ご登録の覚えがないのにこのメールが届いたという方
+  <br>
+  ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
+  <br>
+  ******@****.jp
+</p>
