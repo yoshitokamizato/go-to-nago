@@ -65,7 +65,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource_updated
       set_flash_message_for_update(resource, prev_unconfirmed_email)
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
-      redirect_to users_update_email_confirm_path(unconfirmed_email: resource.unconfirmed_email)
+      p '+++++++++++++++++++='
+      p resource.unconfirmed_email
+      p resource.email
+
+      if resource.unconfirmed_email.nil?
+        flash[:danger] = "メールアドレスを変更してください"
+        redirect_to users_edit_email_path
+      else
+        redirect_to users_update_email_confirm_path(unconfirmed_email: resource.unconfirmed_email)
+      end
     else
       flash[:danger] = "メールアドレスの更新に失敗しました"
       redirect_to users_edit_email_path
