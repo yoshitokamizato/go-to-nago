@@ -41,7 +41,12 @@ databaseの情報（db名、アカウント、パスワード）などの環境�
 - `.env`に設定内容を追加した際には、`.env.sample`にも項目を追加して、pushすること
 - git pullを行った際に、`.env.sample`が更新された場合には内容を確認し、git pullを行った環境（開発環境・本番環境）の`.env`にも設定を追加すること
 
-## githubのbranch運用方法
+
+
+
+
+
+## github(branch)運用方法
 
 7/22の定例を受けて、新たに`develop`ブランチを設けることとしたため、以下の運用方法となります。
 
@@ -52,3 +57,20 @@ databaseの情報（db名、アカウント、パスワード）などの環境�
 本番環境へのデプロイを行う場合は、`develop`ブランチの内容を`master`ブランチにマージしたうえで、
 本番環境側で`master`ブランチよりpullをおこなってください。
 
+## github(プルリクエストした後のフロー) (2020/7/25~)
+
+### 以下の条件を満たした場合、マージしてOKです。
+
+- developブランチの動作保証がされていること。
+- 他メンバー誰か1人にレビューされていること。（二人ならなおよし）
+
+## その他
+
+### Knowledgeを残そう
+開発の過程で得た知見は蓄積していきましょう!
+
+**手順**
+
+- [knowledge](https://github.com/yoshitokamizato/go-to-nago/wiki/knowledge)を確認
+- knowledgeを参考に[wikiに新しくページを追加](https://github.com/yoshitokamizato/go-to-nago/wiki/_new)(タイトルは ”topic_XXX”)
+- [knowledge](https://github.com/yoshitokamizato/go-to-nago/wiki/knowledge)のリストに作成したpageのタイトル・リンクを追加
