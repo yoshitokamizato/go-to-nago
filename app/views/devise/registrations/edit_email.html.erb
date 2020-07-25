@@ -2,16 +2,12 @@
     <h4 class="text-center">パスワードを変更</h4>
 </div>
 <div class="container-login">
-    <%= form_for(resource ,as: resource_name, url:update_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource ,as: resource_name, url:users_update_email_path(resource_name), html: { method: :put }) do |f| %>
         <%= bootstrap_devise_error_messages!%>
         <div class="form-group ">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-    
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
         <%= f.submit "変更する", class:'btn btn-success btn-block' %>
         <%= link_to "マイページヘ戻る", user_path ,class:"a-right" %>
     <% end %>
