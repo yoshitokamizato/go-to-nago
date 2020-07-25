@@ -35,16 +35,9 @@
     <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "プロフィール分を入力してください", rows: 10 %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
 
   <div class="form-group">
     <%= f.submit "プロフィールを変更する", class:'btn btn-success btn-block' %>
   </div>
   <% end %>
-
-
-  <%= link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger btn-block" %>
-
-  <%= link_to "マイページヘ戻る", user_path %>
+  <%= link_to "マイページヘ戻る", user_path ,class:"btn btn-primary btn-block" %>       

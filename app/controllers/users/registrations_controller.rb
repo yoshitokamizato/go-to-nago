@@ -3,16 +3,26 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  
+  # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
+  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy]
+  prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
   # GET /resource/sign_up
   # def new
   #   super
   # end
   
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do                                             # 他はdeviseの機能をそのまま流用する
+      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      #↓と同じ意味(登録時にメール認証を行わない設定)
+      # resource.skip_confirmation!
+      # resource.save
+      
+      # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
+      # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
+    end
+  end
   
   # GET /resource/edit
   # def edit
@@ -23,6 +33,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
   end
   
+  # email 編集ページのためのメソッド
+  def edit_email
+    resource
+  end
+
   # updateアクションのデフォルトから引用し変更
   def update_password
     user = current_user
@@ -39,6 +54,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to users_edit_password_path
       flash[:danger] = "パスワードの更新に失敗しました"
     end
+  end
+
+  def update_email
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+      set_flash_message_for_update(resource, prev_unconfirmed_email)
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+      if resource.unconfirmed_email.nil?
+        flash[:danger] = "メールアドレスを変更してください"
+        redirect_to users_edit_email_path
+      else
+        redirect_to users_update_email_confirm_path(unconfirmed_email: resource.unconfirmed_email)
+      end
+    else
+      flash[:danger] = "メールアドレスの更新に失敗しました"
+      redirect_to users_edit_email_path
+    end
+  end
+  def update_email_confirm
+    @unconfirmed_email = params[:unconfirmed_email]
   end
   # PUT /resource
   # def update
@@ -63,7 +102,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 更新（編集の反映）時にパスワード入力を省く
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if params[:password].blank? && params[:password_confirmation].blank? && params[:current_password].blank?
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
   end
 
   # 更新後のパスを指定
