@@ -36,8 +36,6 @@ ActiveAdmin.register User do
 
   # ユーザー詳細画面の表示する項目を指定
 
-
-  
   show do
     attributes_table do
       row :id
@@ -52,6 +50,4 @@ ActiveAdmin.register User do
       row :profile
     end
   end
-
-
 end

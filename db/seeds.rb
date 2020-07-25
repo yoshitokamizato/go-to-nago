@@ -17,7 +17,7 @@ User.find_or_create_by!(email: "test2@example.com") do |user|
 end
 
 puts "ユーザー2投入成功"
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password") if Rails.env.development?
 puts "管理者投入成功"
 
 User.find_or_create_by!(email: "test3@example.com") do |user|

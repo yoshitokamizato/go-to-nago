@@ -23,7 +23,7 @@ accepts_nested_attributes_for :facility_genres, allow_destroy: true
 # typeカラムは本来使えないが、使える様にするコマンド
 self.inheritance_column = :_type_disabled
 # typeをenumで定義
-enum type:{facility: 0,gourmet:1}
+enum type:{spot: 0,gourmet:1}
 validates :type, presence:  true
 validates :name, presence:  true
 validates :postal_code, presence: true
