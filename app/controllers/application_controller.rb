@@ -7,7 +7,5 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :birth_year, :sex, :prefecture, :image, :profile])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :birth_year, :sex, :prefecture, :image, :profile])
-    # アップデートのストロングパラメータを設定
-    devise_parameter_sanitizer.permit(:update_password, keys: [:password,:password_confirmation ,:current_password])
   end
 end
