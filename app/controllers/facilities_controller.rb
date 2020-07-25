@@ -1,6 +1,6 @@
 class FacilitiesController < ApplicationController
   def index
-    @facilities = Facility.includes(:facility_images).where(type: "facilities")
+    @facilities = Facility.includes(:facility_images).where(type: "spot")
     @gourmets = Facility.includes(:facility_images).where(type: "gourmet")
     # @facilities = Facility.all.includes(:user)
   end
@@ -11,7 +11,7 @@ class FacilitiesController < ApplicationController
   end
 
   def show_facility
-    @facilities = Facility.includes(:facility_images).where(type: "facilities").page(params[:page])
+    @facilities = Facility.includes(:facility_images).where(type: "spot").page(params[:page])
   end
 
   def show_gourmet
@@ -20,7 +20,7 @@ class FacilitiesController < ApplicationController
 
   def bookmark
     # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
-    @facilities = current_user.bookmark_facilities.includes(:user).where(type: "facilities").page(params[:page])
+    @facilities = current_user.bookmark_facilities.includes(:user).where(type: "spot").page(params[:page])
     @gourmets = current_user.bookmark_facilities.includes(:user).where(type: "gourmet").page(params[:page])
 
     # もっとみるボタンの非同期処理　場合わけ（施設とグルメ）
