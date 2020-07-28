@@ -1,10 +1,8 @@
 class InquiriesController < ApplicationController
 
   def new
-    kind = params[:kind].present? ? params[:kind].to_i : nil
-    facility_id = params[:facility_id].present? ? params[:facility_id].to_i : nil
     @inquiry = Inquiry.new
-    @inquiry.default_set(kind, facility_id)
+    @inquiry.default_set(params[:kind], params[:facility_id], current_user)
     # debugger
   end
 
@@ -23,7 +21,7 @@ class InquiriesController < ApplicationController
     elsif @inquiry.save
       flash.now[:success] = "お問い合わせを受け付けました"
       # メール送信
-      # InquiryMailer.send_mail(@inquiry).deliver_later
+      InquiryMailer.send_mail(@inquiry).deliver_later
     else
       flash.now[:danger].now = "お問い合わせ送信に失敗しました"
       render :new

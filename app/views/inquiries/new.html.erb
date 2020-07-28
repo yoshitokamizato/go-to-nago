@@ -17,31 +17,15 @@
 <%= form_for @inquiry, url: {action: "confirm"}, html: {class: 'inquiry-form'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <% if user_signed_in? %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-  
-    <div class="form-group">
-      <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
-      <%= f.text_field :name, class: 'form-control', value: current_user.nickname , readonly: true %>
-    </div>
+  <div class="form-group">
+    <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
+    <%= f.text_field :name, class: 'form-control', value: @inquiry.name, required: true  %>
+  </div>
 
-    <div class="form-group">
-      <%#= f.label :email, html: {メールアドレス<span class="badge badge-danger">必須</span>}"  %>
-      <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
-      <%= f.text_field :email, class: 'form-control', value: current_user.email, readonly: true %>
-    </div>
-
-  <% else %>
-    <div class="form-group">
-      <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
-      <%= f.text_field :name, class: 'form-control', value: @inquiry.name, required: true  %>
-    </div>
-    <div class="form-group">
-      <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
-      <%= f.text_field :email, class: 'form-control', value: @inquiry.email, type: "email" , required: true %>
-    </div>
-  <% end %>
-
+  <div class="form-group">
+    <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
+    <%= f.text_field :email, class: 'form-control', value: @inquiry.email, type: "email" , required: true %>
+  </div>
 
   <div class="form-group">
     <%= f.label :subject, "題名"  %>
@@ -53,6 +37,7 @@
     <%= f.text_area :message, size: '10x10', class: 'form-control', value: @inquiry.message, required: true %>
   </div>
 
+  <%= f.hidden_field :user_id, value: @inquiry.user_id %>
   <%= f.hidden_field :kind, value: @inquiry.kind %>
   <%= f.hidden_field :facility_id, value: @inquiry.facility_id %>
   <div class="btn-area">
