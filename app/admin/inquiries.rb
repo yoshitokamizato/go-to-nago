@@ -25,7 +25,7 @@ ActiveAdmin.register Inquiry do
       input :name, input_html: { disabled: true }
       input :email, input_html: { disabled: true }
       input :subject, input_html: { disabled: true }
-      input :message, input_html: { disabled: true }
+      input :message, as: textarea, input_html: { disabled: true }
       input :created_at, as: :string, input_html: { disabled: true }
       input :updated_at, as: :string, input_html: { disabled: true }
     end

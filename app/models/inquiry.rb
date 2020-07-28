@@ -1,5 +1,5 @@
 class Inquiry < ApplicationRecord
-  # belongs_to :user, optional: true, counter_cache: true
+  belongs_to :user, optional: true
   belongs_to :facility, optional: true
   enum status: { not_started: 0, in_progress: 1, done: 9 }, _prefix: true
   enum kind: {inquiry: 0, new_facility:1, edit_facility:2}, _prefix: true
