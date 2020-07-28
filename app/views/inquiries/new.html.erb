@@ -1,5 +1,3 @@
-<% 
-%>
 
 <div class="inquiry-area">
 <div class="inquiry-title-area">
@@ -51,7 +49,7 @@
   </div>
 
   <div class="form-group">
-    <label for="inquiry_message">"お問い合わせ内容<span class="badge badge-danger">必須</span></label>
+    <label for="inquiry_message">お問い合わせ内容<span class="badge badge-danger">必須</span></label>
     <%= f.text_area :message, size: '10x10', class: 'form-control', value: @inquiry.message, required: true %>
   </div>
 
