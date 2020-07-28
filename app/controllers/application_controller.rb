@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  # CSRF(クロスサイトリクエストフォージェリ) 対策
+  protect_from_forgery
   # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 

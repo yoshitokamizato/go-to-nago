@@ -40,10 +40,10 @@
                 <%= link_to  "プロフィールを編集", edit_user_registration_path %>
               </div>
               <div class="modal-body">
-                <%= link_to  "メールアドレス変更", root_path %>
+                <%= link_to  "メールアドレス変更", users_edit_email_path %>
               </div>
               <div class="modal-body">
-                <%= link_to  "パスワード変更", root_path %>
+                <%= link_to  "パスワード変更", users_edit_password_path %>
               </div>
               <div class="modal-body">
                 <%= link_to  "退会手続きへ", withdraw_user_path   %>
@@ -85,29 +85,11 @@
         <div class="row " id="facility_lists">
           <%=render 'facilities/facility_list' %>
           <div class="list-button col-12">
-            <%= link_to_next_page @facilities, 'もっと見る', remote: true , params: { type: :facility },
+            <%= link_to_next_page @facilities, 'もっと見る', remote: true , params: { type: :spot },
         class:"more btn btn-primary btn-lg btn-block btn-round" ,type:"button" ,id:'view_more'%>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-
-
-  <div class="bottom">
-    <!-- sns -->
-    <div class="bottom-sns">
-      <ul>
-        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
-    <!-- 修正依頼 -->
-    <div class="bottom-text">
-      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
     </div>
   </div>
 </div>

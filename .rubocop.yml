@@ -1,0 +1,131 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  Include:
+    - rubocop-rails
+  Exclude:
+    - '**/tmp/**/*'
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - '**/node_modules/**/*'
+    - 'actionpack/lib/action_dispatch/journey/parser.rb'
+    - 'actionmailbox/test/dummy/**/*'
+    - 'actiontext/test/dummy/**/*'
+    - "db/schema.rb"
+    - 'railties/test/fixtures/tmp/**/*'
+    - 'bin/**'
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# 「frozen_string_literal: true」を追加しない
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# ドキュメントの無い public class を許可
+Style/Documentation:
+  Enabled: false
+
+# 文字列は「ダブルクォート」を用いる
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+# 一行の文字数が80文字までは厳しすぎるので，250文字までに変更
+Layout/LineLength:
+  Max: 250
+  Exclude:
+    - "bin/bundle"
+    - "db/migrate/*.rb"
+
+# メソッドの行数が 10 行までは厳しすぎるので，20行までに変更
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+# 以下の設定が無いと警告が出る
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "bin/bundle"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "bin/bundle"
+
+Metrics/AbcSize:
+  Exclude:
+    - "bin/bundle"
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true

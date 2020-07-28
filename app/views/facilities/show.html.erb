@@ -50,14 +50,19 @@
     </div>
   </div>
   <div class="menu text-center">
+  <%if @facility.menus[0] %>
     <h3>メニュー</h3>
     <hr>
     <div id="carouselOption1" class="carousel slide" data-ride="carousel">
       <!-- インジケータの設定 -->
       <ol class="carousel-indicators">
+        <%if @facility.menus[1] %>
         <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
         <li data-target="#carouselOption1" data-slide-to="1"></li>
+        <%end%>
+        <%if @facility.menus[2] %>
         <li data-target="#carouselOption1" data-slide-to="2"></li>
+        <%end%>
       </ol>
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
@@ -88,6 +93,7 @@
         <% end %>
       </div>
       <!-- スライドコントロールの設定 -->
+      <%if @facility.menus[1] %>
       <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">前へ</span>
@@ -96,10 +102,12 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">次へ</span>
       </a>
+      <%end%>
     </div>
     <div class="list-button">
       <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
     </div>
+  <%end%>
   </div>
 
   <div class="text-center pt-5">
@@ -145,19 +153,7 @@
     <hr>
     <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
   </div>
-  <div class="bottom">
-    <div class="bottom-sns">
-      <ul>
-        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
-    <div class="bottom-text">
-      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
-    </div>
-  </div>
+  <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true } %>
 </div>
 
 <%

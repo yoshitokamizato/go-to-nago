@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.4'
 
 gem 'carrierwave'
-gem 'activeadmin' #管理者画面作成用
+gem 'activeadmin' # 管理者画面作成用
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-i18n'
@@ -31,12 +31,12 @@ gem 'omniauth-twitter'
 # hirb: 出力結果を表形式で出力する
 # hirb-unicode: マルチバイト文字の表示を補正する
 gem 'hirb'
-gem 'hirb-unicode'
+# gem 'hirb-unicode'
+gem 'hirb-unicode-steakknife'
 
 # デバッグ用
 gem 'pry-rails'
 gem 'pry-byebug'
-
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -54,6 +54,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+  # rubocop
+  gem 'rubocop-rails', require: false
+  # rubocopをcommit前に実行
+  gem 'pre-commit'
 end
 
 group :test do
@@ -65,7 +69,7 @@ group :test do
 end
 
 group :production, :staging do
-    gem 'unicorn'
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

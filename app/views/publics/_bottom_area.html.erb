@@ -1,0 +1,22 @@
+  <div class="bottom">
+    <% if local_assigns[:sns_icon] %>
+      <div class="bottom-sns">
+        <ul>
+          <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    <% end %>
+    <% if local_assigns[:facility_add_request] %>
+      <div class="bottom-text">
+        <button type="button" class="btn btn-primary btn-lg btn-block">情報掲載依頼はこちら</button>
+      </div>
+    <% end %>
+    <% if local_assigns[:facility_edit_request] %>
+      <div class="bottom-text">
+        <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
+      </div>
+    <% end %>
+  </div>
