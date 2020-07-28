@@ -112,12 +112,12 @@ ActiveRecord::Schema.define(version: 2020_07_26_153331) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.integer "type"
+    t.integer "kind"
     t.string "admin_comment"
     t.bigint "facility_id"
     t.index ["facility_id"], name: "index_inquiries_on_facility_id"
+    t.index ["kind"], name: "index_inquiries_on_kind"
     t.index ["status"], name: "index_inquiries_on_status"
-    t.index ["type"], name: "index_inquiries_on_type"
     t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 

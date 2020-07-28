@@ -1,6 +1,8 @@
 class Inquiry < ApplicationRecord
   # belongs_to :user, optional: true, counter_cache: true
-  enum status: { 未着手: 0, 対応中: 1, 完了: 9 }, _prefix: true
+  belongs_to :facility, optional: true
+  enum status: { not_started: 0, in_progress: 1, done: 9 }, _prefix: true
+  enum kind: {inquiry: 0, new_facility:1, edit_facility:2}, _prefix: true
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :subject, length: { maximum: 100 }
@@ -8,4 +10,5 @@ class Inquiry < ApplicationRecord
   validates :email, presence: true, length: { maximum: 254 },
                     format: { with: VALID_EMAIL_REGEX }
   validates :message, presence: true, length: { maximum: 1000 }
+
 end
