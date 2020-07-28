@@ -144,6 +144,9 @@ ActiveRecord::Schema.define(version: 2020_07_24_072527) do
     t.text "profile"
     t.integer "status", default: 0, null: false
     t.string "password"
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
