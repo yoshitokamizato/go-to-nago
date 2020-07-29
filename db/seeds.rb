@@ -5,6 +5,7 @@ User.find_or_create_by!(email: "test@example.com") do |user|
   user.prefecture = 1
   user.sex = 0
   user.status = 1
+  user.confirmed_at = Time.now
 end
 puts "ユーザー投入成功"
 User.find_or_create_by!(email: "test2@example.com") do |user|
@@ -14,6 +15,7 @@ User.find_or_create_by!(email: "test2@example.com") do |user|
   user.prefecture = 1
   user.sex = 0
   user.status = 1
+  user.confirmed_at = Time.now
 end
 
 puts "ユーザー2投入成功"
@@ -27,6 +29,7 @@ User.find_or_create_by!(email: "test3@example.com") do |user|
   user.prefecture = 1
   user.sex = 0
   user.status = 1
+  user.confirmed_at = Time.now
 end
 
 puts "動作確認用ユーザー3投入成功"

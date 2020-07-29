@@ -4,9 +4,9 @@ class User < ApplicationRecord
   mount_uploader :image, UserImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  validates :nickname, presence:  true
-  validates :birth_year, presence: true
-  validates :prefecture, presence: true
+  # validates :nickname, presence:  true
+  # validates :birth_year, presence: true
+  # validates :prefecture, presence: true
   enum sex: {"男性": 0, "女性": 1, "その他": 2}
   enum role: {"一般": 0, "オーナー": 1, "管理者": 2}
   enum status: {temporary: 0, active: 1, resign: 2}
@@ -32,4 +32,5 @@ class User < ApplicationRecord
   end
   # 以下のコマンドでfacilitiesとusersのどちらかを編集したときにもう片方も反映させる
   accepts_nested_attributes_for :bookmarks, allow_destroy: true
+
 end

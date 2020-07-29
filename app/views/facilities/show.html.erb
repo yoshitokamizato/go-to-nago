@@ -153,19 +153,7 @@
     <hr>
     <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
   </div>
-  <div class="bottom">
-    <div class="bottom-sns">
-      <ul>
-        <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
-    <div class="bottom-text">
-      <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
-    </div>
-  </div>
+  <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true } %>
 </div>
 
 <%

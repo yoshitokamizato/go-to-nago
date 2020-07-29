@@ -57,40 +57,6 @@ hr {
   text-decoration: none;
 }
 
-// ---------------最下部のsnsアイコンリスト---------------
-.bottom-sns {
-  text-align: center;
-  margin: 40px auto;
-}
-
-.bottom-sns ul li {
-  display: inline;
-  margin: 20px 30px;
-  font-size: 50px;
-}
-
-.circle {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: solid 1px #888888;
-  text-align: center;
-  line-height: 80px;
-  border-radius: 50%;
-}
-
-.bottom-sns ul li a {
-  text-decoration: none;
-  color: #888888;
-}
-
-// 最下部の情報修正依頼へのリンク
-.bottom-text {
-  text-align: center;
-  margin: 0 30px 40px 30px;
-}
-
 // ---------------詳細画面CSS---------------
 // 吹き出し　ここから
 .balloon1-top {
