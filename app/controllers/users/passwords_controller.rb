@@ -24,9 +24,9 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  def after_resetting_password_path_for(resource)
+    Devise.sign_in_after_reset_password ? user_path : edit_user_password_path
+  end
 
   # パスワード変更メール送信後のパスを設定
   def after_sending_reset_password_instructions_path_for(resource_name)
