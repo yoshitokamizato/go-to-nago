@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-  
+
   # POST /resource
   def create
     super do                                             # 他はdeviseの機能をそのまま流用する
@@ -18,12 +18,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       #↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
-      
+
       # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
       # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
     end
   end
-  
+
   # GET /resource/edit
   # def edit
   #   super
@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit_password
     @user = current_user
   end
-  
+
   # email 編集ページのためのメソッド
   def edit_email
     resource
@@ -83,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
-  
+
   # DELETE /resource
   # def destroy
   #   super
