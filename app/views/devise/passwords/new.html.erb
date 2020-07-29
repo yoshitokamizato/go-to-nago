@@ -1,16 +1,24 @@
-<h2>Forgot your password?</h2>
+<div class="title">
+  <h4 class="text-center">パスワード再設定</h4>
+</div>
+<div class="container-login">
+  <p>パスワードを再設定を行います。</p>
+  <p>登録しているメールアドレスを入力してください。</p>
+  <p>入力頂いたメールアドレスの確認のメールを送信します。</p>
+  <div class="mt-5">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= bootstrap_devise_error_messages!%>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="form-group mb-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください" %>
+    </div>
+    <%= f.submit "変更する", class:'btn btn-success btn-block' %>
+    <%= link_to "マイページヘ戻る", user_path ,class:"btn btn-primary btn-block" %>
+    <% end %>
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <p>変更の有効期限は24時間です。</p>
+  <p>24時間以内に変更を完了しなかった場合は変更を完了しなかった場合は再度お手続きをお願いします。</p>
+</div>
