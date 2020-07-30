@@ -65,6 +65,29 @@ body,
   background-color: #f3f3f3;
 }
 
+// ========ここから（ヘッダー部）=========
+.header-menu-icon{
+  display: inline-block;
+  width: 4.5em;
+  height: 4.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.logo-area{
+  text-align: center;
+}
+
+.header-logo{
+  width: 80%;
+}
+
+.header-user-icon{
+  font-size: 4.5em;
+}
+
 // _header fontawesome
 .fa-sign-in-alt {
   font-size: 25px;
@@ -74,6 +97,7 @@ body,
 .title {
   background-color: rgb(175, 175, 175);
 }
+// ========ここまで（ヘッダー部）=========
 
 // ログイン画面
 
