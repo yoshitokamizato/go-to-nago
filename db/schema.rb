@@ -112,6 +112,12 @@ ActiveRecord::Schema.define(version: 2020_07_29_133302) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.integer "kind"
+    t.string "admin_comment"
+    t.bigint "facility_id"
+    t.index ["facility_id"], name: "index_inquiries_on_facility_id"
+    t.index ["kind"], name: "index_inquiries_on_kind"
+    t.index ["status"], name: "index_inquiries_on_status"
     t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
@@ -155,5 +161,6 @@ ActiveRecord::Schema.define(version: 2020_07_29_133302) do
   add_foreign_key "bookmarks", "facilities"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "facility_genres", "genres"
+  add_foreign_key "inquiries", "facilities"
   add_foreign_key "inquiries", "users"
 end

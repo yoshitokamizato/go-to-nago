@@ -1,6 +1,13 @@
 <div class="inquiry-area">
   <div class="inquiry-title-area">
-    <h1>お問い合わせ(受付完了)</h1>
+    <% case @inquiry.kind %>
+    <% when "inquiry" %>
+      <h1>お問い合わせ(受付完了）</h1>
+    <% when "new_facility" %>
+      <h1>情報掲載依頼(受付完了）</h1>
+    <% when "edit_facility" %>
+      <h1>情報修正依頼(受付完了）</h1>
+    <% end %>
   </div>
 
 <p>問い合わせありがとうございます。</p>
