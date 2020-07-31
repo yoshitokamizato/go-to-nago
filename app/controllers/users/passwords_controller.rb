@@ -26,11 +26,11 @@ class Users::PasswordsController < Devise::PasswordsController
   # protected
 
   def after_resetting_password_path_for(_resource)
-    Devise.sign_in_after_reset_password ? user_path : edit_user_password_path
+    Devise.sign_in_after_reset_password ? new_user_session_path : new_user_session_path
   end
 
   # パスワード変更メール送信後のパスを設定
   def after_sending_reset_password_instructions_path_for(_resource_name)
-    user_path if is_navigational_format?
+    new_user_session_path if is_navigational_format?
   end
 end
