@@ -140,6 +140,9 @@ body,
 .bottom-sns {
   text-align: center;
   margin: 40px auto;
+  a:hover{
+    text-decoration: none;
+  }
 }
 
 .bottom-sns ul li {
@@ -148,21 +151,15 @@ body,
   font-size: 50px;
 }
 
-.circle {
+.sns-logo {
   display: inline-block;
   width: 80px;
   height: 80px;
-  border-radius: 50%;
-  border: solid 1px #888888;
   text-align: center;
   line-height: 80px;
   border-radius: 50%;
 }
 
-.bottom-sns ul li a {
-  text-decoration: none;
-  color: #888888;
-}
 
 // 最下部の情報修正依頼へのリンク
 .bottom-text {

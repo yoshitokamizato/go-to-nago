@@ -2,10 +2,15 @@
     <% if local_assigns[:sns_icon] %>
       <div class="bottom-sns">
         <ul>
-          <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#">
+            <%= image_tag('icon_twitter.svg', class:'sns-logo') %>
+          </a></li>
+          <li><a href="#" class="circle">
+            <%= image_tag('icon_fb.svg', class:'sns-logo') %>
+          </a></li>
+          <li><a href="#" class="circle">
+            <%= image_tag('icon_insta.svg', class:'sns-logo') %>
+          </a></li>
         </ul>
       </div>
     <% end %>
