@@ -174,49 +174,31 @@ body,
 // --------------footer---------------------
 .footer {
   margin-top: auto;
-}
-
-.row {
-  margin: 0 -15px;
-}
-
-// footerのaタグ
-.footer a {
-  font-size: 20px;
-  color: #898888;
-  padding: 0;
-}
-
-.footer a:hover {
-  text-decoration: none;
-  color: white
-}
-
-// foot上部のpタグ
-.footer_link p {
-  text-align: center;
-  margin: 0;
-  line-height: 55px;
-
-}
-
-// footer 一つ一つのlist
-.row-li {
-  padding: 0;
-  border: 1px solid #ffffffff;
-  background-color: #8888;
-}
-
-
-// footerのコピーライト部分
-.footer_bottom {
-  background-color: #222222;
-  text-align: center;
-}
-
-.footer_bottom p {
-
-  color: white;
-  margin: 0;
-  line-height: 55px;
+  color:#ffffff;
+  background-color: #3D85C6;
+  background-image: image-url('img_yanbaru_inverse.svg'),image-url('img_yanbaru.svg'); 
+  background-size: auto 80%, auto 80%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom 10% left 0%, top 10% right 0%;
+  .row {
+    margin: 0 -15px;
+    .row-li{
+      padding: 0;
+      border: 1px solid #ffffff;          
+    }
+  }
+  a {
+    color: #ffffff;
+    padding: 0;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  p{
+    text-align: center;
+    font-size: 20px;
+    margin: 0;
+    line-height: 55px;
+    color: #ffffff;  
+  }
 }
