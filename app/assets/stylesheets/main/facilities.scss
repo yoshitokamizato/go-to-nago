@@ -12,10 +12,40 @@ hr {
   text-align: center;
 }
 
-.list-title {
-  text-align: center;
-  padding: 30px 0;
+.list-body{
+  margin-bottom: 30px;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
+
+.list-title{
+  width: 85%;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.bg-image-spot{
+  background-image: image-url('bk_spot.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.triangle-cut{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 100vw 0 0;
+    border-color: #fff transparent transparent transparent ;
+  }
+}
+
 
 .list-cd {
   text-align: left;

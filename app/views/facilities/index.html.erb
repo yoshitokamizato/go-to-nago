@@ -1,9 +1,11 @@
-<div class="top col-12">
-  <%= image_tag 'title.png' ,class:"top-image" %>
+<div class="row">
+  <div class="top col-12">
+    <%= image_tag 'img_top01.png' ,class:"top-image" %>
+  </div>
 </div>
 <div class="list-body">
-  <div class="list-title">
-    <h3>グルメ一覧</h3>
+  <div class="list-title underline-blue">
+    <h3>おすすめグルメ</h3>
   </div>
   <div class="list-wrapper">
     <div class="row">
@@ -37,12 +39,12 @@
     </div>
   </div>
 </div>
-<div class="list-body">
-  <div class="list-title">
-    <h3>施設一覧</h3>
+<div class="list-body row bg-image-spot triangle-cut">
+  <div class="list-title underline-white">
+    <h3 class="text-white">おすすめ観光スポット</h3>
   </div>
 
-  <div class="list-wrapper">
+  <div class="list-wrapper col-12">
     <div class="row">
       <% @facilities.first(4).each do |facility| %>
       <div class="col-6 col-lg-3 show-row-list">
@@ -73,5 +75,5 @@
       <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
     </div>
   </div>
-  <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>
 </div>
+<%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>
