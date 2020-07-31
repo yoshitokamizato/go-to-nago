@@ -1,20 +1,31 @@
 <div class="inquiry-area">
   <div class="inquiry-title-area">
-    <h1>お問い合わせ(確認)</h1>
-    <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
+    <% case @inquiry.kind %>
+    <% when "inquiry" %>
+      <h1>お問い合わせ(確認)</h1>
+      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
+    <% when "new_facility" %>
+      <h1>情報掲載依頼(確認)</h1>
+      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
+    <% when "edit_facility" %>
+      <h1>情報修正依頼(確認)</h1>
+      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
+    <% end %>
   </div>
   <%= form_for @inquiry ,action: '/create', html: {class: 'inquiry-form'} do |f| %>
     <table class="table table-bordered">
       <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
       <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
       <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
-      <tr><th>お問い合わせ内容</th><td><%= @inquiry.message%></td></tr>
+      <tr><th>お問い合わせ内容</th><td><%= simple_format(@inquiry.message) %></td></tr>
     </table>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
       <%= f.hidden_field :subject %>
       <%= f.hidden_field :message %>
+      <%= f.hidden_field :kind %>
+      <%= f.hidden_field :facility_id %>
     <div class="btn-area">
       <%= f.submit '入力画面へ戻る', class: 'btn btn-lg btn-secondary btn-block', name: 'back' %>
       <%= f.submit '送信する', class: 'btn btn-lg btn-primary btn-block' %>
