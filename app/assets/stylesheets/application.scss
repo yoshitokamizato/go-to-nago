@@ -20,7 +20,8 @@
 
 // ========ここから（共通の初期設定）=========
 $main-color: #3D85C6;
-
+$red-color: #FF0000;
+$gray-color: #7C7B7B;
 
 body {
   color: #082b48;
@@ -123,11 +124,16 @@ body,
 
 .button-gradation{
   color: #fff;
-  background-image:-moz-linear-gradient(left, #353D24, #55ACEE);
-  background-image:-webkit-gradient(linear,left top,right bottom, from(#353D24), to(#55ACEE));
+  background-image:-moz-linear-gradient(left, #88B920, #55ACEE);
+  background-image:-webkit-gradient(linear,left top,right bottom, from(#88B920), to(#55ACEE));
   &:hover{
     color: #fff;
   }
+}
+
+// -------------- アイコン  ----------------
+.icon-red{
+  color: $red-color;
 }
 
 // ========ここまで（共通スタイル）=========
