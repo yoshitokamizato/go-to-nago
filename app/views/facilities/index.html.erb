@@ -19,7 +19,6 @@
               <% if user_signed_in? %>
               <div class="bookmark_btn_<%= gourmet.id %> favorite-area" data-bookmark='1'>
                 <object><%= render 'facilities/bookmark_area', facility: gourmet %></object>
-                <%= gourmet.bookmarks.count %>
               </div>
               <% else%>
               <div class="favorite-area">
@@ -58,7 +57,6 @@
               <% if user_signed_in? %>
               <div class="bookmark_btn_<%= facility.id %> favorite-area" data-bookmark='1'>
                 <object><%= render 'facilities/bookmark_area', facility: facility %></object>
-                <%= facility.bookmarks.count %>
               </div>
               <% else%>
               <div class="favorite-area">
