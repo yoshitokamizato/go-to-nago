@@ -1,13 +1,11 @@
 <div class="row">
-  <div class="top col-12">
     <%= image_tag 'img_top01.png' ,class:"top-image" %>
-  </div>
 </div>
-<div class="list-body">
+<div class="list-body row">
   <div class="list-title underline-blue">
     <h3>おすすめグルメ</h3>
   </div>
-  <div class="list-wrapper">
+  <div class="list-wrapper col-12">
     <div class="row">
       <% @gourmets.first(4).each do |gourmet| %>
       <div class="col-6 col-lg-3 show-row-list">
@@ -35,7 +33,7 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href="/gourmet/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <a href="/gourmet/list" type="button" class="button button-blue-border">おすすめグルメをもっと見る</a>
     </div>
   </div>
 </div>
@@ -72,7 +70,7 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <a href="/facility/list" type="button" class="button button-white-border">観光スポットをもっと見る</a>
     </div>
   </div>
 </div>

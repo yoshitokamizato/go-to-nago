@@ -19,6 +19,9 @@
 @import "bootstrap/scss/bootstrap";
 
 // ========ここから（共通の初期設定）=========
+$main-color: #3D85C6;
+
+
 body {
   color: #082b48;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -67,12 +70,69 @@ body,
 
 // ========ここから（共通スタイル）=========
 .underline-blue{
-  border-bottom: 3px solid #3D85C6;
+  border-bottom: 3px solid $main-color;
 }
 
 .underline-white{
   border-bottom: 3px solid #ffffff;
 }
+
+.button{
+  width: 85vw;
+  margin: auto;
+  font-size: 3vw;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 15px 0 15px;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.button-blue-border{
+  position: relative;
+  border: 2px solid $main-color;
+  color: $main-color;
+  &:after {
+    position: absolute;
+    right: 3vw;
+    content: "＞";
+  }
+  &:hover{
+    background-color: $main-color;
+    color: #fff;
+  }
+
+}
+
+
+.button-white-border{
+  position: relative;
+  border: 2px solid #fff;
+  color: #fff;
+  &:after {
+    position: absolute;
+    right: 3vw;
+    content: "＞";
+  }
+  &:hover{
+    background-color: #fff;
+    color: $main-color;
+  }
+
+}
+
+.button-gradation{
+  color: #fff;
+  background-image:-moz-linear-gradient(left, #353D24, #55ACEE);
+  background-image:-webkit-gradient(linear,left top,right bottom, from(#353D24), to(#55ACEE));
+  &:hover{
+    color: #fff;
+  }
+}
+
 // ========ここまで（共通スタイル）=========
 
 
@@ -148,9 +208,13 @@ body,
     border: solid 2px #a94442;
 }
 // ---------------最下部のsnsアイコンリスト---------------
+.bottom{
+  margin: 20px auto;
+}
+
 .bottom-sns {
   text-align: center;
-  margin: 40px auto;
+  margin: 0 auto 30px;
   a:hover{
     text-decoration: none;
   }
@@ -174,8 +238,8 @@ body,
 
 // 最下部の情報修正依頼へのリンク
 .bottom-text {
-  text-align: center;
-  margin: 0 30px 40px 30px;
+  // text-align: center;
+  // margin: 0 30px 40px 30px;
 }
 
 
@@ -183,7 +247,7 @@ body,
 .footer {
   margin-top: auto;
   color:#ffffff;
-  background-color: #3D85C6;
+  background-color: $main-color;
   background-image: image-url('img_yanbaru_inverse.svg'),image-url('img_yanbaru.svg'); 
   background-size: auto 80%, auto 80%;
   background-repeat: no-repeat, no-repeat;
