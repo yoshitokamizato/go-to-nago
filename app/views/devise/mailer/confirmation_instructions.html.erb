@@ -1,28 +1,30 @@
-<p><%= @resource.nickname %>さん  
-  <br>
-  名護へGOをご利用いただきありがとうございます。
-  <br>
-  <br>
-</p>
-<% if @resource.try(:unconfirmed_email?) %> 
+<% if @resource.try(:unconfirmed_email?) %>
+  <p><%= @resource.nickname %>さん
+    <br>
+    名護へGOをご利用いただきありがとうございます。
+    <br>
+    <br>
+  </p>
     <p>
         以下のURLをクリックして、メールアドレス変更手続きを完了してください。
-        <br>        
+        <br>
         <%= link_to 'メールアドレスの変更を承認する', {controller: "users/confirmations", action: :create,confirmation_token: @token}, method: :post %>
         <br>
         <br>
         このURLの有効期限は24時間です。
     </p>
 <% else %>
+  名護へGOをご利用いただきありがとうございます。
   <br>
-  会員登録が完了しました。
+  <br>
+  会員登録の仮登録を実行しました。
 <% end %>
 <br>
 <br>
 <p>
-  Webページを開く
+  以下のページより、本登録をお願い致します。
   <br>
-    http://localhost:3000 
+    http://localhost:3000/users/mainregist
   <br>
   ※このメールは返信しても届きません。お問い合わせはサイトの「お問い合わせ」からお願いいたします。
   <br>

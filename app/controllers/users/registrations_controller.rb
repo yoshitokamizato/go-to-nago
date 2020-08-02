@@ -4,13 +4,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
-  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy]
+  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy, :mainregist, :mainconfirm]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
+  before_action :user_params, only: [:mainconfirm, :back, :registcomp]
+
+#  before_action :check_login, only: [:temp]
+
   # GET /resource/sign_up
   # def new
   #   super
   # end
-  
+
   # POST /resource
   def create
     super do                                             # 他はdeviseの機能をそのまま流用する
@@ -18,12 +22,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       #↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
-      
+
       # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
       # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
     end
   end
-  
+
   # GET /resource/edit
   # def edit
   #   super
@@ -32,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit_password
     @user = current_user
   end
-  
+
   # email 編集ページのためのメソッド
   def edit_email
     resource
@@ -83,7 +87,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
-  
+
   # DELETE /resource
   # def destroy
   #   super
@@ -127,13 +131,48 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    users_temp_path
+  end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    users_temp_path
+  end
+
+  # 仮登録アカウントを強制ログアウト
+#  def check_login
+#    redirect_to logout_path if current_user && current_user.status = 0
+#  end
+
+  def mainregist
+    @user = User.new
+  end
+
+  # 本登録の内容確認
+  def mainconfirm
+    return if @user.valid?
+    render :mainregist
+  end
+
+  def back
+    render :mainregist
+  end
+
+  def registcomp
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:nickname])
+    if @user.save
+      flash[:notice] = "更新しました！"
+      redirect_to 'index'
+    else
+      @user.attributes = params[:nickname]
+      flash[:notice] = "失敗しました！"
+      redirect_to 'index'
+    end
+  end
+
+  def user_params
+    @user = User.new(params.require(:user).permit(:nickname,:prefecture,:sex,:birth_year,:image,:profile,:emailcheck))
+  end
+
 end

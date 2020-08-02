@@ -1,0 +1,75 @@
+<%=render "devise/registrations/header" %>
+
+<div class="container-login">
+  プロフィールを登録してください。<br>
+
+  <%= form_for @user,  url: users_registcomp_path, html: { method: :put } do |f| %>
+
+    <div class="field">
+      <br>
+      ニックネーム<br>
+      <div class="confirm-text">
+        <%= @user.nickname %><br>
+        <%= f.hidden_field :nickname %>
+      </div>
+    </div>
+
+    <div class="field">
+      <br>
+      お住まい<br>
+      <div class="confirm-text">
+        <%= @user.prefecture %><br>
+        <%= f.hidden_field :prefecture %>
+      </div>
+    </div>
+
+    <div class="field">
+      <br>
+      性別<br>
+      <div class="confirm-text">
+        <%= @user.sex %><br>
+        <%= f.hidden_field :sex %>
+      </div>
+    </div>
+
+    <div class="field">
+      <br>
+      生まれた年<br>
+      <div class="confirm-text">
+        <%= @user.birth_year.year %><br>
+        <%= f.hidden_field :birth_year %>
+      </div>
+    </div>
+
+    <div class="field">
+      <br>
+      プロフィール画像<br>
+      <%= image_tag @user.image.url, class:"user-icon" %>
+      <%= f.hidden_field :image %>
+    </div>
+
+    <div class="field">
+      <br>
+      自己紹介<br>
+      <div class="confirm-text">
+        <%= @user.profile %><br>
+        <%= f.hidden_field :profile %>
+      </div>
+    </div>
+
+    <div class="field">
+      <br>
+      メール配信<br>
+      <!-- TODO:メール配信有無のパラメータがUserテーブルに存在しない。 -->
+      <!-- 暫定対応として「メール配信を希望する」固定 -->
+      <div class="confirm-text">
+        メール配信を希望する<br>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "登録する", class:'btn btn-primary btn-block' %>
+    </div>
+      <%= link_to "入力画面へ戻る", :back ,class:"btn btn-primary btn-block" %>
+  <% end %>
+</div>

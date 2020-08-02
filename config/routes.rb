@@ -30,13 +30,26 @@ Rails.application.routes.draw do
 
     # 追加したアクションのルートを定義
     devise_scope :user do
-      # パスワード編集のルートを設定 
+      # パスワード編集のルートを設定
       get 'users/edit/password' => 'users/registrations#edit_password'
       put 'users/update/password' => 'users/registrations#update_password'
       # email編集のルートを設定
       get 'users/edit/email' => 'users/registrations#edit_email'
       put 'users/update/email' => 'users/registrations#update_email'
       get  'users/update/email/confirm' =>'users/registrations#update_email_confirm'
+
+      # 新規登録画面
+      get 'users/temp' => 'users/registrations#temp'
+      post 'users/temp' => 'users/registrations#temp'
+      get 'users/mainregist' => 'users/registrations#mainregist'
+      post 'users/mainregist' => 'users/registrations#mainregist'
+      get 'users/mainconfirm' => 'users/registrations#mainconfirm'
+      post 'users/mainconfirm' => 'users/registrations#mainconfirm'
+      patch 'users/registcomp' => 'users/registrations#registcomp'
+      put 'users/registcomp' => 'users/registrations#registcomp'
+
+      # 強制ログアウト
+      get '/logout', to: 'devise/sessions#destroy', as: :logout
     end
   # resource
   resource :user, only: [:show] do
