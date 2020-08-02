@@ -69,6 +69,11 @@ body,
   background-color: #ffffff;
 }
 
+#wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
 // ========ここから（共通スタイル）=========
 .underline-blue{
   border-bottom: 3px solid $main-color;
