@@ -4,8 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
-  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy]
-  prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
+  prepend_before_action :authenticate_scope!, only: %i[edit edit_password edit_email update update_password update_email destroy]
+  prepend_before_action :set_minimum_password_length, only: %i[new edit edit_password]
   # GET /resource/sign_up
   # def new
   #   super
@@ -13,9 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do                                             # 他はdeviseの機能をそのまま流用する
-      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
-      #↓と同じ意味(登録時にメール認証を行わない設定)
+    super do # 他はdeviseの機能をそのまま流用する
+      resource.update(confirmed_at: Time.now.utc) # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      # ↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
 
@@ -41,18 +41,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # updateアクションのデフォルトから引用し変更
   def update_password
     user = current_user
-    if user.valid_password?(update_password_params[:current_password])
+    # 入力した現在のパスワードが有効 かつ 新しいパスワードが以前と同じでないかのフィルター
+    if user.valid_password?(update_password_params[:current_password]) && update_password_params[:password] != update_password_params[:current_password]
       user.password = update_password_params[:password]
       user.password_confirmation = update_password_params[:password_confirmation]
       if user.save
         bypass_sign_in(current_user)
         redirect_to user_path
-        flash[:success] = "パスワードを更新しました"
+        flash[:success] = "パスワードを更新しました。"
       end
+    #  以前と同じパスワードを入力した場合のアクション
+    elsif update_password_params[:password] == update_password_params[:current_password]
+      clean_up_passwords resource
+      redirect_to users_edit_password_path
+      flash[:danger] = "新しいパスワードを入力してください"
+    # それ以外のエラー時のアクション
     else
       clean_up_passwords resource
       redirect_to users_edit_password_path
-      flash[:danger] = "パスワードの更新に失敗しました"
+      flash[:danger] = "パスワードの更新に失敗しました。"
     end
   end
 
@@ -76,6 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to users_edit_email_path
     end
   end
+
   def update_email_confirm
     @unconfirmed_email = params[:unconfirmed_email]
   end
@@ -113,9 +121,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(_resource)
     user_path
   end
+
   # password変更時のparamsを読み込む
   def update_password_params
-    params.require(:user).permit(:attribute,:password,:password_confirmation ,:current_password)
+    params.require(:user).permit(:attribute, :password, :password_confirmation, :current_password)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
