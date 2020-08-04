@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light row">
-  <div class="col-2 navbar-toggler" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <%= image_tag('icon_menu.svg', class:'header-menu-icon') %>
+<nav class="navbar navbar-expand-lg navbar-light row header">
+  <div class="col-2 navbar-toggler header-icon-area" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <%= image_tag('icon_menu.svg', class:'header-icon') %>
   </div>
   <div class="col-8 col-lg-4 logo-area">
     <%= link_to root_path do %>
@@ -17,9 +17,6 @@
       <li class="nav-item ">
         <%= link_to '施設', facility_list_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'マイページ', user_path, class: "nav-link" %>
-      </li>
       <% if user_signed_in?	%>
         <li class="nav-item">
           <%= link_to 'お気に入り', bookmarks_path, class: "nav-link" %>
@@ -32,22 +29,19 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
         </li>
       <% end %>
     </ul>
   </div>
-  <div class="col-2 navbarTogglerDemo01 collapse show">
+  <div class="col-2 navbarTogglerDemo01 collapse show header-icon-area">
       <% if user_signed_in?	%>
         <%= link_to user_path do %>
-          <%= image_tag('icon_account.svg', class:'header-user-icon') %>
+          <%= image_tag('icon_account.svg', class:'header-icon') %>
         <% end %>
       <% else %>
         <%= link_to new_user_session_path do %>
-          <%= image_tag('icon_login.svg', class:'header-user-icon') %>
+          <%= image_tag('icon_login.svg', class:'header-icon') %>
         <% end %>
       <% end %>
   </div>
