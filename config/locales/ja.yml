@@ -7,13 +7,16 @@ ja:
       inquiry:
         id: 問い合わせ番号
         status: ステータス
+        kind: 問い合わせ種類
+        user_id: ユーザーID
         name: お名前
         email: メールアドレス
+        facility_id: 施設ID
         subject: 題名
         message: お問い合わせ内容
         created_at: 問い合わせ受付日時
         updated_at: 問い合わせ更新日時
-        user_id: ユーザーID
+        admin_comment: 管理者コメント
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

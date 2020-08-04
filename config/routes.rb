@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations",
     confirmations: 'users/confirmations',
+
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
@@ -40,6 +41,11 @@ Rails.application.routes.draw do
       put 'users/update/email' => 'users/registrations#update_email'
       get  'users/update/email/confirm' =>'users/registrations#update_email_confirm'
     end
+
+    passwords: 'users/passwords'
+  }
+
+
 
   # resource
   resource :user, only: [:show] do
