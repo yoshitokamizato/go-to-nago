@@ -41,6 +41,14 @@
     </ul>
   </div>
   <div class="col-2 navbarTogglerDemo01 collapse show">
-    <a href="#"><i class="fas fa-user-circle header-user-icon"></i></a>
+      <% if user_signed_in?	%>
+        <%= link_to user_path do %>
+          <%= image_tag('icon_account.svg', class:'header-user-icon') %>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag('icon_login.svg', class:'header-user-icon') %>
+        <% end %>
+      <% end %>
   </div>
 </nav>
