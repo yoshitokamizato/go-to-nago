@@ -84,7 +84,8 @@ body,
 }
 
 .button{
-  width: 85vw;
+  width: 75%;
+  max-width: 580px;
   margin: auto;
   font-size: 3vw;
   font-weight: bold;
@@ -94,6 +95,12 @@ body,
   padding: 15px 0 15px;
   &:hover{
     text-decoration: none;
+  }
+}
+
+@media(min-width: 768px){
+  .button{
+    font-size: 24px;
   }
 }
 
