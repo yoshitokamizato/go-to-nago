@@ -240,7 +240,9 @@ body,
   margin: 20px auto;
 }
 
-.bottom-sns {
+.bottom-sns-area {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
   margin: 0 auto 30px;
   a:hover{
@@ -248,26 +250,18 @@ body,
   }
 }
 
-.bottom-sns ul li {
-  display: inline;
-  margin: 20px 30px;
-  font-size: 50px;
-}
-
 .sns-logo {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
   text-align: center;
-  line-height: 80px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 }
 
-
-// 最下部の情報修正依頼へのリンク
-.bottom-text {
-  // text-align: center;
-  // margin: 0 30px 40px 30px;
+@media(min-width: 768px){
+  .sns-logo{
+    width: 5rem;
+    height: 5rem;  
+  }
 }
 
 

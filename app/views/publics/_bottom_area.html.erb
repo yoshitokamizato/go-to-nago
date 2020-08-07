@@ -1,17 +1,15 @@
   <div class="bottom">
     <% if local_assigns[:sns_icon] %>
-      <div class="bottom-sns">
-        <ul>
-          <li><a href="#">
+      <div class="bottom-sns-area">
+          <a href="#" class="sns-link">
             <%= image_tag('icon_twitter.svg', class:'sns-logo') %>
-          </a></li>
-          <li><a href="#" class="circle">
+          </a>
+          <a href="#" class="sns-link">
             <%= image_tag('icon_fb.svg', class:'sns-logo') %>
-          </a></li>
-          <li><a href="#" class="circle">
+          </a>
+          <a href="#" class="sns-link">
             <%= image_tag('icon_insta.svg', class:'sns-logo') %>
-          </a></li>
-        </ul>
+          </a>
       </div>
     <% end %>
     <% if local_assigns[:facility_add_request] %>
