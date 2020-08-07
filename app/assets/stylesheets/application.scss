@@ -67,6 +67,13 @@ body,
   flex-direction: column;
   min-height: 100vh;
   background-color: #ffffff;
+  padding-top: 55px;
+}
+
+@media(min-width: 768px){
+  #wrapper{
+    padding-top: 55px;
+  }
 }
 
 #wrapper {
@@ -152,6 +159,10 @@ body,
 
 
 // ========ここから（ヘッダー部）=========
+.header{
+  background-color: #fff;
+}
+
 .header-icon-area,.logo-area{
   height: 55px;
 }
