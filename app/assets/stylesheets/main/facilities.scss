@@ -15,6 +15,16 @@ hr {
   text-align: center;
 }
 
+.list-wrapper .show-row-list{
+  padding: 7.5px ;
+  margin-bottom: 10px;
+}
+  @media(min-width: 992px){
+  .list-wrapper .show-row-list{
+    padding: 15px ;
+  }
+}
+
 .list-body{
   margin-bottom: 30px;
   padding-top: 100px;
@@ -54,12 +64,20 @@ hr {
 
 .card-title{
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.card-body{
+  padding: 0.6rem !important;
 }
 
 .card-text{
   font-size: 1.0rem;
   color: $gray-color;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .favorite-area{
@@ -74,9 +92,6 @@ hr {
   color: #888888;
 }
 
-.show-row-list {
-  margin-bottom: 35px;
-}
 
 // ブロックにリンクを与えるcss
 .a-card {
