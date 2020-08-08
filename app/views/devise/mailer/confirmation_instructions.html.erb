@@ -24,7 +24,7 @@
 <p>
   以下のページより、本登録をお願い致します。
   <br>
-    http://localhost:3000/users/mainregist
+  <p><%= link_to '本登録はこちら', controller: 'users/registrations', action: 'regist', confirmation_token: @token %></p>
   <br>
   ※このメールは返信しても届きません。お問い合わせはサイトの「お問い合わせ」からお願いいたします。
   <br>

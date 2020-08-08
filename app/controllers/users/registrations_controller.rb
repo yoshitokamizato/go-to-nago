@@ -4,9 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
-  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy, :mainregist, :mainconfirm]
+  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy, :temp, :regist, :confirm ]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
-  before_action :user_params, only: [:mainconfirm, :back, :registcomp]
 
 #  before_action :check_login, only: [:temp]
 
@@ -26,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
       # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
     end
+    @user = User.new
   end
 
   # GET /resource/edit
@@ -132,10 +132,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
+    flash[:success] = "仮登録が完了しました。"
     users_temp_path
   end
 
   def after_inactive_sign_up_path_for(resource)
+    flash[:success] = "仮登録が完了しました。"
     users_temp_path
   end
 
@@ -144,35 +146,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #    redirect_to logout_path if current_user && current_user.status = 0
 #  end
 
-  def mainregist
-    @user = User.new
+  def regist
+    @user = User.new(user_params)
   end
 
   # 本登録の内容確認
-  def mainconfirm
-    return if @user.valid?
-    render :mainregist
-  end
-
-  def back
-    render :mainregist
+  def confirm
+    @user = User.new(user_params)
+    # debugger
+    render :regist if @user.invalid?
   end
 
   def registcomp
-    @user = User.find(params[:id])
-    @user.update_attributes(params[:nickname])
-    if @user.save
-      flash[:notice] = "更新しました！"
-      redirect_to 'index'
-    else
-      @user.attributes = params[:nickname]
-      flash[:notice] = "失敗しました！"
-      redirect_to 'index'
-    end
+    @user = User.new(user_params)
+
+    #本登録ユーザーに設定
+    @user.status = 1;
+
+    @user.save!
   end
 
   def user_params
-    @user = User.new(params.require(:user).permit(:nickname,:prefecture,:sex,:birth_year,:image,:profile,:emailcheck))
+    params.require(:user).permit(:user_id, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
   end
 
 end

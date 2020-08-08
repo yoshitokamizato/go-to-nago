@@ -3,7 +3,7 @@
 <div class="container-login">
   プロフィールを登録してください。<br>
 
-  <%= form_for @user,  url: users_registcomp_path, html: { method: :put } do |f| %>
+  <%= form_for @user,  url: users_registcomp_path do |f| %>
 
     <div class="field">
       <br>
@@ -36,7 +36,7 @@
       <br>
       生まれた年<br>
       <div class="confirm-text">
-        <%= @user.birth_year.year %><br>
+        <%= @user.birth_year %><br>
         <%= f.hidden_field :birth_year %>
       </div>
     </div>
@@ -44,7 +44,11 @@
     <div class="field">
       <br>
       プロフィール画像<br>
-      <%= image_tag @user.image.url, class:"user-icon" %>
+      <% if @user.image.url %>
+      <%= image_tag @user.image.url ,class:"user-image"%>
+      <% else %>
+      <%= image_tag "no-image.png" ,class:"non-user-image" %>
+      <% end %>
       <%= f.hidden_field :image %>
     </div>
 
@@ -70,6 +74,6 @@
     <div class="form-group">
       <%= f.submit "登録する", class:'btn btn-primary btn-block' %>
     </div>
-      <%= link_to "入力画面へ戻る", :back ,class:"btn btn-primary btn-block" %>
+      <%= link_to "入力画面へ戻る", users_regist_path ,class:"btn btn-primary btn-block" %>
   <% end %>
 </div>

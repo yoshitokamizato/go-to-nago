@@ -41,10 +41,10 @@ Rails.application.routes.draw do
       # 新規登録画面
       get 'users/temp' => 'users/registrations#temp'
       post 'users/temp' => 'users/registrations#temp'
-      get 'users/mainregist' => 'users/registrations#mainregist'
-      post 'users/mainregist' => 'users/registrations#mainregist'
-      get 'users/mainconfirm' => 'users/registrations#mainconfirm'
-      post 'users/mainconfirm' => 'users/registrations#mainconfirm'
+      get 'users/regist' => 'users/registrations#regist'
+      post 'users/regist' => 'users/registrations#regist'
+      get 'users/confirm' => 'users/registrations#confirm'
+      post 'users/confirm' => 'users/registrations#confirm'
       patch 'users/registcomp' => 'users/registrations#registcomp'
       put 'users/registcomp' => 'users/registrations#registcomp'
 

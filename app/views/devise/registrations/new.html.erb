@@ -5,7 +5,7 @@
   <div class="btn btn-primary btn-block mt-5">Twitterで登録</div>
   <p class="text-center">または</p>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :post }) do |f| %>
       <%= bootstrap_devise_error_messages!%>
       <div class="form-group">
         <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください" %>
