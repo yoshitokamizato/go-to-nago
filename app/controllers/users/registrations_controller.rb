@@ -141,16 +141,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     users_temp_path
   end
 
-  # 仮登録アカウントを強制ログアウト
-#  def check_login
-#    redirect_to logout_path if current_user && current_user.status = 0
-#  end
-
   def regist
     @user = User.new(user_params)
   end
 
-  # 本登録の内容確認
   def confirm
     @user = User.new(user_params)
     # debugger
@@ -161,7 +155,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
 
     #本登録ユーザーに設定
-    @user.status = 1;
+    @user.status = 1
 
     @user.save!
   end
