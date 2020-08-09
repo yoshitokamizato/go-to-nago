@@ -61,7 +61,7 @@ a:hover {
 }
 // ========ここまで（共通の初期設定）=========
 // body (フッターを下に固定するため)
-body,
+// body,
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -161,6 +161,8 @@ body,
 // ========ここから（ヘッダー部）=========
 .header{
   background-color: #fff;
+  // max-width: 100%;
+  width: 100vw;
 }
 
 .header-icon-area,.logo-area{
@@ -181,7 +183,7 @@ body,
   text-align: center;
   position: relative;
   // height: 100%;
-  width: auto;
+  width: 15%;
 }
 
 .header-icon{
@@ -197,7 +199,7 @@ body,
   text-align: center;
   position: relative;
   // height: 100%;
-  width: auto;
+  width: 40%;
 }
 
 .header-logo{
