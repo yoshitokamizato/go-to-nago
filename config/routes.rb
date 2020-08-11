@@ -21,24 +21,32 @@ Rails.application.routes.draw do
     get :bookmarks, on: :collection
   end
 
+
   # deviseのコントローラーを変更するためのコマンド
   devise_for :users, controllers: {
     registrations: "users/registrations",
     confirmations: 'users/confirmations',
+
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+
+    # 追加したアクションのルートを定義
+    devise_scope :user do
+      # パスワード編集のルートを設定 
+      get 'users/edit/password' => 'users/registrations#edit_password'
+      put 'users/update/password' => 'users/registrations#update_password'
+      # email編集のルートを設定
+      get 'users/edit/email' => 'users/registrations#edit_email'
+      put 'users/update/email' => 'users/registrations#update_email'
+      get  'users/update/email/confirm' =>'users/registrations#update_email_confirm'
+    end
+
     passwords: 'users/passwords'
   }
 
 
-  # 追加したアクションのルートを定義
-  devise_scope :user do
-    # パスワード編集のルートを設定
-    get 'users/edit/password' => 'users/registrations#edit_password'
-    put 'users/update/password' => 'users/registrations#update_password'
-    # email編集のルートを設定
-    get 'users/edit/email' => 'users/registrations#edit_email'
-    put 'users/update/email' => 'users/registrations#update_email'
-    get 'users/update/email/confirm' =>'users/registrations#update_email_confirm'
-  end
+
   # resource
   resource :user, only: [:show] do
     collection do
