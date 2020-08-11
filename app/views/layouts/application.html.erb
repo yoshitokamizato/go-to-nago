@@ -13,13 +13,14 @@
 </head>
 
 <body>
-
+<div class="wrap">
   <%= render 'publics/header'%>
   <%= render 'shared/flash_messages' %>
   <div class="container-fluid" id="wrapper">
     <%= yield %>
   </div>
   <%= render 'publics/footer'%>
+</div>
 
 </body>
 
