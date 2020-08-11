@@ -71,18 +71,9 @@ a:hover {
   flex-direction: column;
   min-height: 100vh;
   background-color: #ffffff;
-  padding-top: 55px;
-}
-
-@media(min-width: 768px){
-  #wrapper{
-    padding-top: 55px;
-  }
-}
-
-#wrapper {
   max-width: 1140px;
   margin: 0 auto;
+  padding-top: 0px;
 }
 
 // ========ここから（共通スタイル）=========
@@ -163,10 +154,11 @@ a:hover {
 
 
 // ========ここから（ヘッダー部）=========
-.header{
+nav.header{
   background-color: #fff;
   // max-width: 100%;
   width: 100vw;
+  padding: 0 1rem;
 }
 
 .header-icon-area,.logo-area{
@@ -215,10 +207,41 @@ a:hover {
 }
 
 
+.header-space-adjust{
+  // padding-top: 55px;
+  height: 55px;
+}
+
+@media(min-width: 768px){
+  .header-space-adjust{
+    height: 72px;
+  }
+}
+
 .title {
   background-color: rgb(175, 175, 175);
 }
 // ========ここまで（ヘッダー部）=========
+// ========ここから（トップイメージ）=========
+.top-image {
+  // width: 100%;
+  // max-height: 500px;
+  margin: 0 -15px;
+  background-image: image-url('img_top01.png'); 
+  background-size: cover;
+  display: block;
+  // width: 100vw;
+  height: 53vw;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media(min-width: 938px){
+  .top-image {
+    height: 500px;
+  }
+}
+// ========ここまで（トップイメージ）=========
 
 // ログイン画面
 

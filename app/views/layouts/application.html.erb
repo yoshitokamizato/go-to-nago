@@ -16,6 +16,9 @@
 <div class="wrap">
   <%= render 'publics/header'%>
   <%= render 'shared/flash_messages' %>
+  <% if current_page?(root_path) %>
+    <div class="top-image"></div>
+  <% end %>
   <div class="container-fluid" id="wrapper">
     <%= yield %>
   </div>
