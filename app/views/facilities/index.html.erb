@@ -1,11 +1,8 @@
-<div class="top col-12">
-  <%= image_tag 'title.png' ,class:"top-image" %>
-</div>
-<div class="list-body">
-  <div class="list-title">
-    <h3>グルメ一覧</h3>
+<div class="list-body row">
+  <div class="list-title underline-blue">
+    <h3>おすすめグルメ</h3>
   </div>
-  <div class="list-wrapper">
+  <div class="list-wrapper col-12">
     <div class="row">
       <% @gourmets.first(4).each do |gourmet| %>
       <div class="col-6 col-lg-3 show-row-list">
@@ -13,19 +10,19 @@
           <div class="card">
             <%images = gourmet.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
-            <div class="card-body text-center">
+            <div class="card-body">
               <h4 class="card-title"><%= gourmet.name %></h4>
+              <p class="card-text"><%= gourmet.description %></p>
               <% if user_signed_in? %>
-              <div class="bookmark_btn_<%= gourmet.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
+              <div class="bookmark_btn_<%= gourmet.id %> favorite-area" data-bookmark='1'>
                 <object><%= render 'facilities/bookmark_area', facility: gourmet %></object>
               </div>
               <% else%>
-              <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
-                <object ect><%= link_to icon('far', 'star'), new_user_session_path %></object>
+              <div class="favorite-area">
+                <object ect><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+                <%= gourmet.bookmarks.count %>
               </div>
               <% end %>
-              <br>
-              <p class="card-text"><%= gourmet.description %></p>
             </div>
           </div>
         </a>
@@ -33,36 +30,36 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href="/gourmet/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <a href="/gourmet/list" type="button" class="button button-blue-border">おすすめグルメをもっと見る</a>
     </div>
   </div>
 </div>
-<div class="list-body">
-  <div class="list-title">
-    <h3>施設一覧</h3>
+<div class="list-body row bg-image-spot triangle-cut">
+  <div class="list-title underline-white">
+    <h3 class="text-white">おすすめ観光スポット</h3>
   </div>
 
-  <div class="list-wrapper">
+  <div class="list-wrapper col-12">
     <div class="row">
       <% @facilities.first(4).each do |facility| %>
       <div class="col-6 col-lg-3 show-row-list">
         <a href="facilities/<%=facility.id%>" class="a-card">
-          <div class="card text-center">
+          <div class="card">
             <%images = facility.facility_images.first%>
             <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
             <div class="card-body">
               <h4 class="card-title"><%= facility.name %></h4>
+              <p class="card-text"><%= facility.description %></p>
               <% if user_signed_in? %>
-              <div class="bookmark_btn_<%= facility.id %>" data-bookmark='1' style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
+              <div class="bookmark_btn_<%= facility.id %> favorite-area" data-bookmark='1'>
                 <object><%= render 'facilities/bookmark_area', facility: facility %></object>
               </div>
               <% else%>
-              <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
-                <object><%= link_to icon('far', 'star'), new_user_session_path %></object>
+              <div class="favorite-area">
+                <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+                <%= facility.bookmarks.count %>
               </div>
               <% end %>
-              <br>
-              <p class="card-text"><%= facility.description %></p>
             </div>
           </div>
         </a>
@@ -70,8 +67,8 @@
       <% end %>
     </div>
     <div class="list-button">
-      <a href="/facility/list" type="button" class="btn btn-primary btn-lg btn-block">もっと見る</a>
+      <a href="/facility/list" type="button" class="button button-white-border">観光スポットをもっと見る</a>
     </div>
   </div>
-  <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>
 </div>
+<%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>
