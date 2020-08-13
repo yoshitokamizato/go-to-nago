@@ -1,22 +1,25 @@
   <div class="bottom">
     <% if local_assigns[:sns_icon] %>
-      <div class="bottom-sns">
-        <ul>
-          <li><a href="#" class="circle"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-google-plus-g"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#" class="circle"><i class="fab fa-instagram"></i></a></li>
-        </ul>
+      <div class="bottom-sns-area">
+          <a href="#" class="sns-link">
+            <%= image_tag('icon_twitter.svg', class:'sns-logo') %>
+          </a>
+          <a href="#" class="sns-link">
+            <%= image_tag('icon_fb.svg', class:'sns-logo') %>
+          </a>
+          <a href="#" class="sns-link">
+            <%= image_tag('icon_insta.svg', class:'sns-logo') %>
+          </a>
       </div>
     <% end %>
     <% if local_assigns[:facility_add_request] %>
       <div class="bottom-text">
-        <button type="button" class="btn btn-primary btn-lg btn-block">情報掲載依頼はこちら</button>
+        <%= link_to "情報掲載依頼はこちら", new_inquiry_path(kind: 1), class:"button button-gradation" %>
       </div>
     <% end %>
     <% if local_assigns[:facility_edit_request] %>
       <div class="bottom-text">
-        <button type="button" class="btn btn-primary btn-lg btn-block">情報修正依頼はこちら</button>
+        <%= link_to "情報修正依頼はこちら", new_inquiry_path(kind: 2, facility_id: local_assigns[:facility_id]), class:"button button-gradation" %>
       </div>
     <% end %>
   </div>

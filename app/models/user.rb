@@ -32,4 +32,14 @@ class User < ApplicationRecord
   end
   # 以下のコマンドでfacilitiesとusersのどちらかを編集したときにもう片方も反映させる
   accepts_nested_attributes_for :bookmarks, allow_destroy: true
+
+  devise :omniauthable, omniauth_providers: %i[twitter]
+  # omniauthのコールバック時に呼ばれるメソッド
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
+
 end

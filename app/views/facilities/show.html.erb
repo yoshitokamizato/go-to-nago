@@ -153,8 +153,8 @@
     <hr>
     <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
   </div>
-  <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true } %>
 </div>
+<%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true, facility_id: @facility.id } %>
 
 <%
 =begin%>

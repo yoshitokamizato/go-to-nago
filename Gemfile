@@ -25,6 +25,9 @@ gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'dotenv-rails'
 
+gem 'omniauth-twitter'
+
+
 # hirb: 出力結果を表形式で出力する
 # hirb-unicode: マルチバイト文字の表示を補正する
 gem 'hirb'
