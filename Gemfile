@@ -11,6 +11,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'rails-i18n'
+gem 'enum_help' #enumの日本語化
 gem 'rmagick'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'

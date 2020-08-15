@@ -33,7 +33,7 @@ validates :longitude, presence: true
 validates :description, presence: true
 validates :parking, presence: true
 validates :owner_id, presence: true
-enum status: {"営業中": 0, "閉店": 1, "休業中": 2, "オープン予定": 3}
+enum status: {open: 0, closed_shop: 1, closing_down: 2, will_open: 3}
 validates :created_user, presence: true
 validates :updated_user, presence: true
 
