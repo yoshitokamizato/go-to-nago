@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "bookmarks/create"
   get "bookmarks/destroy"
   root to: "facilities#index"
+  get "/facilities/list", to: "facilities#show_facilities"
   get "/facility/list", to: "facilities#show_facility"
   get "/bookmarks", to: "facilities#bookmark"
   get "/gourmet/list", to: "facilities#show_gourmet"
