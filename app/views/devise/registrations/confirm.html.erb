@@ -3,61 +3,66 @@
 <div class="container-login">
   プロフィールを登録してください。<br>
 
-  <%= form_for @user,  url: users_registcomp_path do |f| %>
+  <%# form_for @user,  url: users_registcomp_path do |f| %>
+  <%= form_for(@user, url: before_sign_up_path(@user, confirmation_token: @token),html: {method: "post"}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: @user %>
+    <%= f.hidden_field :user_id, :value =>  @user.id %>
+    <%= f.hidden_field :email, :value =>  @user.email %>
+    <%= f.hidden_field :nickname, :value =>  @user.nickname %>
+    <%= f.hidden_field :prefecture, :value =>  @user.prefecture %>
+    <%= f.hidden_field :sex, :value =>  @user.sex %>
+    <%= f.hidden_field :birth_year, :value =>  @user.birth_year %>
+    <%= f.hidden_field :image, :value =>  @user.image %>
+    <%= f.hidden_field :profile, :value =>  @user.profile %>
 
     <div class="field">
       <br>
-      ニックネーム<br>
+      <%= f.label :nickname %><br />
       <div class="confirm-text">
-        <%= @user.nickname %><br>
-        <%= f.hidden_field :nickname %>
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "name",:readonly => true %>
       </div>
     </div>
 
     <div class="field">
       <br>
-      お住まい<br>
+      <%= f.label :prefecture %><br />
       <div class="confirm-text">
-        <%= @user.prefecture %><br>
-        <%= f.hidden_field :prefecture %>
+        <%= f.text_field :prefecture, autofocus: true, autocomplete: "name",:readonly => true %>
       </div>
     </div>
 
     <div class="field">
       <br>
-      性別<br>
+      <%= f.label :sex %><br />
       <div class="confirm-text">
-        <%= @user.sex %><br>
-        <%= f.hidden_field :sex %>
+        <%= f.text_field :sex, autofocus: true, autocomplete: "name",:readonly => true %>
       </div>
     </div>
 
     <div class="field">
       <br>
-      生まれた年<br>
+      <%= f.label :birth_year %><br>
       <div class="confirm-text">
-        <%= @user.birth_year %><br>
-        <%= f.hidden_field :birth_year %>
+        <%= f.text_field :birth_year, autofocus: true, autocomplete: "name",:readonly => true %>
       </div>
     </div>
 
     <div class="field">
       <br>
-      プロフィール画像<br>
+      <%= f.label :image %><br>
       <% if @user.image.url %>
-      <%= image_tag @user.image.url ,class:"user-image"%>
+        <%= image_tag @user.image.url ,class:"user-image"%>
       <% else %>
-      <%= image_tag "no-image.png" ,class:"non-user-image" %>
+        <%= image_tag "no-image.png" ,class:"non-user-image" %>
       <% end %>
       <%= f.hidden_field :image %>
     </div>
 
     <div class="field">
       <br>
-      自己紹介<br>
+      <%= f.label :profile %><br>
       <div class="confirm-text">
-        <%= @user.profile %><br>
-        <%= f.hidden_field :profile %>
+        <%= f.text_field :profile, autofocus: true, autocomplete: "name",:readonly => true %>
       </div>
     </div>
 

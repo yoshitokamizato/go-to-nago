@@ -41,15 +41,20 @@ Rails.application.routes.draw do
       # 新規登録画面
       get 'users/temp' => 'users/registrations#temp'
       post 'users/temp' => 'users/registrations#temp'
-      get 'users/regist' => 'users/registrations#regist'
-      post 'users/regist' => 'users/registrations#regist'
-      get 'users/confirm' => 'users/registrations#confirm'
-      post 'users/confirm' => 'users/registrations#confirm'
-      patch 'users/registcomp' => 'users/registrations#registcomp'
-      put 'users/registcomp' => 'users/registrations#registcomp'
+#      get 'users/regist' => 'users/registrations#regist'
+#      post 'users/regist' => 'users/registrations#regist'
+#      get 'users/confirm' => 'users/registrations#confirm'
+#      post 'users/confirm' => 'users/registrations#confirm'
+#      patch 'users/registcomp' => 'users/registrations#registcomp'
+#      put 'users/registcomp' => 'users/registrations#registcomp'
 
-      # 強制ログアウト
-      get '/logout', to: 'devise/sessions#destroy', as: :logout
+      #プロフィール編集画面（仮登録状態）
+      get "before_sign_up", :to => "users/registrations#regist"
+      #プロフィール編集内容確認画面（仮登録状態）
+      post "before_sign_up_confirm", :to => "users/registrations#confirm"
+      #プロフィール編集内容のアップデート処理（仮登録→本登録に）
+      post "before_sign_up", :to => "users/registrations#registcomp"
+
     end
   # resource
   resource :user, only: [:show] do

@@ -4,20 +4,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
-  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy, :temp, :regist, :confirm ]
+  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy ]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
 
 #  before_action :check_login, only: [:temp]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    build_resource
+    yield resource if block_given?
+    respond_with resource
+  end
 
   # POST /resource
   def create
     super do                                             # 他はdeviseの機能をそのまま流用する
-      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+#      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
       #↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
@@ -25,7 +27,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # deviseは認証済みかどうかの判断をconfirmed_atに日付が入っているかどうかで判定しているようです。
       # そのため、confirmable機能でメールを送信した上で、confirmed_atに値を入れて自己完結させてる
     end
-    @user = User.new
   end
 
   # GET /resource/edit
@@ -102,6 +103,53 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def temp
+    @user = User.find(params["resource"])
+  end
+
+  def regist
+    # 引数のresourceを使ってユーザーを取得
+    @user =  User.find(params["resource"])
+    @token = params["confirmation_token"]
+  end
+
+  def confirm
+    @user =  User.find(params["user"]["user_id"])
+    @user.nickname = params["user"]["nickname"]
+    @user.prefecture = params["user"]["prefecture"]
+    @user.sex = params["user"]["sex"]
+    @user.birth_year = params["user"]["birth_year"]
+    @user.image = params["user"]["image"]
+    @user.profile = params["user"]["profile"]
+
+    @token = params["confirmation_token"]
+    if @user.valid?
+      render :action => 'before_confirm'
+      flash.now[:success] = '確認して完了してください'
+    else
+     render :action => 'before_create'
+     flash.now[:alert] = '失敗しました'
+    end
+  end
+
+  def registcomp
+    @user =  User.find(params["user"]["user_id"])
+
+    # userのアクティブ状況をactiveに変更
+    @user.status = 1
+
+    @token = params["confirmation_token"]
+    @user.save
+    if @user.valid?
+      #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
+      redirect_to confirmation_path(@user, confirmation_token: @token)
+      flash[:success] = '確認して完了してください'
+    else
+      render :action => 'before_create'
+      flash.now[:alert] = '失敗しました'
+    end
+  end
+
   protected
 
   # 更新（編集の反映）時にパスワード入力を省く
@@ -131,37 +179,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  def after_sign_up_path_for(resource)
-    flash[:success] = "仮登録が完了しました。"
-    users_temp_path
-  end
+#  def after_sign_up_path_for(resource)
+#    flash[:success] = "仮登録が完了しました。"
+#    users_temp_path
+#  end
 
-  def after_inactive_sign_up_path_for(resource)
-    flash[:success] = "仮登録が完了しました。"
-    users_temp_path
-  end
+#  def after_inactive_sign_up_path_for(resource)
+#    flash[:success] = "仮登録が完了しました。"
+#    users_temp_path
+#  end
 
-  def regist
-    @user = User.new(user_params)
-  end
-
-  def confirm
-    @user = User.new(user_params)
-    # debugger
-    render :regist if @user.invalid?
-  end
-
-  def registcomp
-    @user = User.new(user_params)
-
-    #本登録ユーザーに設定
-    @user.status = 1
-
-    @user.save!
-  end
-
-  def user_params
-    params.require(:user).permit(:user_id, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
-  end
+#  def user_params
+#    params.require(:user).permit(:user_id, :email, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
+#  end
 
 end
