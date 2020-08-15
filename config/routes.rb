@@ -49,11 +49,11 @@ Rails.application.routes.draw do
 #      put 'users/registcomp' => 'users/registrations#registcomp'
 
       #プロフィール編集画面（仮登録状態）
-      get "before_sign_up", :to => "users/registrations#regist"
+      get "before_sign_up", to: "users/registrations#regist"
       #プロフィール編集内容確認画面（仮登録状態）
-      post "before_sign_up_confirm", :to => "users/registrations#confirm"
+      post "before_sign_up_confirm",to: "users/registrations#confirm"
       #プロフィール編集内容のアップデート処理（仮登録→本登録に）
-      post "before_sign_up", :to => "users/registrations#registcomp"
+      post "before_sign_up",to:"users/registrations#registcomp"
 
     end
   # resource
