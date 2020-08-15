@@ -4,10 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
-  prepend_before_action :authenticate_scope!, only: [:edit, :edit_password, :edit_email, :update, :update_password, :update_email, :destroy ]
-  prepend_before_action :set_minimum_password_length, only: [:new, :edit, :edit_password]
+  prepend_before_action :authenticate_scope!, only: %i[edit edit_password edit_email update update_password update_email destroy]
+  prepend_before_action :set_minimum_password_length, only: %i[new edit edit_password]
+  before_action :configure_sign_up_params, only: [:create]
 
-#  before_action :check_login, only: [:temp]
+  #  before_action :check_login, only: [:temp]
 
   # GET /resource/sign_up
   def new
@@ -16,11 +17,79 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_with resource
   end
 
+  # 仮登録時にプロフィールを編集するアクション
+  def regist
+    # 引数のresourceを使ってユーザーを取得
+    # メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
+    # 確認メールから編集画面に来た時
+    if params["resource"]
+      @user = User.find(params["resource"])
+      @token = params["confirmation_token"]
+
+    # 確認画面から編集画面に戻った時
+    elsif params["user"]
+      @user = User.find(params["user"]["user_id"])
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = params["user"]["birth_year"]
+      @user.image = params["user"]["image"]
+      @user.profile = params["user"]["profile"]
+      @token = params["user"]["confirmation_token"]
+    end
+  end
+
+  # registアクションの内容を表示して確認するアクション
+  def confirm
+    @user = User.find(params["user"]["user_id"])
+    @user.nickname = params["user"]["nickname"]
+    @user.prefecture = params["user"]["prefecture"]
+    @user.sex = params["user"]["sex"]
+    @user.birth_year = params["user"]["birth_year"]
+    @user.image = params["user"]["image"]
+    @user.profile = params["user"]["profile"]
+
+    @token = params["confirmation_token"]
+    if @user.valid?
+      render action: "confirm"
+      flash.now[:success] = "確認して完了してください"
+    else
+      render action: "regist"
+      flash.now[:alert] = "失敗しました"
+    end
+  end
+
+  # プロフィールを保存し、認証トークンを受理することで登録を完了するアクション
+  def registcomp
+    @user = User.find(params["user"]["user_id"])
+    @user.nickname = params["user"]["nickname"]
+    @user.prefecture = params["user"]["prefecture"]
+    @user.sex = params["user"]["sex"]
+    @user.birth_year = params["user"]["birth_year"]
+    @user.image = params["user"]["image"]
+    @user.profile = params["user"]["profile"]
+    # userのアクティブ状況をactiveに変更
+    @user.status = 1
+    @token = params["confirmation_token"]
+
+    binding.pry
+
+    if @user.valid?
+      @user.save
+      #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
+      redirect_to confirmation_path(@user, confirmation_token: @token)
+      flash[:success] = "会員登録が完了しました。ログインしてください"
+    else
+      render action: "before_create"
+      flash.now[:alert] = "会員登録に失敗しました。再登録してください"
+    end
+  end
+
   # POST /resource
   def create
-    super do                                             # 他はdeviseの機能をそのまま流用する
-#      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
-      #↓と同じ意味(登録時にメール認証を行わない設定)
+    super do # 他はdeviseの機能をそのまま流用する
+      #      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      # ↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
 
@@ -81,6 +150,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to users_edit_email_path
     end
   end
+
   def update_email_confirm
     @unconfirmed_email = params[:unconfirmed_email]
   end
@@ -103,52 +173,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def temp
-    @user = User.find(params["resource"])
-  end
-
-  def regist
-    # 引数のresourceを使ってユーザーを取得
-    @user =  User.find(params["resource"])
-    @token = params["confirmation_token"]
-  end
-
-  def confirm
-    @user =  User.find(params["user"]["user_id"])
-    @user.nickname = params["user"]["nickname"]
-    @user.prefecture = params["user"]["prefecture"]
-    @user.sex = params["user"]["sex"]
-    @user.birth_year = params["user"]["birth_year"]
-    @user.image = params["user"]["image"]
-    @user.profile = params["user"]["profile"]
-
-    @token = params["confirmation_token"]
-    if @user.valid?
-      render :action => 'before_confirm'
-      flash.now[:success] = '確認して完了してください'
-    else
-     render :action => 'before_create'
-     flash.now[:alert] = '失敗しました'
-    end
-  end
-
-  def registcomp
-    @user =  User.find(params["user"]["user_id"])
-
-    # userのアクティブ状況をactiveに変更
-    @user.status = 1
-
-    @token = params["confirmation_token"]
-    @user.save
-    if @user.valid?
-      #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
-      redirect_to confirmation_path(@user, confirmation_token: @token)
-      flash[:success] = '確認して完了してください'
-    else
-      render :action => 'before_create'
-      flash.now[:alert] = '失敗しました'
-    end
-  end
+  # def temp
+  #   @user = params["resource"]
+  # end
 
   protected
 
@@ -165,32 +192,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(_resource)
     user_path
   end
+
   # password変更時のparamsを読み込む
   def update_password_params
-    params.require(:user).permit(:attribute,:password,:password_confirmation ,:current_password)
+    params.require(:user).permit(:attribute, :password, :password_confirmation, :current_password)
   end
+
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-#  def after_sign_up_path_for(resource)
-#    flash[:success] = "仮登録が完了しました。"
-#    users_temp_path
-#  end
+  #  def after_sign_up_path_for(resource)
+  #    flash[:success] = "仮登録が完了しました。"
+  #    users_temp_path
+  #  end
 
-#  def after_inactive_sign_up_path_for(resource)
-#    flash[:success] = "仮登録が完了しました。"
-#    users_temp_path
-#  end
+  #  def after_inactive_sign_up_path_for(resource)
+  #    flash[:success] = "仮登録が完了しました。"
+  #    users_temp_path
+  #  end
 
-#  def user_params
-#    params.require(:user).permit(:user_id, :email, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
-#  end
-
+  #  def user_params
+  #    params.require(:user).permit(:user_id, :email, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
+  #  end
 end
