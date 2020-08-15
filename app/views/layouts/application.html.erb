@@ -13,17 +13,17 @@
 </head>
 
 <body>
-
-  <% if user_signed_in? %>
+<div class="wrap">
   <%= render 'publics/header'%>
-  <% else %>
-  <%= render 'publics/before_login_header' %>
-  <% end %>
   <%= render 'shared/flash_messages' %>
+  <% if current_page?(root_path) %>
+    <div class="top-image"></div>
+  <% end %>
   <div class="container-fluid" id="wrapper">
     <%= yield %>
   </div>
   <%= render 'publics/footer'%>
+</div>
 
 </body>
 

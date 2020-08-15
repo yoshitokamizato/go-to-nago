@@ -115,18 +115,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # updateアクションのデフォルトから引用し変更
   def update_password
     user = current_user
-    if user.valid_password?(update_password_params[:current_password])
+    # 入力した現在のパスワードが有効 かつ 新しいパスワードが以前と同じでないかのフィルター
+    if user.valid_password?(update_password_params[:current_password]) && update_password_params[:password] != update_password_params[:current_password]
       user.password = update_password_params[:password]
       user.password_confirmation = update_password_params[:password_confirmation]
       if user.save
         bypass_sign_in(current_user)
         redirect_to user_path
-        flash[:success] = "パスワードを更新しました"
+        flash[:success] = "パスワードを更新しました。"
       end
+    #  以前と同じパスワードを入力した場合のアクション
+    elsif update_password_params[:password] == update_password_params[:current_password]
+      clean_up_passwords resource
+      redirect_to users_edit_password_path
+      flash[:danger] = "新しいパスワードを入力してください"
+    # それ以外のエラー時のアクション
     else
       clean_up_passwords resource
       redirect_to users_edit_password_path
-      flash[:danger] = "パスワードの更新に失敗しました"
+      flash[:danger] = "パスワードの更新に失敗しました。"
     end
   end
 

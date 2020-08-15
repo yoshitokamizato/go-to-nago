@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   # deviseのコントローラーを変更するためのコマンド
   devise_for :users, controllers: {
     registrations: "users/registrations",
-    confirmations: "users/confirmations"
+    confirmations: "users/confirmations",
+    passwords: "users/passwords",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   # 追加したアクションのルートを定義
