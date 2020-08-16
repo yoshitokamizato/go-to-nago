@@ -14,6 +14,7 @@
   <%= f.hidden_field :birth_year, :value =>  @user.birth_year %>
   <%= f.hidden_field :image, :value =>  @user.image %>
   <%= f.hidden_field :profile, :value =>  @user.profile %>
+  <%= f.hidden_field :mailmagazine, :value =>  @user.mailmagazine %>
 
   <div class="field">
     <br>
@@ -69,10 +70,11 @@
   <div class="field">
     <br>
     メール配信<br>
-    <!-- TODO:メール配信有無のパラメータがUserテーブルに存在しない。 -->
-    <!-- 暫定対応として「メール配信を希望する」固定 -->
-    <div class="confirm-text">
+    <% if @user.mailmagazine == true then %>
       メール配信を希望する<br>
+    <% else %>
+      メール配信を希望しない<br>
+    <% end %>
     </div>
   </div>
   <div class="form-group">
