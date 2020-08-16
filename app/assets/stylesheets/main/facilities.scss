@@ -1,20 +1,83 @@
+@import "application.scss";
+
 // *
 hr {
   padding-bottom: 35px;
 }
 
 // ---------------それぞれのshow---------------
-.top-image {
-  width: 380px;
-}
 
 .top {
   text-align: center;
 }
 
-.list-title {
+.list-wrapper .show-row-list{
+  padding: 7.5px ;
+  margin-bottom: 10px;
+}
+  @media(min-width: 992px){
+  .list-wrapper .show-row-list{
+    padding: 15px ;
+  }
+}
+
+.list-body{
+  margin-bottom: 30px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.list-title{
+  width: 85%;
+  margin: 0 auto 30px;
   text-align: center;
-  padding: 30px 0;
+  h3{
+    font-weight: bold;
+  }
+}
+
+.bg-image-spot{
+  background-image: image-url('bk_spot.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.triangle-cut{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 100vw 0 0;
+    border-color: #fff transparent transparent transparent ;
+  }
+}
+
+.card-title{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-body{
+  padding: 0.6rem !important;
+}
+
+.card-text{
+  font-size: 1.0rem;
+  color: $gray-color;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.favorite-area{
+  font-size: 1.5rem;
 }
 
 .list-cd {
@@ -25,9 +88,6 @@ hr {
   color: #888888;
 }
 
-.show-row-list {
-  margin-bottom: 35px;
-}
 
 // ブロックにリンクを与えるcss
 .a-card {
