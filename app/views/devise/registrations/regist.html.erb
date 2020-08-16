@@ -39,8 +39,8 @@
 
   メール送信<br>
   <div class="form-group">
-    <%= check_box_tag :emailcheck %>
-    <%= label_tag :emailcheck, "メール配信を希望する" , autocomplete: "emailcheck"%>
+    <%= f.check_box :mailmagazine, {} , "true", "false" %>
+    <%= label_tag :mailmagazine, "メール配信を希望する" , autocomplete: "mailmagazine"%>
   </div>
 
   <div class="form-group">

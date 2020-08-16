@@ -35,6 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.birth_year = params["user"]["birth_year"]
       @user.image = params["user"]["image"]
       @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
       @token = params["user"]["confirmation_token"]
     end
   end
@@ -48,6 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.birth_year = params["user"]["birth_year"]
     @user.image = params["user"]["image"]
     @user.profile = params["user"]["profile"]
+    @user.mailmagazine = params["user"]["mailmagazine"]
 
     @token = params["confirmation_token"]
     if @user.valid?
@@ -68,11 +70,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.birth_year = params["user"]["birth_year"]
     @user.image = params["user"]["image"]
     @user.profile = params["user"]["profile"]
+    @user.mailmagazine = params["user"]["mailmagazine"]
+
     # userのアクティブ状況をactiveに変更
     @user.status = 1
     @token = params["confirmation_token"]
-
-    binding.pry
 
     if @user.valid?
       @user.save
