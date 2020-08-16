@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_07_31_133438) do
-
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -143,10 +141,10 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname", null: false
-    t.datetime "birth_year", null: false
+    t.string "nickname"
+    t.datetime "birth_year"
     t.integer "sex"
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "image"
     t.integer "role", default: 0, null: false
     t.text "profile"
@@ -162,8 +160,6 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookmarks", "facilities"
-  add_foreign_key "bookmarks", "users"
   add_foreign_key "facility_genres", "genres"
   add_foreign_key "inquiries", "facilities"
   add_foreign_key "inquiries", "users"
