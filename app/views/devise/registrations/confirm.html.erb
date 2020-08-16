@@ -1,0 +1,98 @@
+<%=render "devise/registrations/header" %>
+
+<div class="container-login">
+  プロフィールを登録してください。<br>
+
+  <%# form_for @user,  url: users_registcomp_path do |f| %>
+  <%= form_for(@user, url: before_sign_up_update_path(@user, confirmation_token: @token),html: {method: "post"}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+  <%= f.hidden_field :user_id, :value =>  @user.id %>
+  <%= f.hidden_field :email, :value =>  @user.email %>
+  <%= f.hidden_field :nickname, :value =>  @user.nickname %>
+  <%= f.hidden_field :prefecture, :value =>  @user.prefecture %>
+  <%= f.hidden_field :sex, :value =>  @user.sex %>
+  <%= f.hidden_field :birth_year, :value =>  @user.birth_year %>
+  <%= f.hidden_field :image, :value =>  @user.image %>
+  <%= f.hidden_field :profile, :value =>  @user.profile %>
+
+  <div class="field">
+    <br>
+    <%= f.label :nickname %><br />
+    <div class="confirm-text">
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "name",:readonly => true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= f.label :prefecture %><br />
+    <div class="confirm-text">
+      <%= f.text_field :prefecture, autofocus: true, autocomplete: "name",:readonly => true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= f.label :sex %><br />
+    <div class="confirm-text">
+      <%= f.text_field :sex, autofocus: true, autocomplete: "name",:readonly => true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= f.label :birth_year %><br>
+    <div class="confirm-text">
+      <%= f.text_field :birth_year, autofocus: true, autocomplete: "name",:readonly => true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= f.label :image %><br>
+    <% if @user.image.url %>
+    <%= image_tag @user.image.url ,class:"user-image"%>
+    <% else %>
+    <%= image_tag "no-image.png" ,class:"non-user-image" %>
+    <% end %>
+    <%= f.hidden_field :image %>
+  </div>
+
+  <div class="field">
+    <br>
+    <%= f.label :profile %><br>
+    <div class="confirm-text">
+      <%= f.text_field :profile, autofocus: true, autocomplete: "name",:readonly => true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <br>
+    メール配信<br>
+    <!-- TODO:メール配信有無のパラメータがUserテーブルに存在しない。 -->
+    <!-- 暫定対応として「メール配信を希望する」固定 -->
+    <div class="confirm-text">
+      メール配信を希望する<br>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "登録する", class:'btn btn-primary btn-block' %>
+  </div>
+  <% end %>
+
+  <%= form_for(@user, url: before_sign_up_path(user:@user, confirmation_token: @token),html: {method: "get"}) do |f| %>
+  <%= f.hidden_field :user_id, :value =>  @user.id %>
+  <%= f.hidden_field :email, :value =>  @user.email %>
+  <%= f.hidden_field :nickname, :value =>  @user.nickname %>
+  <%= f.hidden_field :prefecture, :value =>  @user.prefecture %>
+  <%= f.hidden_field :sex, :value =>  @user.sex %>
+  <%= f.hidden_field :birth_year, :value =>  @user.birth_year %>
+  <%= f.hidden_field :image, :value =>  @user.image %>
+  <%= f.hidden_field :profile, :value =>  @user.profile %>
+  <%= f.hidden_field :confirmation_token, :value =>  @token %>
+
+  <div class="form-group">
+    <%= f.submit "戻る", class: "btn btn-secondary btn-block"%>
+  </div>
+  <% end %>
+</div>
