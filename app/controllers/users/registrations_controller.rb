@@ -46,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.nickname = params["user"]["nickname"]
     @user.prefecture = params["user"]["prefecture"]
     @user.sex = params["user"]["sex"]
-    @user.birth_year = params["user"]["birth_year"]
+    @user.birth_year = DateTime.parse(params["user"]["birth_year(1i)"] + "-01-01 00:00:00")
     @user.image = params["user"]["image"]
     @user.profile = params["user"]["profile"]
     @user.mailmagazine = params["user"]["mailmagazine"]
@@ -217,17 +217,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  #  def after_sign_up_path_for(resource)
-  #    flash[:success] = "仮登録が完了しました。"
-  #    users_temp_path
-  #  end
-
-  #  def after_inactive_sign_up_path_for(resource)
-  #    flash[:success] = "仮登録が完了しました。"
-  #    users_temp_path
-  #  end
-
-  #  def user_params
-  #    params.require(:user).permit(:user_id, :email, :nickname, :prefecture, :sex, :birth_year, :image, :profile)
-  #  end
 end

@@ -3,7 +3,6 @@
 <div class="container-login">
   プロフィールを登録してください。<br>
 
-  <%# form_for @user,  url: users_registcomp_path do |f| %>
   <%= form_for(@user, url: before_sign_up_update_path(@user, confirmation_token: @token),html: {method: "post"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
   <%= f.hidden_field :user_id, :value =>  @user.id %>
@@ -20,7 +19,7 @@
     <br>
     <%= f.label :nickname %><br />
     <div class="confirm-text">
-      <%= f.text_field :nickname, autofocus: true, autocomplete: "name",:readonly => true %>
+      <%= @user.nickname %>
     </div>
   </div>
 
@@ -28,7 +27,7 @@
     <br>
     <%= f.label :prefecture %><br />
     <div class="confirm-text">
-      <%= f.text_field :prefecture, autofocus: true, autocomplete: "name",:readonly => true %>
+      <%= @user.prefecture %>
     </div>
   </div>
 
@@ -36,7 +35,7 @@
     <br>
     <%= f.label :sex %><br />
     <div class="confirm-text">
-      <%= f.text_field :sex, autofocus: true, autocomplete: "name",:readonly => true %>
+      <%= @user.sex %>
     </div>
   </div>
 
@@ -44,7 +43,9 @@
     <br>
     <%= f.label :birth_year %><br>
     <div class="confirm-text">
-      <%= f.text_field :birth_year, autofocus: true, autocomplete: "name",:readonly => true %>
+      <% if @user_birth_year != "" %>
+        <%= @user.birth_year.year %>
+      <% end %>
     </div>
   </div>
 
@@ -63,20 +64,22 @@
     <br>
     <%= f.label :profile %><br>
     <div class="confirm-text">
-      <%= f.text_field :profile, autofocus: true, autocomplete: "name",:readonly => true %>
+      <%= @user.profile %>
     </div>
   </div>
 
   <div class="field">
     <br>
-    メール配信<br>
-    <% if @user.mailmagazine == true then %>
-      メール配信を希望する<br>
-    <% else %>
-      メール配信を希望しない<br>
-    <% end %>
+    <%= f.label :mailmagazine %><br>
+    <div class="confirm-text">
+      <% if @user.mailmagazine == true then %>
+        メール配信を希望する<br>
+      <% else %>
+        メール配信を希望しない<br>
+      <% end %>
     </div>
   </div>
+  <br>
   <div class="form-group">
     <%= f.submit "登録する", class:'btn btn-primary btn-block' %>
   </div>
@@ -91,10 +94,11 @@
   <%= f.hidden_field :birth_year, :value =>  @user.birth_year %>
   <%= f.hidden_field :image, :value =>  @user.image %>
   <%= f.hidden_field :profile, :value =>  @user.profile %>
+  <%= f.hidden_field :mailmagazine, :value =>  @user.mailmagazine %>
   <%= f.hidden_field :confirmation_token, :value =>  @token %>
 
   <div class="form-group">
-    <%= f.submit "戻る", class: "btn btn-secondary btn-block"%>
+    <%= f.submit "入力画面へ戻る", class: "btn btn-secondary btn-block"%>
   </div>
   <% end %>
 </div>

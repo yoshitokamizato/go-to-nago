@@ -1,9 +1,9 @@
 <%=render "devise/registrations/header" %>
 
 <div class="container-login">
-  プロフィールを登録してください。
+  プロフィールを登録してください。<br>
+  <br>
   <%= form_for(@user, as: @user, url: before_sign_up_confirm_path(@user, confirmation_token: @token) ,html: {method: "post"}) do |f| %>
-  <%# form_for @user,  url: users_confirm_path, html: { method: :post } do |f| %>
   <%= bootstrap_devise_error_messages!%>
   <%= render "devise/shared/error_messages", resource: @user %>
   <%= f.hidden_field :user_id, :value =>  resource.id %>
@@ -37,8 +37,8 @@
     <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "profile", placeholder: "プロフィール文を入力してください", rows: 10 %>
   </div>
 
-  メール送信<br>
   <div class="form-group">
+    <%= f.label :mailmagazine %><br>
     <%= f.check_box :mailmagazine, {} , "true", "false" %>
     <%= label_tag :mailmagazine, "メール配信を希望する" , autocomplete: "mailmagazine"%>
   </div>
