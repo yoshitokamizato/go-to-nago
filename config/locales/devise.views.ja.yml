@@ -15,7 +15,7 @@ ja:
         role: "立場"
         profile: "自己紹介"
         status: "ステータス"
-        mailmagazine: "メール配信を希望する"
+        mailmagazine: "メール配信"
 
       facility:
         type: "施設・お店の種類"
