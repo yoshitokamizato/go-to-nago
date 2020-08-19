@@ -1,30 +1,21 @@
 <% if @facility_type == "gourmet" %>
+  <% type_text = "グルメ" %>
+<% else %>
+  <% type_text = "観光スポット" %>
+<% end %>
   <div class="list-cd">
-    <p><a href="/" class="">home</a> > グルメ</p>
+    <p><a href="/" class="">home</a> > <%= type_text.to_s %></p>
   </div>
   <div class="list-body row">
     <div class="list-title underline-blue">
-      <h3>おすすめグルメ</h3>
+      <h3>おすすめ<%= type_text.to_s %></h3>
     </div>
-<% else %>
-  <div class="list-cd">
-    <p><a href="/" class="">home</a> > 観光スポット</p>
-  </div>
-  <div class="list-body row bg-image-spot">
-  <div class="list-title underline-white">
-    <h3 class="text-white">おすすめ観光スポット</h3>
-  </div>
-<% end %>
     <div class="list-wrapper col-12">
       <div class="row " id="facility_lists">
         <%= render partial: 'facilities/facilities_list', collection: @facilities, as: 'facility' %>
       </div>
       <div class="list-button">
-      <% if @facility_type == "gourmet" %>
-        <%= link_to_next_page @facilities, 'おすすめグルメをもっと見る', remote: true, class:"button button-blue-border" ,id:'view_more'%>
-      <% else %>
-        <%= link_to_next_page @facilities, '観光スポットをもっと見る', remote: true, class:"button button-white-border" ,id:'view_more'%>
-      <% end %>
+        <%= link_to_next_page @facilities, "おすすめ#{type_text.to_s}をもっと見る", remote: true, class:"button button-blue-border" ,id:'view_more'%>
       </div>
     </div>
   </div>
