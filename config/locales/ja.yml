@@ -1,5 +1,24 @@
 ---
 ja:
+  enums:
+    users:
+      sex:
+        male: 男性
+        female: 女性
+        other: その他
+      role:
+        general: 一般
+        owner: オーナー
+        admin: 管理者
+    facilities:
+      type:
+        spot: 施設
+        gourmet: グルメ
+      status:
+        open: 営業中
+        closed_shop: 閉店
+        closing_down: 休業中
+        will_open: オープン予定
   activerecord:
     models:
       inquiry: 問い合わせ
@@ -221,3 +240,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+
+

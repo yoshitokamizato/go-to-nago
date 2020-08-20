@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :nickname, presence:  true
   validates :birth_year, presence: true
   validates :prefecture, presence: true
-  enum sex: {male: 0, famale: 1, other: 2} 
-  enum role: {gernal: 0, owner: 1, admin: 2}
+  enum sex: {male: 0, female: 1, other: 2} 
+  enum role: {general: 0, owner: 1, admin: 2}
   enum status: {temporary: 0, active: 1, resign: 2}
   enum prefecture: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
