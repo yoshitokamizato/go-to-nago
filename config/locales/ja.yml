@@ -1,7 +1,7 @@
 ---
 ja:
   enums:
-    users:
+    user:
       sex:
         male: 男性
         female: 女性
@@ -10,7 +10,7 @@ ja:
         general: 一般
         owner: オーナー
         admin: 管理者
-    facilities:
+    facility:
       type:
         spot: 施設
         gourmet: グルメ
