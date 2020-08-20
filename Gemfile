@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'dotenv-rails'
+gem 'sendgrid-ruby'
 
 gem 'omniauth-twitter'
 

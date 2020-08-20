@@ -199,7 +199,6 @@ nav.header{
   background-color: rgb(175, 175, 175);
 }
 // ========ここまで（ヘッダー部）=========
-
 // ========ここから（トップイメージ）=========
 .top-image {
   // width: 100%;
@@ -308,9 +307,15 @@ nav.header{
   }
   p{
     text-align: center;
-    font-size: 20px;
+    font-size: 3vw;
     margin: 0;
-    line-height: 55px;
+    line-height: 3;
     color: #ffffff;  
+  }
+}
+
+@media(min-width: 768px){
+  .footer p{
+    font-size: 24px;
   }
 }
