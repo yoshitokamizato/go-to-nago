@@ -12,7 +12,7 @@ ja:
         admin: 管理者
     facility:
       type:
-        spot: 施設
+        spot: 観光スポット
         gourmet: グルメ
       status:
         open: 営業中
