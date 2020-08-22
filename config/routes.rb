@@ -40,15 +40,6 @@ Rails.application.routes.draw do
     get "users/update/email/confirm" => "users/registrations#update_email_confirm"
 
     # 新規登録画面
-    # get "users/temp" => "users/registrations#temp"
-    # post "users/temp" => "users/registrations#temp"
-    #      get 'users/regist' => 'users/registrations#regist'
-    #      post 'users/regist' => 'users/registrations#regist'
-    #      get 'users/confirm' => 'users/registrations#confirm'
-    #      post 'users/confirm' => 'users/registrations#confirm'
-    #      patch 'users/registcomp' => 'users/registrations#registcomp'
-    #      put 'users/registcomp' => 'users/registrations#registcomp'
-
     # プロフィール編集画面（仮登録状態）
     get "before_sign_up", to: "users/registrations#regist"
     # プロフィール編集内容確認画面（仮登録状態）
