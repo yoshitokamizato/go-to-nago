@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.prefecture = params["user"]["prefecture"]
     @user.sex = params["user"]["sex"]
     @user.birth_year = params["user"]["birth_year"]
-    @user.image = params["user"]["image"]
+    @user.image = params["user"]["image_cache"]
     @user.profile = params["user"]["profile"]
     @user.mailmagazine = params["user"]["mailmagazine"]
 

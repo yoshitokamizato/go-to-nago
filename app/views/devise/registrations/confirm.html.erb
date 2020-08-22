@@ -14,6 +14,7 @@
   <%= f.hidden_field :image, :value =>  @user.image %>
   <%= f.hidden_field :profile, :value =>  @user.profile %>
   <%= f.hidden_field :mailmagazine, :value =>  @user.mailmagazine %>
+  <%= f.hidden_field :image_cache %>
 
   <div class="field">
     <br>
@@ -96,6 +97,7 @@
   <%= f.hidden_field :profile, :value =>  @user.profile %>
   <%= f.hidden_field :mailmagazine, :value =>  @user.mailmagazine %>
   <%= f.hidden_field :confirmation_token, :value =>  @token %>
+  <%= f.hidden_field :image_cache %>
 
   <div class="form-group">
     <%= f.submit "入力画面へ戻る", class: "btn btn-secondary btn-block"%>
