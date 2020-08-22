@@ -1,15 +1,13 @@
-<%=render "devise/registrations/header" %>
-
 <div class="container-login">
-  プロフィールを登録してください。<br>
-  <br>
+  <h2 class="text-center">プロフィール登録</h2>
+  <p class="text-center mt-3">プロフィールを登録してください。</p>
   <%= form_for(@user, as: @user, url: before_sign_up_confirm_path(@user, confirmation_token: @token) ,html: {method: "post"}) do |f| %>
   <%= bootstrap_devise_error_messages!%>
   <%= render "devise/shared/error_messages", resource: @user %>
   <%= f.hidden_field :user_id, :value =>  resource.id %>
 
   <div class="form-group">
-    <%= f.label :nickname %>
+    <%= f.label :nickname %><span class="badge badge-danger ml-2">必須</span>
     <%= f.text_field :nickname, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "ニックネームを入力してください", required: true %>
   </div>
 

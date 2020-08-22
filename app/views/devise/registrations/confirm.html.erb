@@ -1,7 +1,5 @@
-<%=render "devise/registrations/header" %>
-
 <div class="container-login">
-  プロフィールを登録してください。<br>
+  <h2 class="text-center">プロフィール登録確認</h2>
 
   <%= form_for(@user, url: before_sign_up_update_path(@user, confirmation_token: @token),html: {method: "post"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
@@ -45,7 +43,7 @@
     <%= f.label :birth_year %><br>
     <div class="confirm-text">
       <% if @user_birth_year != "" %>
-        <%= @user.birth_year.year %>
+      <%= @user.birth_year.year %>
       <% end %>
     </div>
   </div>
@@ -74,9 +72,9 @@
     <%= f.label :mailmagazine %><br>
     <div class="confirm-text">
       <% if @user.mailmagazine == true then %>
-        メール配信を希望する<br>
+      メール配信を希望する<br>
       <% else %>
-        メール配信を希望しない<br>
+      メール配信を希望しない<br>
       <% end %>
     </div>
   </div>
