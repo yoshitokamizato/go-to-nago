@@ -75,12 +75,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # userのアクティブ状況をactiveに変更
     @user.status = 1
     @token = params["confirmation_token"]
-
     if @user.valid?
       @user.save
       #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
       redirect_to confirmation_path(@user, confirmation_token: @token)
-      flash[:success] = "会員登録が完了しました。ログインしてください"
+      sign_in(@user, bypass: true)
     else
       render action: "before_create"
       flash.now[:alert] = "会員登録に失敗しました。再登録してください"
@@ -216,5 +215,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
-
 end

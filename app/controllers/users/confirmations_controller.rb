@@ -15,6 +15,21 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # def show
   #   super
   # end
+  # ↓で上書き（デフォルトのコマンドのflashメッセージのみ変更）
+  # File 'app/controllers/devise/confirmations_controller.rb', line 22
+
+  def show
+    self.resource = resource_class.confirm_by_token(params[:confirmation_token])
+    yield resource if block_given?
+
+    if resource.errors.empty?
+      # ここの部分
+      flash[:success] = "会員登録が完了しました。"
+      respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
+    else
+      respond_with_navigational(resource.errors, status: :unprocessable_entity) { render :new }
+    end
+  end
 
   # protected
 
