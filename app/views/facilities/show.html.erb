@@ -15,9 +15,9 @@
   </div>
   <div class="list-cd">
     <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,gourmet_list_path %> > <%= @facility.name %></p>
+    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,facilities_list_path(type: "gourmet") %> > <%= @facility.name %></p>
     <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "施設",facility_list_path %> > <%= @facility.name %></p>
+    <p><a href="/" class="">home</a> > <%= link_to "観光スポット",facilities_list_path(type: "spot") %> > <%= @facility.name %></p>
     <% end %>
   </div>
   <div class="top">
@@ -127,11 +127,7 @@
         </tr>
         <tr>
           <th scope="row">営業時間</th>
-          <td><%= @facility.first_open %> 〜 <%= @facility.first_close %>
-            <%if @facility.last_open || @facility.last_close %>
-            <br>
-            <%= @facility.last_open %> 〜 <%= @facility.last_close %>
-            <%end%></td>
+          <td><%= @facility.opening_hours %></td>
         </tr>
         <tr>
           <th scope="row">定休日</th>
