@@ -127,11 +127,7 @@
         </tr>
         <tr>
           <th scope="row">営業時間</th>
-          <td><%= @facility.first_open %> 〜 <%= @facility.first_close %>
-            <%if @facility.last_open || @facility.last_close %>
-            <br>
-            <%= @facility.last_open %> 〜 <%= @facility.last_close %>
-            <%end%></td>
+          <td><%= @facility.opening_hours %></td>
         </tr>
         <tr>
           <th scope="row">定休日</th>
