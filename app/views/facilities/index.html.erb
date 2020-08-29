@@ -4,33 +4,10 @@
   </div>
   <div class="list-wrapper col-12">
     <div class="row">
-      <% @gourmets.first(4).each do |gourmet| %>
-      <div class="col-6 col-lg-3 show-row-list">
-        <a href="facilities/<%=gourmet.id%>" class="a-card">
-          <div class="card">
-            <%images = gourmet.facility_images.first%>
-            <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
-            <div class="card-body">
-              <h4 class="card-title"><%= gourmet.name %></h4>
-              <p class="card-text"><%= gourmet.description %></p>
-              <% if user_signed_in? %>
-              <div class="bookmark_btn_<%= gourmet.id %> favorite-area" data-bookmark='1'>
-                <object><%= render 'facilities/bookmark_area', facility: gourmet %></object>
-              </div>
-              <% else%>
-              <div class="favorite-area">
-                <object ect><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
-                <%= gourmet.bookmarks.count %>
-              </div>
-              <% end %>
-            </div>
-          </div>
-        </a>
-      </div>
-      <% end %>
+      <%= render partial: 'facilities/facilities_list', collection: @gourmets.first(4), as: 'facility' %>
     </div>
     <div class="list-button">
-      <a href="/gourmet/list" type="button" class="button button-blue-border">おすすめグルメをもっと見る</a>
+      <%= link_to 'おすすめグルメをもっと見る', facilities_list_path(type: "gourmet"), class:"button button-blue-border button-arrow" %>
     </div>
   </div>
 </div>
@@ -41,33 +18,10 @@
 
   <div class="list-wrapper col-12">
     <div class="row">
-      <% @facilities.first(4).each do |facility| %>
-      <div class="col-6 col-lg-3 show-row-list">
-        <a href="facilities/<%=facility.id%>" class="a-card">
-          <div class="card">
-            <%images = facility.facility_images.first%>
-            <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
-            <div class="card-body">
-              <h4 class="card-title"><%= facility.name %></h4>
-              <p class="card-text"><%= facility.description %></p>
-              <% if user_signed_in? %>
-              <div class="bookmark_btn_<%= facility.id %> favorite-area" data-bookmark='1'>
-                <object><%= render 'facilities/bookmark_area', facility: facility %></object>
-              </div>
-              <% else%>
-              <div class="favorite-area">
-                <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
-                <%= facility.bookmarks.count %>
-              </div>
-              <% end %>
-            </div>
-          </div>
-        </a>
-      </div>
-      <% end %>
+      <%= render partial: 'facilities/facilities_list', collection: @spots.first(4), as: 'facility' %>
     </div>
     <div class="list-button">
-      <a href="/facility/list" type="button" class="button button-white-border">観光スポットをもっと見る</a>
+      <%= link_to '観光スポットをもっと見る', facilities_list_path(type: "spot"), class:"button button-white-border button-arrow" %>
     </div>
   </div>
 </div>
