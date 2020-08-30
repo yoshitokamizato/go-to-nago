@@ -15,9 +15,11 @@
   </div>
   <div class="list-cd">
     <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,facilities_list_path(type: "gourmet") %> > <%= @facility.name %></p>
+      <% breadcrumb :gourmet, @facility %>
+      <%= breadcrumbs separator: " &rsaquo; " %>
     <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "観光スポット",facilities_list_path(type: "spot") %> > <%= @facility.name %></p>
+      <% breadcrumb :spot, @facility %>
+      <%= breadcrumbs separator: " &rsaquo; " %>
     <% end %>
   </div>
   <div class="top">
