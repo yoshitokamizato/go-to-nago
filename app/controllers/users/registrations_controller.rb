@@ -24,8 +24,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 確認メールから編集画面に来た時
     if params["resource"]
       @user = User.find(params["resource"])
-      @token = params["confirmation_token"]
-
+      # 初回登録か、既に会員登録済みかを場合わけ
+      if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+        # 既に会員登録されている場合
+        flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
+        redirect_to new_user_session_path
+      else
+        # 初回登録の場合
+        @token = params["confirmation_token"]
+      end
     # 確認画面から編集画面に戻った時
     elsif params["user"]
       @user = User.find(params["user"]["user_id"])
@@ -43,46 +50,62 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # registアクションの内容を表示して確認するアクション
   def confirm
     @user = User.find(params["user"]["user_id"])
-    @user.nickname = params["user"]["nickname"]
-    @user.prefecture = params["user"]["prefecture"]
-    @user.sex = params["user"]["sex"]
-    @user.birth_year = DateTime.parse(params["user"]["birth_year(1i)"] + "-01-01 00:00:00")
-    @user.image = params["user"]["image"]
-    @user.profile = params["user"]["profile"]
-    @user.mailmagazine = params["user"]["mailmagazine"]
-
-    @token = params["confirmation_token"]
-    if @user.valid?
-      render action: "confirm"
-      flash.now[:success] = "確認して完了してください"
+    # 初回登録か、既に会員登録済みかを場合わけ
+    if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+      # 既に会員登録されている場合
+      flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
+      redirect_to new_user_session_path
     else
-      render action: "regist"
-      flash.now[:alert] = "失敗しました"
+      # 初回登録の場合
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = DateTime.parse(params["user"]["birth_year(1i)"] + "-01-01 00:00:00")
+      @user.image = params["user"]["image"]
+      @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
+
+      @token = params["confirmation_token"]
+      if @user.valid?
+        render action: "confirm"
+        flash.now[:success] = "確認して完了してください"
+      else
+        render action: "regist"
+        flash.now[:alert] = "失敗しました"
+      end
     end
   end
 
   # プロフィールを保存し、認証トークンを受理することで登録を完了するアクション
   def registcomp
     @user = User.find(params["user"]["user_id"])
-    @user.nickname = params["user"]["nickname"]
-    @user.prefecture = params["user"]["prefecture"]
-    @user.sex = params["user"]["sex"]
-    @user.birth_year = params["user"]["birth_year"]
-    @user.image = params["user"]["image_cache"]
-    @user.profile = params["user"]["profile"]
-    @user.mailmagazine = params["user"]["mailmagazine"]
-
-    # userのアクティブ状況をactiveに変更
-    @user.status = 1
-    @token = params["confirmation_token"]
-    if @user.valid?
-      @user.save
-      #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
-      redirect_to confirmation_path(@user, confirmation_token: @token)
-      sign_in(@user, bypass: true)
+    # 初回登録か、既に会員登録済みかを場合わけ
+    if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+      # 既に会員登録されている場合
+      redirect_to new_user_session_path
+      flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
     else
-      render action: "before_create"
-      flash.now[:alert] = "会員登録に失敗しました。再登録してください"
+      # 初回登録の場合
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = params["user"]["birth_year"]
+      @user.image = params["user"]["image_cache"]
+      @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
+
+      # userのアクティブ状況をactiveに変更
+      @user.status = 1
+      @token = params["confirmation_token"]
+      if @user.valid?
+        @user.save
+        #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
+        redirect_to confirmation_path(@user, confirmation_token: @token)
+        sign_in(@user, bypass: true)
+      else
+        render action: "before_create"
+        flash.now[:alert] = "会員登録に失敗しました。再登録してください"
+      end
     end
   end
 
