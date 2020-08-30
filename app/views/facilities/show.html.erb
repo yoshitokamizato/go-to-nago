@@ -169,9 +169,9 @@ google mapを呼び出すjavascript
 
   function initMap() {
     geocoder = new google.maps.Geocoder()
-    console.log(latitude)
-    console.log(longitude)
-    console.log(e)
+    // console.log(latitude)
+    // console.log(longitude)
+    // console.log(e)
     map = new google.maps.Map(document.getElementById('map'), {
       center: {
         lat: latitude,
@@ -189,4 +189,4 @@ google mapを呼び出すjavascript
     });
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDWh0IQXOK7XmXrogmszMGQbagbQbvzU&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
