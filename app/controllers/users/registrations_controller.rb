@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # 初回登録か、既に会員登録済みかを場合わけ
       if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
         # 既に会員登録されている場合
-        flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
+        flash[:alert] = "このメールアドレスは既に登録されています。ログインしてください。"
         redirect_to new_user_session_path
       else
         # 初回登録の場合
