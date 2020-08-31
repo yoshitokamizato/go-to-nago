@@ -67,6 +67,9 @@ ActiveAdmin.register Facility do
     column :created_user
     column :updated_user
     column :user_id
+    column 'menu' do |facility|
+      link_to 'メニュー 一覧',   admin_facility_menus_path(facility.id)
+    end
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
 
@@ -101,6 +104,12 @@ ActiveAdmin.register Facility do
       row :created_user
       row :updated_user
       row :user_id
+    end
+  end
+
+  sidebar "メニュー", only: [:show, :edit] do
+    ul do
+      li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
     end
   end
 end
