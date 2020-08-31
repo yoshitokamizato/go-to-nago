@@ -67,7 +67,8 @@
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= image_tag("/menu_image/"+@facility.menus[0].image ,class:"d-block w-100" ,alt:"...") %>
+          <%#= image_tag("/menu_image/"+@facility.menus[0].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[0].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[0].name %></h5>
             <p><%= @facility.menus[0].content %></p>
@@ -75,7 +76,8 @@
         </div>
         <%if @facility.menus[1] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
+          <%#= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[1].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[1].name %></h5>
             <p><%= @facility.menus[1].content %></p>
@@ -84,7 +86,8 @@
         <%end%>
         <% if @facility.menus[2] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
+          <%#= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[2].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[2].name %></h5>
             <p><%= @facility.menus[2].content %></p>
