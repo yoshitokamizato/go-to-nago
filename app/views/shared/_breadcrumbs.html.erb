@@ -17,11 +17,11 @@
       <% breadcrumb :spot, @facility %>
     <% end %>
   <% when ['menus', 'index'] %>
-  <% if @facility.type == "gourmet" %>
-    <% breadcrumb :gourmet, @facility %>
-  <% else %>
-    <% breadcrumb :spot, @facility %>
-  <% end %>
+    <% if @facility.type == "gourmet" %>
+      <% breadcrumb :gourmet, @facility %>
+    <% else %>
+      <% breadcrumb :spot, @facility %>
+    <% end %>
   <% when ['fixedpages', 'about'] %>
     <% breadcrumb :about %>
   <% when ['fixedpages', 'company'] %>
