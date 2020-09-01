@@ -18,11 +18,6 @@ class ImportCsv < ApplicationRecord
         budget: row["budget"].to_i,
         description: row["description"],
         advice: row["advice"],
-        first_open: row["first_open"],
-        first_close: row["first_close"],
-        last_open: row["last_open"],
-        last_close: row["last_close"],
-
         holiday: row["holiday"],
         parking: row["parking"],
         home_page: row["home_page"],
@@ -33,7 +28,8 @@ class ImportCsv < ApplicationRecord
         status: row["status"].to_i,
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i,
-        user_id: row["user_id"].to_i
+        user_id: row["user_id"].to_i,
+        opening_hours: row["opening_hours"]
       }
       list_image << {
         facility_id: row["facility_id"].to_i,
