@@ -44,11 +44,6 @@ crumb :about do
   parent :root
 end
 
-crumb :about do
-  link "名護へGoについて"
-  parent :root
-end
-
 crumb :company do
   link "運営会社"
   parent :root

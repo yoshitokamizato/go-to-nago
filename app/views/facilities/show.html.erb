@@ -14,13 +14,7 @@
     </h2>
   </div>
   <div class="list-cd">
-    <% if @facility.type == "gourmet" %>
-      <% breadcrumb :gourmet, @facility %>
-      <%= breadcrumbs separator: " &rsaquo; " %>
-    <% else %>
-      <% breadcrumb :spot, @facility %>
-      <%= breadcrumbs separator: " &rsaquo; " %>
-    <% end %>
+    <%= render "shared/breadcrumbs" %>
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>

@@ -1,10 +1,9 @@
+<%= render "shared/breadcrumbs" %>
 <% if @facility_type == "gourmet" %>
   <% type_text = "グルメ" %>
 <% else %>
   <% type_text = "観光スポット" %>
 <% end %>
-  <% breadcrumb :facility_type, type_text %>
-  <%= breadcrumbs separator: " &rsaquo; " %>
   <div class="list-body row">
     <div class="list-title underline-blue">
       <h3>おすすめ<%= type_text.to_s %></h3>
