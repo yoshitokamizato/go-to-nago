@@ -5,6 +5,6 @@ class Menu < ApplicationRecord
   mount_uploader :image, DefaultUploader
   validates :name, presence: true
   validates :price, presence: true
-  # validates :image, presence: true
+  validates :image, presence: true
   validates :content, presence: true
 end
