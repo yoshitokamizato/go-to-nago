@@ -36,8 +36,8 @@ ActiveAdmin.register Menu do
       f.input :name
       f.input :price
       f.input :content
-      f.input :created_user
-      f.input :updated_user
+      f.input :created_user, input_html: { value: current_admin_user.id, readonly: true}
+      f.input :updated_user, input_html: { value: current_admin_user.id, readonly: true}
       f.input :image, :image_preview => true
     end
     f.actions
