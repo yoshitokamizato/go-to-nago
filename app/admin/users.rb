@@ -9,10 +9,10 @@ ActiveAdmin.register User do
       f.input :password
       f.input :nickname
       f.input :birth_year
-      f.input :sex
+      f.input :sex, as: :select, collection:User.sex_i18n.invert
       f.input :prefecture
       f.input :image
-      f.input :role
+      f.input :role,  as: :select, collection:User.role_i18n.invert
       f.input :profile
     end
     f.actions
@@ -26,10 +26,14 @@ ActiveAdmin.register User do
     column :password
     column :nickname
     column :birth_year
-    column :sex
+    column(:sex) do |user|
+      user.sex_i18n
+    end
     column :prefecture
     column :image
-    column :role
+    column(:role) do |user|
+      user.role_i18n
+    end
     column :profile
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
@@ -43,10 +47,14 @@ ActiveAdmin.register User do
       row :password
       row :nickname
       row :birth_year
-      row :sex
+      row(:sex) do |user|
+        user.sex_i18n
+      end
       row :prefecture
       row :image
-      row :role
+      row(:role) do |user|
+        user.role_i18n
+      end
       row :profile
     end
   end
