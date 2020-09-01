@@ -14,11 +14,7 @@
     </h2>
   </div>
   <div class="list-cd">
-    <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,facilities_list_path(type: "gourmet") %> > <%= @facility.name %></p>
-    <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "観光スポット",facilities_list_path(type: "spot") %> > <%= @facility.name %></p>
-    <% end %>
+    <%= render "shared/breadcrumbs" %>
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>
