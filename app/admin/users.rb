@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Userモデルのデータを更新を許可
-  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :created_at, :update_at, :nickname, :birth_year, :sex, :prefecture, :image, :role, :profile, :status, :password
+  permit_params :email, :encrypted_password, :reset_password_token, :created_at, :update_at, :nickname, :birth_year, :sex, :prefecture, :image, :role, :profile, :status, :password
 
   # 新規登録時のフォーム
   form do |f|
