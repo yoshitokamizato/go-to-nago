@@ -1,6 +1,6 @@
 class FacilitiesController < ApplicationController
   def index
-    @facilities = Facility.includes(:facility_images).where(type: "spot")
+    @spots = Facility.includes(:facility_images).where(type: "spot")
     @gourmets = Facility.includes(:facility_images).where(type: "gourmet")
     # @facilities = Facility.all.includes(:user)
   end
@@ -10,25 +10,25 @@ class FacilitiesController < ApplicationController
     @facility = Facility.includes(:facility_images).find(params[:id])
   end
 
-  def show_facility
-    @facilities = Facility.includes(:facility_images).where(type: "spot").page(params[:page])
+  # 一覧表示
+  def show_facilities
+    @facility_type = params[:type]
+    @facilities = Facility.includes(:facility_images).where(type: @facility_type).page(params[:page])
   end
 
-  def show_gourmet
-    @gourmets = Facility.includes(:facility_images).where(type: "gourmet").page(params[:page])
-  end
 
   def bookmark
     # has many throughのりレーションを組んだことで　current_user.bookmark_facilitiesで呼
-    @facilities = current_user.bookmark_facilities.includes(:user).where(type: "spot").page(params[:page])
+    @spots = current_user.bookmark_facilities.includes(:user).where(type: "spot").page(params[:page])
     @gourmets = current_user.bookmark_facilities.includes(:user).where(type: "gourmet").page(params[:page])
 
     # もっとみるボタンの非同期処理　場合わけ（施設とグルメ）
     # 同じページに二つの「もっとみるボタン」があるため、場合わけが必要
     return unless request.xhr?
     case params[:type]
-    when "bookmark_facility", "bookmark_gourmet"
-      render params[:type].to_s
+    when "bookmark_spot", "bookmark_gourmet"
+      @bookmark_type = params[:type]
+      # render params[:type].to_s
     end
   end
 end

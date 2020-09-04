@@ -3,13 +3,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @facilities = current_user.bookmark_facilities.includes(:user).where(type: "spot").page(params[:page])
+    @spots = current_user.bookmark_facilities.includes(:user).where(type: "spot").page(params[:page])
     @gourmets = current_user.bookmark_facilities.includes(:user).where(type: "gourmet").page(params[:page])
 
     return unless request.xhr?
     case params[:type]
-    when "spot", "gourmet"
-      render params[:type].to_s
+    # when "spot", "gourmet"
+      # render params[:type].to_s
+    when "bookmark_spot", "bookmark_gourmet"
+      @bookmark_type = params[:type]
+      render 'facilities/bookmark'
     end
   end
 

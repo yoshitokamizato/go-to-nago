@@ -1,0 +1,10 @@
+//もっとみるボタン（施設）の非同期処理
+<% if @bookmark_type == "bookmark_gourmet" %>
+  <% puts "bookmark_gourmet: #{@bookmark_type}" %>
+  $('#gourmet_lists').append("<%= escape_javascript(render partial: 'facilities/facilities_list',  collection: @gourmets, as: 'facility') %>");
+  $("#gourmet_view_more").replaceWith("<%= escape_javascript(link_to_next_page(@gourmets, 'もっと見る', remote: true, id: 'gourmet_view_more', class:"more btn btn-primary btn-lg btn-block btn-round")) %>");
+<% else %>
+  <% puts "bookmark_spot: #{@bookmark_type}"  %>
+  $('#spot_lists').append("<%= escape_javascript(render partial: 'facilities/facilities_list',  collection: @spots, as: 'facility') %>");
+  $("#spot_view_more").replaceWith("<%= escape_javascript(link_to_next_page(@spots, 'もっと見る', remote: true, id: 'spot_view_more', class:"more btn btn-primary btn-lg btn-block btn-round")) %>");
+<% end %>
