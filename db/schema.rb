@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_054801) do
+ActiveRecord::Schema.define(version: 2020_09_04_214709) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -60,10 +60,6 @@ ActiveRecord::Schema.define(version: 2020_08_16_054801) do
     t.integer "budget"
     t.text "description", null: false
     t.text "advice"
-    t.datetime "first_open"
-    t.datetime "first_close"
-    t.datetime "last_open"
-    t.datetime "last_close"
     t.string "holiday"
     t.string "parking", null: false
     t.string "home_page"
@@ -77,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_054801) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "opening_hours"
   end
 
   create_table "facility_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -141,8 +138,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_054801) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname"
-    t.datetime "birth_year"
+    t.string "nickname", null: false
+    t.integer "birth_year", null: false
     t.integer "sex"
     t.integer "prefecture"
     t.string "image"

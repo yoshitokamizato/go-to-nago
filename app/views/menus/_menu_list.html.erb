@@ -1,7 +1,7 @@
       <% @menus.each do |menu| %>
       <div class="col-6 col-sm-6 col-lg-3 show-row-list">
         <div class="card ">
-          <%= image_tag("/menu_image/"+menu.image ,class:"card-img-top" ,alt:"...") %>
+          <%= image_tag(menu.image.url, class:"card-img-top" ,alt:"...") %>
           <div class="card-body">
             <h5 class="card-title"><%= menu.name %></h5>
             <br>

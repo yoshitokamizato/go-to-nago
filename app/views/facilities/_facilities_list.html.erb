@@ -1,0 +1,23 @@
+<div class="col-6 col-lg-3 show-row-list">
+  <%= link_to facility_path(facility.id), class:"a-card" do %>
+    <div class="card">
+      <%images = facility.facility_images.first%>
+      <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
+      <div class="card-body">
+        <h4 class="card-title"><%= facility.name %></h4>
+        <p class="card-text"><%= facility.description %></p>
+        <% if user_signed_in? %>
+        <div class="bookmark_btn_<%= facility.id %> favorite-area" data-bookmark='1'>
+          <object><%= render 'facilities/bookmark_area', facility: facility %></object>
+        </div>
+        <% else%>
+        <div class="favorite-area">
+          <object ect><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+          <%= facility.bookmarks.count %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

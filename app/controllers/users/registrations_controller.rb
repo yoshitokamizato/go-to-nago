@@ -7,8 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :authenticate_scope!, only: %i[edit edit_password edit_email update update_password update_email destroy]
   prepend_before_action :set_minimum_password_length, only: %i[new edit edit_password]
   before_action :configure_sign_up_params, only: [:create]
-
-  #  before_action :check_login, only: [:temp]
+  before_action :setting_birth_year, only: %i[new edit]
 
   # GET /resource/sign_up
   def new
@@ -238,4 +237,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
+
+  # The path used after sign up.
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+
+  # The path used after sign up for inactive accounts.
+  # def after_inactive_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+
+  def setting_birth_year
+    @birth_year = []
+    for year in (1950..DateTime.now.year).reverse_each do
+      @birth_year << year
+    end
+  end
 end

@@ -120,6 +120,8 @@ GEM
     formtastic_i18n (0.6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (4.0.2)
+      rails (>= 5.1)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -283,6 +285,7 @@ GEM
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
+    ruby_http_client (3.5.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -297,6 +300,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sendgrid-ruby (6.3.3)
+      ruby_http_client (~> 3.4)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -357,6 +362,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   font-awesome-sass
+  gretel
   hirb
   hirb-unicode-steakknife
   jbuilder (~> 2.7)
@@ -375,6 +381,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
+  sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
