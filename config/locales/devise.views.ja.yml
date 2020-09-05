@@ -44,12 +44,23 @@ ja:
         created_user: "作成者ID"
         updated_user: "更新者ID"
         user_id: "ユーザーID"
+      
+      menu:
+        name: メニュー名
+        price: 料金
+        image: メニュー画像
+        content: メニューの紹介
+        created_user: "作成者ID"
+        updated_user: "更新者ID"
+        created_at: "作成日時"
+        updated_at: "更新日時"
 
     models:
       user: "ユーザー"
       admin_user: "管理者"
       comment: "コメント"
       facility: "施設・お店"
+      menu: "メニュー"
 
   devise:
     confirmations:
