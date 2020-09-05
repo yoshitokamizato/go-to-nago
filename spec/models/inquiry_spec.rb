@@ -4,7 +4,7 @@ RSpec.describe Inquiry, type: :model do
   before:context do
     cnt = User.count
     @user = User.create(
-      email: "test-#{cnt+1}@example.com",
+      email: "test-#{cnt+2}@example.com",
       nickname: "hanako",
       sex: 0,
       role: 0,
@@ -14,7 +14,8 @@ RSpec.describe Inquiry, type: :model do
       birth_year: DateTime.now,
       confirmed_at: Time.now
     )
-    puts @user.valid?
+    # puts @user.email
+    # puts @user.errors.full_messages if @user.invalid?
   end
 
   describe "data validation" do
@@ -24,22 +25,40 @@ RSpec.describe Inquiry, type: :model do
       expect(inquiry.errors[:name]).to include("を入力してください")
     end
 
+    it "is valid with a name in 50" do
+      inquiry = Inquiry.new(name: 'a'*50 )
+      inquiry.valid?
+      expect(inquiry.errors[:name]).to_not include("は50文字以内で入力してください")
+    end
+
     it "is invalid with a name longer than 50" do
       inquiry = Inquiry.new(name: 'a'*51 )
       inquiry.valid?
       expect(inquiry.errors[:name]).to include("は50文字以内で入力してください")
+    end  
+
+    it "is valid with a subject in 100" do
+      inquiry = Inquiry.new(subject: 'a'*100 )
+      inquiry.valid?
+      expect(inquiry.errors[:subject]).to_not include("は100文字以内で入力してください")
     end
 
     it "is invalid with a subject longer than 100" do
       inquiry = Inquiry.new(subject: 'a'*101 )
       inquiry.valid?
       expect(inquiry.errors[:subject]).to include("は100文字以内で入力してください")
-    end
+    end  
 
     it "is invalid without a email" do
       inquiry = Inquiry.new(email: nil)
       inquiry.valid?
       expect(inquiry.errors[:email]).to include("を入力してください")
+    end
+
+    it "is valid with a email less than 254" do
+      inquiry = Inquiry.new(email: 'a'*254 )
+      inquiry.valid?
+      expect(inquiry.errors[:email]).to_not include("は254文字以内で入力してください")
     end
 
     it "is invalid with a email longer than 254" do
@@ -70,6 +89,12 @@ RSpec.describe Inquiry, type: :model do
       inquiry = Inquiry.new(message: nil)
       inquiry.valid?
       expect(inquiry.errors[:message]).to include("を入力してください")
+    end
+
+    it "is valid with a message in 1000" do
+      inquiry = Inquiry.new(message: 'a'*1000 )
+      inquiry.valid?
+      expect(inquiry.errors[:message]).to_not include("は1000文字以内で入力してください")
     end
 
     it "is invalid with a message longer than 1000" do
