@@ -18,7 +18,7 @@ class InquiryTest < ActiveSupport::TestCase
       email: "user@example.text",
       password: "hogehoge",
       nickname: "hoge",
-      birth_year: "2020-07-16 02:34:34",
+      birth_year: 2020,
       prefecture: 1,
       role: 0,
       status: 1

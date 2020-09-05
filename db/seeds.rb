@@ -1,7 +1,7 @@
 User.find_or_create_by!(email: "test@example.com") do |user|
   user.password = "password"
   user.nickname = "test_user"
-  user.birth_year = DateTime.now
+  user.birth_year = DateTime.now.year
   user.prefecture = 1
   user.sex = 0
   user.status = 1
@@ -11,7 +11,7 @@ puts "ユーザー投入成功"
 User.find_or_create_by!(email: "test2@example.com") do |user|
   user.password = "password"
   user.nickname = "test_user2"
-  user.birth_year = DateTime.now
+  user.birth_year = DateTime.now.year
   user.prefecture = 1
   user.sex = 0
   user.status = 1
@@ -25,7 +25,7 @@ puts "管理者投入成功"
 User.find_or_create_by!(email: "test3@example.com") do |user|
   user.password = "password"
   user.nickname = "test_user3"
-  user.birth_year = DateTime.now
+  user.birth_year = DateTime.now.year
   user.prefecture = 1
   user.sex = 0
   user.status = 1
