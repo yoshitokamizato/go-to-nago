@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :authenticate_scope!, only: %i[edit edit_password edit_email update update_password update_email destroy]
   prepend_before_action :set_minimum_password_length, only: %i[new edit edit_password]
   before_action :configure_sign_up_params, only: [:create]
-  before_action :setting_birth_year, only: %i[new edit]
+  before_action :setting_birth_year, only: %i[new edit regist]
 
   # GET /resource/sign_up
   def new
@@ -59,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.nickname = params["user"]["nickname"]
       @user.prefecture = params["user"]["prefecture"]
       @user.sex = params["user"]["sex"]
-      @user.birth_year = DateTime.parse(params["user"]["birth_year(1i)"] + "-01-01 00:00:00")
+      @user.birth_year = params["user"]["birth_year"]
       @user.image = params["user"]["image"]
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]

@@ -42,9 +42,7 @@
     <br>
     <%= f.label :birth_year %><br>
     <div class="confirm-text">
-      <% if @user_birth_year != "" %>
-      <%= @user.birth_year.year %>
-      <% end %>
+      <%= @user.birth_year %>
     </div>
   </div>
 

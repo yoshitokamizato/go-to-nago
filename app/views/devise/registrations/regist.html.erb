@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <%= f.label :birth_year %>
-    <%= f.date_select :birth_year, {discard_day: true, discard_month: true, start_year: Time.now.year, end_year: 1950, prompt: "生まれた年を選択してください"}, autocomplete: "birth_year", class: "form-control" %>
+    <%= f.select :birth_year, @birth_year, {include_blank: "生まれた年を選択してください"}, class: "form-control" %>
   </div>
 
   <div class="form-group">
