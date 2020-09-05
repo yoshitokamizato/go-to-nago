@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top header">
+<nav class="navbar navbar-expand-md fixed-top header">
   <div class="navbar-toggler header-icon-area" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <%= image_tag('icon_menu.svg', class:'header-icon') %>
   </div>
@@ -11,24 +11,24 @@
   </div>
   <div class="collapse navbar-collapse navbarTogglerDemo01">
     <ul class="navbar-nav ml-4 mt-2 mt-md-0">
-      <li class="nav-item">
+      <li class="nav-item-header">
         <%= link_to 'グルメ', facilities_list_path(type: "gourmet"), class: "nav-link" %>
       </li>
-      <li class="nav-item ">
+      <li class="nav-item-header ">
         <%= link_to '観光スポット', facilities_list_path(type: "spot"), class: "nav-link" %>
       </li>
       <% if user_signed_in?	%>
-        <li class="nav-item">
+        <li class="nav-item-header">
           <%= link_to 'お気に入り', bookmarks_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-header">
           <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-header">
           <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link", method: :delete %>
         </li>
       <% else %>
-        <li class="nav-item">
+        <li class="nav-item-header">
           <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
         </li>
       <% end %>

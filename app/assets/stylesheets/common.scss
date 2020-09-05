@@ -65,6 +65,17 @@ a:hover {
   border-bottom: 3px solid #ffffff;
 }
 
+
+.nav-item-header{
+  @extend .nav-item !optional;
+  @extend .mt-4 !optional;
+  @extend .mt-md-0 !optional;
+  @extend .text-center !optional;
+  .nav-link{
+    color: $main-color;
+  }
+}
+
 .button{
   width: 75vw;
   max-width: 580px;
