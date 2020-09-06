@@ -154,6 +154,13 @@ nav.header{
 }
 
 @media(min-width: 768px){
+  .navbar-expand-md .navbar-collapse{
+    justify-content: flex-end;
+  }
+}
+
+
+@media(min-width: 768px){
   .header-icon-area,.logo-area{
     height: 72px;
   }
