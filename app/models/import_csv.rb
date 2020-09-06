@@ -18,11 +18,6 @@ class ImportCsv < ApplicationRecord
         budget: row["budget"].to_i,
         description: row["description"],
         advice: row["advice"],
-        first_open: row["first_open"],
-        first_close: row["first_close"],
-        last_open: row["last_open"],
-        last_close: row["last_close"],
-
         holiday: row["holiday"],
         parking: row["parking"],
         home_page: row["home_page"],
@@ -33,7 +28,8 @@ class ImportCsv < ApplicationRecord
         status: row["status"].to_i,
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i,
-        user_id: row["user_id"].to_i
+        user_id: row["user_id"].to_i,
+        opening_hours: row["opening_hours"]
       }
       list_image << {
         facility_id: row["facility_id"].to_i,
@@ -67,7 +63,8 @@ class ImportCsv < ApplicationRecord
         facility_id: row["facility_id"].to_i,
         name:  row["name"],
         price: row["price"].to_i,
-        image: row["image"],
+        # image: row["image"],
+        image: "#{Rails.root}/public/menu_image/" + row["image"],
         content: row["content"],
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i
@@ -79,9 +76,23 @@ class ImportCsv < ApplicationRecord
     puts "----------------------------"
     puts "MENUのインポート処理を開始"
     # インポートができなかった場合の例外処理
+    # begin
+    #   Menu.create!(list)
+    #   puts "MENUインポート完了!!"
+    # rescue ActiveModel::UnknownAttributeError => invalid
+    #   puts "インポートに失敗：UnknownAttributeError"
+    # end
+    #
+    # carrierwaveを使用した画像upload方式に変更
     begin
-      Menu.create!(list)
-      puts "MENUインポート完了!!"
+      list.each do |data|
+        menu = Menu.new(data)
+        File.open(data[:image]) do |f|
+        menu.image = f
+        end
+        menu.save!
+      end
+      puts "Menuインポート完了！！"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "インポートに失敗：UnknownAttributeError"
     end
