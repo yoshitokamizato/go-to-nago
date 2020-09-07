@@ -1,9 +1,7 @@
 <!-- マイページ-->
-<div class="list-body">
-  <div class="list-cd">
-    <p><a href="/" class="">home</a> > マイページ</p>
-  </div>
+<%= render "shared/breadcrumbs" %>
 
+<div class="list-body">
   <!-- プロフィール -->
   <div class="user-top container">
     <div class="row">
@@ -18,7 +16,9 @@
         <div class="list-content">
           <h3><%=@user.nickname%></h3>
           <!-- 誕生日から年齢を計算 -->
-          <p><%= (Date.today.strftime('%Y%m%d').to_i - @user.birth_year.strftime('%Y%m%d').to_i) / 10000%></p>
+          <% if @user.birth_year.to_i > 0 %>
+            <p><%= (Date.today.year.to_i - @user.birth_year.to_i) %></p>
+          <% end %>
           <p><%=@user.sex%></p>
           <p><%=@user.prefecture%></p>
         </div>

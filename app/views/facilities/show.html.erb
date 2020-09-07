@@ -14,11 +14,7 @@
     </h2>
   </div>
   <div class="list-cd">
-    <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,facilities_list_path(type: "gourmet") %> > <%= @facility.name %></p>
-    <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "観光スポット",facilities_list_path(type: "spot") %> > <%= @facility.name %></p>
-    <% end %>
+    <%= render "shared/breadcrumbs" %>
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>
@@ -30,7 +26,7 @@
     <hr>
     <div class="owner">
       <%if @facility.user.image? %>
-      <%= image_tag("/facility_image/"+@facility.user.image ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+      <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% else%>
       <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% end %>
@@ -127,11 +123,7 @@
         </tr>
         <tr>
           <th scope="row">営業時間</th>
-          <td><%= @facility.first_open %> 〜 <%= @facility.first_close %>
-            <%if @facility.last_open || @facility.last_close %>
-            <br>
-            <%= @facility.last_open %> 〜 <%= @facility.last_close %>
-            <%end%></td>
+          <td><%= @facility.opening_hours %></td>
         </tr>
         <tr>
           <th scope="row">定休日</th>

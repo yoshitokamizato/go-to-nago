@@ -1,11 +1,9 @@
+<%= render "shared/breadcrumbs" %>
 <% if @facility_type == "gourmet" %>
   <% type_text = "グルメ" %>
 <% else %>
   <% type_text = "観光スポット" %>
 <% end %>
-  <div class="list-cd">
-    <p><a href="/" class="">home</a> > <%= type_text.to_s %></p>
-  </div>
   <div class="list-body row">
     <div class="list-title underline-blue">
       <h3>おすすめ<%= type_text.to_s %></h3>

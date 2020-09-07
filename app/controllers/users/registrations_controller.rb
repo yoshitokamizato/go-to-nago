@@ -6,15 +6,112 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 上書きすることでresourceがうまく渡せるように（defaultのbefore_actionが原因）
   prepend_before_action :authenticate_scope!, only: %i[edit edit_password edit_email update update_password update_email destroy]
   prepend_before_action :set_minimum_password_length, only: %i[new edit edit_password]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :setting_birth_year, only: %i[new edit regist]
+
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    build_resource
+    yield resource if block_given?
+    respond_with resource
+  end
+
+  # 仮登録時にプロフィールを編集するアクション
+  def regist
+    # 引数のresourceを使ってユーザーを取得
+    # メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
+    # 確認メールから編集画面に来た時
+    if params["resource"]
+      @user = User.find(params["resource"])
+      # 初回登録か、既に会員登録済みかを場合わけ
+      if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+        # 既に会員登録されている場合
+        flash[:alert] = "このメールアドレスは既に登録されています。ログインしてください。"
+        redirect_to new_user_session_path
+      else
+        # 初回登録の場合
+        @token = params["confirmation_token"]
+      end
+    # 確認画面から編集画面に戻った時
+    elsif params["user"]
+      @user = User.find(params["user"]["user_id"])
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = params["user"]["birth_year"]
+      @user.image = params["user"]["image"]
+      @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
+      @token = params["user"]["confirmation_token"]
+    end
+  end
+
+  # registアクションの内容を表示して確認するアクション
+  def confirm
+    @user = User.find(params["user"]["user_id"])
+    # 初回登録か、既に会員登録済みかを場合わけ
+    if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+      # 既に会員登録されている場合
+      flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
+      redirect_to new_user_session_path
+    else
+      # 初回登録の場合
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = params["user"]["birth_year"]
+      @user.image = params["user"]["image"]
+      @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
+
+      @token = params["confirmation_token"]
+      if @user.valid?
+        render action: "confirm"
+        flash.now[:success] = "確認して完了してください"
+      else
+        render action: "regist"
+        flash.now[:alert] = "失敗しました"
+      end
+    end
+  end
+
+  # プロフィールを保存し、認証トークンを受理することで登録を完了するアクション
+  def registcomp
+    @user = User.find(params["user"]["user_id"])
+    # 初回登録か、既に会員登録済みかを場合わけ
+    if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
+      # 既に会員登録されている場合
+      redirect_to new_user_session_path
+      flash[:alert] = "このメールアドレスでは既に登録されています。ログインしてください。"
+    else
+      # 初回登録の場合
+      @user.nickname = params["user"]["nickname"]
+      @user.prefecture = params["user"]["prefecture"]
+      @user.sex = params["user"]["sex"]
+      @user.birth_year = params["user"]["birth_year"]
+      @user.image = params["user"]["image_cache"]
+      @user.profile = params["user"]["profile"]
+      @user.mailmagazine = params["user"]["mailmagazine"]
+
+      # userのアクティブ状況をactiveに変更
+      @user.status = 1
+      @token = params["confirmation_token"]
+      if @user.valid?
+        @user.save
+        #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
+        redirect_to confirmation_path(@user, confirmation_token: @token)
+        sign_in(@user, bypass: true)
+      else
+        render action: "before_create"
+        flash.now[:alert] = "会員登録に失敗しました。再登録してください"
+      end
+    end
+  end
 
   # POST /resource
   def create
     super do # 他はdeviseの機能をそのまま流用する
-      resource.update(confirmed_at: Time.now.utc) # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      #      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
       # ↓と同じ意味(登録時にメール認証を行わない設定)
       # resource.skip_confirmation!
       # resource.save
@@ -106,6 +203,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # def temp
+  #   @user = params["resource"]
+  # end
+
   protected
 
   # 更新（編集の反映）時にパスワード入力を省く
@@ -126,10 +227,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update_password_params
     params.require(:user).permit(:attribute, :password, :password_confirmation, :current_password)
   end
+
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -145,4 +247,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def setting_birth_year
+    @birth_year = []
+    for year in (1950..DateTime.now.year).reverse_each do
+      @birth_year << year
+    end
+  end
 end

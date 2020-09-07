@@ -1,0 +1,34 @@
+<% case params.values_at :controller, :action
+  when ['users', 'show'] %>
+    <% breadcrumb :mypage %>
+  <% when ['facilities', 'bookmark'] %>
+    <% breadcrumb :favorite %>
+  <% when ['facilities', 'show_facilities'] %>
+    <% if @facility_type == "gourmet" %>
+      <% type_text = "グルメ" %>
+    <% else %>
+      <% type_text = "観光スポット" %>
+    <% end %>
+    <% breadcrumb :facility_type, type_text %>
+  <% when ['facilities', 'show'] %>
+    <% if @facility.type == "gourmet" %>
+      <% breadcrumb :gourmet, @facility %>
+    <% else %>
+      <% breadcrumb :spot, @facility %>
+    <% end %>
+  <% when ['menus', 'index'] %>
+    <% if @facility.type == "gourmet" %>
+      <% breadcrumb :gourmet, @facility %>
+    <% else %>
+      <% breadcrumb :spot, @facility %>
+    <% end %>
+  <% when ['fixedpages', 'about'] %>
+    <% breadcrumb :about %>
+  <% when ['fixedpages', 'company'] %>
+    <% breadcrumb :company %>
+  <% when ['fixedpages', 'privacy'] %>
+    <% breadcrumb :privacy %>
+  <% when ['fixedpages', 'tos'] %>
+    <% breadcrumb :tos %>
+<% end %>
+<%= breadcrumbs separator: " &nbsp;&nbsp;&rsaquo;&nbsp; " %>
