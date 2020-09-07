@@ -174,7 +174,7 @@ nav.header{
   text-align: center;
   position: relative;
   // height: 100%;
-  width: 15%;
+  width: 10%;
 }
 
 .header-icon{
@@ -183,6 +183,9 @@ nav.header{
   left: 7.5%;
   width: 85%;
   height: 85%;
+  &.close-icon{
+    width: 70%;
+  }
 }
 
 

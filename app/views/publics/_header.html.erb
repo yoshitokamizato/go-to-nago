@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-md fixed-top header">
   <div class="navbar-toggler header-icon-area" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <%= image_tag('icon_menu.svg', class:'header-icon') %>
+    <div class="navbarTogglerDemo01 collapse show">
+      <%= image_tag('icon_menu.svg', class:'header-icon') %>
+    </div>
+    <div class="navbarTogglerDemo01 collapse">
+      <%= image_tag('icon_close.svg', class:'header-icon close-icon') %>
+    </div>
   </div>
   <div class="logo-area">
     <%= link_to root_path do %>
@@ -8,6 +13,15 @@
     <% end %>
   </div>
   <div class="navbarTogglerDemo01 collapse header-icon-area">
+      <% if user_signed_in?	%>
+        <%= link_to user_path do %>
+          <%= image_tag('icon_account.svg', class:'header-icon') %>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag('icon_login.svg', class:'header-icon') %>
+        <% end %>
+      <% end %>
   </div>
   <div class="collapse navbar-collapse navbarTogglerDemo01">
     <ul class="navbar-nav mt-2 mt-md-0">
