@@ -103,10 +103,4 @@ ActiveAdmin.register Facility do
       li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
     end
   end
-
-  sidebar "メニュー", only: [:show, :edit] do
-    ul do
-      li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
-    end
-  end
 end
