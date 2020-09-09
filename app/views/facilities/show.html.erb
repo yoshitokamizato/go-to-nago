@@ -1,28 +1,31 @@
 <!-- 詳細画面 -->
 <div class="detail-wrapper container">
-  <div class="title text-center">
-    <h2><%= @facility.name%>
-      <% if user_signed_in? %>
-      <div class="bookmark_btn_<%= @facility.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
-        <object><%= render 'facilities/bookmark_area', facility: @facility %></object>
+  <div class="detail-top">
+    <%= image_tag("/facility_image/"+@facility.facility_images.first.image ,class:"card-img-top" ,alt:"...")  %>
+    <h2 class="detail-title"><%= @facility.name%></h2>
+    <!-- いいねボタン -->
+    <!-- ログインの有無で場合わけ -->
+    <% if user_signed_in? %>
+    <div class="bookmark_btn_<%= @facility.id %>  detail-bookmark-icon" data-bookmark='1'>
+      <!-- ここ専用のパーシャル -->
+      <%= render 'facilities/bookmark_for_detail', {facility: @facility,gourmet: @gourmet} %>
+    </div>
+    <% else%>
+    <div class="favorite-area detail-bookmark-icon">
+      <!-- ②ここはパーシャルを使用 -->
+      <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+      <div class="detail-bookmark-count">
+        <%= @facility.bookmarks.count %>
       </div>
-      <% else%>
-      <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
-        <object><%= link_to icon('far', 'star'), new_user_session_path %></object>
-      </div>
-      <% end %>
-    </h2>
+    </div>
+    <% end %>
+    <!-- いいねボタンここまで -->
   </div>
-  <div class="list-cd">
-    <%= render "shared/breadcrumbs" %>
-  </div>
-  <div class="top">
-    <%images = @facility.facility_images.first%>
-    <%= image_tag("/facility_image/"+images.image ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
-    <p><%= @facility.description%></p>
-  </div>
+  <p><%= @facility.description%></p>
   <div class="recommend text-center">
-    <h3>おすすめポイント</h3>
+    <div class="list-title underline-blue">
+      <h3>おすすめポイント</h3>
+    </div>
     <hr>
     <div class="owner">
       <%if @facility.user.image? %>
@@ -46,8 +49,10 @@
     </div>
   </div>
   <div class="menu text-center">
-  <%if @facility.menus[0] %>
-    <h3>メニュー</h3>
+    <%if @facility.menus[0] %>
+    <div class="list-title underline-blue">
+      <h3>メニュー</h3>
+    </div>
     <hr>
     <div id="carouselOption1" class="carousel slide" data-ride="carousel">
       <!-- インジケータの設定 -->
@@ -100,12 +105,11 @@
       </a>
       <%end%>
     </div>
-    <div class="list-button">
-      <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
-    </div>
-  <%end%>
   </div>
-
+  <div class="list-button">
+    <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"button button-blue-border button-arrow" %>
+  </div>
+  <%end%>
   <div class="text-center pt-5">
     <table class="table">
       <tbody>
@@ -141,18 +145,12 @@
     </table>
   </div>
   <div class="google-map text-center">
-    <h3 class="text-center">地図</h3>
-    <hr>
     <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
   </div>
 </div>
 <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true, facility_id: @facility.id } %>
 
-<%
-=begin%>
-google mapを呼び出すjavascript
-<%
-=end%>
+<!-- google mapを呼び出すjavascript -->
 <script>
   let map;
   var e = document.getElementById('map');
