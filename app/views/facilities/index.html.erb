@@ -1,10 +1,13 @@
+<%# おすすめグルメ・おすすめ観光スポットの表示数 %>
+<% $facility_num = 4 %>
+
 <div class="list-body row">
   <div class="list-title underline-blue">
     <h3>おすすめグルメ</h3>
   </div>
   <div class="list-wrapper col-12">
     <div class="row">
-      <%= render partial: 'facilities/facilities_list', collection: @gourmets.first(4), as: 'facility' %>
+      <%= render partial: 'facilities/facilities_list', collection: @gourmets.first($facility_num), as: 'facility' %>
     </div>
     <div class="list-button">
       <%= link_to 'おすすめグルメをもっと見る', facilities_list_path(type: "gourmet"), class:"button button-blue-border button-arrow" %>
@@ -18,7 +21,7 @@
 
   <div class="list-wrapper col-12">
     <div class="row">
-      <%= render partial: 'facilities/facilities_list', collection: @spots.first(4), as: 'facility' %>
+      <%= render partial: 'facilities/facilities_list', collection: @spots.first($facility_num), as: 'facility' %>
     </div>
     <div class="list-button">
       <%= link_to '観光スポットをもっと見る', facilities_list_path(type: "spot"), class:"button button-white-border button-arrow" %>
