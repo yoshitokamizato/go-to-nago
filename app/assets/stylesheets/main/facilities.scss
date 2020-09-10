@@ -117,7 +117,10 @@ hr {
   text-decoration: none;
 }
 
-// ---------------詳細画面CSS---------------
+// =========================================================================
+// ======================== 詳細画面CSS(ここから) =============================
+// =========================================================================
+
 // topの画像
 .detail-top {
   position: relative;
@@ -134,6 +137,10 @@ hr {
     bottom: 0;
     color: #fff;
     padding: 10px;
+    font-size: 30px;
+    -webkit-filter: drop-shadow(0px 3px 100px rgba(0, 0, 0, .8));
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .8));
+
   }
 
   // いいねボタン(countを含む）
@@ -149,7 +156,6 @@ hr {
   }
 
   .icon-red {
-
     font-size: 40px;
   }
 
@@ -161,44 +167,121 @@ hr {
   }
 }
 
+// お店のdescription（説明）
+.description {
+  margin-top: 20px;
 
-// 吹き出し　ここから
-.balloon1-top {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// オーナーコメントテーブル　（ここから）
+.owner-comment-wrapper {
   position: relative;
-  display: inline-block;
-  margin: 1.5em 0;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: #e0edff;
+
+  .owner-comment-table {
+    background-color: #EEEEEE;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+
+    .owner-comment-left {
+
+      // オーナーのアイコン
+      .owner-comment-icon {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        /* 角丸半径を50%にする(=円形にする) */
+
+      }
+    }
+
+    .owner-comment-right {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      /* 縦方向中央揃え（Safari用） */
+      align-items: center;
+      padding-left: 20px;
+
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  // 詳細画面の中で2つ目のいいねボタン
+  .detail-bookmark-2 {
+    font-size: 30px;
+    position: absolute;
+    bottom: -11px;
+    right: 0px;
+
+    i {
+      background-color: #fff;
+      border-radius: 100%;
+      padding: 12px;
+      -webkit-filter: drop-shadow(0px 3px 1px $main-color);
+      filter: drop-shadow(0px 0px 1px $main-color);
+    }
+  }
 }
 
-.balloon1-top:before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-bottom: 15px solid #e0edff;
-}
+// オーナーコメントテーブル （ここまで）
 
-.balloon1-top p {
-  margin: 0;
-  padding: 0;
-}
 
-//  ここまで
+// お店の基本情報 ここから
+.shop-information {
+  margin-top: 45px;
+
+  // wrapper
+  .information-lists {
+
+    // ul
+    .information-list {
+      // li
+      display: flex;
+      border-bottom: #888888 solid 1px;
+      padding: 10px 0;
+
+      p {
+        text-align: left;
+        margin-bottom: 0px;
+      }
+
+      .information-list-title {
+        // 各リストのカラム
+        text-align: left;
+        padding-right: 40px;
+        padding-left: 10px;
+        min-width: 130px;
+        color: $main-color;
+        font-weight: bold;
+      }
+
+      .information-list-content {
+        text-align: left;
+
+      }
+    }
+  }
+}
 
 .detail-wrapper h3 {
   text-align: center;
   padding-top: 50px;
 }
 
-// google map　css(これがないと表示されない)
+// google map css(これがないと表示されない)
 #map {
-  height: 600px;
+  height: 300px;
   width: 600px;
 }
+
+
+// ==================================================================
+// ======================== 詳細画面CSS(ここまで) =============================
+// ==================================================================
