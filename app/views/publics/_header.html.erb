@@ -26,10 +26,10 @@
   <div class="collapse navbar-collapse navbarTogglerDemo01">
     <ul class="navbar-nav mt-2 mt-md-0">
       <li class="nav-item-header">
-        <%= link_to 'グルメ', facilities_list_path(type: "gourmet"), class: "nav-link" %>
+        <%= link_to 'グルメ', gourmets_list_path, class: "nav-link" %>
       </li>
       <li class="nav-item-header ">
-        <%= link_to '観光スポット', facilities_list_path(type: "spot"), class: "nav-link" %>
+        <%= link_to '観光スポット', spots_list_path, class: "nav-link" %>
       </li>
       <% if user_signed_in?	%>
         <li class="nav-item-header">
