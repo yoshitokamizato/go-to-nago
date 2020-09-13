@@ -170,6 +170,7 @@ hr {
 // お店のdescription（説明）
 .description {
   margin-top: 20px;
+  text-align: center;
 
   p {
     margin-bottom: 0;
@@ -232,7 +233,6 @@ hr {
 
 // オーナーコメントテーブル （ここまで）
 
-
 // お店の基本情報 ここから
 .shop-information {
   margin-top: 45px;
@@ -281,6 +281,53 @@ hr {
   width: 600px;
 }
 
+@media screen and (min-width:768px) {
+
+  /*　画面サイズが768px以上はここを読み込む　*/
+  // PC画面
+  // topの画像
+  .detail-top {
+
+    // タイトル（お店の名前）
+    .detail-title {
+
+      left: 10px;
+      bottom: 10px;
+      font-size: 60px;
+
+    }
+
+    // いいねボタン(countを含む）
+    .detail-bookmark-icon {
+      right: 20px;
+      bottom: 20px;
+      // 装飾
+
+      i {
+        font-size: 60px;
+      }
+    }
+
+    .icon-red {
+      font-size: 40px;
+    }
+
+    // いいねのカウント数
+    .detail-bookmark-count {
+      color: #fff;
+      font-size: 45px;
+      margin-top: -10px;
+    }
+  }
+
+  // google map css(これがないと表示されない)
+  #map {
+    height: 600px;
+    width: 600px;
+    margin-top: 30px;
+  }
+
+}
 
 // ==================================================================
 // ======================== 詳細画面CSS(ここまで) =============================
