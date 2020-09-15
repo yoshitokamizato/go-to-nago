@@ -37,8 +37,15 @@ Rails.application.routes.draw do
     get "users/edit/email" => "users/registrations#edit_email"
     put "users/update/email" => "users/registrations#update_email"
     get "users/update/email/confirm" => "users/registrations#update_email_confirm"
-  end
 
+    # 新規登録画面
+    # プロフィール編集画面（仮登録状態）
+    get "before_sign_up", to: "users/registrations#regist"
+    # プロフィール編集内容確認画面（仮登録状態）
+    post "before_sign_up_confirm", to: "users/registrations#confirm"
+    # プロフィール編集内容のアップデート処理（仮登録→本登録に）
+    post "before_sign_up_update", to: "users/registrations#registcomp"
+  end
   # resource
   resource :user, only: [:show] do
     collection do

@@ -138,10 +138,10 @@ ActiveRecord::Schema.define(version: 2020_09_04_214709) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname", null: false
-    t.integer "birth_year", null: false
+    t.string "nickname"
+    t.integer "birth_year"
     t.integer "sex"
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "image"
     t.integer "role", default: 0, null: false
     t.text "profile"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_214709) do
     t.string "unconfirmed_email"
     t.string "provider"
     t.string "uid"
+    t.boolean "mailmagazine", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
