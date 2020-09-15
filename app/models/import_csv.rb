@@ -33,7 +33,8 @@ class ImportCsv < ApplicationRecord
       }
       list_image << {
         facility_id: row["facility_id"].to_i,
-        image: row["image"],
+        # image: row["image"],
+        image: "#{Rails.root}/public/facility_image/" + row["image"],
         order: row["order"].to_i,
         created_user: row["created_user"].to_i
       }
@@ -48,11 +49,26 @@ class ImportCsv < ApplicationRecord
     # インポートができなかった場合の例外処理
     begin
       Facility.create!(list)
-      FacilityImage.create!(list_image)
-      puts "インポート完了!!"
+      # FacilityImage.create!(list_image)
+      puts "Facilityインポート完了!!"
     rescue ActiveModel::UnknownAttributeError => invalid
-      puts "インポートに失敗：UnknownAttributeError"
+      puts "Facilityインポートに失敗：UnknownAttributeError"
     end
+
+    begin
+      list_image.each do |data|
+        facility_image = FacilityImage.new(data)
+        File.open(data[:image]) do |f|
+          facility_image.image = f
+        end
+        facility_image.save!
+      end
+      puts "FacilityImage インポート完了！！"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "FacilityImage インポートに失敗：UnknownAttributeError"
+    end
+  
+        
   end
 
   def self.import_two(path)
