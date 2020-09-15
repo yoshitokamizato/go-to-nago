@@ -18,7 +18,7 @@
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>
-    <%= image_tag(images.image.url ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
+    <%= image_tag("/facility_image/"+images.image ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
     <p><%= @facility.description%></p>
   </div>
   <div class="recommend text-center">

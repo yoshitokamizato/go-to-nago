@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @gourmets = current_user.bookmark_facilities.includes(:user).where(type: "gourmet").page(params[:page])
 
     return unless request.xhr?
-
     case params[:type]
     # when "spot", "gourmet"
       # render params[:type].to_s
@@ -17,5 +16,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def withdraw; end
+  def withdraw
+  end
 end

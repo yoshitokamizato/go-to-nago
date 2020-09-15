@@ -32,14 +32,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "プロフィール文を入力してください", rows: 10 %>
+    <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "プロフィール分を入力してください", rows: 10 %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :mailmagazine %><br>
-    <%= f.check_box :mailmagazine, {} , "true", "false" %>
-    <%= label_tag :mailmagazine, "メール配信を希望する" , autocomplete: "mailmagazine"%>
-  </div>
 
   <div class="form-group">
     <%= f.submit "プロフィールを変更する", class:'btn btn-success btn-block' %>

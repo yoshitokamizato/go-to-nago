@@ -14,7 +14,6 @@ ActiveAdmin.register User do
       f.input :image
       f.input :role
       f.input :profile
-      f.input :mailmagazine
     end
     f.actions
   end
@@ -32,7 +31,6 @@ ActiveAdmin.register User do
     column :image
     column :role
     column :profile
-    column :mailmagazine
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
 
@@ -50,7 +48,6 @@ ActiveAdmin.register User do
       row :image
       row :role
       row :profile
-      row :mailmagazine
     end
   end
 end
