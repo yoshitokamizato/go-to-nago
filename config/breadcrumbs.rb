@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :gourmets do
-  link "グルメ", facilities_list_path(type: "gourmet")
+  link "グルメ", gourmets_list_path
   parent :root
 end
 
@@ -14,7 +14,7 @@ crumb :gourmet do |facility|
 end
 
 crumb :spots do
-  link "観光スポット", facilities_list_path(type: "spot")
+  link "観光スポット", spots_list_path
   parent :root
 end
 

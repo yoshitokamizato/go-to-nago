@@ -101,7 +101,12 @@
       <%end%>
     </div>
     <div class="list-button">
-      <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
+      <% if @facility.type == "gourmet" %>
+        <% url = gourmet_menus_path(@facility.id) %>
+      <% else %>
+        <% url = spot_menus_path(@facility.id) %>
+      <% end %>
+      <%= link_to  "もっと見る", url ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
     </div>
   <%end%>
   </div>
