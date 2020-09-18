@@ -25,10 +25,10 @@
     <h3>おすすめポイント</h3>
     <hr>
     <div class="owner">
-      <%if @owner.image? %>
-      <%= image_tag(@owner.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+      <%if @facility.user.image? %>
+        <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% else%>
-      <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+        <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% end %>
       <p><%= @facility.user.nickname%></p>
     </div>

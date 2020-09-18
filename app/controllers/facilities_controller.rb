@@ -8,7 +8,6 @@ class FacilitiesController < ApplicationController
   # 詳細表示
   def show
     @facility = Facility.includes(:facility_images).find(params[:id])
-    @owner = User.find(@facility.owner_id)
   end
 
   # 一覧表示
