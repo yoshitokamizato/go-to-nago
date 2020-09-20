@@ -33,7 +33,8 @@ class ImportCsv < ApplicationRecord
       }
       list_image << {
         facility_id: row["facility_id"].to_i,
-        image: row["image"],
+        # image: row["image"],
+        image: "#{Rails.root}/public/facility_image/" + row["image"],
         order: row["order"].to_i,
         created_user: row["created_user"].to_i
       }
@@ -48,11 +49,26 @@ class ImportCsv < ApplicationRecord
     # インポートができなかった場合の例外処理
     begin
       Facility.create!(list)
-      FacilityImage.create!(list_image)
-      puts "インポート完了!!"
+      # FacilityImage.create!(list_image)
+      puts "Facilityインポート完了!!"
     rescue ActiveModel::UnknownAttributeError => invalid
-      puts "インポートに失敗：UnknownAttributeError"
+      puts "Facilityインポートに失敗：UnknownAttributeError"
     end
+
+    begin
+      list_image.each do |data|
+        facility_image = FacilityImage.new(data)
+        File.open(data[:image]) do |f|
+          facility_image.image = f
+        end
+        facility_image.save!
+      end
+      puts "FacilityImage インポート完了！！"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "FacilityImage インポートに失敗：UnknownAttributeError"
+    end
+  
+        
   end
 
   def self.import_two(path)
@@ -63,7 +79,8 @@ class ImportCsv < ApplicationRecord
         facility_id: row["facility_id"].to_i,
         name:  row["name"],
         price: row["price"].to_i,
-        image: row["image"],
+        # image: row["image"],
+        image: "#{Rails.root}/public/menu_image/" + row["image"],
         content: row["content"],
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i
@@ -75,9 +92,23 @@ class ImportCsv < ApplicationRecord
     puts "----------------------------"
     puts "MENUのインポート処理を開始"
     # インポートができなかった場合の例外処理
+    # begin
+    #   Menu.create!(list)
+    #   puts "MENUインポート完了!!"
+    # rescue ActiveModel::UnknownAttributeError => invalid
+    #   puts "インポートに失敗：UnknownAttributeError"
+    # end
+    #
+    # carrierwaveを使用した画像upload方式に変更
     begin
-      Menu.create!(list)
-      puts "MENUインポート完了!!"
+      list.each do |data|
+        menu = Menu.new(data)
+        File.open(data[:image]) do |f|
+        menu.image = f
+        end
+        menu.save!
+      end
+      puts "Menuインポート完了！！"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "インポートに失敗：UnknownAttributeError"
     end

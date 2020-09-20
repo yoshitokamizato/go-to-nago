@@ -18,7 +18,7 @@
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>
-    <%= image_tag("/facility_image/"+images.image ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
+    <%= image_tag(images.image.url ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
     <p><%= @facility.description%></p>
   </div>
   <div class="recommend text-center">
@@ -26,7 +26,7 @@
     <hr>
     <div class="owner">
       <%if @facility.user.image? %>
-      <%= image_tag("/facility_image/"+@facility.user.image ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+      <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% else%>
       <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% end %>
@@ -63,7 +63,7 @@
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= image_tag("/menu_image/"+@facility.menus[0].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[0].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[0].name %></h5>
             <p><%= @facility.menus[0].content %></p>
@@ -71,7 +71,7 @@
         </div>
         <%if @facility.menus[1] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[1].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[1].name %></h5>
             <p><%= @facility.menus[1].content %></p>
@@ -80,7 +80,7 @@
         <%end%>
         <% if @facility.menus[2] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[2].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[2].name %></h5>
             <p><%= @facility.menus[2].content %></p>
@@ -101,7 +101,12 @@
       <%end%>
     </div>
     <div class="list-button">
-      <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
+      <% if @facility.type == "gourmet" %>
+        <% url = gourmet_menus_path(@facility.id) %>
+      <% else %>
+        <% url = spot_menus_path(@facility.id) %>
+      <% end %>
+      <%= link_to  "もっと見る", url ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
     </div>
   <%end%>
   </div>

@@ -18,5 +18,14 @@ module GoToNago
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.paths.add "#{Rails.root}/lib", eager_load: true
+
+    # rails generate時にRSpec関連のファイルを自動生成する設定(model & controllerはデフォルト自動生成)
+    config.generators do |g|
+      g.test_framework :rspec,
+      fixtures: false,
+      view_specs: false,
+      helper_specs: false,
+      routing_specs: false
+    end
   end
 end

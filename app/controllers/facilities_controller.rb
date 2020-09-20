@@ -12,7 +12,12 @@ class FacilitiesController < ApplicationController
 
   # 一覧表示
   def show_facilities
-    @facility_type = params[:type]
+    if request.fullpath.include?("gourmet") == true
+      @facility_type = "gourmet"
+    else
+      @facility_type = "spot"
+    end
+
     @facilities = Facility.includes(:facility_images).where(type: @facility_type).page(params[:page])
   end
 
