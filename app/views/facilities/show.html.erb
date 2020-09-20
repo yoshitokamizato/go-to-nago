@@ -52,41 +52,34 @@
     <div id="carouselOption1" class="carousel slide" data-ride="carousel">
       <!-- インジケータの設定 -->
       <ol class="carousel-indicators">
-        <%if @facility.menus[1] %>
-        <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselOption1" data-slide-to="1"></li>
-        <%end%>
-        <%if @facility.menus[2] %>
-        <li data-target="#carouselOption1" data-slide-to="2"></li>
+        <% for num in 1..MENUS_MAX-1 do %>
+          <% if @facility.menus[num] %>
+            <% if num == 1 %>
+              <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselOption1" data-slide-to="1"></li>
+            <% else %>
+              <li data-target="#carouselOption1" data-slide-to=num.to_s></li>
+            <% end %>
+          <% end %>
         <%end%>
       </ol>
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag(@facility.menus[0].image.url ,class:"d-block w-100" ,alt:"...") %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= @facility.menus[0].name %></h5>
-            <p><%= @facility.menus[0].content %></p>
-          </div>
-        </div>
-        <%if @facility.menus[1] %>
-        <div class="carousel-item">
-          <%= image_tag(@facility.menus[1].image.url ,class:"d-block w-100" ,alt:"...") %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= @facility.menus[1].name %></h5>
-            <p><%= @facility.menus[1].content %></p>
-          </div>
-        </div>
+        <% for num in 0..MENUS_MAX-1 do %>
+          <% if @facility.menus[num] %>
+            <% if num == 0 %>
+              <div class="carousel-item active">
+            <% else %>
+              <div class="carousel-item">
+            <% end %>
+                <%= image_tag(@facility.menus[num].image.url ,class:"d-block w-100" ,alt:"...") %>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5><%= @facility.menus[num].name %></h5>
+                  <p><%= @facility.menus[num].content %></p>
+                </div>
+              </div>
+          <%end%>
         <%end%>
-        <% if @facility.menus[2] %>
-        <div class="carousel-item">
-          <%= image_tag(@facility.menus[2].image.url ,class:"d-block w-100" ,alt:"...") %>
-          <div class="carousel-caption d-none d-md-block">
-            <h5><%= @facility.menus[2].name %></h5>
-            <p><%= @facility.menus[2].content %></p>
-          </div>
-        </div>
-        <% end %>
       </div>
       <!-- スライドコントロールの設定 -->
       <%if @facility.menus[1] %>
