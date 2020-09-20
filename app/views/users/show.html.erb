@@ -58,10 +58,43 @@
     <div class="profile text-center"><%= @user.profile %></div>
   </div>
 
-  <h3 class="text-center pt-5">お気に入り一覧</h3>
+<!-- タブのデザイン ================================================================= -->
+
   <!-- タブ -->
   <div class="container">
     <!-- タブの表示設定 -->
+    <div class="tabs">
+      <input id="all" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="all">グルメ</label>
+
+      <input id="programming" type="radio" name="tab_item">
+      <label class="tab_item" for="programming">観光スポット</label>
+
+    <div class="tab_content" id="all_content">
+      <div class="row" id="gourmet_lists">
+            <%= render partial: 'facilities/facilities_list', collection: @gourmets, as: 'facility' %>
+      </div>
+
+      <div class="list-button col-12">
+        <%= link_to_next_page @gourmets, 'もっと見る', remote: true , params: { type: :bookmark_gourmet },
+        class:"more btn btn-primary btn-lg btn-block btn-round" ,type:"button" ,id:'gourmet_view_more'%>
+      </div>
+    </div>  <!-- tab_content -->
+
+    <div class="tab_content" id="programming_content">
+      <div class="row" id="spot_lists">
+        <%= render partial: 'facilities/facilities_list', collection: @spots, as: 'facility' %>
+      </div>
+      <div class="list-button col-12">
+        <%= link_to_next_page @spots, 'もっと見る', remote: true , params: { type: :bookmark_spot },
+        class:"more btn btn-primary btn-lg btn-block btn-round" ,type:"button" ,id:'spot_view_more'%>
+      </div>
+
+    </div> <!-- tab_content -->
+   </div> <!-- tabs -->
+
+<!-- タブのデザイン ================================================================= -->
+
     <ul id="myTabs" class="nav nav-tabs justify-content-center">
       <li role="presentation" class="active"><button href="#gourmet-tab" aria-controls="gourmet-tab" role="tab" data-toggle="tab" class="nav-link  active">グルメ</button></li>
       <li role="presentation"><button href="#spot-tab" aria-controls="spot-tab" role="tab" data-toggle="tab" class="nav-link ">観光スポット</button></li>
