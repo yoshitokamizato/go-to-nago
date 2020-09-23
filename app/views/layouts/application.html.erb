@@ -13,17 +13,17 @@
 </head>
 
 <body>
-<div class="wrap">
-  <%= render 'publics/header'%>
-  <%= render 'shared/flash_messages' %>
-  <% if current_page?(root_path) %>
+  <div class="wrap">
+    <%= render 'publics/header'%>
+    <%= render 'shared/flash_messages' %>
+    <% if current_page?(root_path) %>
     <div class="top-image"></div>
-  <% end %>
-  <div class="container-fluid" id="wrapper">
-    <%= yield %>
+    <% end %>
+    <div class="container-fluid" id="wrapper">
+      <%= yield %>
+    </div>
+    <%= render 'publics/footer'%>
   </div>
-  <%= render 'publics/footer'%>
-</div>
 
 </body>
 

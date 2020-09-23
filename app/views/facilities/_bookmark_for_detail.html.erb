@@ -1,0 +1,13 @@
+<object>
+  <% if facility.bookmark_by?(current_user) %>
+  <%= link_to icon('fas', 'heart'), facility_bookmarks_path(facility.id,flag:true), method: :delete , remote: true , id:"js-bookmark-button-for-facility-#{facility.id}", class:"icon-red" %>
+  <div class="detail-bookmark-count">
+    <%= facility.bookmarks.count %>
+  </div>
+  <% else %>
+  <%= link_to icon('far', 'heart'), facility_bookmarks_path(facility.id,flag:true), method: :post , remote: true ,  id:"js-bookmark-button-for-facility-#{facility.id}", class:"icon-red" %>
+  <div class="detail-bookmark-count">
+    <%= facility.bookmarks.count %>
+  </div>
+  <% end %>
+</object>
