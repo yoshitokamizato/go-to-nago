@@ -8,7 +8,7 @@ class Users::Mailer < Devise::Mailer
       if record.unconfirmed_email != nil
         opts[:subject] = "【名護へGO】メールアドレス変更手続きを完了してください"
       else
-        opts[:subject] = "【名護へGO】会員登録完了"
+        opts[:subject] = "【名護へGO】仮登録完了"
       end
       #件名の指定以外は親を継承
       super

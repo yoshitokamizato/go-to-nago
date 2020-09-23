@@ -26,9 +26,9 @@
     <hr>
     <div class="owner">
       <%if @facility.user.image? %>
-      <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+        <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% else%>
-      <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+        <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% end %>
       <p><%= @facility.user.nickname%></p>
     </div>
@@ -101,7 +101,12 @@
       <%end%>
     </div>
     <div class="list-button">
-      <%= link_to  "もっと見る", facility_menus_path(@facility.id)  ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
+      <% if @facility.type == "gourmet" %>
+        <% url = gourmet_menus_path(@facility.id) %>
+      <% else %>
+        <% url = spot_menus_path(@facility.id) %>
+      <% end %>
+      <%= link_to  "もっと見る", url ,type:"button", class:"btn btn-primary btn-lg btn-block" %>
     </div>
   <%end%>
   </div>
