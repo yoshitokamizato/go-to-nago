@@ -191,8 +191,8 @@ hr {
 
       // オーナーのアイコン
       .owner-comment-icon {
-        width: 50px;
-        height: 50px;
+        width: 70px;
+        height: 70px;
         object-fit: cover;
         border-radius: 50%;
         /* 角丸半径を50%にする(=円形にする) */
@@ -319,6 +319,43 @@ hr {
       margin-top: -10px;
     }
   }
+
+  .description {
+    p {
+      font-size: 20px;
+    }
+  }
+
+  .owner-comment-wrapper {
+    p {
+      font-size: 20px;
+    }
+
+    .owner-comment-table {
+      display: inline-block;
+
+      .owner-comment-left {
+
+        // オーナーのアイコン
+        .owner-comment-icon {
+          width: 100px;
+          height: 100px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+  }
+
+  .shop-information {
+    p {
+      font-size: 20px;
+    }
+  }
+
+  // オーナーコメントテーブル （ここまで）
+
+
 
   // google map css(これがないと表示されない)
   #map {
