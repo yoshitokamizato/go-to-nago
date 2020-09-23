@@ -1,8 +1,13 @@
 <div class="col-6 col-lg-3 show-row-list">
-  <%= link_to facility_path(facility.id), class:"a-card" do %>
+  <% if facility.type == "gourmet" %>
+    <% url = gourmet_path(facility.id) %>
+  <% else %>
+    <% url = spot_path(facility.id) %>
+  <% end %>
+  <%= link_to url, class:"a-card" do %>
     <div class="card">
       <%images = facility.facility_images.first%>
-      <%= image_tag("/facility_image/"+images.image ,class:"card-img-top" ,alt:"...") %>
+      <%= image_tag(images.image.thumb.url ,class:"card-img-top" ,alt:"...") %>
       <div class="card-body">
         <h4 class="card-title"><%= facility.name %></h4>
         <p class="card-text"><%= facility.description %></p>
@@ -20,4 +25,3 @@
     </div>
   <% end %>
 </div>
-

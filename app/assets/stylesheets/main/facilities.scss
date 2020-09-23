@@ -61,11 +61,13 @@ hr {
 .card-title {
   font-weight: bold;
   font-size: 1.2rem;
+  overflow: hidden;
 }
 
 .card-body {
   padding: 0.6rem !important;
 }
+
 
 .card-text {
   font-size: 1.0rem;

@@ -27,6 +27,7 @@ gem 'dotenv-rails'
 gem 'sendgrid-ruby'
 
 gem 'omniauth-twitter'
+gem 'fog-aws'
 
 
 # hirb: 出力結果を表形式で出力する
