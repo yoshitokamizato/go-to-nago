@@ -1,6 +1,6 @@
 ActiveAdmin.register Facility do
   # Facilityモデルのデータを更新を許可
-  permit_params :type, :name, :postal_code, :address, :latitude, :longitude, :running_time, :tel, :email, :budget, :description, :advice, :holiday, :parking, :home_page, :owner_id, :instagram, :twitter, :youtube, :status, :created_user, :updated_user, :created_at, :updated_at, :user_id, :opening_hours
+  permit_params :type, :name, :postal_code, :address, :latitude, :longitude, :running_time, :tel, :email, :budget, :description, :advice, :holiday, :parking, :home_page, :owner_id, :instagram, :twitter, :youtube, :status, :created_user, :updated_user, :created_at, :updated_at, :opening_hours
 
   # 新規登録時のフォーム
   form do |f|
@@ -27,7 +27,6 @@ ActiveAdmin.register Facility do
       f.input :status
       f.input :created_user
       f.input :updated_user
-      f.input :user_id
       f.input :opening_hours
     end
     f.actions
@@ -59,7 +58,6 @@ ActiveAdmin.register Facility do
     column :status
     column :created_user
     column :updated_user
-    column :user_id
     column :opening_hours
     column 'facility_images' do |facility|
       link_to '施設画像一覧', admin_facility_facility_images_path(facility.id)
@@ -96,7 +94,6 @@ ActiveAdmin.register Facility do
       row :status
       row :created_user
       row :updated_user
-      row :user_id
       row :opening_hours
     end
   end

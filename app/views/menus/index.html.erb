@@ -1,21 +1,30 @@
-<div class="list-body">
-  <div class="title text-center">
-    <h2><%= @facility.name%>
-      <% if user_signed_in? %>
-      <div class="bookmark_btn_<%= @facility.id %>" data-bookmark='1' style='display:inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px;'>
-        <object><%= render 'facilities/bookmark_area', facility: @facility %></object>
-      </div>
-      <% else%>
-      <div style='display: inline; float: right; padding-right:20px; font-size:30px; margin-bottom:30px'>
-        <object><%= link_to icon('far', 'star'), new_user_session_path %></object>
-      </div>
-      <% end %>
-    </h2>
-  </div>
-  <div class="list-cd">
+<div class="menu-wrapper">
+  <div class="list-cd my-3">
     <%= render "shared/breadcrumbs" %>
   </div>
-  <div class="list-title">
+  <div class="detail-top mb-4">
+    <%= image_tag("/facility_image/"+@facility.facility_images.first.image ,class:"card-img-top" ,alt:"...")  %>
+    <h2 class="detail-title"><%= @facility.name%></h2>
+    <!-- いいねボタン -->
+    <!-- ログインの有無で場合わけ -->
+    <% if user_signed_in? %>
+    <div class="bookmark_btn_<%= @facility.id %>  detail-bookmark-icon" data-bookmark='1'>
+      <!-- ここ専用のパーシャル -->
+      <%= render 'facilities/bookmark_for_detail', {facility: @facility,gourmet: @gourmet} %>
+    </div>
+    <% else%>
+    <div class="favorite-area detail-bookmark-icon">
+      <!-- ②ここはパーシャルを使用 -->
+      <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+      <div class="detail-bookmark-count">
+        <%= @facility.bookmarks.count %>
+      </div>
+    </div>
+    <% end %>
+    <!-- いいねボタンここまで -->
+  </div>
+
+  <div class="list-title underline-blue">
     <h3>メニュー</h3>
   </div>
   <div class="list-wrapper">

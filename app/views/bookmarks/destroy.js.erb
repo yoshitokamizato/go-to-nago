@@ -1,2 +1,7 @@
-$(".bookmark_btn_<%= @facility.id %>[data-bookmark='1']").html("<%= j(render 'facilities/bookmark_area',{ facility: @facility  , gourmet: @gourmet  }) %>");
-$(".bookmark_btn_<%= @facility.id %>[data-bookmark='2']").html("<%= j(render 'facilities/bookmark_area',{ facility: @facility  , gourmet: @gourmet  }) %>");
+<% if @flag %>
+  $(".bookmark_btn_<%= @facility.id %>[data-bookmark='1']").html("<%= j(render 'facilities/bookmark_for_detail', facility: @facility) %>");
+  $(".bookmark_btn_<%= @facility.id %>[data-bookmark='2']").html("<%= j(render 'facilities/bookmark_for_detail2', facility: @facility) %>");
+<% else %>
+  $(".bookmark_btn_<%= @facility.id %>[data-bookmark='1']").html("<%= j(render 'facilities/bookmark_area',{ facility: @facility  , gourmet: @gourmet  }) %>");
+  $(".bookmark_btn_<%= @facility.id %>[data-bookmark='2']").html("<%= j(render 'facilities/bookmark_area',{ facility: @facility  , gourmet: @gourmet  }) %>");
+<% end %>

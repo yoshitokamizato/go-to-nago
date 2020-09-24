@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_144259) do
     t.integer "updated_user", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "opening_hours"
   end
 
