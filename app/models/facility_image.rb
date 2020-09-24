@@ -4,4 +4,6 @@ class FacilityImage < ApplicationRecord
   validates :image, presence: true
   validates :order, presence: true
   validates :order, uniqueness: {scope: :facility_id}
+
+  default_scope { order(order: :asc) }
 end
