@@ -25,8 +25,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'dotenv-rails'
+gem 'sendgrid-ruby'
 
 gem 'omniauth-twitter'
+gem 'fog-aws'
 
 
 # hirb: 出力結果を表形式で出力する
@@ -42,9 +44,14 @@ gem 'pry-byebug'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# パンくずリスト
+gem 'gretel'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
 end
 
 group :development do

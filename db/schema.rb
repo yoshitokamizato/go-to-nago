@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_07_31_133438) do
-
+ActiveRecord::Schema.define(version: 2020_09_04_214709) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -62,10 +60,6 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.integer "budget"
     t.text "description", null: false
     t.text "advice"
-    t.datetime "first_open"
-    t.datetime "first_close"
-    t.datetime "last_open"
-    t.datetime "last_close"
     t.string "holiday"
     t.string "parking", null: false
     t.string "home_page"
@@ -79,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "opening_hours"
   end
 
   create_table "facility_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -143,10 +138,10 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname", null: false
-    t.datetime "birth_year", null: false
+    t.string "nickname"
+    t.integer "birth_year"
     t.integer "sex"
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "image"
     t.integer "role", default: 0, null: false
     t.text "profile"
@@ -158,6 +153,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_133438) do
     t.string "unconfirmed_email"
     t.string "provider"
     t.string "uid"
+    t.boolean "mailmagazine", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

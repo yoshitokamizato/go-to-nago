@@ -1,6 +1,4 @@
-@import "application.scss";
 
-// *
 hr {
   padding-bottom: 35px;
 }
@@ -59,8 +57,10 @@ hr {
 }
 
 .card-title{
+  height: 1.5rem;
   font-weight: bold;
   font-size: 1.2rem;
+  overflow: hidden;
 }
 
 .card-body{
@@ -68,6 +68,7 @@ hr {
 }
 
 .card-text{
+  height: 4.5rem;
   font-size: 1.0rem;
   color: $gray-color;
   display: -webkit-box;

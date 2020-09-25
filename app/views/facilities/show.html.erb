@@ -14,15 +14,11 @@
     </h2>
   </div>
   <div class="list-cd">
-    <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,gourmet_list_path %> > <%= @facility.name %></p>
-    <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "施設",facility_list_path %> > <%= @facility.name %></p>
-    <% end %>
+    <%= render "shared/breadcrumbs" %>
   </div>
   <div class="top">
     <%images = @facility.facility_images.first%>
-    <%= image_tag("/facility_image/"+images.image ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
+    <%= image_tag(images.image.url ,class:"card-img-top w-100" ,alt:"...",style:"width:500px;")  %>
     <p><%= @facility.description%></p>
   </div>
   <div class="recommend text-center">
@@ -30,7 +26,7 @@
     <hr>
     <div class="owner">
       <%if @facility.user.image? %>
-      <%= image_tag("/facility_image/"+@facility.user.image ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
+      <%= image_tag(@facility.user.image.url ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% else%>
       <%= image_tag("title.png" ,class:"text-center rounded-circle" ,alt:"...",style:"width:200px;")  %>
       <% end %>
@@ -67,7 +63,7 @@
       <!-- スライドさせる画像の設定 -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <%= image_tag("/menu_image/"+@facility.menus[0].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[0].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[0].name %></h5>
             <p><%= @facility.menus[0].content %></p>
@@ -75,7 +71,7 @@
         </div>
         <%if @facility.menus[1] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[1].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[1].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[1].name %></h5>
             <p><%= @facility.menus[1].content %></p>
@@ -84,7 +80,7 @@
         <%end%>
         <% if @facility.menus[2] %>
         <div class="carousel-item">
-          <%= image_tag("/menu_image/"+@facility.menus[2].image ,class:"d-block w-100" ,alt:"...") %>
+          <%= image_tag(@facility.menus[2].image.url ,class:"d-block w-100" ,alt:"...") %>
           <div class="carousel-caption d-none d-md-block">
             <h5><%= @facility.menus[2].name %></h5>
             <p><%= @facility.menus[2].content %></p>
@@ -127,11 +123,7 @@
         </tr>
         <tr>
           <th scope="row">営業時間</th>
-          <td><%= @facility.first_open %> 〜 <%= @facility.first_close %>
-            <%if @facility.last_open || @facility.last_close %>
-            <br>
-            <%= @facility.last_open %> 〜 <%= @facility.last_close %>
-            <%end%></td>
+          <td><%= @facility.opening_hours %></td>
         </tr>
         <tr>
           <th scope="row">定休日</th>
@@ -169,9 +161,9 @@ google mapを呼び出すjavascript
 
   function initMap() {
     geocoder = new google.maps.Geocoder()
-    console.log(latitude)
-    console.log(longitude)
-    console.log(e)
+    // console.log(latitude)
+    // console.log(longitude)
+    // console.log(e)
     map = new google.maps.Map(document.getElementById('map'), {
       center: {
         lat: latitude,
@@ -189,4 +181,4 @@ google mapを呼び出すjavascript
     });
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDWh0IQXOK7XmXrogmszMGQbagbQbvzU&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>

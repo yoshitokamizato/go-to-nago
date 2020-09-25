@@ -13,11 +13,7 @@
     </h2>
   </div>
   <div class="list-cd">
-    <% if @facility.type == "gourmet" %>
-    <p><a href="/" class="">home</a> > <%= link_to "グルメ" ,gourmet_list_path %> > <%= @facility.name %></p>
-    <% else %>
-    <p><a href="/" class="">home</a> > <%= link_to "施設",facility_list_path %> > <%= @facility.name %></p>
-    <% end %>
+    <%= render "shared/breadcrumbs" %>
   </div>
   <div class="list-title">
     <h3>メニュー</h3>

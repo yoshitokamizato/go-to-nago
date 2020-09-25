@@ -14,6 +14,7 @@ ActiveAdmin.register User do
       f.input :image
       f.input :role,  as: :select, collection:User.role_i18n.invert
       f.input :profile
+      f.input :mailmagazine
     end
     f.actions
   end
@@ -35,6 +36,7 @@ ActiveAdmin.register User do
       user.role_i18n
     end
     column :profile
+    column :mailmagazine
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
 
@@ -56,6 +58,7 @@ ActiveAdmin.register User do
         user.role_i18n
       end
       row :profile
+      row :mailmagazine
     end
   end
 end
