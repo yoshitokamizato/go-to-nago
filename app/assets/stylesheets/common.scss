@@ -144,7 +144,8 @@ a:hover {
 // ========ここから（ヘッダー部）=========
 nav.header{
   background-color: #fff;
-  // max-width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
   width: 100vw;
   padding: 0 1rem;
 }
