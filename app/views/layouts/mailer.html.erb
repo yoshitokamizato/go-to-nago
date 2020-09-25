@@ -3,11 +3,42 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      table.inquiry_data th{
+        border: 1px solid #000;
+      }
+      table.inquiry_data td{
+        border: 1px solid #000;
+      }
+      @media only screen and (max-width: 600px) {
+        table {
+        width: 100% !important;
+        }
+        img {
+        max-width: 100%;
+        height: auto;
+        }
+      }
     </style>
   </head>
 
   <body>
     <%= yield %>
+    <div style="text-align: center;">
+     <br />
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+    <br />
+    <a href="https://go-to-nago.com/"> 名護へGO</a> <br />
+
+    運営会社：株式会社やんばるスパイク <br />
+    住所：〒905-1152　沖縄県名護市字伊差川１０５２番地２ <br />
+    メールアドレス：xxxxxxxx@xxxxxxxx.xxx <br />
+    TEL：XX-XXXX-XXXX <br />
+    営業時間：月～金曜 XX：XX～XX：XX <br />
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+    <br />
+    ※こちらのメールは送信専用となります。ご返信いただいてもお答えできませんのでご了承ください。　
+     <br />
+    </div>
   </body>
 </html>

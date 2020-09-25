@@ -59,6 +59,9 @@ ActiveAdmin.register Facility do
     column :created_user
     column :updated_user
     column :opening_hours
+    column 'facility_images' do |facility|
+      link_to '施設画像一覧', admin_facility_facility_images_path(facility.id)
+    end
     column 'menu' do |facility|
       link_to 'メニュー 一覧',   admin_facility_menus_path(facility.id)
     end
@@ -97,6 +100,7 @@ ActiveAdmin.register Facility do
 
   sidebar "メニュー", only: [:show, :edit] do
     ul do
+      li link_to '施設画像一覧', admin_facility_facility_images_path(resource)
       li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
     end
   end
