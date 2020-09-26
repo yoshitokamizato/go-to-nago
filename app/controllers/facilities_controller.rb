@@ -1,17 +1,11 @@
 class FacilitiesController < ApplicationController
-  def index
-    @spots = Facility.includes(:facility_images).where(type: "spot")
-    @gourmets = Facility.includes(:facility_images).where(type: "gourmet")
-    # @facilities = Facility.all.includes(:user)
-  end
-
   # 詳細表示
   def show
     @facility = Facility.includes(:facility_images).find(params[:id])
   end
 
   # 一覧表示
-  def show_facilities
+  def index
     if request.fullpath.include?("gourmet") == true
       @facility_type = "gourmet"
     else

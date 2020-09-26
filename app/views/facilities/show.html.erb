@@ -2,7 +2,7 @@
 <div class="detail-wrapper">
   <!-- トップ -->
   <div class="detail-top">
-    <%= image_tag("/facility_image/"+@facility.facility_images.first.image ,class:"card-img-top" ,alt:"...")  %>
+    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top" ,alt:"...")  %>
     <h2 class="detail-title"><%= @facility.name%></h2>
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
