@@ -81,6 +81,7 @@ class ImportCsv < ApplicationRecord
         # image: row["image"],
         image: "#{Rails.root}/public/menu_image/" + row["image"],
         content: row["content"],
+        order: row["order"],
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i
       }
