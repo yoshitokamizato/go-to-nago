@@ -35,7 +35,7 @@
               <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
               <li data-target="#carouselOption1" data-slide-to="1"></li>
             <% else %>
-              <li data-target="#carouselOption1" data-slide-to=num.to_s></li>
+              <li data-target="#carouselOption1" data-slide-to="¥"" + num.to_s + "¥""></li>
             <% end %>
           <% end %>
         <%end%>
@@ -56,6 +56,17 @@
                 </div>
               </div>
           <%end%>
+        <%end%>
+        <!-- スライドコントロールの設定 -->
+        <%if @facility.menus[1] %>
+          <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">前へ</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselOption1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">次へ</span>
+          </a>
         <%end%>
       </div>
     </div>
