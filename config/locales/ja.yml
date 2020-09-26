@@ -73,6 +73,7 @@ ja:
         price: 料金
         image: メニュー画像
         content: メニューの紹介
+        order: 表示順序
         created_user: "作成者ID"
         updated_user: "更新者ID"
         created_at: "作成日時"
