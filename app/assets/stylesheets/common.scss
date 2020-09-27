@@ -133,6 +133,28 @@ a:hover {
   }
 }
 
+.button-blue{
+  background-color: $main-color;
+  color: #fff;
+  &:hover{
+    color: #fff;
+  }
+}
+
+.button-twitter{
+  background-color: #00acee;
+  color: #fff;
+  position: relative;
+  &:before {
+    position: absolute;
+    left: 3vw;
+    content: ">";
+  }
+  &:hover{
+    color: #fff;
+  }
+}
+
 // -------------- アイコン  ----------------
 .icon-red{
   color: $red-color;

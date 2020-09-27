@@ -1,5 +1,5 @@
 <div class="container-login">
-  <h2><%= t('.sign_in')%></h2>
+  <h2 class="list-title underline-blue "><%= t('.sign_in')%></h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "ログインする", class: 'btn btn-primary btn-block' %>
+    <%= f.submit "ログインする", class: 'button button-blue' %>
   </div>
   <% end %>
 
