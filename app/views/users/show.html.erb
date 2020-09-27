@@ -17,10 +17,10 @@
           <h3><%=@user.nickname%></h3>
           <!-- 誕生日から年齢を計算 -->
           <% if @user.birth_year.to_i > 0 %>
-            <p><%= (Date.today.year.to_i - @user.birth_year.to_i) %></p>
+            <p class="show-content" ><%= (Date.today.year.to_i - @user.birth_year.to_i) %></p>
           <% end %>
-          <p><%=@user.sex%></p>
-          <p><%=@user.prefecture%></p>
+          <p class="show-content"><%=@user.sex%></p>
+          <p class="show-content"><%=@user.prefecture%></p>
         </div>
 
         <!-- 切り替えボタンの設定 -->
