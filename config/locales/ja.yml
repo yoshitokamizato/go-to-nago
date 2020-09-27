@@ -26,8 +26,8 @@ ja:
         done: 完了
       kind:
         inquiry: 問い合わせ
-        new_facility: 施設情報の追加
-        edit_facility: 施設情報の編集
+        new_facility: 情報掲載依頼
+        edit_facility: 情報修正依頼
   activerecord:
     models:
       inquiry: 問い合わせ

@@ -5,7 +5,7 @@ ActiveAdmin.register Facility do
   # 新規登録時のフォーム
   form do |f|
     f.inputs do
-      f.input :type, as: :select, collection:Facility.type_i18n.invert
+      f.input :type, as: :select, collection:Facility.types_i18n.invert
       f.input :name
       f.input :postal_code
       f.input :address
