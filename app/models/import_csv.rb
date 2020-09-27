@@ -28,7 +28,6 @@ class ImportCsv < ApplicationRecord
         status: row["status"].to_i,
         created_user: row["created_user"].to_i,
         updated_user: row["updated_user"].to_i,
-        user_id: row["user_id"].to_i,
         opening_hours: row["opening_hours"]
       }
       list_image << {
@@ -67,8 +66,8 @@ class ImportCsv < ApplicationRecord
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "FacilityImage インポートに失敗：UnknownAttributeError"
     end
-  
-        
+
+
   end
 
   def self.import_two(path)
