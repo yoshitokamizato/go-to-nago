@@ -1,6 +1,9 @@
 ActiveAdmin.register Menu do
   belongs_to :facility
-  permit_params :name, :price, :content, :image, :created_user, :updated_user
+  permit_params :name, :price, :content, :image, :created_user, :updated_user, :order
+
+  # 表示順序の昇順で表示
+  config.sort_order = 'order_asc'
 
   index do
     selectable_column
@@ -11,6 +14,7 @@ ActiveAdmin.register Menu do
     column :name
     column :price
     column :content
+    column :order
     actions
   end
 
@@ -24,6 +28,7 @@ ActiveAdmin.register Menu do
       end
       row :price
       row :content
+      row :order
       row :created_user
       row :updated_user
       row :created_at
@@ -32,10 +37,12 @@ ActiveAdmin.register Menu do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs do
       f.input :name
       f.input :price
       f.input :content
+      f.input :order
       f.input :created_user, input_html: { value: current_admin_user.id, readonly: true}
       f.input :updated_user, input_html: { value: current_admin_user.id, readonly: true}
       f.input :image, :image_preview => true
