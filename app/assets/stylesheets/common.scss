@@ -142,16 +142,28 @@ a:hover {
 
 
 // ========ここから（ヘッダー部）=========
-nav.header{
+.header{
   background-color: #fff;
+}
+
+nav.navbar{
   max-width: 1140px;
   margin: 0 auto;
   width: 100vw;
   padding: 0 1rem;
 }
 
-.header-icon-area,.logo-area{
+.menu-icon-area,.logo-area, .account-icon-area{
   height: 55px;
+}
+
+@media(min-width: 768px){
+  .menu-icon-area,.logo-area, .account-icon-area{
+    height: 72px;
+  }
+  .account-icon-area{
+    order: 3;
+  }
 }
 
 @media(min-width: 768px){
@@ -160,18 +172,11 @@ nav.header{
   }
 }
 
-
-@media(min-width: 768px){
-  .header-icon-area,.logo-area{
-    height: 72px;
-  }
-}
-
 .navbar-toggler{
   border: none !important;
 }
 
-.header-icon-area{
+.menu-icon-area, .account-icon-area{
   text-align: center;
   position: relative;
   // height: 100%;
