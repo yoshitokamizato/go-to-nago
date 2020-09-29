@@ -5,7 +5,8 @@ $gray-color: #7C7B7B;
 
 body {
   color: #082b48;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  // font-family: 'Noto Sans JP', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif !important;
   line-height: 1.5;
 }
 
@@ -24,6 +25,17 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+.list-title h3{
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+
+@media(min-width: 768px){
+  .list-title h3{
+    font-size: 24px;
+  }
 }
 
 .container {
@@ -77,15 +89,15 @@ a:hover {
 }
 
 .button{
-  width: 75vw;
-  max-width: 580px;
-  margin: auto;
-  font-size: 3vw;
+  width: 100%;
+  max-width: 576px;
+  margin: 10px auto 0;
+  font-size: 1.0rem;
   font-weight: bold;
   text-decoration: none;
   display: block;
   text-align: center;
-  padding: 15px 0 15px;
+  padding: 8px 0;
   &:hover{
     text-decoration: none;
   }
@@ -133,10 +145,11 @@ a:hover {
   }
 }
 
-// -------------- アイコン  ----------------
-.icon-red{
-  color: $red-color;
-}
+// // -------------- アイコン  ----------------
+// .favorite-icon{
+//   font-size: 0.8rem;
+//   color: $red-color;
+// }
 
 // ========ここまで（共通スタイル）=========
 
@@ -279,16 +292,18 @@ nav.navbar{
 .field_with_errors .form-control {
     border: solid 2px #a94442;
 }
-// ---------------最下部のsnsアイコンリスト---------------
+// ---------------ボトムエリア（SNSアイコンとボタン）---------------
 .bottom{
-  margin: 20px auto;
+  margin: 20px auto 0;
 }
 
 .bottom-sns-area {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  margin: 0 auto 30px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 576px;
   a:hover{
     text-decoration: none;
   }
@@ -296,22 +311,25 @@ nav.navbar{
 
 .sns-logo {
   text-align: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
 }
 
 @media(min-width: 768px){
   .sns-logo{
-    width: 5rem;
-    height: 5rem;  
+    width: 4rem;
+    height: 4rem;  
   }
 }
 
+.bottom-button{
+  margin-top: 5px;
+}
 
 // --------------footer---------------------
 .footer {
-  margin-top: auto;
+  margin-top: 20px;
   color:#ffffff;
   background-color: $main-color;
   background-image: image-url('img_yanbaru_inverse.svg'),image-url('img_yanbaru.svg'); 
@@ -322,7 +340,8 @@ nav.navbar{
     margin: 0 -15px;
     .row-li{
       padding: 0;
-      border: 1px solid #ffffff;          
+      border-bottom: 1px solid #ffffff;          
+      border-right: 1px solid #ffffff;          
     }
   }
   a {
