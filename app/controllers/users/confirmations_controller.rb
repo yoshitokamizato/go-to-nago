@@ -24,7 +24,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     yield resource if block_given?
     if resource.errors.empty?
       # ここの部分
-      flash[:success] = "会員登録が完了しました。"
+      if params[:mail_update] == "1"
+        flash[:success] = "メールアドレスの変更が完了しました。"
+      else
+        flash[:success] = "会員登録が完了しました。"
+      end
       sign_in(@user, bypass: true)
       respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
     else
