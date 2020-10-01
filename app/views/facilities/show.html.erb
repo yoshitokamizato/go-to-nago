@@ -22,105 +22,51 @@
     <% end %>
     <!-- いいねボタンここまで -->
   </div>
-  <div class="container">
-    <!-- お店説明 -->
-    <div class="description">
-      <p><%= @facility.description%></p>
-    </div>
-    <div class="recommend text-center">
-      <div class="list-title underline-blue">
-        <h3>おすすめポイント</h3>
-      </div>
-      <!-- オーナーコメントテーブル -->
-      <div class="owner-comment-wrapper">
-        <div class="owner-comment-table">
-          <div class="owner-comment-left">
-            <!-- アイコン画像 -->
-            <%if @facility.user.image? %>
-            <%= image_tag(@facility.user.image.url ,class:"owner-comment-icon" ,alt:"...")  %>
-            <% else%>
-            <%= image_tag("title.png" ,class:"owner-comment-icon" ,alt:"...")  %>
+  <div class="menu text-center">
+  <%if @facility.menus[0] %>
+    <h3>メニュー</h3>
+    <hr>
+    <div id="carouselOption1" class="carousel slide" data-ride="carousel">
+      <!-- インジケータの設定 -->
+      <ol class="carousel-indicators">
+        <% for num in 1..MENUS_MAX-1 do %>
+          <% if @facility.menus[num] %>
+            <% if num == 1 %>
+              <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselOption1" data-slide-to="1"></li>
+            <% else %>
+              <li data-target="#carouselOption1" data-slide-to=num.to_s></li>
             <% end %>
-          </div>
-          <% if @facility.advice.nil? %>
-          <div class="owner-comment-right">
-            <p>情報がありません。<br>更新をお待ちください。</p>
-          </div>
-          <% else %>
-          <div class="owner-comment-right">
-            <p><%= @facility.advice %></p>
-          </div>
           <% end %>
-        </div>
-        <div class="owner-comment-bookmark">
-          <% if user_signed_in? %>
-          <div class="bookmark_btn_<%= @facility.id %> detail-bookmark-2" data-bookmark='2'>
-            <object><%= render 'facilities/bookmark_for_detail2', facility: @facility %></object>
-          </div>
-          <% else%>
-          <div class="detail-bookmark-2">
-            <object><%= link_to icon('far', 'star'), new_user_session_path %></object>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="menu text-center">
-      <%if @facility.menus[0] %>
-      <div class="list-title underline-blue">
-        <h3>メニュー</h3>
-      </div>
-      <hr>
-      <div id="carouselOption1" class="carousel slide" data-ride="carousel">
-        <!-- インジケータの設定 -->
-        <ol class="carousel-indicators">
-          <%if @facility.menus[1] %>
-          <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselOption1" data-slide-to="1"></li>
+        <%end%>
+      </ol>
+      <!-- スライドさせる画像の設定 -->
+      <div class="carousel-inner">
+        <% for num in 0..MENUS_MAX-1 do %>
+          <% if @facility.menus[num] %>
+            <% if num == 0 %>
+              <div class="carousel-item active">
+            <% else %>
+              <div class="carousel-item">
+            <% end %>
+                <%= image_tag(@facility.menus[num].image.url ,class:"d-block w-100" ,alt:"...") %>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5><%= @facility.menus[num].name %></h5>
+                  <p><%= @facility.menus[num].content %></p>
+                </div>
+              </div>
           <%end%>
-          <%if @facility.menus[2] %>
-          <li data-target="#carouselOption1" data-slide-to="2"></li>
-          <%end%>
-        </ol>
-        <!-- スライドさせる画像の設定 -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag(@facility.menus[0].image.url ,class:"d-block w-100" ,alt:"...") %>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><%= @facility.menus[0].name %></h5>
-              <p><%= @facility.menus[0].content %></p>
-            </div>
-          </div>
-          <%if @facility.menus[1] %>
-          <div class="carousel-item">
-            <%= image_tag(@facility.menus[1].image.url ,class:"d-block w-100" ,alt:"...") %>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><%= @facility.menus[1].name %></h5>
-              <p><%= @facility.menus[1].content %></p>
-            </div>
-          </div>
-          <%end%>
-          <% if @facility.menus[2] %>
-          <div class="carousel-item">
-            <%= image_tag(@facility.menus[2].image.url ,class:"d-block w-100" ,alt:"...") %>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><%= @facility.menus[2].name %></h5>
-              <p><%= @facility.menus[2].content %></p>
-            </div>
-          </div>
-          <% end %>
-        </div>
+        <%end%>
         <!-- スライドコントロールの設定 -->
         <%if @facility.menus[1] %>
-        <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">前へ</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselOption1" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">次へ</span>
-        </a>
+          <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">前へ</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselOption1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">次へ</span>
+          </a>
         <%end%>
       </div>
     </div>
@@ -169,7 +115,6 @@
 
 <!-- google mapを呼び出すjavascript -->
 <script>
-  let map;
   var e = document.getElementById('map');
   var latitude = Number(e.getAttribute('data-facility-latitude'));
   var longitude = Number(e.getAttribute('data-facility-longitude'));
@@ -179,7 +124,7 @@
     // console.log(latitude)
     // console.log(longitude)
     // console.log(e)
-    map = new google.maps.Map(document.getElementById('map'), {
+    let map = new google.maps.Map(document.getElementById('map'), {
       center: {
         lat: latitude,
         lng: longitude
@@ -195,5 +140,6 @@
       map: map
     });
   }
+  window.google = {};
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
