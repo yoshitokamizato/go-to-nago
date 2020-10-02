@@ -31,11 +31,6 @@ hr {
 }
 
 
-.list-title {
-  width: 85%;
-  margin: 0 auto 30px;
-  text-align: center;
-}
 
 .bg-image-spot {
   background-image: image-url('bk_spot.png');
@@ -73,6 +68,7 @@ hr {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  margin-bottom: 0.3rem !important;
 }
 
 .card-text {
