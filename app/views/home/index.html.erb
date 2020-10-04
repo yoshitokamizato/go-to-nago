@@ -1,4 +1,4 @@
-<div class="list-body row">
+<section class="list-body row">
   <div class="list-title underline-blue">
     <h1>名護のおすすめグルメ</h1>
   </div>
@@ -10,8 +10,8 @@
       <%= link_to 'おすすめグルメをもっとみる', gourmets_list_path, class:"button button-blue-border button-arrow" %>
     </div>
   </div>
-</div>
-<div class="list-body row bg-image-spot triangle-cut">
+</section>
+<section class="list-body row bg-image-spot triangle-cut">
   <div class="list-title underline-white">
     <h1 class="text-white">名護のおすすめ観光スポット</h1>
   </div>
@@ -24,5 +24,5 @@
       <%= link_to '観光スポットをもっとみる', spots_list_path, class:"button button-white-border button-arrow" %>
     </div>
   </div>
-</div>
+</section>
 <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>
