@@ -1,6 +1,7 @@
-  <div class="bottom">
+  <div class="bottom row">
     <% if local_assigns[:sns_icon] %>
-      <div class="bottom-sns-area">
+      <div class=" col-12">
+      <div class="sns-icons bottom-sns-area">
           <a href="#" class="sns-link">
             <%= image_tag('icon_twitter.svg', class:'sns-logo') %>
           </a>
@@ -11,14 +12,15 @@
             <%= image_tag('icon_insta.svg', class:'sns-logo') %>
           </a>
       </div>
+      </div>
     <% end %>
     <% if local_assigns[:facility_add_request] %>
-      <div class="bottom-text">
+      <div class="bottom-button col-12">
         <%= link_to "情報掲載依頼はこちら", new_inquiry_path(kind: 1), class:"button button-gradation" %>
       </div>
     <% end %>
     <% if local_assigns[:facility_edit_request] %>
-      <div class="bottom-text">
+      <div class="bottom-button col-12">
         <%= link_to "情報修正依頼はこちら", new_inquiry_path(kind: 2, facility_id: local_assigns[:facility_id]), class:"button button-gradation" %>
       </div>
     <% end %>
