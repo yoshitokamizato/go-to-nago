@@ -17,8 +17,13 @@
         </div>
         <% else%>
         <div class="favorite-area">
-          <object ect><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
-          <%= facility.bookmarks.count %>
+          <object ect>
+            <%= link_to new_user_session_path, class:"icon-red" do %>
+              <%= icon('far', 'heart') %>
+              &nbsp;
+              <%= facility.bookmarks.count %>
+            <% end %>
+          </object>
         </div>
         <% end %>
       </div>

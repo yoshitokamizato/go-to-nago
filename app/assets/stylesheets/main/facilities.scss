@@ -9,8 +9,8 @@ hr {
 }
 
 .list-wrapper .show-row-list {
-  padding: 7.5px;
-  margin-bottom: 10px;
+  padding: 0 7.5px 7.5px;
+  margin-bottom: 0px;
 }
 
 @media(min-width: 992px) {
@@ -20,20 +20,17 @@ hr {
 }
 
 .list-body {
-  margin-bottom: 30px;
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
-.list-title {
-  width: 85%;
-  margin: 0 auto 30px;
-  text-align: center;
-
-  h3 {
-    font-weight: bold;
+@media(min-width: 992px) {
+  .list-body {
+    padding-top: 100px;
   }
 }
+
+
 
 .bg-image-spot {
   background-image: image-url('bk_spot.png');
@@ -44,6 +41,7 @@ hr {
 
 .triangle-cut {
   position: relative;
+  padding-top: 100px;
 
   &::before {
     content: "";
@@ -58,28 +56,38 @@ hr {
   }
 }
 
-.card-title {
-  font-weight: bold;
-  font-size: 1.2rem;
-  overflow: hidden;
-}
-
 .card-body {
-  padding: 0.6rem !important;
+  padding: 5px !important;
 }
 
+.card-title {
+  height: 2.4rem;
+  font-weight: bold;
+  font-size: 1.0rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 0.3rem !important;
+}
 
 .card-text {
-  font-size: 1.0rem;
+  height: 3.6rem;
+  font-size: 0.8rem;
   color: $gray-color;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  margin-bottom: 0;
 }
 
 .favorite-area {
-  font-size: 1.5rem;
+  padding: 0 5px 0;
+  a{
+    font-size: 0.8rem;
+    color: $red-color;
+  }
 }
 
 .list-cd {
@@ -105,10 +113,10 @@ hr {
   color: black;
 }
 
-.list-button {
-  text-align: center;
-  margin-top: 50px;
-}
+// .list-button {
+//   text-align: center;
+//   margin-top: 50px;
+// }
 
 // page-nation のもっと見るボタン
 .more a {
