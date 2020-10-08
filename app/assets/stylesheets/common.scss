@@ -132,6 +132,28 @@ a:hover {
   }
 }
 
+.button-blue-color{
+  background-color: $main-color;
+  color: #fff;
+  border: 2px solid $main-color;
+  &:hover{
+    background-color: #fff;
+    color: $main-color;
+    border: 2px solid $main-color;
+  }
+}
+
+.button-gray-color{
+  background-color: $gray-color;
+  color: #fff;
+  border: 2px solid $gray-color;
+  &:hover{
+    background-color: #fff;
+    color: $gray-color;
+    border: 2px solid $gray-color;
+  }
+}
+
 .button-white-border{
   border: 2px solid #fff;
   color: #fff;
@@ -147,6 +169,13 @@ a:hover {
   background-image:-webkit-gradient(linear,left top,right bottom, from(#88B920), to(#55ACEE));
   &:hover{
     color: #fff;
+  }
+}
+
+.common-form {
+  .form-control{
+    border: 0.5px solid #000;
+    border-radius: 0;
   }
 }
 
