@@ -1,29 +1,35 @@
+<% 
+  case @inquiry.kind 
+  when "inquiry" 
+    inquiry_title = "お問い合わせ(入力)"
+    inquiry_sentece = "ご意見・ご要望等、各種お問い合わせは、以下のフォームよりご連絡ください。"
+  when "new_facility"
+    inquiry_title = "情報掲載依頼(入力)"
+    inquiry_sentece = "「名護へGO」への情報掲載を希望される施設の情報を、以下のフォームよりご連絡ください。"
+  when "edit_facility"
+    inquiry_title = "情報修正依頼(入力)"
+    inquiry_sentece = "掲載情報に修正を希望される場合は、以下のフォームよりご連絡ください。"
+  end
+ %>
 
 <div class="inquiry-area">
-<div class="inquiry-title-area">
-  <% case @inquiry.kind %>
-  <% when "inquiry" %>
-    <h1>お問い合わせ(入力)</h1>
-    <p>ご意見・ご要望等、各種お問い合わせは、以下のフォームよりご連絡ください。</p>
-  <% when "new_facility" %>
-    <h1>情報掲載依頼(入力)</h1>
-    <p>「名護へGO」への情報掲載を希望される施設の情報を、以下のフォームよりご連絡ください。</p>
-  <% when "edit_facility" %>
-    <h1>情報修正依頼(入力)</h1>
-    <p>掲載情報に修正を希望される場合は、以下のフォームよりご連絡ください。</p>
-  <% end %>
-</div>
+  <div class="inquiry-title-area">
+    <div class="inqury-title list-title underline-blue">
+      <h1><%= inquiry_title %></h1>
+    </div>
+      <p><%= inquiry_sentece %></p>
+  </div>
 
-<%= form_for @inquiry, url: {action: "confirm"}, html: {class: 'inquiry-form'} do |f| %>
+<%= form_for @inquiry, url: {action: "confirm"}, html: {class: 'common-form inquiry-form'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="form-group">
-    <label for="inquiry_name">お名前<span class="badge badge-danger">必須</span></label>
+    <label for="inquiry_name">お名前 &nbsp;<span class="badge badge-danger">必須</span></label>
     <%= f.text_field :name, class: 'form-control', value: @inquiry.name, required: true  %>
   </div>
 
   <div class="form-group">
-    <label for="inquiry_email">メールアドレス<span class="badge badge-danger">必須</span></label>
+    <label for="inquiry_email">メールアドレス &nbsp;<span class="badge badge-danger">必須</span></label>
     <%= f.text_field :email, class: 'form-control', value: @inquiry.email, type: "email" , required: true %>
   </div>
 
@@ -33,7 +39,7 @@
   </div>
 
   <div class="form-group">
-    <label for="inquiry_message">お問い合わせ内容<span class="badge badge-danger">必須</span></label>
+    <label for="inquiry_message">お問い合わせ内容 &nbsp;<span class="badge badge-danger">必須</span></label>
     <%= f.text_area :message, size: '10x10', class: 'form-control', value: @inquiry.message, required: true %>
   </div>
 
@@ -41,7 +47,7 @@
   <%= f.hidden_field :kind, value: @inquiry.kind %>
   <%= f.hidden_field :facility_id, value: @inquiry.facility_id %>
   <div class="btn-area">
-    <%= f.submit '内容を確認する', class: 'btn btn-lg btn-primary btn-block' %>
+    <%= f.submit '内容を確認する', class: 'button button-blue-color' %>
   </div>
 
 <% end %>
