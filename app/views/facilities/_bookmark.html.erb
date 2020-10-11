@@ -1,2 +1,5 @@
-<%= link_to icon('fas', 'heart'), facility_bookmarks_path(facility.id), method: :delete , remote: true , id:"js-bookmark-button-for-facility-#{facility.id}", class:"icon-red" %>
-<%= facility.bookmarks.count %>
+<%= link_to facility_bookmarks_path(facility.id), method: :delete , remote: true , id:"js-bookmark-button-for-facility-#{facility.id}", class:"favorite-icon" do %>
+  <%= icon('fas', 'heart')  %>
+  &nbsp;
+  <%= facility.bookmarks.count %>
+<% end %>

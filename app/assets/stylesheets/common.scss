@@ -5,7 +5,8 @@ $gray-color: #7C7B7B;
 
 body {
   color: #082b48;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  // font-family: 'Noto Sans JP', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif !important;
   line-height: 1.5;
 }
 
@@ -24,6 +25,22 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+.list-title {
+  width: 85%;
+  margin: 0 auto 30px;
+  text-align: center;
+  h1{
+   font-weight: bold;
+   font-size: 1.2rem;
+ }
+}
+
+@media(min-width: 768px){
+  .list-title h1{
+    font-size: 2rem;
+  }
 }
 
 .container {
@@ -77,15 +94,15 @@ a:hover {
 }
 
 .button{
-  width: 75vw;
-  max-width: 580px;
-  margin: auto;
-  font-size: 3vw;
+  width: 100%;
+  max-width: 576px;
+  margin: 10px auto 0;
+  font-size: 1.0rem;
   font-weight: bold;
   text-decoration: none;
   display: block;
   text-align: center;
-  padding: 15px 0 15px;
+  padding: 8px 0;
   &:hover{
     text-decoration: none;
   }
@@ -115,6 +132,28 @@ a:hover {
   }
 }
 
+.button-blue-color{
+  background-color: $main-color;
+  color: #fff;
+  border: 2px solid $main-color;
+  &:hover{
+    background-color: #fff;
+    color: $main-color;
+    border: 2px solid $main-color;
+  }
+}
+
+.button-gray-color{
+  background-color: $gray-color;
+  color: #fff;
+  border: 2px solid $gray-color;
+  &:hover{
+    background-color: #fff;
+    color: $gray-color;
+    border: 2px solid $gray-color;
+  }
+}
+
 .button-white-border{
   border: 2px solid #fff;
   color: #fff;
@@ -133,24 +172,45 @@ a:hover {
   }
 }
 
-// -------------- アイコン  ----------------
-.icon-red{
-  color: $red-color;
+.common-form {
+  .form-control{
+    border: 0.5px solid #000;
+    border-radius: 0;
+  }
 }
+
+// // -------------- アイコン  ----------------
+// .favorite-icon{
+//   font-size: 0.8rem;
+//   color: $red-color;
+// }
 
 // ========ここまで（共通スタイル）=========
 
 
 // ========ここから（ヘッダー部）=========
-nav.header{
+.header{
   background-color: #fff;
-  // max-width: 100%;
+}
+
+nav.navbar{
+  max-width: 1140px;
+  margin: 0 auto;
   width: 100vw;
   padding: 0 1rem;
 }
 
-.header-icon-area,.logo-area{
+.menu-icon-area,.logo-area, .account-icon-area{
   height: 55px;
+}
+
+@media(min-width: 768px){
+  .menu-icon-area,.logo-area, .account-icon-area{
+    height: 72px;
+  }
+  .account-icon-area{
+    order: 3;
+  }
 }
 
 @media(min-width: 768px){
@@ -159,18 +219,11 @@ nav.header{
   }
 }
 
-
-@media(min-width: 768px){
-  .header-icon-area,.logo-area{
-    height: 72px;
-  }
-}
-
 .navbar-toggler{
   border: none !important;
 }
 
-.header-icon-area{
+.menu-icon-area, .account-icon-area{
   text-align: center;
   position: relative;
   // height: 100%;
@@ -193,7 +246,7 @@ nav.header{
   text-align: center;
   position: relative;
   // height: 100%;
-  width: 40%;
+  width: 30%;
 }
 
 .header-logo{
@@ -273,16 +326,18 @@ nav.header{
 .field_with_errors .form-control {
     border: solid 2px #a94442;
 }
-// ---------------最下部のsnsアイコンリスト---------------
+// ---------------ボトムエリア（SNSアイコンとボタン）---------------
 .bottom{
-  margin: 20px auto;
+  margin: 20px auto 0;
 }
 
 .bottom-sns-area {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  margin: 0 auto 30px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 576px;
   a:hover{
     text-decoration: none;
   }
@@ -290,22 +345,25 @@ nav.header{
 
 .sns-logo {
   text-align: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
 }
 
 @media(min-width: 768px){
   .sns-logo{
-    width: 5rem;
-    height: 5rem;  
+    width: 4rem;
+    height: 4rem;  
   }
 }
 
+.bottom-button{
+  margin-top: 5px;
+}
 
 // --------------footer---------------------
 .footer {
-  margin-top: auto;
+  margin-top: 20px;
   color:#ffffff;
   background-color: $main-color;
   background-image: image-url('img_yanbaru_inverse.svg'),image-url('img_yanbaru.svg'); 
@@ -316,7 +374,8 @@ nav.header{
     margin: 0 -15px;
     .row-li{
       padding: 0;
-      border: 1px solid #ffffff;          
+      border-bottom: 1px solid #ffffff;          
+      border-right: 1px solid #ffffff;          
     }
   }
   a {

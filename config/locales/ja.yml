@@ -30,8 +30,59 @@ ja:
         edit_facility: 情報修正依頼
   activerecord:
     models:
+      user: "ユーザー"
+      admin_user: "管理者"
+      comment: "コメント"
+      facility: "施設・お店"
       inquiry: 問い合わせ
+      menu: "メニュー"
+      facility_image: "施設画像"
+
     attributes:
+      user:
+        current_password: "現在のパスワード"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+        nickname: "ニックネーム"
+        sex: "性別"
+        birth_year: "生まれた年"
+        prefecture: "お住まい"
+        image: "プロフィール画像"
+        role: "立場"
+        profile: "自己紹介"
+        status: "ステータス"
+        mailmagazine: "メール配信"
+
+      facility:
+        type: "施設・お店の種類"
+        name: "名前"
+        postal_code: "郵便番号"
+        address: "住所"
+        latitude: "緯度"
+        longitude: "軽度"
+        running_time: "那覇空港からの所要時間（車）"
+        tel: "電話番号"
+        email: "メールアドレス"
+        budget: "予算"
+        description: "紹介文"
+        advice: "楽しむためのワンポイント・アドバイス"
+        first_open: "前半の開始時間"
+        first_close: "前半の終了時間"
+        last_open: "後半の開始時間"
+        last_close: "後半の終了時間"
+        holiday: "定休日"
+        parking: "駐車場"
+        home_page: "HP情報"
+        owner_id: "オーナーID"
+        instagram: "Instagram"
+        twitter: "Twitter"
+        youtube: "YouTube"
+        status: "状態"
+        created_user: "作成者ID"
+        updated_user: "更新者ID"
+        user_id: "ユーザーID"
       inquiry:
         id: 問い合わせ番号
         status: ステータス
@@ -45,6 +96,23 @@ ja:
         created_at: 問い合わせ受付日時
         updated_at: 問い合わせ更新日時
         admin_comment: 管理者コメント
+      menu:
+        name: メニュー名
+        price: 料金
+        image: メニュー画像
+        content: メニューの紹介
+        order: 表示順序
+        created_user: "作成者ID"
+        updated_user: "更新者ID"
+        created_at: "作成日時"
+        updated_at: "更新日時"
+      facility_image:
+        image: 施設画像
+        order: 表示順序
+        created_user: "作成者ID"
+        created_at: "作成日時"
+        updated_at: "更新日時"
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

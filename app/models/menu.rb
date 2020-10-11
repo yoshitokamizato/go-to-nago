@@ -7,4 +7,8 @@ class Menu < ApplicationRecord
   validates :price, presence: true
   validates :image, presence: true
   validates :content, presence: true
+  validates :order, presence: true, uniqueness: {scope: :facility_id}
+
+  default_scope { order(order: :asc) }
+
 end

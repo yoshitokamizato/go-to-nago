@@ -1,63 +1,54 @@
-<nav class="navbar navbar-expand-md fixed-top header">
-  <div class="navbar-toggler header-icon-area" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <div class="navbarTogglerDemo01 collapse show">
-      <%= image_tag('icon_menu.svg', class:'header-icon') %>
+<div class="fixed-top header">
+  <nav class="navbar navbar-expand-md">
+    <div class="navbar-toggler menu-icon-area" data-toggle="collapse" data-target=".navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="navbarTogglerDemo01 collapse show collapse-custom-animation">
+        <%= image_tag('icon_menu.svg', class:'header-icon') %>
+      </div>
+      <div class="navbarTogglerDemo01 collapse collapse-custom-animation">
+        <%= image_tag('icon_close.svg', class:'header-icon close-icon') %>
+      </div>
     </div>
-    <div class="navbarTogglerDemo01 collapse">
-      <%= image_tag('icon_close.svg', class:'header-icon close-icon') %>
+    <div class="logo-area">
+        <%= link_to root_path do %>
+          <%= image_tag('logo.svg', class:'header-logo' ,alt:"名護へGO") %>
+        <% end %>
     </div>
-  </div>
-  <div class="logo-area">
-    <%= link_to root_path do %>
-      <%= image_tag('logo.svg', class:'header-logo') %>
-    <% end %>
-  </div>
-  <div class="navbarTogglerDemo01 collapse header-icon-area">
-      <% if user_signed_in?	%>
-        <%= link_to user_path do %>
-          <%= image_tag('icon_account.svg', class:'header-icon') %>
+    <div class="account-icon-area">
+        <% if user_signed_in?	%>
+          <%= link_to user_path do %>
+            <%= image_tag('icon_account.svg', class:'header-icon') %>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <%= image_tag('icon_login.svg', class:'header-icon') %>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= link_to new_user_session_path do %>
-          <%= image_tag('icon_login.svg', class:'header-icon') %>
+    </div>
+    <div class="collapse navbar-collapse navbarTogglerDemo01">
+      <ul class="navbar-nav mt-2 mt-md-0">
+        <li class="nav-item-header">
+          <%= link_to 'グルメ', gourmets_list_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item-header ">
+          <%= link_to '観光スポット', spots_list_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in?	%>
+          <li class="nav-item-header">
+            <%= link_to 'お気に入り', bookmarks_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item-header">
+            <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
+          </li>
+          <li class="nav-item-header">
+            <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link", method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item-header">
+            <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
+          </li>
         <% end %>
-      <% end %>
-  </div>
-  <div class="collapse navbar-collapse navbarTogglerDemo01">
-    <ul class="navbar-nav mt-2 mt-md-0">
-      <li class="nav-item-header">
-        <%= link_to 'グルメ', facilities_list_path(type: "gourmet"), class: "nav-link" %>
-      </li>
-      <li class="nav-item-header ">
-        <%= link_to '観光スポット', facilities_list_path(type: "spot"), class: "nav-link" %>
-      </li>
-      <% if user_signed_in?	%>
-        <li class="nav-item-header">
-          <%= link_to 'お気に入り', bookmarks_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item-header">
-          <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
-        </li>
-        <li class="nav-item-header">
-          <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link", method: :delete %>
-        </li>
-      <% else %>
-        <li class="nav-item-header">
-          <%= link_to '問合せ', new_inquiry_path(kind: 0), class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="navbarTogglerDemo01 collapse show header-icon-area">
-      <% if user_signed_in?	%>
-        <%= link_to user_path do %>
-          <%= image_tag('icon_account.svg', class:'header-icon') %>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_session_path do %>
-          <%= image_tag('icon_login.svg', class:'header-icon') %>
-        <% end %>
-      <% end %>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
+</div>
 <div class="header-space-adjust"></div>

@@ -3,13 +3,18 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get "bookmarks/create"
   get "bookmarks/destroy"
-  root to: "facilities#index"
-  get "/facilities/list", to: "facilities#show_facilities"
+  root to: "home#index"
   get "/bookmarks", to: "facilities#bookmark"
   get "/about", to: "fixedpages#about"
   get "/company", to: "fixedpages#company"
   get "/privacy", to: "fixedpages#privacy"
   get "/tos", to: "fixedpages#tos"
+  get "/gourmet/:id", to: "facilities#show", as: "gourmet"
+  get "/spot/:id", to: "facilities#show", as: "spot"
+  get "/gourmets/list", to: "facilities#index"
+  get "/spots/list", to: "facilities#index"
+  get "/gourmet/:facility_id/menus", to: "menus#index", as: "gourmet_menus"
+  get "/spot/:facility_id/menus", to: "menus#index", as: "spot_menus"
 
   # bookmarkのルーティング facilities/bookmarksにルーティング
   resources :facilities, shallow: true do

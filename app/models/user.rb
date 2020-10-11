@@ -27,9 +27,9 @@ class User < ApplicationRecord
   has_many :bookmark_facilities, through: :bookmarks,source: :facility
 
   # （お気に入り機能）
-  def own_facility?(facility)
-    self.id == facility.user_id
-  end
+#  def own_facility?(facility)
+#    self.id == facility.user_id
+#  end
   # 以下のコマンドでfacilitiesとusersのどちらかを編集したときにもう片方も反映させる
   accepts_nested_attributes_for :bookmarks, allow_destroy: true
 

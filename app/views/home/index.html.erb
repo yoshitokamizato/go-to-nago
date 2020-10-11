@@ -1,0 +1,28 @@
+<section class="list-body row">
+  <div class="list-title underline-blue">
+    <h1>名護のおすすめグルメ</h1>
+  </div>
+  <div class="list-wrapper col-12">
+    <div class="row">
+      <%= render partial: 'facilities/facilities_list', collection: @gourmets.first(FACILITY_NUM), as: 'facility' %>
+    </div>
+    <div class="list-button">
+      <%= link_to 'おすすめグルメをもっとみる', gourmets_list_path, class:"button button-blue-border button-arrow" %>
+    </div>
+  </div>
+</section>
+<section class="list-body row bg-image-spot triangle-cut">
+  <div class="list-title underline-white">
+    <h1 class="text-white">名護のおすすめ観光スポット</h1>
+  </div>
+
+  <div class="list-wrapper col-12">
+    <div class="row">
+      <%= render partial: 'facilities/facilities_list', collection: @spots.first(FACILITY_NUM), as: 'facility' %>
+    </div>
+    <div class="list-button">
+      <%= link_to '観光スポットをもっとみる', spots_list_path, class:"button button-white-border button-arrow" %>
+    </div>
+  </div>
+</section>
+<%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_add_request: true } %>

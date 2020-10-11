@@ -2,26 +2,26 @@ crumb :root do
   link "home", root_path
 end
 
-crumb :gourmets do
-  link "グルメ", facilities_list_path(type: "gourmet")
+# 施設一覧
+crumb :facility_index do |facility_type|
+  if facility_type == "gourmet" 
+    link "グルメ", gourmets_list_path
+  else
+    link "観光スポット", spots_list_path
+  end
   parent :root
 end
-
-# グルメ個別ページのパンくずリスト
-crumb :gourmet do |facility|
-  link facility.name
-  parent :gourmets
+  
+# 施設個別ページ
+crumb :facility do |facility|
+  link facility.name, facility_path(facility)
+  parent :facility_index, facility.type
 end
 
-crumb :spots do
-  link "観光スポット", facilities_list_path(type: "spot")
-  parent :root
-end
-
-# 観光スポット個別ページのパンくずリスト
-crumb :spot do |facility|
-  link facility.name
-  parent :spots
+# メニュー一覧
+crumb :menus do |facility|
+  link 'メニュー'
+  parent :facility, facility
 end
 
 crumb :mypage do
@@ -31,11 +31,6 @@ end
 
 crumb :favorite do
   link "お気に入り（グルメ・観光スポット）"
-  parent :root
-end
-
-crumb :facility_type do |type_text|
-  link type_text.to_s
   parent :root
 end
 
