@@ -1,28 +1,7 @@
+<section class="list-body row">
 <div class="menu-wrapper">
-  <div class="detail-top mb-4">
-    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top" ,alt:"...")  %>
-    <h2 class="detail-title"><%= @facility.name%></h2>
-    <!-- いいねボタン -->
-    <!-- ログインの有無で場合わけ -->
-    <% if user_signed_in? %>
-    <div class="bookmark_btn_<%= @facility.id %>  detail-bookmark-icon" data-bookmark='1'>
-      <!-- ここ専用のパーシャル -->
-      <%= render 'facilities/bookmark_for_detail', {facility: @facility,gourmet: @gourmet} %>
-    </div>
-    <% else%>
-    <div class="favorite-area detail-bookmark-icon">
-      <!-- ②ここはパーシャルを使用 -->
-      <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
-      <div class="detail-bookmark-count">
-        <%= @facility.bookmarks.count %>
-      </div>
-    </div>
-    <% end %>
-    <!-- いいねボタンここまで -->
-  </div>
-
   <div class="list-title underline-blue">
-    <h3>メニュー</h3>
+    <h1>メニュー</h1>
   </div>
   <div class="list-wrapper">
     <div class="row " id="menu_lists">
@@ -34,4 +13,5 @@
     </div>
   </div>
 </div>
+</section>
 <%= render partial: "publics/bottom_area", locals: {sns_icon: true, facility_edit_request: true, facility_id: @facility.id } %>

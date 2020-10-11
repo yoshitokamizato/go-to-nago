@@ -140,6 +140,11 @@ hr {
     width: 100%;
   }
 
+  // 画像の高さの最大値
+  .card-img-max-height {
+    max-height: 500px;
+  }
+
   // タイトル（お店の名前）
   .detail-title {
     position: absolute;
@@ -147,7 +152,7 @@ hr {
     bottom: 0;
     color: #fff;
     padding: 10px;
-    font-size: 30px;
+    font-size: 1.5rem;
     -webkit-filter: drop-shadow(0px 3px 100px rgba(0, 0, 0, .8));
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .8));
 
@@ -270,11 +275,12 @@ hr {
         min-width: 130px;
         color: $main-color;
         font-weight: bold;
+        font-size: 17px;
       }
 
       .information-list-content {
         text-align: left;
-
+        font-size: 17px;
       }
     }
   }
@@ -303,7 +309,7 @@ hr {
 
       left: 10px;
       bottom: 10px;
-      font-size: 60px;
+      font-size: 1.5rem;
 
     }
 
@@ -375,6 +381,11 @@ hr {
   }
 
 }
+
+.menu-margin-top {
+  margin-top: 20px;
+}
+
 
 // ==================================================================
 // ======================== 詳細画面CSS(ここまで) =============================
