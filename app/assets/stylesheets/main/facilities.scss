@@ -145,6 +145,10 @@ hr {
     max-height: 500px;
   }
 
+  .fit-image {
+    object-fit: cover;
+  }
+
   // タイトル（お店の名前）
   .detail-title {
     position: absolute;

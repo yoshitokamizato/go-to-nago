@@ -2,7 +2,7 @@
 <div class="detail-wrapper">
   <!-- トップ -->
   <div class="detail-top">
-    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top card-img-max-height" ,alt:"...")  %>
+    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top card-img-max-height fit-image" ,alt:"...")  %>
     <h2 class="detail-title"><%= @facility.name%></h2>
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
@@ -50,7 +50,7 @@
             <% else %>
               <div class="carousel-item">
             <% end %>
-                <%= image_tag(@facility.menus[num].image.url ,class:"d-block w-100 mh-75" ,alt:"...") %>
+                <%= image_tag(@facility.menus[num].image.url ,class:"d-block fit-image" ,alt:"...") %>
                 <div class="carousel-caption d-none d-md-block">
                   <h5><%= @facility.menus[num].name %></h5>
                   <p><%= @facility.menus[num].content %></p>
@@ -73,6 +73,12 @@
     </div>
     <div class="list-button">
       <%= link_to  "メニューをもっとみる", facility_menus_path(@facility.id)  ,type:"button", class:"button button-blue-border button-arrow" %>
+    </div>
+    <div class="list-title underline-blue menu-margin-top">
+      <h1>おすすめポイント</h1>
+    </div>
+    <div class="menu text-center">
+      <%= @facility.advice %>
     </div>
     <%end%>
     <div class="shop-information">
