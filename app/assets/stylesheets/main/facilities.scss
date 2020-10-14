@@ -142,7 +142,7 @@ hr {
 
   // 画像の高さの最大値
   .card-img-max-height {
-    max-height: 500px;
+    max-height: 250px;
   }
 
   .fit-image {
@@ -337,6 +337,20 @@ hr {
       color: #fff;
       font-size: 45px;
       margin-top: -10px;
+    }
+
+    // 画像の高さの最大値
+    .card-img-max-height {
+      max-height: 500px;
+    }
+
+    .fit-image {
+      object-fit: cover;
+    }
+
+    .carousel-image {
+      width: 200px;
+      height: 200px;
     }
   }
 
