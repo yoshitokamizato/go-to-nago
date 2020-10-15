@@ -33,67 +33,18 @@
     <div class="list-title underline-blue menu-margin-top">
       <h1>メニュー</h1>
     </div>
-    <div class="container">
-      <div id="carousel-card" class="carousel slide">
-        <ol class="carousel-indicators">
-        <% for num in 1..MENUS_MAX-1 do %>
+    <div class="sliderArea">
+      <div class="full-screen-o slider">
+        <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
-            <% if num == 1 %>
-              <li data-target="#carousel-card" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-card" data-slide-to="1"></li>
-            <% else %>
-              <li data-target="#carousel-card" data-slide-to=num.to_s></li>
-            <% end %>
-          <% end %>
-        <%end%>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item px-5 active">
-            <div class="row">
-              <% for num in 0..2 do %>
-                <% if @facility.menus[num] %>
-                <div class="col-4 show-row-list">
-                  <div class="card">
-                    <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
-                    <div class="card-body">
-                      <h5 class="card-title"><%= @facility.menus[num].name %></h5>
-                      <p><%= @facility.menus[num].content %></p>
-                    </div>
-                  </div>
-                </div>
-                <%end%>
-              <%end%>
-            </div>
-          </div>
-          <% if @facility.menus[3] %>
-          <div class="carousel-item px-5">
-            <div class="row">
-              <% for num in 3..5 do %>
-                <% if @facility.menus[num] %>
-                <div class="col-4 show-row-list">
-                  <div class="card">
-                    <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
-                    <div class="card-body">
-                      <h5 class="card-title"><%= @facility.menus[num].name %></h5>
-                      <p><%= @facility.menus[num].content %></p>
-                    </div>
-                  </div>
-                </div>
-                <%end%>
-              <%end%>
+          <div class="card">
+            <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+            <div class="card-body">
+              <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+              <p><%= @facility.menus[num].content %></p>
             </div>
           </div>
           <%end%>
-        </div>
-        <% if @facility.menus[3] %>
-        <a class="carousel-control-prev" href="#carousel-card" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">前へ</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-card" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">次へ</span>
-        </a>
         <%end%>
       </div>
     </div>
@@ -170,3 +121,18 @@
   window.google = {};
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+
+<!-- slickを呼び出すJavascript -->
+<script>
+  $(function(){
+    $(".full-screen-o").not('.slick-initialized').slick({
+      centerMode: true, // スライドを中心に表示して部分的に前後のスライドが見えるように設定（奇数番号のスライドに使用）
+      centerPadding: '30%', // センターモード時のサイドパディング。見切れるスライドの幅。’px’または’％’。
+      dots: true, // ドットインジケーターの表示
+      autoplay: true, // 自動再生を設定
+      autoplaySpeed: 3000, // 自動再生のスピード（ミリ秒単位）
+      speed: 1000, // スライド/フェードアニメーションの速度を設定
+      infinite: true, // スライドのループを有効にするか
+    });
+  });
+</script>
