@@ -24,7 +24,7 @@ ActiveAdmin.register Facility do
       f.input :instagram
       f.input :twitter
       f.input :youtube
-      f.input :status, as: :select, collection:Facility.status_i18n.invert
+      f.input :status, as: :select, collection:Facility.statuses_i18n.invert
       f.input :created_user
       f.input :updated_user
       f.input :opening_hours

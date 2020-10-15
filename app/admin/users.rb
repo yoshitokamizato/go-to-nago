@@ -9,10 +9,10 @@ ActiveAdmin.register User do
       f.input :password
       f.input :nickname
       f.input :birth_year
-      f.input :sex, as: :select, collection:User.sex_i18n.invert
+      f.input :sex, as: :select, collection:User.sexes_i18n.invert
       f.input :prefecture
       f.input :image
-      f.input :role,  as: :select, collection:User.role_i18n.invert
+      f.input :role,  as: :select, collection:User.roles_i18n.invert
       f.input :profile
       f.input :mailmagazine
     end

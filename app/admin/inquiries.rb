@@ -26,8 +26,8 @@ ActiveAdmin.register Inquiry do
   form do |f|
     inputs "タイトル" do
       input :id,  input_html: { disabled: true }
-      input :status, as: :select, collection:Inquiry.status_i18n.invert
-      input :kind, input_html: { disabled: true }, as: :select, collection:Inquiry.kind_i18n.invert
+      input :status, as: :select, collection:Inquiry.statuses_i18n.invert
+      input :kind, input_html: { disabled: true }, as: :select, collection:Inquiry.kinds_i18n.invert
       input :user_id, input_html: { disabled: true }
       input :name, input_html: { disabled: true }
       input :email, input_html: { disabled: true }
