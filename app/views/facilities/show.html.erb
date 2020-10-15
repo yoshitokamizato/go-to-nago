@@ -38,11 +38,13 @@
         <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
           <div class="card">
-            <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
-            <div class="card-body">
-              <h5 class="card-title"><%= @facility.menus[num].name %></h5>
-              <p><%= @facility.menus[num].content %></p>
-            </div>
+            <li>
+              <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+              <div class="card-body">
+                <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+                <p><%= @facility.menus[num].content %></p>
+              </div>
+            </li>
           </div>
           <%end%>
         <%end%>
@@ -127,12 +129,21 @@
   $(function(){
     $(".full-screen-o").not('.slick-initialized').slick({
       centerMode: true, // スライドを中心に表示して部分的に前後のスライドが見えるように設定（奇数番号のスライドに使用）
-      centerPadding: '30%', // センターモード時のサイドパディング。見切れるスライドの幅。’px’または’％’。
+      centerPadding: '28%', // センターモード時のサイドパディング。見切れるスライドの幅。’px’または’％’。
       dots: true, // ドットインジケーターの表示
       autoplay: true, // 自動再生を設定
       autoplaySpeed: 3000, // 自動再生のスピード（ミリ秒単位）
       speed: 1000, // スライド/フェードアニメーションの速度を設定
       infinite: true, // スライドのループを有効にするか
     });
+
+    var maxHeight = 0;
+    $('.card li').each(function(idx, elem) {
+      var height = $(elem).height();
+      if(maxHeight < height) {
+        maxHeight = height;
+      }
+    });
+    $('.card li').height(maxHeight);
   });
 </script>

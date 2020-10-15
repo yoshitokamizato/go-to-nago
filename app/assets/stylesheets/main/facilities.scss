@@ -295,6 +295,10 @@ hr {
   padding-top: 50px;
 }
 
+.card li {
+  list-style: none;
+}
+
 // google map css(これがないと表示されない)
 #map {
   height: 300px;
