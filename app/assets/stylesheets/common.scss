@@ -172,6 +172,23 @@ a:hover {
   }
 }
 
+.button-twitter{
+  background-color: #00acee;
+  color: #fff;
+  position: relative;
+  &:before {
+    // position: absolute;
+    // left: 1vw;
+    margin-right: 1rem;
+    content: "\f099";
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+  }
+  &:hover{
+    color: #fff;
+  }
+}
+
 .common-form {
   .form-control{
     border: 0.5px solid #000;
