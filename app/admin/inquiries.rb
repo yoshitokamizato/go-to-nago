@@ -8,8 +8,12 @@ ActiveAdmin.register Inquiry do
 
   index do
     id_column
-    column :status
-    column :kind
+    column(:status) do |inquiry|
+      inquiry.status_i18n
+    end
+    column(:kind) do |inquiry|
+      inquiry.kind_i18n
+    end
     column :user_id
     column :name
     column :facility_id
@@ -22,8 +26,8 @@ ActiveAdmin.register Inquiry do
   form do |f|
     inputs "タイトル" do
       input :id,  input_html: { disabled: true }
-      input :status, as: :select
-      input :kind, input_html: { disabled: true }
+      input :status, as: :select, collection:Inquiry.statuses_i18n.invert
+      input :kind, input_html: { disabled: true }, as: :select, collection:Inquiry.kinds_i18n.invert
       input :user_id, input_html: { disabled: true }
       input :name, input_html: { disabled: true }
       input :email, input_html: { disabled: true }
