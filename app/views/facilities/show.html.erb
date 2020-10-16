@@ -22,12 +22,11 @@
     <% end %>
     <!-- いいねボタンここまで -->
   </div>
+  <%= @facility.description %>
   <div class="list-title underline-blue menu-margin-top">
     <h1>おすすめポイント</h1>
   </div>
-  <div class="menu text-center">
-    <%= @facility.advice %>
-  </div>
+  <%= @facility.advice %>
   <div class="menu text-center">
   <%if @facility.menus[0] %>
     <div class="list-title underline-blue menu-margin-top">
