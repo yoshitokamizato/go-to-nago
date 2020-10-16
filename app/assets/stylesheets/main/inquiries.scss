@@ -1,6 +1,6 @@
 .inquiry-area{
   max-width: 700px;
-  width: 70%;
+  width: 100%;
   margin: 3rem auto 3rem;
 }
 
@@ -11,9 +11,41 @@
   }
 }
 
-.inquiry-form{
-  .btn-area{
-    width: 70%;
-    margin: auto;
+// 問い合わせ情報
+.inquiry-information {
+  margin-top: 45px;
+  // wrapper
+  .information-lists {
+    // ul
+    .information-list {
+      // li
+      display: flex;
+      border-bottom: #888888 solid 1px;
+      padding: 10px 0;
+
+      p {
+        text-align: left;
+        margin-bottom: 0px;
+      }
+
+      .information-list-title {
+        // 各リストのカラム
+        width: 30%;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: $main-color;
+        font-weight: bold;
+      }
+
+      .information-list-content {
+        width: 70%;
+      }
+    }
   }
+}
+
+.fixedpages-area{
+  max-width: 700px;
+  width: 70%;
+  margin: 3rem auto 3rem;
 }

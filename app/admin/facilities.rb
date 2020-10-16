@@ -5,7 +5,7 @@ ActiveAdmin.register Facility do
   # 新規登録時のフォーム
   form do |f|
     f.inputs do
-      f.input :type
+      f.input :type, as: :select, collection:Facility.types_i18n.invert
       f.input :name
       f.input :postal_code
       f.input :address
@@ -24,7 +24,7 @@ ActiveAdmin.register Facility do
       f.input :instagram
       f.input :twitter
       f.input :youtube
-      f.input :status
+      f.input :status, as: :select, collection:Facility.statuses_i18n.invert
       f.input :created_user
       f.input :updated_user
       f.input :opening_hours
@@ -36,7 +36,9 @@ ActiveAdmin.register Facility do
   index do
     selectable_column
     id_column
-    column :type
+    column(:type) do |facility|
+      facility.type_i18n
+    end
     column :name
     column :postal_code
     column :address
@@ -55,7 +57,9 @@ ActiveAdmin.register Facility do
     column :instagram
     column :twitter
     column :youtube
-    column :status
+    column(:status) do |facility|
+      facility.status_i18n
+    end
     column :created_user
     column :updated_user
     column :opening_hours
@@ -72,7 +76,9 @@ ActiveAdmin.register Facility do
   show do
     attributes_table do
       row :id
-      row :type
+      row(:type) do |facility|
+        facility.type_i18n
+      end
       row :name
       row :postal_code
       row :address
@@ -91,7 +97,9 @@ ActiveAdmin.register Facility do
       row :instagram
       row :twitter
       row :youtube
-      row :status
+      row(:status) do |facility|
+        facility.status_i18n
+      end
       row :created_user
       row :updated_user
       row :opening_hours

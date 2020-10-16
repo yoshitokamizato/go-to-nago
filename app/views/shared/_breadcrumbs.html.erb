@@ -1,27 +1,15 @@
+<%# コントローラー名とアクション名の組み合わせで表示させるパンくずリストを場合分け %>
 <% case params.values_at :controller, :action
   when ['users', 'show'] %>
     <% breadcrumb :mypage %>
   <% when ['facilities', 'bookmark'] %>
     <% breadcrumb :favorite %>
-  <% when ['facilities', 'show_facilities'] %>
-    <% if @facility_type == "gourmet" %>
-      <% type_text = "グルメ" %>
-    <% else %>
-      <% type_text = "観光スポット" %>
-    <% end %>
-    <% breadcrumb :facility_type, type_text %>
+  <% when ['facilities', 'index'] %>
+    <% breadcrumb :facility_index, @facility_type %>
   <% when ['facilities', 'show'] %>
-    <% if @facility.type == "gourmet" %>
-      <% breadcrumb :gourmet, @facility %>
-    <% else %>
-      <% breadcrumb :spot, @facility %>
-    <% end %>
+    <% breadcrumb :facility, @facility %>
   <% when ['menus', 'index'] %>
-    <% if @facility.type == "gourmet" %>
-      <% breadcrumb :gourmet, @facility %>
-    <% else %>
-      <% breadcrumb :spot, @facility %>
-    <% end %>
+    <% breadcrumb :menus, @facility %>
   <% when ['fixedpages', 'about'] %>
     <% breadcrumb :about %>
   <% when ['fixedpages', 'company'] %>

@@ -1,18 +1,28 @@
-<div class="inquiry-area">
+<% 
+  case @inquiry.kind 
+  when "inquiry" 
+    inquiry_title = "お問い合わせ(受付完了）"
+  when "new_facility"
+    inquiry_title = "情報掲載依頼(受付完了）"
+  when "edit_facility"
+    inquiry_title = "情報修正依頼(受付完了）"
+  end
+ %>
+ 
+ <div class="inquiry-area">
   <div class="inquiry-title-area">
-    <% case @inquiry.kind %>
-    <% when "inquiry" %>
-      <h1>お問い合わせ(受付完了）</h1>
-    <% when "new_facility" %>
-      <h1>情報掲載依頼(受付完了）</h1>
-    <% when "edit_facility" %>
-      <h1>情報修正依頼(受付完了）</h1>
-    <% end %>
+    <div class="inqury-title list-title underline-blue">
+      <h1><%= inquiry_title %></h1>
+    </div>
   </div>
 
-<p>問い合わせありがとうございます。</p>
-<p>お問い合わせ内容を、メールアドレスに送信いたしました。</p>
-<p>内容を確認して、回答させていただきます。</p>
-<p>なお、お問い合わせの内容によっては、回答にお時間をいただく場合がございます。</p>
+<div class="inquiry-information">
+<p>
+お問い合わせありがとうございます。<br /><br />
+お問い合わせ内容を、メールアドレスに送信いたしました。<br /><br />
+内容を確認して、回答させていただきます。<br />
+なお、お問い合わせの内容によっては、回答にお時間をいただく場合がございます。
+</p>
+</div>
 
 </div>

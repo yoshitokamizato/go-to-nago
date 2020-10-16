@@ -19,6 +19,15 @@ ja:
         closed_shop: 閉店
         closing_down: 休業中
         will_open: オープン予定
+    inquiry:
+      status:
+        not_started: 未着手
+        in_progress: 進行中
+        done: 完了
+      kind:
+        inquiry: 問い合わせ
+        new_facility: 情報掲載依頼
+        edit_facility: 情報修正依頼
   activerecord:
     models:
       user: "ユーザー"

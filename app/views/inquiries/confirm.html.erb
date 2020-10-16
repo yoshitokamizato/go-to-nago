@@ -1,24 +1,47 @@
+<% 
+  case @inquiry.kind 
+  when "inquiry" 
+    inquiry_title = "お問い合わせ(確認)"
+    inquiry_sentece = "以下のお問い合わせ内容で送信します。よろしいですか？"
+  when "new_facility"
+    inquiry_title = "情報掲載依頼(確認)"
+    inquiry_sentece = "以下のお問い合わせ内容で送信します。よろしいですか？"
+  when "edit_facility"
+    inquiry_title = "情報修正依頼(確認)"
+    inquiry_sentece = "以下のお問い合わせ内容で送信します。よろしいですか？"
+  end
+ %>
+  
 <div class="inquiry-area">
   <div class="inquiry-title-area">
-    <% case @inquiry.kind %>
-    <% when "inquiry" %>
-      <h1>お問い合わせ(確認)</h1>
-      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
-    <% when "new_facility" %>
-      <h1>情報掲載依頼(確認)</h1>
-      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
-    <% when "edit_facility" %>
-      <h1>情報修正依頼(確認)</h1>
-      <p>以下のお問い合わせ内容で送信します。よろしいですか？</p>
-    <% end %>
+    <div class="inqury-title list-title underline-blue">
+      <h1><%= inquiry_title %></h1>
+    </div>
+      <p><%= inquiry_sentece %></p>
   </div>
+    <div class="inquiry-information">
+      <ul class="information-lists">
+        <li class="information-list">
+          <p class="information-list-title">お名前</p>
+          <p class="information-list-content"><%= @inquiry.name%></p>
+        </li>
+        <li class="information-list">
+          <p class="information-list-title">メールアドレス</p>
+          <p class="information-list-content"><%= @inquiry.email%></p>
+        </li>
+        <li class="information-list">
+          <p class="information-list-title">題名</p>
+          <p class="information-list-content"><%= @inquiry.subject%></p>
+        </li>
+        <li class="information-list">
+          <p class="information-list-title">お問い合わせ内容</p>
+          <div class="information-list-content"><%= simple_format(@inquiry.message) %></div>
+        </li>
+      </ul>
+    </div>
+    
+
   <%= form_for @inquiry ,action: '/create', html: {class: 'inquiry-form'} do |f| %>
-    <table class="table table-bordered">
-      <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
-      <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
-      <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
-      <tr><th>お問い合わせ内容</th><td><%= simple_format(@inquiry.message) %></td></tr>
-    </table>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :email %>
@@ -27,8 +50,8 @@
       <%= f.hidden_field :kind %>
       <%= f.hidden_field :facility_id %>
     <div class="btn-area">
-      <%= f.submit '入力画面へ戻る', class: 'btn btn-lg btn-secondary btn-block', name: 'back' %>
-      <%= f.submit '送信する', class: 'btn btn-lg btn-primary btn-block' %>
+      <%= f.submit '送信する', class: 'button button-blue-color' %>
+      <%= f.submit '入力画面へ戻る', class: 'button button-gray-color', name: 'back' %>
     </div>
 <% end %>
 </div>
