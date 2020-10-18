@@ -34,7 +34,7 @@
     <div class="list-title underline-blue menu-margin">
       <h1>メニュー</h1>
     </div>
-    <div class="sliderArea menu-margin-bottom">
+    <div class="sliderArea">
       <div class="full-screen-o slider">
         <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
@@ -51,7 +51,7 @@
         <%end%>
       </div>
     </div>
-    <div class="list-button">
+    <div class="list-button menu-margin-top">
       <%= link_to  "メニューをもっとみる", facility_menus_path(@facility.id)  ,type:"button", class:"button button-blue-border button-arrow" %>
     </div>
     <%end%>
