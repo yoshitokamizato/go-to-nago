@@ -134,6 +134,7 @@ hr {
 // topの画像
 .detail-top {
   position: relative;
+  margin-bottom: 12px;
 
   // 画像
   .card-img-top {
@@ -181,8 +182,9 @@ hr {
   // いいねのカウント数
   .detail-bookmark-count {
     color: #fff;
-    font-size: 15px;
-    margin-top: -10px;
+    font-size: 1.5rem;
+    margin-top: -12px;
+    margin-bottom: 10px;
   }
 }
 
@@ -305,6 +307,29 @@ hr {
   width: 600px;
 }
 
+.advice-margin {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.menu-margin {
+  margin-top: 20px;
+  margin-bottom: 18px;
+}
+
+.menu-margin-bottom {
+  margin-bottom: 40px;
+}
+
+.facility-main-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 @media screen and (min-width:768px) {
 
   /*　画面サイズが768px以上はここを読み込む　*/
@@ -339,7 +364,7 @@ hr {
     // いいねのカウント数
     .detail-bookmark-count {
       color: #fff;
-      font-size: 45px;
+      font-size: 1.5rem;
       margin-top: -10px;
     }
 
@@ -403,11 +428,6 @@ hr {
   }
 
 }
-
-.menu-margin-top {
-  margin-top: 20px;
-}
-
 
 // ==================================================================
 // ======================== 詳細画面CSS(ここまで) =============================

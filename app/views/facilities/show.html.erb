@@ -2,7 +2,7 @@
 <div class="detail-wrapper">
   <!-- トップ -->
   <div class="detail-top">
-    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top card-img-max-height fit-image" ,alt:"...")  %>
+    <%= image_tag(@facility.facility_images.first.image.url ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...")  %>
     <h2 class="detail-title"><%= @facility.name%></h2>
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
@@ -23,23 +23,25 @@
     <!-- いいねボタンここまで -->
   </div>
   <%= @facility.description %>
-  <div class="list-title underline-blue menu-margin-top">
+  <div class="list-title underline-blue advice-margin">
     <h1>おすすめポイント</h1>
   </div>
-  <%= @facility.advice %>
+  <div class = "menu-margin-bottom">
+    <%= @facility.advice %>
+  </div>
   <div class="menu text-center">
   <%if @facility.menus[0] %>
-    <div class="list-title underline-blue menu-margin-top">
+    <div class="list-title underline-blue menu-margin">
       <h1>メニュー</h1>
     </div>
-    <div class="sliderArea">
+    <div class="sliderArea menu-margin-bottom">
       <div class="full-screen-o slider">
         <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
           <div class="card">
             <li>
               <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
-              <div class="card-body">
+              <div class="card-body list-cd">
                 <h5 class="card-title"><%= @facility.menus[num].name %></h5>
                 <p><%= @facility.menus[num].content %></p>
               </div>
