@@ -38,14 +38,12 @@
       <div class="full-screen-o slider">
         <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
-          <div class="card">
-            <li>
-              <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
-              <div class="card-body list-cd">
-                <h5 class="card-title"><%= @facility.menus[num].name %></h5>
-                <p><%= @facility.menus[num].content %></p>
-              </div>
-            </li>
+          <div class="card heightLine">
+            <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+            <div class="card-body list-cd">
+              <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+              <p><%= @facility.menus[num].content %></p>
+            </div>
           </div>
           <%end%>
         <%end%>
@@ -137,14 +135,5 @@
       speed: 1000, // スライド/フェードアニメーションの速度を設定
       infinite: true, // スライドのループを有効にするか
     });
-
-    var maxHeight = 0;
-    $('.card li').each(function(idx, elem) {
-      var height = $(elem).height();
-      if(maxHeight < height) {
-        maxHeight = height;
-      }
-    });
-    $('.card li').height(maxHeight);
   });
 </script>
