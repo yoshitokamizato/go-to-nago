@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   #bookmarks関連のアソシエーション
   has_many :bookmarks, dependent: :destroy
-  has_many :facilities, dependent: :destroy
+  has_many :facilities, foreign_key: "owner_id", dependent: :destroy
   has_many :bookmark_facilities, through: :bookmarks,source: :facility
 
   # （お気に入り機能）
