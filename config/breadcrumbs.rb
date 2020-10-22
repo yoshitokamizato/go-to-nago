@@ -30,7 +30,7 @@ crumb :mypage do
 end
 
 crumb :favorite do
-  link "お気に入り（グルメ・観光スポット）"
+  link "お気に入り"
   parent :root
 end
 
