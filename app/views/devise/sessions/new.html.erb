@@ -1,11 +1,20 @@
-<div class="container-login">
-  <h2><%= t('.sign_in')%></h2>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1><%= t('.sign_in') %></h1>
+  </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <p class="text-center mt-3">SNSアカウントまたはメールアドレスでログインできます</p>
+  <div><%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "button button-twitter mt-3" %></div>
+
+  <div class="with-virtical-spaces">
+    <p class="text-center">または</p>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "common-form"} ) do |f| %>
 
   <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, class:'form-control', autocomplete: "email" %>
   </div>
 
   <div class="form-group">
@@ -21,9 +30,19 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "ログインする", class: 'btn btn-primary btn-block' %>
+    <%= f.submit "ログインする", class: 'button button-blue-color' %>
   </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="form-group">
+    <%= link_to t(".forgot_your_password"), new_password_path(resource_name), class: 'button button-gray-color' %><br />
+  </div>
+
+  <div class="border border-info p-3 mt-5">
+  <div class="form-group">
+    <p class="font-weight-bold pb-3">アカウントをお持ちでない方はこちら</p>
+    <%= link_to "アカウント登録", new_registration_path(resource_name), class: 'button button-blue-color' %>
+  </div>
+
+  </div>
 </div>
