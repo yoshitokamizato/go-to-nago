@@ -27,11 +27,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: "form-control", accept: "image/jpg,image/gif,image/jpeg,image/png", autofocus: true %>
+    <%= f.label :image %> <br />
+    <%= f.file_field :image, class: "aform-control", accept: "image/jpg,image/gif,image/jpeg,image/png", autofocus: true %>
   </div>
 
   <div class="form-group">
+    <%= f.label :profile %>
     <%= f.text_area :profile, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "プロフィール文を入力してください", rows: 10 %>
   </div>
 
