@@ -127,6 +127,14 @@ hr {
   text-decoration: none;
 }
 
+.fixed-bookmark{
+  position: fixed;
+  right: 25.5px;
+  bottom: 20px;
+  font-size: 30px;
+  z-index: 100;
+}
+
 // =========================================================================
 // ======================== 詳細画面CSS(ここから) =============================
 // =========================================================================
@@ -384,6 +392,13 @@ hr {
     .carousel-image {
       width: 200px;
       height: 200px;
+    }
+
+    .fixed-bookmark{
+      position: fixed;
+      right: 25.5px;
+      bottom: 20px;
+      z-index: 100;
     }
   }
 

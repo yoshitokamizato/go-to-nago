@@ -7,7 +7,7 @@
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
     <% if user_signed_in? %>
-    <div class="bookmark_btn_<%= @facility.id %>  detail-bookmark-icon" data-bookmark='1'>
+    <div class="bookmark_btn_<%= @facility.id %>  favorite-area detail-bookmark-icon icon-red" data-bookmark='1'>
       <!-- ここ専用のパーシャル -->
       <%= render 'facilities/bookmark_for_detail', {facility: @facility,gourmet: @gourmet} %>
     </div>
@@ -21,6 +21,20 @@
     </div>
     <% end %>
     <!-- いいねボタンここまで -->
+    <!-- いいねボタン(画面右下固定) -->
+    <!-- ログインの有無で場合わけ -->
+    <% if user_signed_in? %>
+    <div class="bookmark_btn_<%= @facility.id %> favorite-area fixed-bookmark icon-red" data-bookmark='2'>
+      <!-- ここ専用のパーシャル -->
+      <%= render 'facilities/bookmark_for_detail2', {facility: @facility,gourmet: @gourmet} %>
+    </div>
+    <% else%>
+    <div class="favorite-area fixed-bookmark">
+      <!-- ②ここはパーシャルを使用 -->
+      <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+    </div>
+    <% end %>
+    <!-- いいねボタン(画面右下固定)ここまで -->
   </div>
   <%= @facility.description %>
   <div class="list-title underline-blue advice-margin">
