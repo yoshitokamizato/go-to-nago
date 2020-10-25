@@ -48,7 +48,26 @@
     <div class="list-title underline-blue menu-margin">
       <h1>メニュー</h1>
     </div>
-    <div class="sliderArea">
+
+    <!-- メニュー一覧表示 -->
+    <div class="list-wrapper">
+      <div class="row " id="menu_lists">
+        <% @facility.menus.each do |menu| %>
+        <div class="col-6 col-sm-6 col-lg-3 show-row-list">
+          <div class="card ">
+            <%= image_tag(menu.image.thumb.url, class:"card-img-top" ,alt:"...") %>
+            <div class="card-body list-cd">
+              <h5 class="card-title"><%= menu.name %></h5>
+              <p class="card-text"><%= menu.content %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- メニュー一覧表示(slick) -->
+<!--    <div class="sliderArea">
       <div class="full-screen-o slider">
         <% for num in 0..MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
@@ -62,7 +81,7 @@
           <%end%>
         <%end%>
       </div>
-    </div>
+    </div> -->
     <div class="list-button menu-margin-top">
       <%= link_to  "メニューをもっとみる", facility_menus_path(@facility.id)  ,type:"button", class:"button button-blue-border button-arrow" %>
     </div>
