@@ -270,11 +270,16 @@ nav.navbar{
   position: relative;
   // height: 100%;
   max-width: 70%;
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }  
 }
 
 .header-logo{
   object-fit: contain;
-  height: 100%;
+  height: 85%;
   width: auto;
   max-width: 100%;
 }
