@@ -1,6 +1,6 @@
 $('#facility_lists').append("<%= escape_javascript(render partial: 'facilities/facilities_list',  collection: @facilities, as: 'facility') %>");
 <% if @facility_type == "gourmet" %>
-$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@facilities, 'おすすめグルメをもっと見る', remote: true, class:"button button-blue-border" ,id:'view_more')) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@facilities, 'おすすめグルメをもっとみる', remote: true, class:"button button-blue-border" ,id:'view_more')) %>");
 <% else %>
-$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@facilities, '観光スポットをもっと見る', remote: true, class:"button button-white-border" ,id:'view_more')) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@facilities, 'おすすめ観光スポットをもっとみる', remote: true, class:"button button-blue-border" ,id:'view_more')) %>");
 <% end %>
