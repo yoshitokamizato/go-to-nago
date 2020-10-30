@@ -37,9 +37,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :mailmagazine %><br>
+    <%= label_tag :mailmagazine, "メール配信"%> <br />
     <%= f.check_box :mailmagazine, {} , "true", "false" %>
-    <%= label_tag :mailmagazine, "メール配信を希望する" , autocomplete: "mailmagazine"%>
+    <%= f.label :mailmagazine, "メール配信を希望する" %><br>
   </div>
 
   <div class="form-group">
@@ -47,3 +47,5 @@
   </div>
   <% end %>
   <%= link_to "マイページヘ戻る", user_path ,class:"button button-gray-color" %>
+</div>
+        
