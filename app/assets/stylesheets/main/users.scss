@@ -1,10 +1,4 @@
 // ================================
-// ログイン画面
-// ================================
-
-
-
-// ================================
 // マイページ
 // ================================
 .user-image {
@@ -55,7 +49,31 @@
 }
 
 
+// ================================
+// モーダル
+// ================================
+.modal{
+  &-header{
+    border-bottom: 0px!important;
+  }
+  &-footer{
+    border-top: 0px!important;
+  }
 
+  &-body{
+    text-align: center;
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+     a {
+      color: $main-color;
+     }
+  }
+}
+
+.cross-mark{
+  color: $main-color;
+}
 // ================================
 // マイページのタブ
 // ================================
@@ -67,6 +85,8 @@
   background-color: #fff;
   width: auto;
   margin: 0 auto;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
 }
 
 /*タブのスタイル*/
@@ -113,13 +133,13 @@ input[name="tab_item"] {
 /*選択されているタブのスタイルを変える*/
 .tabs input:checked + .tab_item {
 	border-top: 3px solid $main-color;
-	background-color: white;
 }
 
 // タブ内のカード
 .show-row-list {
   margin-bottom: 10px;
-}
+  padding: 0px;
+ }
 
 
 
