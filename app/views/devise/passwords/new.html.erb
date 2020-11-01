@@ -1,22 +1,27 @@
-<div class="title">
-  <h4 class="text-center">パスワード再設定</h4>
-</div>
-<div class="container-login">
-  <p class="mt-4">パスワードを再設定を行います。</p>
-  <p>登録しているメールアドレスを入力してください。</p>
-  <p>入力頂いたメールアドレスの確認のメールを送信します。</p>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1>パスワード再設定</h1>
+  </div>
+  <div class="text-center mt-5">
+    <p>パスワードを再設定を行います。</p>
+    <p>登録しているメールアドレスを入力してください。</p>
+    <p>入力頂いたメールアドレスの確認のメールを送信します。</p>
+  </div>
   <div class="mt-5 mb-5">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "common-form" }) do |f| %>
     <%= bootstrap_devise_error_messages!%>
 
     <div class="form-group mb-5">
       <%= f.label :email %>
       <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください" %>
     </div>
-    <%= f.submit "変更する", class:'btn btn-success btn-block mb-3' %>
-    <%= link_to "マイページヘ戻る", user_path ,class:"btn btn-primary btn-block" %>
+    <%= f.submit "変更する", class:'button button-blue-color' %>
+    <%= link_to "マイページヘ戻る", user_path ,class:"button button-gray-color" %>
+
     <% end %>
   </div>
-  <p>変更の有効期限は24時間です。</p>
-  <p>24時間以内に変更を完了しなかった場合は変更を完了しなかった場合は再度お手続きをお願いします。</p>
+  <div class="text-center mt-5">
+    <p>変更の有効期限は24時間です。</p>
+    <p>24時間以内に変更を完了しなかった場合は変更を完了しなかった場合は再度お手続きをお願いします。</p>
+  </div>
 </div>
