@@ -132,6 +132,28 @@ a:hover {
   }
 }
 
+.button-blue-color{
+  background-color: $main-color;
+  color: #fff;
+  border: 2px solid $main-color;
+  &:hover{
+    background-color: #fff;
+    color: $main-color;
+    border: 2px solid $main-color;
+  }
+}
+
+.button-gray-color{
+  background-color: $gray-color;
+  color: #fff;
+  border: 2px solid $gray-color;
+  &:hover{
+    background-color: #fff;
+    color: $gray-color;
+    border: 2px solid $gray-color;
+  }
+}
+
 .button-white-border{
   border: 2px solid #fff;
   color: #fff;
@@ -147,6 +169,30 @@ a:hover {
   background-image:-webkit-gradient(linear,left top,right bottom, from(#88B920), to(#55ACEE));
   &:hover{
     color: #fff;
+  }
+}
+
+.button-twitter{
+  background-color: #00acee;
+  color: #fff;
+  position: relative;
+  &:before {
+    // position: absolute;
+    // left: 1vw;
+    margin-right: 1rem;
+    content: "\f099";
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+  }
+  &:hover{
+    color: #fff;
+  }
+}
+
+.common-form {
+  .form-control{
+    border: 0.5px solid #000;
+    border-radius: 0;
   }
 }
 
@@ -170,21 +216,29 @@ nav.navbar{
   width: 100vw;
   padding: 0 1rem;
 }
-
 .menu-icon-area,.logo-area, .account-icon-area{
+  height: 55px;
+}
+
+.header-space-adjust{
   height: 55px;
 }
 
 @media(min-width: 768px){
   .menu-icon-area,.logo-area, .account-icon-area{
     height: 72px;
-  }
-  .account-icon-area{
-    order: 3;
+  }    
+  .header-space-adjust{
+    height: 72px;
   }
 }
 
 @media(min-width: 768px){
+  // pcサイズのときにiconはflexの一番最後に表示
+  .account-icon-area{
+    order: 3;
+  }
+  // pcサイズのときにメニューは右寄せ
   .navbar-expand-md .navbar-collapse{
     justify-content: flex-end;
   }
@@ -197,7 +251,6 @@ nav.navbar{
 .menu-icon-area, .account-icon-area{
   text-align: center;
   position: relative;
-  // height: 100%;
   width: 10%;
 }
 
@@ -212,32 +265,18 @@ nav.navbar{
   }
 }
 
-
 .logo-area{
   text-align: center;
   position: relative;
   // height: 100%;
-  width: 30%;
+  max-width: 70%;
 }
 
 .header-logo{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  object-fit: contain;
   height: 100%;
-}
-
-
-.header-space-adjust{
-  // padding-top: 55px;
-  height: 55px;
-}
-
-@media(min-width: 768px){
-  .header-space-adjust{
-    height: 72px;
-  }
+  width: auto;
+  max-width: 100%;
 }
 
 .title {

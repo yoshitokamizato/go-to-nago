@@ -1,15 +1,20 @@
-<div class="container-login">
-  <h2 class="text-center"><%= t('.sign_up') %></h2>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1><%= t('.sign_up') %></h1>
+  </div>
   <p class="text-center mt-3">SNSアカウントまたはメールアドレスで登録できます</p>
-  <div><%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-primary btn-block mt-5" %></div>
+  <div><%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "button button-twitter mt-5 mb-2" %></div>
 
-  <p class="text-center">または</p>
+  <div class="with-virtical-spaces">
+    <p class="text-center">または</p>
+  </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "common-form"}) do |f| %>
   <%= bootstrap_devise_error_messages!%>
   <div class="form-group">
-    <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください", value: @user.email, required: true %>
+    <%= f.email_field :email, class:'form-control', autocomplete: "email", placeholder: "メールアドレスを入力してください", value: @user.email, required: true %>
   </div>
+
 
   <div class="form-group">
     <%= f.password_field :password, class:'form-control', autocomplete: "new-password", placeholder: "パスワードを入力してください", value: @user.password, required: true %>
@@ -20,12 +25,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit "メールアドレスで登録", class:'btn btn-primary btn-block' %>
+    <%= f.submit "メールアドレスで登録", class:'button button-blue-color' %>
   </div>
   <% end %>
-  <p><a href="#">利用規約</a>、<a href="#">プライバシーポリシー</a>に同意の上でご登録ください</p>
+  
+  <p><%= link_to "利用規約", tos_path %>、<%= link_to "プライバシーポリシー", privacy_path %>に同意の上でご登録ください</p>
   <div class="border border-info p-3 mt-5">
     <p class="font-weight-bold pb-3">アカウントをお持ちの方はこちら</p>
-    <%= render "devise/shared/links" %>
+    <%= link_to "ログイン", new_session_path(resource_name), class: 'button button-blue-color' %>
   </div>
 </div>
