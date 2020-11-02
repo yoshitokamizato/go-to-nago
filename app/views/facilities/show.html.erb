@@ -1,5 +1,5 @@
 <!-- 詳細画面 -->
-<div class="detail-wrapper">
+<div class="detail-wrapper detail-width">
   <!-- トップ -->
   <div class="detail-top">
     <%= image_tag(@facility.facility_images.first.image.url ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...")  %>
@@ -26,7 +26,9 @@
     <% if user_signed_in? %>
     <div class="bookmark_btn_<%= @facility.id %> favorite-area fixed-bookmark icon-red" data-bookmark='2'>
       <!-- ここ専用のパーシャル -->
+      <i>
       <%= render 'facilities/bookmark_for_detail2', {facility: @facility,gourmet: @gourmet} %>
+      </i>
     </div>
     <% else%>
     <div class="favorite-area fixed-bookmark">
@@ -52,16 +54,23 @@
     <!-- メニュー一覧表示 -->
     <div class="list-wrapper">
       <div class="row " id="menu_lists">
-        <% @facility.menus.each do |menu| %>
-        <div class="col-6 col-sm-6 col-lg-3 show-row-list">
-          <div class="card ">
-            <%= image_tag(menu.image.thumb.url, class:"card-img-top" ,alt:"...") %>
-            <div class="card-body list-cd">
-              <h5 class="card-title"><%= menu.name %></h5>
-              <p class="card-text"><%= menu.content %></p>
+        <%# if 現在の画面サイズ > 768 %>
+          <% maxnum = 4 %>
+        <%# else %>
+          <%# maxnum = 2 %>
+        <%# end %>
+        <% for num in 0..maxnum-1 do %>
+          <% if @facility.menus[num] %>
+          <div class="col-6 col-sm-6 col-lg-3 show-row-list">
+            <div class="card ">
+              <%= image_tag(@facility.menus[num].image.thumb.url, class:"card-img-top" ,alt:"...") %>
+              <div class="card-body list-cd">
+                <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+                <p class="card-text"><%= @facility.menus[num].content %></p>
+              </div>
             </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
       </div>
     </div>
