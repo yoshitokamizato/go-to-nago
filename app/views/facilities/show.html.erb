@@ -26,9 +26,7 @@
     <% if user_signed_in? %>
     <div class="bookmark_btn_<%= @facility.id %> favorite-area fixed-bookmark icon-red" data-bookmark='2'>
       <!-- ここ専用のパーシャル -->
-      <i>
       <%= render 'facilities/bookmark_for_detail2', {facility: @facility,gourmet: @gourmet} %>
-      </i>
     </div>
     <% else%>
     <div class="favorite-area fixed-bookmark">
