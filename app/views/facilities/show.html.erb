@@ -52,14 +52,15 @@
     <!-- メニュー一覧表示 -->
     <div class="list-wrapper">
       <div class="row " id="menu_lists">
-        <%# if 現在の画面サイズ > 768 %>
-          <% maxnum = 4 %>
-        <%# else %>
-          <%# maxnum = 2 %>
-        <%# end %>
+        <!-- アクセス元から表示するメニューの上限数を決定 PC:3, MOBILE:2 -->
+        <% if request.env['HTTP_USER_AGENT'].include? "Mobile" %>
+          <% maxnum = MOBILE_MENUS_MAX %>
+        <% else %>
+          <% maxnum = PC_MENUS_MAX %>
+        <% end %>
         <% for num in 0..maxnum-1 do %>
           <% if @facility.menus[num] %>
-          <div class="col-6 col-sm-6 col-lg-3 show-row-list">
+          <div class="col-6 col-sm-6 col-lg-4 show-row-list">
             <div class="card ">
               <%= image_tag(@facility.menus[num].image.thumb.url, class:"card-img-top" ,alt:"...") %>
               <div class="card-body list-cd">
@@ -76,7 +77,7 @@
     <!-- メニュー一覧表示(slick) -->
 <!--    <div class="sliderArea">
       <div class="full-screen-o slider">
-        <% for num in 0..MENUS_MAX-1 do %>
+        <% for num in 0..PC_MENUS_MAX-1 do %>
           <% if @facility.menus[num] %>
           <div class="card heightLine">
             <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
