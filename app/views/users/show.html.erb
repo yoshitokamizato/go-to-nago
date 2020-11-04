@@ -61,16 +61,22 @@
   <!-- タブ -->
   <div>
     <!-- タブの表示設定 -->
-    <div class="tabs">
+    <div class="tabs row">
       <input id="all" type="radio" name="tab_item" checked>
       <label class="tab_item" for="all">グルメ</label>
 
       <input id="programming" type="radio" name="tab_item">
       <label class="tab_item" for="programming">スポット</label>
 
-    <div class="tab_content" id="all_content">
+    <div class="tab_content list-wrapper" id="all_content">
       <div class="row" id="gourmet_lists">
-            <%= render partial: 'facilities/facilities_list', collection: @gourmets, as: 'facility' %>
+       <% if @gourmets.present?%>
+          <%= render partial: 'facilities/facilities_list', collection: @gourmets, as: 'facility' %>
+        <% else %>
+          <div class="non_tab_text">
+            <p>お気に入りされたグルメはありません。</p>
+          </div>
+        <% end %>
       </div>
 
       <div class="list-button col-12">
@@ -81,7 +87,13 @@
 
     <div class="tab_content" id="programming_content">
       <div class="row" id="spot_lists">
-        <%= render partial: 'facilities/facilities_list', collection: @spots, as: 'facility' %>
+        <% if @spots.present?%>
+          <%= render partial: 'facilities/facilities_list', collection: @spots, as: 'facility' %>
+        <% else %>
+          <div class="non_tab_text">
+            <p>お気に入りされたスポットはありません。</p>
+          </div>
+        <% end %>
       </div>
       <div class="list-button col-12">
         <%= link_to_next_page @spots, 'もっと見る', remote: true , params: { type: :bookmark_spot },
