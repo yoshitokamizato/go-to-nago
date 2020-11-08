@@ -21,6 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 引数のresourceを使ってユーザーを取得
     # メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
     # 確認メールから編集画面に来た時
+    # binding.pry
     if params["resource"]
       @user = User.find(params["resource"])
       # 初回登録か、既に会員登録済みかを場合わけ
@@ -39,7 +40,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.prefecture = params["user"]["prefecture"]
       @user.sex = params["user"]["sex"]
       @user.birth_year = params["user"]["birth_year"]
-      @user.image = params["user"]["image"]
+      @user.image = params["user"]["image_cache"]
+      # @user.image = params["user"]["image"]
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
       @token = params["user"]["confirmation_token"]
@@ -61,6 +63,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.sex = params["user"]["sex"]
       @user.birth_year = params["user"]["birth_year"]
       @user.image = params["user"]["image"]
+      # 選択していない場合でも、キャッシュから復活させる（確認画面から戻る場合を想定）
+      if !@user.image.present?
+        @user.image.retrieve_from_cache! params["user"]["image_cache"]
+      end
+      @user.image_cache = @user.image.cache_name
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
 
