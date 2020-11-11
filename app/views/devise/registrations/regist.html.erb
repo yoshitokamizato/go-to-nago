@@ -30,7 +30,7 @@
 
   <div class="form-group">
     <%= f.label :image %> <br />
-    <div id="user-img-field" onClick="$('#user-imag-file').click()" >
+    <div id="user-img-field" onClick="$('#user-img-file').click()" >
       <% if @user.image.url %>
         <%= image_tag @user.image.url ,class:"user-image" ,id:"img-preview" %>
       <% else %>
@@ -38,7 +38,7 @@
       <% end %>
       <i class="fas fa-edit"></i>
     </div>
-    <%= f.file_field :image, value: @user.image, accept: "image/jpg,image/gif,image/jpeg,image/png", style: "display:none;", id: "user-imag-file" %>
+    <%= f.file_field :image, value: @user.image, accept: "image/jpg,image/gif,image/jpeg,image/png", style: "display:none;", id: "user-img-file" %>
     <%= f.hidden_field :image_cache %>
   </div>
 
