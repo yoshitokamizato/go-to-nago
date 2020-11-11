@@ -28,14 +28,17 @@
     <%= f.select :birth_year, @birth_year, {include_blank: "生まれた年を選択してください"}, class: "form-control" %>
   </div>
 
-<%# binding.pry %>
-
   <div class="form-group">
     <%= f.label :image %> <br />
-    <% if @user.image.url %>
-    <%= image_tag @user.image.url ,class:"user-image"%>
-    <% end %>
-    <%= f.file_field :image, value: @user.image, accept: "image/jpg,image/gif,image/jpeg,image/png" %>
+    <div id="user-img-field" onClick="$('#user-imag-file').click()" >
+      <% if @user.image.url %>
+        <%= image_tag @user.image.url ,class:"user-image" ,id:"img-preview" %>
+      <% else %>
+        <%= image_tag "no-image.png" ,class:"non-user-image" ,id:"img-preview"  %>
+      <% end %>
+      <i class="fas fa-edit"></i>
+    </div>
+    <%= f.file_field :image, value: @user.image, accept: "image/jpg,image/gif,image/jpeg,image/png", style: "display:none;", id: "user-imag-file" %>
     <%= f.hidden_field :image_cache %>
   </div>
 
