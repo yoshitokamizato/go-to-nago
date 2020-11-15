@@ -51,3 +51,36 @@
 #myTabs {
   margin: 0 auto;
 }
+
+// ユーザ情報
+.user-information {
+  margin-top: 45px;
+  // wrapper
+  .information-lists {
+    // ul
+    .information-list {
+      // li
+      display: flex;
+      border-bottom: #888888 solid 1px;
+      padding: 10px 0;
+
+      p {
+        text-align: left;
+        margin-bottom: 0px;
+      }
+
+      .information-list-title {
+        // 各リストのカラム
+        width: 30%;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: $main-color;
+        font-weight: bold;
+      }
+
+      .information-list-content {
+        width: 70%;
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
-<div class="title">
-  <h4 class="text-center">パスワード再設定</h4>
-</div>
-<div class="container-login">
-  <div>新しいパスワードを入力してください。</div>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1>パスワード再設定</h1>
+  </div>
+  <div class="text-center mt-5">
+    <p>新しいパスワードを入力してください。</p>
+  </div>
   <div class="mt-5">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "common-form" }) do |f| %>
     <%= bootstrap_devise_error_messages!%>
     <%= f.hidden_field :reset_password_token %>
 
@@ -17,7 +19,7 @@
       <%= f.password_field :password_confirmation, placeholder: "新しいパスワード（確認用）を入力してください",class:"form-control" %>
     </div>
 
-    <%= f.submit "変更する", class:'btn btn-success btn-block' %>
+    <%= f.submit "変更する", class:'button button-blue-color' %>
     <% end %>
   </div>
 </div>
