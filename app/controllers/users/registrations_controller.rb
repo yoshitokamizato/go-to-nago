@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 仮登録時にプロフィールを編集するアクション
   def regist
+    # binding.pry
     # 引数のresourceを使ってユーザーを取得
     # メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
     # 確認メールから編集画面に来た時
@@ -43,6 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
       @token = params["user"]["confirmation_token"]
+      @user.email = params["user"]["email"]
     end
   end
 
