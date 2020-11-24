@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.prefecture = params["user"]["prefecture"]
       @user.sex = params["user"]["sex"]
       @user.birth_year = params["user"]["birth_year"]
-      @user.image = params["user"]["image"]
+      @user.image = params["user"]["image_cache"]
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
       @token = params["user"]["confirmation_token"]
@@ -61,6 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.sex = params["user"]["sex"]
       @user.birth_year = params["user"]["birth_year"]
       @user.image = params["user"]["image"]
+      # 選択していない場合でも、キャッシュから復活させる（確認画面から戻る場合を想定）
+      if !@user.image.present? && params["user"]["image_cache"].present?
+        @user.image.retrieve_from_cache! params["user"]["image_cache"]
+      end
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
 

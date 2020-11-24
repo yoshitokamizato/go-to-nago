@@ -1,13 +1,13 @@
 <!-- 詳細画面 -->
-<div class="detail-wrapper">
+<div class="detail-wrapper detail-width">
   <!-- トップ -->
   <div class="detail-top">
-    <%= image_tag(@facility.facility_images.first.image.url ,class:"card-img-top" ,alt:"...")  %>
+    <%= image_tag(@facility.facility_images.first.image.url ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...")  %>
     <h2 class="detail-title"><%= @facility.name%></h2>
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
     <% if user_signed_in? %>
-    <div class="bookmark_btn_<%= @facility.id %>  detail-bookmark-icon" data-bookmark='1'>
+    <div class="bookmark_btn_<%= @facility.id %>  favorite-area detail-bookmark-icon icon-red" data-bookmark='1'>
       <!-- ここ専用のパーシャル -->
       <%= render 'facilities/bookmark_for_detail', {facility: @facility,gourmet: @gourmet} %>
     </div>
@@ -21,56 +21,76 @@
     </div>
     <% end %>
     <!-- いいねボタンここまで -->
+    <!-- いいねボタン(画面右下固定) -->
+    <!-- ログインの有無で場合わけ -->
+    <% if user_signed_in? %>
+    <div class="bookmark_btn_<%= @facility.id %> favorite-area fixed-bookmark icon-red" data-bookmark='2'>
+      <!-- ここ専用のパーシャル -->
+      <%= render 'facilities/bookmark_for_detail2', {facility: @facility,gourmet: @gourmet} %>
+    </div>
+    <% else%>
+    <div class="favorite-area fixed-bookmark">
+      <!-- ②ここはパーシャルを使用 -->
+      <object><%= link_to icon('far', 'heart'), new_user_session_path, class:"icon-red" %></object>
+    </div>
+    <% end %>
+    <!-- いいねボタン(画面右下固定)ここまで -->
+  </div>
+  <%= @facility.description %>
+  <div class="list-title underline-blue advice-margin">
+    <h1>おすすめポイント</h1>
+  </div>
+  <div class = "menu-margin-bottom">
+    <%= @facility.advice %>
   </div>
   <div class="menu text-center">
   <%if @facility.menus[0] %>
-    <h3>メニュー</h3>
-    <hr>
-    <div id="carouselOption1" class="carousel slide" data-ride="carousel">
-      <!-- インジケータの設定 -->
-      <ol class="carousel-indicators">
-        <% for num in 1..MENUS_MAX-1 do %>
+    <div class="list-title underline-blue menu-margin">
+      <h1>メニュー</h1>
+    </div>
+
+    <!-- メニュー一覧表示 -->
+    <div class="list-wrapper">
+      <div class="row " id="menu_lists">
+        <!-- アクセス元から表示するメニューの上限数を決定 PC:3, MOBILE:2 -->
+        <% if request.env['HTTP_USER_AGENT'].include? "Mobile" %>
+          <% maxnum = MOBILE_MENUS_MAX %>
+        <% else %>
+          <% maxnum = PC_MENUS_MAX %>
+        <% end %>
+        <% for num in 0..maxnum-1 do %>
           <% if @facility.menus[num] %>
-            <% if num == 1 %>
-              <li data-target="#carouselOption1" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselOption1" data-slide-to="1"></li>
-            <% else %>
-              <li data-target="#carouselOption1" data-slide-to=num.to_s></li>
-            <% end %>
-          <% end %>
-        <%end%>
-      </ol>
-      <!-- スライドさせる画像の設定 -->
-      <div class="carousel-inner">
-        <% for num in 0..MENUS_MAX-1 do %>
-          <% if @facility.menus[num] %>
-            <% if num == 0 %>
-              <div class="carousel-item active">
-            <% else %>
-              <div class="carousel-item">
-            <% end %>
-                <%= image_tag(@facility.menus[num].image.url ,class:"d-block w-100" ,alt:"...") %>
-                <div class="carousel-caption d-none d-md-block">
-                  <h5><%= @facility.menus[num].name %></h5>
-                  <p><%= @facility.menus[num].content %></p>
-                </div>
+          <div class="col-6 col-sm-6 col-lg-4 show-row-list">
+            <div class="card ">
+              <%= image_tag(@facility.menus[num].image.thumb.url, class:"card-img-top" ,alt:"...") %>
+              <div class="card-body list-cd">
+                <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+                <p class="card-text"><%= @facility.menus[num].content %></p>
               </div>
-          <%end%>
-        <%end%>
-        <!-- スライドコントロールの設定 -->
-        <%if @facility.menus[1] %>
-          <a class="carousel-control-prev" href="#carouselOption1" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">前へ</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselOption1" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">次へ</span>
-          </a>
-        <%end%>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <div class="list-button">
+
+    <!-- メニュー一覧表示(slick) -->
+<!--    <div class="sliderArea">
+      <div class="full-screen-o slider">
+        <% for num in 0..PC_MENUS_MAX-1 do %>
+          <% if @facility.menus[num] %>
+          <div class="card heightLine">
+            <%= image_tag(@facility.menus[num].image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+            <div class="card-body list-cd">
+              <h5 class="card-title"><%= @facility.menus[num].name %></h5>
+              <p><%= @facility.menus[num].content %></p>
+            </div>
+          </div>
+          <%end%>
+        <%end%>
+      </div>
+    </div> -->
+    <div class="list-button menu-margin-top">
       <%= link_to  "メニューをもっとみる", facility_menus_path(@facility.id)  ,type:"button", class:"button button-blue-border button-arrow" %>
     </div>
     <%end%>
@@ -143,3 +163,18 @@
   window.google = {};
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+
+<!-- slickを呼び出すJavascript -->
+<script>
+  $(function(){
+    $(".full-screen-o").not('.slick-initialized').slick({
+      centerMode: true, // スライドを中心に表示して部分的に前後のスライドが見えるように設定（奇数番号のスライドに使用）
+      centerPadding: '28%', // センターモード時のサイドパディング。見切れるスライドの幅。’px’または’％’。
+      dots: true, // ドットインジケーターの表示
+      autoplay: true, // 自動再生を設定
+      autoplaySpeed: 3000, // 自動再生のスピード（ミリ秒単位）
+      speed: 1000, // スライド/フェードアニメーションの速度を設定
+      infinite: true, // スライドのループを有効にするか
+    });
+  });
+</script>
