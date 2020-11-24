@@ -8,6 +8,22 @@
   margin: 20px 0;
 }
 
+#user-img-field {
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+  height: 160px;
+}
+
+#user-img-field i{
+  // display: none;
+  font-size: 40px;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  color: $main-color;
+}
+
 .user-image {
   width: 150px;
   height: 150px;
