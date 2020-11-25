@@ -5,8 +5,15 @@
   <p class="text-center mt-3">プロフィールを登録してください。</p>
   <%= form_for(@user, as: @user, url: before_sign_up_confirm_path(@user, confirmation_token: @token) ,html: {method: "post", class: "common-form"}) do |f| %>
   <%= bootstrap_devise_error_messages!%>
-  <%= render "devise/shared/error_messages", resource: @user %>
+  <%#= render "devise/shared/error_messages", resource: @user %>
   <%= f.hidden_field :user_id, :value =>  resource.id %>
+
+  <% if @user.provider.present? %>
+  <div class="form-group">
+    <%= f.label :email %><span class="badge badge-danger ml-2">必須</span>
+    <%= f.text_field :email, class:'form-control', autofocus: true, autocomplete: "nickname", placeholder: "Emailを入力してください", required: true %>
+  </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :nickname %><span class="badge badge-danger ml-2">必須</span>

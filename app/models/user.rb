@@ -37,14 +37,18 @@ class User < ApplicationRecord
   # omniauthのコールバック時に呼ばれるメソッド
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
-      user.email = auth.info.email || User.dummy_email(auth)
+      user.email = auth.info.email || User.set_dummy_email(auth.uid, auth.provider)
       user.password = Devise.friendly_token[0,20]
     end
   end
 
+  def has_dummy_email?
+    self.email == User.set_dummy_email(self.uid, self.provider)
+  end
+
   private
 
-    def self.dummy_email(auth)
-      "#{auth.uid}-#{auth.provider}@example.com"
+    def self.set_dummy_email(uid, provider)
+      "#{uid}-#{provider}@example.com"
     end
 end

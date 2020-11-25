@@ -11,7 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
     # common callback method
     def callback_for(provider)
-      binding.pry
       # @user.skip_confirmation!
       @user = User.from_omniauth(request.env["omniauth.auth"])
       unless @user.persisted?
@@ -27,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
         # redirect_to new_user_registration_url(user: @user)
         redirect_to before_sign_up_path(provider: provider, 
-                                        user: {user_id: @user})
+                                        uid: @user.uid)
       end
     end
   

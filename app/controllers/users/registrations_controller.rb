@@ -18,11 +18,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 仮登録時にプロフィールを編集するアクション
   def regist
-    # binding.pry
-    # 引数のresourceを使ってユーザーを取得
-    # メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
-    # 確認メールから編集画面に来た時
-    if params["resource"]
+    # Oauth(Twitter)認証と、メール認証から来た時と戻るボタンから来た時で場合わけ(paramsが違うため)
+    # Oauth認証(Twitter)から編集画面に来たとき
+    if params["provider"]
+      @user = User.find_by(provider: params["provider"], uid: params["uid"])
+      @user.email = nil if @user.has_dummy_email?
+    # 確認メールから編集画面に来た時(引数のresourceを使ってユーザーを取得)
+    elsif params["resource"]
       @user = User.find(params["resource"])
       # 初回登録か、既に会員登録済みかを場合わけ
       if @user.nickname.present? || @user.prefecture.present? || @user.sex.present? || @user.birth_year.present? || @user.image.present? || @user.profile.present? || @user.mailmagazine.present?
@@ -44,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
       @token = params["user"]["confirmation_token"]
-      @user.email = params["user"]["email"]
+      @user.email = params["user"]["email"] if @user.provider.present?
     end
   end
 
@@ -65,12 +67,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.image = params["user"]["image"]
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
+      @user.email = params["user"]["email"] if @user.provider.present?
 
       @token = params["confirmation_token"]
       if @user.valid?
         render action: "confirm"
         flash.now[:success] = "確認して完了してください"
       else
+        setting_birth_year
         render action: "regist"
         flash.now[:alert] = "失敗しました"
       end
@@ -94,15 +98,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.image = params["user"]["image_cache"]
       @user.profile = params["user"]["profile"]
       @user.mailmagazine = params["user"]["mailmagazine"]
+      @user.email = params["user"]["email"] if @user.provider.present?
 
       # userのアクティブ状況をactiveに変更
       @user.status = 1
       @token = params["confirmation_token"]
       if @user.valid?
-        @user.save
-        #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
-        redirect_to confirmation_path(@user, confirmation_token: @token)
-        sign_in(@user, bypass: true)
+        # Oauth認証の場合、email登録メール不要、認証トークン付与不要
+        if @user.provider.present?
+          @user.skip_reconfirmation! 
+          @user.save
+          sign_in_and_redirect @user, event: :authentication
+          flash[:success] = "会員登録が完了しました。"
+        else
+          @user.save
+          #  confirmation_pathにuserデータと認証トークンを付与することで本会員登録される
+          redirect_to confirmation_path(@user, confirmation_token: @token)
+          sign_in(@user, bypass: true)
+        end
       else
         render action: "before_create"
         flash.now[:alert] = "会員登録に失敗しました。再登録してください"
