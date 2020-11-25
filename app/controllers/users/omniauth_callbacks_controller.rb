@@ -11,20 +11,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
     # common callback method
     def callback_for(provider)
-      # @user.skip_confirmation!
       @user = User.from_omniauth(request.env["omniauth.auth"])
-      unless @user.persisted?
-        @user.skip_confirmation!
-        @user.save!
-      end
       if @user.active?
         sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
         set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
       else
-        # @user.skip_confirmation!
-        # @user.save!
-        # session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-        # redirect_to new_user_registration_url(user: @user)
         redirect_to before_sign_up_path(provider: provider, 
                                         uid: @user.uid)
       end
