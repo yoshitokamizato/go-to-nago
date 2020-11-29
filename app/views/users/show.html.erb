@@ -15,7 +15,7 @@
           <h3><%=@user.nickname%></h3>
           <!-- 誕生日から年齢を計算 -->
           <% if @user.birth_year.to_i > 0 %>
-            <p class="show-content" ><%= (Date.today.year.to_i - @user.birth_year.to_i) %>歳</p>
+            <p class="show-content" ><%=  calculation_of_age(@user.birth_year.to_i) %></p>
           <% end %>
           <p class="show-content"><%=@user.sex_i18n%></p>
           <p class="show-content"><%=@user.prefecture%></p>
