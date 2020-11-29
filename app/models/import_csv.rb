@@ -32,8 +32,8 @@ class ImportCsv < ApplicationRecord
       }
       list_image << {
         facility_id: row["facility_id"].to_i,
-        # image: row["image"],
-        image: "#{Rails.root}/public/facility_image/" + row["image"],
+        image: row["image"],
+        #image: "#{Rails.root}/public/facility_image/" + row["image"],
         order: row["order"].to_i,
         created_user: row["created_user"].to_i
       }
@@ -57,7 +57,8 @@ class ImportCsv < ApplicationRecord
     begin
       list_image.each do |data|
         facility_image = FacilityImage.new(data)
-        File.open(data[:image]) do |f|
+        require 'open-uri'
+        URI.open(data[:image]) do |f|
           facility_image.image = f
         end
         facility_image.save!
