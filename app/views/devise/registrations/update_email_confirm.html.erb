@@ -1,11 +1,10 @@
-<div class="title">
-    <h4 class="text-center">メールアドレスを変更</h4>
-</div>
-<div class="container-login">
-    <div class="mb-5">
-        <%= @unconfirmed_email %>に変更確認メールを送信しました。
-        <br>
-        メールを確認し、リンクをクリックして変更を完了してください。
+<div class="login-area">
+    <div class="list-title underline-blue">
+        <h1>メールアドレスを変更</h1>
     </div>
-    <%= link_to "マイページヘ戻る", user_path ,class:"btn btn-primary btn-block" %>       
-</div>
+    <div class="mt-5 mb-3">
+        <p class="text-center mt-3"><%= @unconfirmed_email %>に変更確認メールを送信しました。</p>
+        <p class="text-center">メールを確認し、リンクをクリックして変更を完了してください。</p>
+    </div>
+    <%= link_to "マイページヘ戻る", user_path ,class:"button button-gray-color" %>
+ </div>

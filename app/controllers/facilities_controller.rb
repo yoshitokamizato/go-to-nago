@@ -5,14 +5,16 @@ class FacilitiesController < ApplicationController
   end
 
   # 一覧表示
-  def index
-    if request.fullpath.include?("gourmet") == true
-      @facility_type = "gourmet"
-    else
-      @facility_type = "spot"
-    end
-
+  def spots_index
+    @facility_type = "spot"
     @facilities = Facility.includes(:facility_images).where(type: @facility_type).page(params[:page])
+    render :index
+  end
+
+  def gourmets_index
+    @facility_type = "gourmet"
+    @facilities = Facility.includes(:facility_images).where(type: @facility_type).page(params[:page])
+    render :index
   end
 
 

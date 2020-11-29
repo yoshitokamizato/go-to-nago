@@ -1,7 +1,9 @@
-<div class="container-login">
-  <h2 class="text-center">プロフィール登録確認</h2>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1>プロフィール登録確認</h1>
+  </div>
 
-  <%= form_for(@user, url: before_sign_up_update_path(@user, confirmation_token: @token),html: {method: "post"}) do |f| %>
+  <%= form_for(@user, url: before_sign_up_update_path(@user, confirmation_token: @token),html: {method: "post", class: "common-form"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
   <%= f.hidden_field :user_id, :value =>  @user.id %>
   <%= f.hidden_field :email, :value =>  @user.email %>
@@ -14,71 +16,55 @@
   <%= f.hidden_field :mailmagazine, :value =>  @user.mailmagazine %>
   <%= f.hidden_field :image_cache %>
 
-  <div class="field">
-    <br>
-    <%= f.label :nickname %><br />
-    <div class="confirm-text">
-      <%= @user.nickname %>
-    </div>
-  </div>
 
-  <div class="field">
-    <br>
-    <%= f.label :prefecture %><br />
-    <div class="confirm-text">
-      <%= @user.prefecture %>
+    <div class="inquiry-information">
+      <ul class="information-lists">
+        <li class="information-list">
+          <%= f.label :nickname ,class:"information-list-title" %>
+          <p class="information-list-content"><%= @user.nickname %></p>
+        </li>
+        <li class="information-list">
+          <%= f.label :prefecture ,class:"information-list-title" %>
+          <p class="information-list-content"><%= @user.prefecture %></p>
+        </li>
+        <li class="information-list">
+          <%= f.label :sex ,class:"information-list-title" %>
+          <p class="information-list-content"><%= @user.sex_i18n %></p>
+        </li>
+        <li class="information-list">
+          <%= f.label :birth_year ,class:"information-list-title" %>
+          <p class="information-list-content"><%= @user.birth_year %></p>
+        </li>
+        <li class="information-list">
+          <%= f.label :image ,class:"information-list-title" %>
+          <p class="information-list-content">
+              <% if @user.image.url %>
+            <%= image_tag @user.image.url ,class:"user-image"%>
+            <% else %>
+            <%= image_tag "no-image.png" ,class:"non-user-image" %>
+            <% end %>
+            <%= f.hidden_field :image %>
+          </p>
+        </li>
+        <li class="information-list">
+          <%= f.label :profile ,class:"information-list-title" %>
+          <div class="information-list-content"><%= simple_format(@user.profile) %></div>
+        </li>
+        <li class="information-list">
+          <%= f.label :mailmagazine ,class:"information-list-title" %>
+          <p class="information-list-content">
+            <% if @user.mailmagazine %>
+              メール配信を希望する
+            <% else %>
+              メール配信を希望しない
+            <% end %>
+          </p>
+        </li>
+      </ul>
     </div>
-  </div>
 
-  <div class="field">
-    <br>
-    <%= f.label :sex %><br />
-    <div class="confirm-text">
-      <%= @user.sex %>
-    </div>
-  </div>
-
-  <div class="field">
-    <br>
-    <%= f.label :birth_year %><br>
-    <div class="confirm-text">
-      <%= @user.birth_year %>
-    </div>
-  </div>
-
-  <div class="field">
-    <br>
-    <%= f.label :image %><br>
-    <% if @user.image.url %>
-    <%= image_tag @user.image.url ,class:"user-image"%>
-    <% else %>
-    <%= image_tag "no-image.png" ,class:"non-user-image" %>
-    <% end %>
-    <%= f.hidden_field :image %>
-  </div>
-
-  <div class="field">
-    <br>
-    <%= f.label :profile %><br>
-    <div class="confirm-text">
-      <%= @user.profile %>
-    </div>
-  </div>
-
-  <div class="field">
-    <br>
-    <%= f.label :mailmagazine %><br>
-    <div class="confirm-text">
-      <% if @user.mailmagazine == true then %>
-      メール配信を希望する<br>
-      <% else %>
-      メール配信を希望しない<br>
-      <% end %>
-    </div>
-  </div>
-  <br>
   <div class="form-group">
-    <%= f.submit "登録する", class:'btn btn-primary btn-block' %>
+    <%= f.submit "登録する", class:'button button-blue-color' %>
   </div>
   <% end %>
 
@@ -96,7 +82,7 @@
   <%= f.hidden_field :image_cache %>
 
   <div class="form-group">
-    <%= f.submit "入力画面へ戻る", class: "btn btn-secondary btn-block"%>
+    <%= f.submit "入力画面へ戻る", class: "button button-gray-color"%>
   </div>
   <% end %>
 </div>

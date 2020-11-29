@@ -1,18 +1,18 @@
-<div class="title">
-  <h4 class="text-center">メールアドレスを変更</h4>
-</div>
-<div class="container-login">
-  <div>新しいメールアドレスを入力してください。<br>
-    入力いただいたメールアドレスに確認メールを送信します。</div>
+<div class="login-area">
+  <div class="list-title underline-blue">
+    <h1>メールアドレスを変更</h1>
+  </div>
+  <p class="text-center mt-3">新しいメールアドレスを入力してください。</p>
+  <p class="text-center mt-3">入力いただいたメールアドレスに確認メールを送信します。</p>
   <div class="mt-5">
-    <%= form_for(resource ,as: resource_name, url:users_update_email_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource ,as: resource_name, url:users_update_email_path(resource_name), html: { method: :put, class: "common-form" }) do |f| %>
     <%= bootstrap_devise_error_messages!%>
     <div class="form-group mb-3">
       <%= f.label :email %>
       <%= f.email_field :email, class:'form-control', autofocus: true, value:nil, placeholder: "メールアドレスを入力してください" %>
     </div>
-    <%= f.submit "変更する", class:'btn btn-success btn-block' %>
-    <%= link_to "マイページヘ戻る", user_path ,class:"btn btn-primary btn-block" %>
+    <%= f.submit "変更する", class:'button button-blue-color' %>
+    <%= link_to "マイページヘ戻る", user_path ,class:"button button-gray-color" %>
     <% end %>
   </div>
 </div>

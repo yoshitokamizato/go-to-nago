@@ -1,7 +1,8 @@
 <%= bootstrap_devise_error_messages!%>
-<div class="title">
-    <h4 class="text-center">メールアドレスを変更</h4>
-</div>
+  <div class="list-title underline-blue">
+    <h1><%= メールアドレスを変更 %></h1>
+  </div>
+
 <div class="container-login">
   <div class="mb-5">
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>

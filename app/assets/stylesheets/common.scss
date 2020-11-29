@@ -33,7 +33,7 @@ a:hover {
   text-align: center;
   h1{
    font-weight: bold;
-   font-size: 1.2rem;
+   font-size: 1.4rem;
  }
 }
 
@@ -178,6 +178,22 @@ a:hover {
 .icon-red{
   color: $red-color;
 }
+.button-twitter{
+  background-color: #00acee;
+  color: #fff;
+  position: relative;
+  &:before {
+    // position: absolute;
+    // left: 1vw;
+    margin-right: 1rem;
+    content: "\f099";
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+  }
+  &:hover{
+    color: #fff;
+  }
+}
 
 .common-form {
   .form-control{
@@ -206,21 +222,29 @@ nav.navbar{
   width: 100vw;
   padding: 0 1rem;
 }
-
 .menu-icon-area,.logo-area, .account-icon-area{
+  height: 55px;
+}
+
+.header-space-adjust{
   height: 55px;
 }
 
 @media(min-width: 768px){
   .menu-icon-area,.logo-area, .account-icon-area{
     height: 72px;
-  }
-  .account-icon-area{
-    order: 3;
+  }    
+  .header-space-adjust{
+    height: 72px;
   }
 }
 
 @media(min-width: 768px){
+  // pcサイズのときにiconはflexの一番最後に表示
+  .account-icon-area{
+    order: 3;
+  }
+  // pcサイズのときにメニューは右寄せ
   .navbar-expand-md .navbar-collapse{
     justify-content: flex-end;
   }
@@ -233,7 +257,6 @@ nav.navbar{
 .menu-icon-area, .account-icon-area{
   text-align: center;
   position: relative;
-  // height: 100%;
   width: 10%;
 }
 
@@ -248,32 +271,23 @@ nav.navbar{
   }
 }
 
-
 .logo-area{
   text-align: center;
   position: relative;
   // height: 100%;
-  width: 30%;
+  max-width: 70%;
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }  
 }
 
 .header-logo{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-.header-space-adjust{
-  // padding-top: 55px;
-  height: 55px;
-}
-
-@media(min-width: 768px){
-  .header-space-adjust{
-    height: 72px;
-  }
+  object-fit: contain;
+  height: 85%;
+  width: auto;
+  max-width: 100%;
 }
 
 .title {

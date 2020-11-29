@@ -1,6 +1,29 @@
-// ================================
-// マイページ
-// ================================
+.login-area{
+  max-width: 540px;
+  width: 100%;
+  margin: 3rem auto 3rem;
+}
+
+.with-virtical-spaces{
+  margin: 20px 0;
+}
+
+#user-img-field {
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+  height: 160px;
+}
+
+#user-img-field i{
+  // display: none;
+  font-size: 40px;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  color: $main-color;
+}
+
 .user-image {
   width: 150px;
   height: 150px;
@@ -139,3 +162,35 @@ input[name="tab_item"] {
   margin-bottom: 10px;
   padding: 0px;
  }
+// ユーザ情報
+.user-information {
+  margin-top: 45px;
+  // wrapper
+  .information-lists {
+    // ul
+    .information-list {
+      // li
+      display: flex;
+      border-bottom: #888888 solid 1px;
+      padding: 10px 0;
+
+      p {
+        text-align: left;
+        margin-bottom: 0px;
+      }
+
+      .information-list-title {
+        // 各リストのカラム
+        width: 30%;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: $main-color;
+        font-weight: bold;
+      }
+
+      .information-list-content {
+        width: 70%;
+      }
+    }
+  }
+}
