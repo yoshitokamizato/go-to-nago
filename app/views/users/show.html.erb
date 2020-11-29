@@ -15,9 +15,9 @@
           <h3><%=@user.nickname%></h3>
           <!-- 誕生日から年齢を計算 -->
           <% if @user.birth_year.to_i > 0 %>
-            <p class="show-content" ><%= (Date.today.year.to_i - @user.birth_year.to_i) %></p>
+            <p class="show-content" ><%= (Date.today.year.to_i - @user.birth_year.to_i) %>歳</p>
           <% end %>
-          <p class="show-content"><%=@user.sex%></p>
+          <p class="show-content"><%=@user.sex_i18n%></p>
           <p class="show-content"><%=@user.prefecture%></p>
         </div>
 
@@ -53,7 +53,7 @@
         </div><!-- /.modal -->
       </div>
     </div>
-    <div class="profile text-left"><%= @user.profile %></div>
+    <div class="profile text-left"><%= simple_format(@user.profile) %></div>
   </div>
 
 <!-- タブのデザイン ================================================================= -->
@@ -62,13 +62,13 @@
   <div>
     <!-- タブの表示設定 -->
     <div class="tabs row">
-      <input id="all" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="all">グルメ</label>
+      <input id="gourmet" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="gourmet">グルメ</label>
 
-      <input id="programming" type="radio" name="tab_item">
-      <label class="tab_item" for="programming">スポット</label>
+      <input id="spot" type="radio" name="tab_item">
+      <label class="tab_item" for="spot">スポット</label>
 
-    <div class="tab_content list-wrapper" id="all_content">
+    <div class="tab_content list-wrapper" id="gourmet_content">
       <div class="row" id="gourmet_lists">
        <% if @gourmets.present?%>
           <%= render partial: 'facilities/facilities_list', collection: @gourmets, as: 'facility' %>
@@ -85,7 +85,7 @@
       </div>
     </div>  <!-- tab_content -->
 
-    <div class="tab_content" id="programming_content">
+    <div class="tab_content list-wrapper" id="spot_content">
       <div class="row" id="spot_lists">
         <% if @spots.present?%>
           <%= render partial: 'facilities/facilities_list', collection: @spots, as: 'facility' %>

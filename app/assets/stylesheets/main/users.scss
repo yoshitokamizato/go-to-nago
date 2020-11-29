@@ -115,15 +115,15 @@ input[name="tab_item"] {
 /*タブ切り替えの中身のスタイル*/
 .tab_content {
   display: none;
-  padding: 10px 20px 0;
+  padding: 10px 15px 0;
   clear: both;
   overflow: hidden;
 }
 
 
 /*選択されているタブのコンテンツのみを表示*/
-#all:checked ~ #all_content,
-#programming:checked ~ #programming_content,
+#gourmet:checked ~ #gourmet_content,
+#spot:checked ~ #spot_content,
 #design:checked ~ #design_content {
   display: block;
 }
