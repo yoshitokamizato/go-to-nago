@@ -47,9 +47,16 @@
   padding: 0 auto;
 }
 
+.show-content {
+  margin: 0;
+}
 .user-icon {
   position: relative;
   height: 200px;
+}
+
+.profile {
+  margin-bottom: 30px;
 }
 
 .fa-user-edit {
@@ -64,10 +71,97 @@
   margin-left: 10px;
 }
 
-#myTabs {
-  margin: 0 auto;
+
+// ================================
+// モーダル
+// ================================
+.modal{
+  &-header{
+    border-bottom: 0px!important;
+  }
+  &-footer{
+    border-top: 0px!important;
+  }
+
+  &-body{
+    text-align: center;
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+     a {
+      color: $main-color;
+     }
+  }
 }
 
+.cross-mark{
+  color: $main-color;
+}
+// ================================
+// マイページのタブ
+// ================================
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 100px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  width: auto;
+  margin: 0 auto;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+}
+
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/2);
+  height: 50px;
+	/* border-top: 3px solid #5ab4bd; */
+	background-color: #eeeeee;
+  line-height: 50px;
+  font-size: 18px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 10px 15px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#gourmet:checked ~ #gourmet_content,
+#spot:checked ~ #spot_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  border-top: 3px solid $main-color;
+  background-color: #fff;
+}
+
+// タブ内のカード
+.show-row-list {
+  margin-bottom: 10px;
+  padding: 0px;
+ }
 // ユーザ情報
 .user-information {
   margin-top: 45px;

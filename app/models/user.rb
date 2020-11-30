@@ -4,9 +4,11 @@ class User < ApplicationRecord
   mount_uploader :image, UserImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-#  validates :nickname, presence:  true
-#  validates :birth_year, presence: true
-#  validates :prefecture, presence: true
+
+  #  validates :nickname, presence:  true
+  #  validates :birth_year, presence: true
+  #  validates :prefecture, presence: true
+
   enum sex: {male: 0, female: 1, other: 2} 
   enum role: {general: 0, owner: 1, admin: 2}
   enum status: {temporary: 0, active: 1, resign: 2}
@@ -37,8 +39,19 @@ class User < ApplicationRecord
   # omniauthのコールバック時に呼ばれるメソッド
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+      user.email = auth.info.email || User.set_dummy_email(auth.uid, auth.provider)
       user.password = Devise.friendly_token[0,20]
+      user.skip_confirmation!
     end
   end
+
+  def has_dummy_email?
+    self.email == User.set_dummy_email(self.uid, self.provider)
+  end
+
+  private
+
+    def self.set_dummy_email(uid, provider)
+      "#{uid}-#{provider}@example.com"
+    end
 end

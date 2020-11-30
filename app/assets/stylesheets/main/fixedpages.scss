@@ -48,7 +48,7 @@ table td{
 }
 
 .fixedpages-sentence{
-  width: 90%;
+  width: 100%;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
@@ -68,4 +68,22 @@ table td{
   -webkit-margin-start: 20px;
   -webkit-margin-end: 0px;
   -webkit-padding-start: 0px;
+}
+
+/*アニメーション要素のスタイル*/
+.animation{
+	opacity : 0;
+	visibility: hidden;
+	transition: 1s;
+	transform: translateY(30px);
+}
+/*アニメーション要素までスクロールした時のスタイル*/
+.active{
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.sentence-margin {
+  margin-bottom: 200px;
 }
