@@ -24,9 +24,20 @@ hr {
   padding-bottom: 30px;
 }
 
+
+.list-title {
+  width: 85%;
+  margin: 0 auto 30px;
+  text-align: center;
+
+  h2,h3 {
+    font-weight: bold;
+  }
+}
 @media(min-width: 992px) {
   .list-body {
     padding-top: 100px;
+
   }
 }
 

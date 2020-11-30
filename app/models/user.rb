@@ -4,9 +4,11 @@ class User < ApplicationRecord
   mount_uploader :image, UserImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-#  validates :nickname, presence:  true
-#  validates :birth_year, presence: true
-#  validates :prefecture, presence: true
+
+  #  validates :nickname, presence:  true
+  #  validates :birth_year, presence: true
+  #  validates :prefecture, presence: true
+
   enum sex: {male: 0, female: 1, other: 2} 
   enum role: {general: 0, owner: 1, admin: 2}
   enum status: {temporary: 0, active: 1, resign: 2}
