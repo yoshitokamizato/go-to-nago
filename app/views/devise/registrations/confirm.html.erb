@@ -19,6 +19,12 @@
 
     <div class="inquiry-information">
       <ul class="information-lists">
+        <% if @user.provider.present? %>
+        <li class="information-list">
+          <%= f.label :email ,class:"information-list-title" %>
+          <p class="information-list-content"><%= @user.email %></p>
+        </li>
+        <% end %>
         <li class="information-list">
           <%= f.label :nickname ,class:"information-list-title" %>
           <p class="information-list-content"><%= @user.nickname %></p>
