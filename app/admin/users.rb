@@ -61,4 +61,18 @@ ActiveAdmin.register User do
       row :mailmagazine
     end
   end
+
+  # 絞り込み条件の項目設定
+  filter :type
+  filter :email
+  filter :nickname
+  filter :birth_year
+  filter :sex
+  filter :prefecture
+  filter :image
+  filter :role
+  filter :profile
+  filter :status
+  filter :created_at
+  filter :update_at
 end

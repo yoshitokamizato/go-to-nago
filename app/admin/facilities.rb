@@ -112,4 +112,29 @@ ActiveAdmin.register Facility do
       li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
     end
   end
+
+  # 絞り込み条件の項目設定
+  filter :type
+  filter :name
+  filter :postal_code
+  filter :address
+  filter :latitude
+  filter :longitude
+  filter :running_time
+  filter :tel
+  filter :email
+  filter :budget
+  filter :description
+  filter :advice
+  filter :holiday
+  filter :parking
+  filter :home_page
+  filter :owner_id
+  filter :instagram
+  filter :twitter
+  filter :youtube
+  filter :status
+  filter :created_user
+  filter :updated_user
+  filter :opening_hours
 end

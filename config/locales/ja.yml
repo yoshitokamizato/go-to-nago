@@ -39,6 +39,10 @@ ja:
       facility_image: "施設画像"
 
     attributes:
+      admin_user:
+        email: "メールアドレス"
+        created_at: 作成日時
+
       user:
         current_password: "現在のパスワード"
         email: "メールアドレス"
@@ -83,6 +87,8 @@ ja:
         created_user: "作成者ID"
         updated_user: "更新者ID"
         user_id: "ユーザーID"
+        opening_hours: "開店時間"
+
       inquiry:
         id: 問い合わせ番号
         status: ステータス
@@ -129,7 +135,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -155,7 +161,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -317,6 +323,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
-
-
