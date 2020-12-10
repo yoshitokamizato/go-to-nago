@@ -114,7 +114,7 @@ ActiveAdmin.register Facility do
   end
 
   # 絞り込み条件の項目設定
-  filter :type
+  filter :type, as: :select, collection:Facility.types_i18n.invert.map{|key,value| [key, Facility.types[value]]}
   filter :name
   filter :postal_code
   filter :address
@@ -133,7 +133,7 @@ ActiveAdmin.register Facility do
   filter :instagram
   filter :twitter
   filter :youtube
-  filter :status
+  filter :status, as: :select, collection:Facility.statuses_i18n.invert.map{|key,value| [key, Facility.statuses[value]]}
   filter :created_user
   filter :updated_user
   filter :opening_hours

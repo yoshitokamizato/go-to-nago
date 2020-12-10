@@ -14,6 +14,7 @@ ActiveAdmin.register User do
       f.input :image
       f.input :role,  as: :select, collection:User.roles_i18n.invert
       f.input :profile
+      f.input :status,  as: :select, collection:User.statuses_i18n.invert
       f.input :mailmagazine
     end
     f.actions
@@ -35,6 +36,9 @@ ActiveAdmin.register User do
       user.role_i18n
     end
     column :profile
+    column(:status) do |user|
+      user.status_i18n
+    end
     column :mailmagazine
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
@@ -57,6 +61,9 @@ ActiveAdmin.register User do
         user.role_i18n
       end
       row :profile
+      row(:status) do |user|
+        user.status_i18n
+      end
       row :mailmagazine
     end
   end
@@ -66,12 +73,11 @@ ActiveAdmin.register User do
   filter :email
   filter :nickname
   filter :birth_year
-  filter :sex
+  filter :sex, as: :select, collection:User.sexes_i18n.invert.map{|key,value| [key, User.sexes[value]]}
   filter :prefecture
   filter :image
-  filter :role
+  filter :role, as: :select, collection:User.roles_i18n.invert.map{|key,value| [key, User.roles[value]]}
   filter :profile
-  filter :status
-  filter :created_at
-  filter :update_at
+  filter :status, as: :select, collection:User.statuses_i18n.invert.map{|key,value| [key, User.statuses[value]]}
+  filter :mailmagazine
 end

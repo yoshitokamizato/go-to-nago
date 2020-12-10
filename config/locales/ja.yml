@@ -10,6 +10,10 @@ ja:
         general: 一般
         owner: オーナー
         admin: 管理者
+      status:
+        temporary: 仮登録
+        active: 本登録
+        resign: 退会
     facility:
       type:
         spot: 観光スポット
