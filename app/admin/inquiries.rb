@@ -2,8 +2,8 @@ ActiveAdmin.register Inquiry do
   # 管理画面で新規作成、削除を表示させない
   actions :all, except: [:new, :destroy]
   # 検索条件パネルの表示項目
-  filter :status, as: :select, collection:Inquiry.statuses_i18n.invert
-  filter :kind, as: :select, collection:Inquiry.kinds_i18n.invert
+  filter :status
+  filter :kind
   filter :name
   filter :email
   filter :subject
