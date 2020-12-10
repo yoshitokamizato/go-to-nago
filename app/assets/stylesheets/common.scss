@@ -212,6 +212,10 @@ a:hover {
 
 
 // ========ここから（ヘッダー部）=========
+$header-height: 55px;
+$header-height-md: 72px;
+
+
 .header{
   background-color: #fff;
 }
@@ -269,6 +273,19 @@ nav.navbar{
   &.close-icon{
     width: 70%;
   }
+}
+
+.header-user-image{
+  position: absolute;
+  top: 7.5%;
+  left: 7.5%;
+  width: $header-height * 0.85;
+  height: $header-height * 0.85;
+  @media(min-width: 768px){
+    width: $header-height-md * 0.85;
+    height: $header-height-md * 0.85;
+  }
+  border-radius: 50%;
 }
 
 .logo-area{
