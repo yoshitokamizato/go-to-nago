@@ -24,7 +24,6 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :password
     column :nickname
     column :birth_year
     column(:sex) do |user|

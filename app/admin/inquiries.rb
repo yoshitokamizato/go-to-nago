@@ -2,7 +2,15 @@ ActiveAdmin.register Inquiry do
   # 管理画面で新規作成、削除を表示させない
   actions :all, except: [:new, :destroy]
   # 検索条件パネルの表示項目
-  filter :status, as: :select
+  filter :status, as: :select, collection:Inquiry.statuses_i18n.invert
+  filter :kind, as: :select, collection:Inquiry.kinds_i18n.invert
+  filter :name
+  filter :email
+  filter :subject
+  filter :message
+  filter :created_at
+  filter :updated_at
+
   # 管理画面で更新できる項目の設定
   permit_params :status, :admin_comment
 
@@ -14,10 +22,10 @@ ActiveAdmin.register Inquiry do
     column(:kind) do |inquiry|
       inquiry.kind_i18n
     end
-    column :user_id
     column :name
-    column :facility_id
+    column :email
     column :subject
+    column :message
     column :created_at
     column :updated_at
     actions
@@ -31,7 +39,7 @@ ActiveAdmin.register Inquiry do
       input :user_id, input_html: { disabled: true }
       input :name, input_html: { disabled: true }
       input :email, input_html: { disabled: true }
-      input :facility_id, input_html: { disabled: true }  
+      input :facility_id, input_html: { disabled: true }
       input :subject, input_html: { disabled: true }
       input :message, as: :text, input_html: { disabled: true }
       input :created_at, as: :string, input_html: { disabled: true }
@@ -40,4 +48,5 @@ ActiveAdmin.register Inquiry do
     end
     f.actions
   end
+
 end
