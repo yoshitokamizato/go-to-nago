@@ -41,5 +41,4 @@ ActiveAdmin.register FacilityImage do
 
   # 絞り込み条件の項目設定
   filter :order
-  filter :created_user
 end
