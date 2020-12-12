@@ -7,9 +7,9 @@ ActiveAdmin.register Inquiry do
   filter :name
   filter :email
   filter :subject
-  filter :message
+#  filter :message
   filter :created_at
-  filter :updated_at
+#  filter :updated_at
 
   # 管理画面で更新できる項目の設定
   permit_params :status, :admin_comment
@@ -22,12 +22,14 @@ ActiveAdmin.register Inquiry do
     column(:kind) do |inquiry|
       inquiry.kind_i18n
     end
+    column :user_id
     column :name
+    column :facility_id
     column :email
     column :subject
-    column :message
+#    column :message
     column :created_at
-    column :updated_at
+#    column :updated_at
     actions
   end
 

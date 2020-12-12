@@ -13,7 +13,7 @@ ActiveAdmin.register Menu do
     id_column
     column :name
     column :price
-    column :content
+#    column :content
     column :order
     actions
   end
@@ -49,4 +49,8 @@ ActiveAdmin.register Menu do
     end
     f.actions
   end
+
+  # 絞り込み条件の項目設定
+  filter :name
+  filter :price
 end

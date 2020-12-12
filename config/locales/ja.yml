@@ -92,7 +92,8 @@ ja:
         updated_user: "更新者ID"
         user_id: "ユーザーID"
         opening_hours: "開店時間"
-
+        facility_images: "施設画像"
+        menu: "メニュー"
       inquiry:
         id: 問い合わせ番号
         status: ステータス
