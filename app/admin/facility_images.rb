@@ -8,7 +8,7 @@ ActiveAdmin.register FacilityImage do
   index do
     selectable_column
     column :image do |r|
-      link_to image_tag(r.image.thumb.url, class: 'image-thumbnail'), 
+      link_to image_tag(r.image.thumb.url, class: 'image-thumbnail'),
         admin_facility_facility_image_path(r.facility_id, r.id)  if r.image.url
     end
     id_column
@@ -28,7 +28,7 @@ ActiveAdmin.register FacilityImage do
       row :updated_at
     end
   end
-  
+
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do
@@ -38,4 +38,7 @@ ActiveAdmin.register FacilityImage do
     end
     f.actions
   end
+
+  # 絞り込み条件の項目設定
+  filter :order
 end
