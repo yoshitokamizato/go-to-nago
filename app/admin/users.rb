@@ -14,6 +14,7 @@ ActiveAdmin.register User do
       f.input :image
       f.input :role,  as: :select, collection:User.roles_i18n.invert
       f.input :profile
+      f.input :status,  as: :select, collection:User.statuses_i18n.invert
       f.input :mailmagazine
     end
     f.actions
@@ -24,18 +25,22 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :password
     column :nickname
     column :birth_year
     column(:sex) do |user|
       user.sex_i18n
     end
     column :prefecture
-    column :image
+    column :image do |r|
+      image_tag(r.image.url, class: 'image-thumbnail') if r.image.url
+    end
     column(:role) do |user|
       user.role_i18n
     end
-    column :profile
+#    column :profile
+    column(:status) do |user|
+      user.status_i18n
+    end
     column :mailmagazine
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
@@ -53,12 +58,30 @@ ActiveAdmin.register User do
         user.sex_i18n
       end
       row :prefecture
-      row :image
+      row :image do |r|
+        image_tag(r.image.url, class: 'image-thumbnail') if r.image.url
+      end
       row(:role) do |user|
         user.role_i18n
       end
       row :profile
+      row(:status) do |user|
+        user.status_i18n
+      end
       row :mailmagazine
     end
   end
+
+  # 絞り込み条件の項目設定
+  filter :type
+  filter :email
+  filter :nickname
+  filter :birth_year
+  filter :sex, as: :select, collection:User.sexes_i18n.invert.map{|key,value| [key, User.sexes[value]]}
+  filter :prefecture, as: :select, collection:User.prefectures_i18n.invert.map{|key,value| [key, User.prefectures[value]]}
+#  filter :image
+  filter :role, as: :select, collection:User.roles_i18n.invert.map{|key,value| [key, User.roles[value]]}
+#  filter :profile
+  filter :status, as: :select, collection:User.statuses_i18n.invert.map{|key,value| [key, User.statuses[value]]}
+  filter :mailmagazine
 end

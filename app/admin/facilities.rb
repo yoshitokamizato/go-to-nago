@@ -42,32 +42,36 @@ ActiveAdmin.register Facility do
     column :name
     column :postal_code
     column :address
-    column :latitude
-    column :longitude
-    column :running_time
+#    column :latitude
+#    column :longitude
+#    column :running_time
     column :tel
     column :email
-    column :budget
-    column :description
-    column :advice
+#    column :budget
+#    column :description
+#    column :advice
     column :holiday
     column :parking
-    column :home_page
-    column :owner_id
-    column :instagram
-    column :twitter
-    column :youtube
+#    column :home_page
+#    column :owner_id
+#    column :instagram
+#    column :twitter
+#    column :youtube
     column(:status) do |facility|
       facility.status_i18n
     end
-    column :created_user
-    column :updated_user
+#    column :created_user
+#    column :updated_user
     column :opening_hours
-    column 'facility_images' do |facility|
-      link_to '施設画像一覧', admin_facility_facility_images_path(facility.id)
+    column :facility_images do |facility|
+      div(class: "facility-link-width") do
+        link_to '施設画像一覧', admin_facility_facility_images_path(facility.id)
+      end
     end
-    column 'menu' do |facility|
-      link_to 'メニュー 一覧',   admin_facility_menus_path(facility.id)
+    column :menu do |facility|
+      div(class: "facility-link-width") do
+        link_to 'メニュー 一覧',   admin_facility_menus_path(facility.id)
+      end
     end
     actions # 後述するpermit_paramsの設定に応じて閲覧編集削除などのリンクを表示
   end
@@ -112,4 +116,29 @@ ActiveAdmin.register Facility do
       li link_to 'メニュー 一覧',   admin_facility_menus_path(resource)
     end
   end
+
+  # 絞り込み条件の項目設定
+  filter :type, as: :select, collection:Facility.types_i18n.invert.map{|key,value| [key, Facility.types[value]]}
+  filter :name
+  filter :postal_code
+  filter :address
+#  filter :latitude
+#  filter :longitude
+#  filter :running_time
+  filter :tel
+  filter :email
+#  filter :budget
+#  filter :description
+#  filter :advice
+  filter :holiday
+  filter :parking
+#  filter :home_page
+#  filter :owner_id
+#  filter :instagram
+#  filter :twitter
+#  filter :youtube
+  filter :status, as: :select, collection:Facility.statuses_i18n.invert.map{|key,value| [key, Facility.statuses[value]]}
+#  filter :created_user
+#  filter :updated_user
+  filter :opening_hours
 end
