@@ -16,7 +16,11 @@
     <div class="account-icon-area">
         <% if user_signed_in?	%>
           <%= link_to user_path do %>
-            <%= image_tag('icon_account.svg', class:'header-icon') %>
+            <% if current_user.image.url %>
+              <%= image_tag current_user.image.url ,class:"header-user-image" %>
+            <% else %>
+              <%= image_tag('icon_account.svg', class:'header-icon') %>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to new_user_session_path do %>
