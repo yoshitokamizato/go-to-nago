@@ -106,7 +106,9 @@
         </li>
         <li class="information-list">
           <p class="information-list-title">TEL</p>
-          <p class="information-list-content"><%= @facility.tel %></p>
+          <% if @facility.tel %>
+            <p class="information-list-content"><%= link_to( @facility.tel, "tel:" + @facility.tel ) %></p>
+          <% end %>
         </li>
         <li class="information-list">
           <p class="information-list-title">営業時間</p>
