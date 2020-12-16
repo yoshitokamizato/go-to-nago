@@ -128,7 +128,7 @@
     </div>
     <div class="google-map text-center">
 <!--      <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div> -->
-      <iframe src="https://maps.google.co.jp/maps?output=embed&q=<%= @facility.address %>&z=16" width="800" height="600" frameborder="0" scrolling="no" ></iframe>
+      <iframe src="https://maps.google.co.jp/maps?output=embed&q=<%= @facility.name %> <%= @facility.address %>&z=16" width="800" height="600" frameborder="0" scrolling="no" ></iframe>
     </div>
   </div>
 </div>
