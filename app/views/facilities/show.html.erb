@@ -123,8 +123,8 @@
           <p class="information-list-content"><%= @facility.parking %></p>
         </li>
         <li class="information-list">
-          <p class="information-list-title">URL</p>
-          <p class="information-list-content"><%= link_to(@facility.home_page, @facility.home_page, target: :_blank) %></p>
+          <p class="information-list-title">ホームページ</p>
+          <p class="information-list-content"><%= link_to(@facility.name, @facility.home_page, target: :_blank) %></p>
         </li>
       </ul>
     </div>
