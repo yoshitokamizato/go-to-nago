@@ -313,16 +313,15 @@ nav.navbar{
 // ========ここまで（ヘッダー部）=========
 // ========ここから（トップイメージ）=========
 .top-image {
-  // width: 100%;
-  // max-height: 500px;
   margin: 0 -15px;
-  background-image: image-url('img_top01.png');
+  background-image: image-url('img_top02.jpg');
   background-size: cover;
-  display: block;
-  // width: 100vw;
   height: 53vw;
   background-repeat: no-repeat;
   background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media(min-width: 938px){
@@ -330,6 +329,41 @@ nav.navbar{
     height: 500px;
   }
 }
+
+.top-title-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  p{
+    font-family: 'Noto Serif JP', serif !important;
+    text-align: center;
+    color:#fff;
+    text-shadow: 1px 2px 3px #808080;
+    &.main-title{
+      font-size: 1.2rem;
+    }
+    &.sub-title{
+      font-size: 1.0rem
+    }
+  }
+}
+
+@media(min-width: 768px){
+  .top-title-area{
+    p{
+      &.main-title{
+        font-size: 2rem;
+      }
+      &.sub-title{
+        font-size: 1.4rem
+      }
+    }
+  }
+}
+
 // ========ここまで（トップイメージ）=========
 
 // ログイン画面
