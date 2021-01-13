@@ -16,10 +16,12 @@
     <% else %>
     この度は 名護へGO に仮登録をしていただき、ありがとうございます！<br>
     <br>
+    <p>
     現時点では仮登録のため、会員登録手続きは完了しておりません。<br>
-    会員登録を完了するには下記のリンクからプロフィールを設定してください。<br>
-    <br>
+    会員登録を完了するには下記のリンクからプロフィールを設定してください。
+    </p>
     <p><%= link_to '本登録はこちら', before_sign_up_url(resource:@resource, confirmation_token: @token) %></p>
+    <p>このURLの有効期限は24時間です。</p>
     <br>
     <% end %>
     ※このメールは返信しても届きません。お問い合わせはサイトの<a href="https://go-to-nago.com/inquiries/new?kind=0"> お問い合せフォーム</a> からお願いいたします。<br>
