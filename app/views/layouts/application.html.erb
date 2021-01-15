@@ -2,10 +2,12 @@
 <html>
 
 <head>
-  <title>名護へGO</title>
+  <title><%= full_title(yield(:title)) %></title>
    <!-- ogp start-->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@CbpEr8biTBb5q8D" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="<%= full_title() %>" />
   <meta property="og:title" content="<%= full_title(yield(:title)) %>" />
   <meta property="og:url" content="<%= request.url %>" />
   <meta property="og:description"

@@ -1,3 +1,7 @@
+<%= content_for(:title, @facility.name) %>
+<%= content_for(:description, @facility.description) %>
+<%= content_for(:image_url, @facility.facility_images.first&.image.url) %>
+
 <!-- 詳細画面 -->
 <div class="detail-wrapper detail-width">
   <!-- トップ -->
