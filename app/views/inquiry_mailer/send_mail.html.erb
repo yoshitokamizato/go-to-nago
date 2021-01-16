@@ -1,19 +1,15 @@
-<div style="text-align: center;">
-<h2><%= @inquiry.name %>様</h2>
-
+<%= @inquiry.name %>様<br />
+<br />
 この度は「名護へGO」への問い合わせありがとうございます。<br />
 以下の内容でお問い合わせを承りました。<br />
 <br />
-<table cellspacing="1" class="inquiry_data" style="border: solid 1px #000000; margin: auto;">
-  <tr><th>お名前</th><td><%= @inquiry.name%></td></tr>
-  <tr><th>メールアドレス</th><td><%= @inquiry.email%></td></tr>
-  <tr><th>題名</th><td><%= @inquiry.subject%></td></tr>
-  <tr><th>お問い合わせ内容</th><td><%= simple_format(@inquiry.message) %></td></tr>
-</table>
-<br />
+
+お名前: <%= @inquiry.name%><br />
+メールアドレス: <%= @inquiry.email%><br />
+題名: <%= @inquiry.subject%><br />
+お問い合わせ内容: <%= simple_format(@inquiry.message) %>
 <br />
 内容を確認して、回答させていただきます。<br />
 なお、お問い合わせの内容によっては、回答にお時間をいただく場合がございます。
 <br />
-</div>
-
+<br />
