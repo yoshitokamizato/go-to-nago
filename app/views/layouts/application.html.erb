@@ -2,7 +2,19 @@
 <html>
 
 <head>
-  <title>名護へGO</title>
+  <title><%= full_title(yield(:title)) %></title>
+   <!-- ogp start-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@CbpEr8biTBb5q8D" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="<%= full_title() %>" />
+  <meta property="og:title" content="<%= full_title(yield(:title)) %>" />
+  <meta property="og:url" content="<%= request.url %>" />
+  <meta property="og:description"
+    content="<%= content_for?(:description) ? yield(:description) : '名護へGOは羽地の魅力的なお店やスポットを紹介しています。' %>" />
+  <meta property="og:image"
+    content="<%= content_for?(:image_url) ? yield(:image_url) : image_url('logo.png') %>" />
+  <!-- ogp end -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-185612604-1"></script>
   <script>
@@ -12,6 +24,7 @@
 
     gtag('config', 'UA-185612604-1');
   </script>
+  <%= favicon_link_tag('favicon.ico') %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
