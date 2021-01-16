@@ -28,8 +28,6 @@ validates :type, presence:  true
 validates :name, presence:  true
 validates :postal_code, presence: true
 validates :address, presence: true
-validates :latitude, presence: true
-validates :longitude, presence: true
 validates :description, presence: true
 validates :parking, presence: true
 validates :owner_id, presence: true

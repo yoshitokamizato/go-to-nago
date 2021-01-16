@@ -3,6 +3,10 @@
 <% else %>
   <% type_text = "観光スポット" %>
 <% end %>
+
+<%= content_for(:title, "おすすめ"+type_text.to_s) %>
+
+
 <div class="list-body row">
   <div class="list-title underline-blue">
     <h1>名護のおすすめ<%= type_text.to_s %></h1>

@@ -1,3 +1,7 @@
+<%= content_for(:title, @facility.name) %>
+<%= content_for(:description, @facility.description) %>
+<%= content_for(:image_url, @facility.facility_images.first&.image.url) %>
+
 <!-- 詳細画面 -->
 <div class="detail-wrapper detail-width">
   <!-- トップ -->
@@ -106,7 +110,9 @@
         </li>
         <li class="information-list">
           <p class="information-list-title">TEL</p>
-          <p class="information-list-content"><%= @facility.tel %></p>
+          <% if @facility.tel %>
+            <p class="information-list-content"><%= link_to( @facility.tel, "tel:" + @facility.tel ) %></p>
+          <% end %>
         </li>
         <li class="information-list">
           <p class="information-list-title">営業時間</p>
@@ -121,13 +127,14 @@
           <p class="information-list-content"><%= @facility.parking %></p>
         </li>
         <li class="information-list">
-          <p class="information-list-title">URL</p>
-          <p class="information-list-content"><%= link_to(@facility.home_page, @facility.home_page, target: :_blank) %></p>
+          <p class="information-list-title">ホームページ</p>
+          <p class="information-list-content"><%= link_to(@facility.name, @facility.home_page, target: :_blank) %></p>
         </li>
       </ul>
     </div>
     <div class="google-map text-center">
-      <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div>
+<!--      <div class="w-100" id="map" data-facility-latitude="<%= @facility.latitude %>" data-facility-longitude="<%= @facility.longitude %>">google map</div> -->
+        <iframe src="https://maps.google.co.jp/maps?output=embed&q=<%= @facility.name %> <%= @facility.address %>&z=16" class="w-100" id="map" frameborder="0" scrolling="no" ></iframe>
     </div>
   </div>
 </div>

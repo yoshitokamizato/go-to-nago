@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
     <% if @resource.try(:unconfirmed_email?) %>
     <p><%= @resource.nickname %>さん
       <br>
@@ -20,28 +14,15 @@
       このURLの有効期限は24時間です。
     </p>
     <% else %>
-    この度は 名護へGO に<br>
-    仮登録をしていただき、ありがとうございます！<br>
+    この度は 名護へGO に仮登録をしていただき、ありがとうございます！<br>
     <br>
+    <p>
     現時点では仮登録のため、会員登録手続きは完了しておりません。<br>
-    会員登録を完了するには下記のリンクからプロフィールを設定してください。<br>
-    <br>
+    会員登録を完了するには下記のリンクからプロフィールを設定してください。
+    </p>
     <p><%= link_to '本登録はこちら', before_sign_up_url(resource:@resource, confirmation_token: @token) %></p>
+    <p>このURLの有効期限は24時間です。</p>
     <br>
     <% end %>
-    ※このメールは返信しても届きません。お問い合わせはサイトの「お問い合わせ」からお願いいたします。<br>
+    ※このメールは返信しても届きません。お問い合わせはサイトの<a href="https://go-to-nago.com/inquiries/new?kind=0"> お問い合せフォーム</a> からお願いいたします。<br>
     <br>
-    ■ご登録の覚えがないのにこのメールが届いたという方 <br>
-    <br>
-    ご迷惑をおかけし申し訳ありません。大変お手数ですが下記までご連絡をお願いいたします。<br>
-    <br>
-    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * <br>
-     名護へGO :  https://go-to-nago.com/<br>
-     運営会社：株式会社やんばるスパイク<br>
-     住所：〒905-1152　沖縄県名護市字伊差川１０５２番地２<br>
-     メールアドレス：xxxxxxxx@xxxxxxxx.xxx<br>
-     TEL：XX-XXXX-XXXX<br>
-     営業時間：月～金曜 XX：XX～XX：XX<br>
-    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * <br>
-  </body>
-</html>
