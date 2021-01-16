@@ -4,14 +4,14 @@ end
 
 # 施設一覧
 crumb :facility_index do |facility_type|
-  if facility_type == "gourmet" 
+  if facility_type == "gourmet"
     link "グルメ", gourmets_list_path
   else
     link "観光スポット", spots_list_path
   end
   parent :root
 end
-  
+
 # 施設個別ページ
 crumb :facility do |facility|
   link facility.name, facility_path(facility)
@@ -35,7 +35,7 @@ crumb :favorite do
 end
 
 crumb :about do
-  link "名護へGoについて"
+  link "名護へGOについて"
   parent :root
 end
 
