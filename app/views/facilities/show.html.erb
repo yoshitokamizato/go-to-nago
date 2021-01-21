@@ -1,12 +1,17 @@
 <%= content_for(:title, @facility.name) %>
 <%= content_for(:description, @facility.description) %>
-<%= content_for(:image_url, @facility.facility_images.first&.image.url) %>
+<%= content_for(:image_url, @facility.facility_images.first&.image&.url) %>
 
 <!-- 詳細画面 -->
 <div class="detail-wrapper detail-width">
   <!-- トップ -->
   <div class="detail-top">
-    <%= image_tag(@facility.facility_images.first.image.url ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...")  %>
+      <% images = @facility.facility_images.first%>
+      <% if images.present? %>
+        <%= image_tag(images.image.url ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...")  %>
+      <% else %>
+        <%= image_tag("no-image-facility.png" ,class:"facility-main-width card-img-max-height fit-image" ,alt:"...") %>
+      <% end %>
     <h2 class="detail-title"><%= @facility.name%></h2>
     <!-- いいねボタン -->
     <!-- ログインの有無で場合わけ -->
