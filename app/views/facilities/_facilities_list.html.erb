@@ -10,7 +10,7 @@
       <% if images.present? %>
         <%= image_tag(images.image.thumb.url ,class:"card-img-top" ,alt:"...") %>
       <% else %>
-        <%= image_tag("no-image-facility.png") %>
+        <%= image_tag("no-image-facility.png" ,class:"card-img-top" ,alt:"...") %>
       <% end %>
       <div class="card-body">
         <h4 class="card-title"><%= facility.name %></h4>
