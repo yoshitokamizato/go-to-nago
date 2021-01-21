@@ -6,8 +6,12 @@
   <% end %>
   <%= link_to url, class:"a-card" do %>
     <div class="card">
-      <%images = facility.facility_images.first%>
-      <%= image_tag(images.image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+      <% images = facility.facility_images.first%>
+      <% if images.present? %>
+        <%= image_tag(images.image.thumb.url ,class:"card-img-top" ,alt:"...") %>
+      <% else %>
+        <%= image_tag("no-image-facility.png") %>
+      <% end %>
       <div class="card-body">
         <h4 class="card-title"><%= facility.name %></h4>
         <p class="card-text"><%= facility.description %></p>
